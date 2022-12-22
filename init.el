@@ -8,4 +8,5 @@
 (load "rex-ui")
 (load "rex-help")
 (load "rex-movec")
+(load "rex-completion")
 (load "rex-git")
