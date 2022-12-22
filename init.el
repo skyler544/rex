@@ -7,4 +7,5 @@
 (load "rex-settings")
 (load "rex-ui")
 (load "rex-help")
+(load "rex-movec")
 (load "rex-git")

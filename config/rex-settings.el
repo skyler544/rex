@@ -25,6 +25,8 @@
   (setq make-backup-files nil)
   (setq word-wrap nil)
   (setq blink-cursor-mode nil)
+  (setq fast-but-imprecise-scrolling t)
+  (setq redisplay-skip-fontification-on-input t)
   (column-number-mode)
 
   ;; minibuffer settings

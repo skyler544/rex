@@ -2,7 +2,14 @@
   :init
   (scroll-bar-mode -1)
   (menu-bar-mode -1)
-  (tool-bar-mode -1))
+  (tool-bar-mode -1)
+
+  (setq default-frame-alist
+	(append (list '(font . "Iosevka Custom Extended:size=18"))))
+
+  (set-face-attribute 'variable-pitch nil
+                    :family "Iosevka Custom Extended"
+                    :slant 'oblique))
 
 (use-package autothemer)
 
