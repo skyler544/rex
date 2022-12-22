@@ -1,5 +1,8 @@
 (use-package vertico
-  :init (vertico-mode))
+  :init (vertico-mode)
+  :config
+  (setq vertico-count 12)
+  (setq vertico-resize nil))
 
 (use-package vertico-directory
   :after vertico
