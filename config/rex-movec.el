@@ -30,9 +30,6 @@
   :config
   (setq embark-prompter 'embark-completing-read-prompter))
 
-(use-package embark-consult
-  :hook (embark-collect-mode . consult-preview-at-point-mode))
-
 (use-package consult
   :bind (;; C-c bindings (mode-specific-map)
 	 ("C-c h" . consult-history)
