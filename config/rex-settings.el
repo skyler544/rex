@@ -21,5 +21,15 @@
   (setq tramp-auto-save-directory (concat user-emacs-directory ".cache/tramp-autosave"))  
 
   ;; general settings
+  (setq byte-compile-warnings nil)
+  (setq make-backup-files nil)
+  (setq word-wrap nil)
+  (setq blink-cursor-mode nil)
   (column-number-mode)
-  (setq use-dialog-box nil))
+
+  ;; minibuffer settings
+  (setq enable-recursive-minibuffers t)
+  (setq echo-keystrokes 0.02)
+  (setq use-dialog-box nil)
+  (setq completion-ignore-case t)
+  (savehist-mode))
