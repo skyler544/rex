@@ -53,3 +53,6 @@
 ;; improve the user experience but do not fall into a
 ;; more specific category
 (load "rex-qol")
+
+;; programming support
+(load "rex-programming")
