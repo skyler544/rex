@@ -46,8 +46,8 @@
 ;; utilities related to code-completion
 (load "rex-completion")
 
-;; Magit
-(load "rex-git")
+;; version control helpers
+(load "rex-vc")
 
 ;; packages considered "nice to have" or which otherwise
 ;; improve the user experience but do not fall into a
