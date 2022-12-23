@@ -22,7 +22,7 @@
 ;; can land, and if desired, may be added to the
 ;; configuration programmatically. This file may
 ;; be deleted at any time without adverse effects.
-(setq custom-file ".cache/custom.el")
+(setq custom-file (concat user-emacs-directory ".cache/custom.el"))
 
 ;; strictly necessary for the operation of rex.
 (load "rex-bootstrap")
