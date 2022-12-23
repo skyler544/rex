@@ -32,6 +32,7 @@
 
 ;; keybindings unrelated to any specific external packages
 (load "rex-keybindings")
+
 ;; theme and font-face settings
 (load "rex-ui")
 
