@@ -1,5 +1,6 @@
 (use-package vertico
-  :init (vertico-mode)
+  :init
+  (vertico-mode)
   :config
   (setq vertico-count 12)
   (setq vertico-resize nil))
@@ -24,17 +25,17 @@
   (marginalia-mode))
 
 (use-package embark
-  :bind (("C-." . embark-act)
+  :bind (("C-," . embark-act)
 	 ("C-;" . embark-dwim)
 	 ("C-h B" . embark-bindings))
   :config
+  (setq embark-indicators '(embark-minimal-indicator))
   (setq embark-prompter 'embark-completing-read-prompter))
 
 (use-package consult
   :bind (;; C-c bindings (mode-specific-map)
 	 ("C-c h" . consult-history)
 	 ("C-c m" . consult-mode-command)
-	 ("C-c k" . consult-kmacro)
 	 ;; C-x bindings (ctl-x-map)
 	 ("C-x M-:" . consult-complex-command)
 	 ("C-x b" . consult-buffer)
@@ -42,10 +43,6 @@
 	 ("C-x 5 b" . consult-buffer-other-frame)
 	 ("C-x r b" . consult-bookmark)
 	 ("C-x p b" . consult-project-buffer)
-	 ;; Custom M-# bindings for fast register access
-	 ("M-#" . consult-register-load)
-	 ("M-'" . consult-register-store)
-	 ("C-M-#" . consult-register)
 	 ;; Other custom bindings
 	 ("M-y" . consult-yank-pop)
 	 ;; M-g bindings (goto-map)
