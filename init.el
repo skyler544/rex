@@ -14,18 +14,37 @@
 ;; not break the rest of the configuration. One exception is the
 ;; bootstrap file; without it, use-package will not be loaded
 ;; and none of the rest of the configuration will work.
-
 (add-to-list 'load-path (concat user-emacs-directory "config/"))
+
 
 ;; do not add custom settings to the end of init.el
 (setq custom-file ".cache/custom.el")
 
+;; strictly necessary for the operation of rex.
 (load "rex-bootstrap")
+
+;; configuration unrelated to specific external packages
 (load "rex-settings")
-(load "rex-ui")
-(load "rex-help")
-(load "rex-movec")
-(load "rex-completion")
+
+;; keybindings unrelated to any specific external packages
 (load "rex-keybindings")
+;; theme and font-face settings
+(load "rex-ui")
+
+;; help utilities
+(load "rex-help")
+
+;; Marginalia Orderless Vertico Embark Consult
+;; M.         O.        V.      E.     C.
+(load "rex-movec")
+
+;; utilities related to code-completion
+(load "rex-completion")
+
+;; Magit
 (load "rex-git")
+
+;; packages considered "nice to have" or which otherwise
+;; improve the user experience but do not fall into a
+;; more specific category
 (load "rex-qol")
