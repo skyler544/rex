@@ -22,4 +22,4 @@ I use [`with-emacs.sh`](https://github.com/alphapapa/with-emacs.sh) (alphapapa) 
 If you've just cloned it, you'll want to remove the `-R` flag (and set the path to wherever you cloned it) so that the packages can be installed. After that, using `-R` speeds up initialization.
 
 
-P.S. you'll either need to change the font or [install it}(https://github.com/skyler544/iosevka-custom).
+P.S. you'll either need to change the font or [install it](https://github.com/skyler544/iosevka-custom).
