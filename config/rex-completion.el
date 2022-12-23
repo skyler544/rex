@@ -13,6 +13,3 @@
 		    (setq-local corfu-auto nil)
 		    (corfu-mode)))
   :init (global-corfu-mode))
-
-(use-package dabbrev)
-
