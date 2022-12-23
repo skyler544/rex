@@ -13,25 +13,42 @@
   (recentf-mode 1)
   (run-at-time nil (* 5 60) 'recentf-save-list))
 
+;; keep emacs directory cleaner
 (use-package emacs
   :config
-  ;; keep emacs directory cleaner
   (setq savehist-file (concat user-emacs-directory ".cache/minibuffer-history"))
   (setq transient-history-file (concat user-emacs-directory ".cache/transient-history"))
-  (setq tramp-auto-save-directory (concat user-emacs-directory ".cache/tramp-autosave"))  
+  (setq tramp-auto-save-directory (concat user-emacs-directory ".cache/tramp-autosave")))
 
-  ;; general settings
+;; line numbers
+(use-package emacs
+  :hook (prog-mode . line-number-mode)
+  :config
+  (setq display-line-numbers-width-start t))
+
+;; general settings
+(use-package emacs
+  :config
   (setq byte-compile-warnings nil)
   (setq make-backup-files nil)
   (setq word-wrap nil)
   (setq blink-cursor-mode nil)
   (setq fast-but-imprecise-scrolling t)
   (setq redisplay-skip-fontification-on-input t)
-  (column-number-mode)
+  (column-number-mode))
 
-  ;; minibuffer settings
+;; minibuffer settings
+(use-package emacs
+  :config
   (setq enable-recursive-minibuffers t)
   (setq echo-keystrokes 0.02)
   (setq use-dialog-box nil)
   (setq completion-ignore-case t)
   (savehist-mode))
+
+;; scrolling
+(use-package emacs
+  :config
+  (setq scroll-margin 0)
+  (setq scroll-conservatively 101)
+  (setq scroll-preserve-screen-position t))
