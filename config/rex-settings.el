@@ -3,7 +3,9 @@
   :config
   ;; disable some automatic warnings
   (add-to-list 'warning-suppress-types '(comp))
-  (add-to-list 'warning-suppress-log-types '(comp)))
+  (add-to-list 'warning-suppress-log-types '(comp))
+  (add-to-list 'warning-suppress-types '(emacs))
+  (add-to-list 'warning-suppress-log-types '(emacs)))
 
 (use-package recentf
   :config
