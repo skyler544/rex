@@ -13,6 +13,9 @@
 
 (use-package autothemer)
 
+;; Manual installation of this theme to allow editing the modeline
+;; without modifying the package inside the elpa folder.
+;; https://github.com/emacsfodder/emacs-theme-creamsody
 (use-package creamsody-theme
   :load-path "themes/emacs-theme-creamsody/"
   :init (require 'creamsody)
