@@ -5,7 +5,7 @@
   (tool-bar-mode -1)
 
   (setq default-frame-alist
-	(append (list '(font . "Iosevka Custom Extended:size=18"))))
+	(append (list '(font . "Iosevka Custom Extended:size=20"))))
 
   (set-face-attribute 'variable-pitch nil
                     :family "Iosevka Custom Extended"
