@@ -24,7 +24,7 @@
 
 ;; line numbers
 (use-package emacs
-  :hook (prog-mode . line-number-mode)
+  :hook (prog-mode . linum-mode)
   :config
   (setq display-line-numbers-width-start t))
 
