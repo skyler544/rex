@@ -11,3 +11,4 @@
 (load "rex-completion")
 (load "rex-keybindings")
 (load "rex-git")
+(load "rex-qol")
