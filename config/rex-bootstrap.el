@@ -31,3 +31,6 @@
 (use-package use-package
   :init
   (setq use-package-always-ensure t))
+
+(use-package diminish
+  :demand t)

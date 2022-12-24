@@ -1,3 +1,7 @@
+(use-package elec-pair
+  :ensure nil
+  :hook (prog-mode . electric-pair-mode))
+
 (use-package ws-butler
   :hook (prog-mode . ws-butler-mode))
 

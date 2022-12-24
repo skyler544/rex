@@ -31,7 +31,10 @@
 ;; general settings
 (use-package emacs
   :config
+  (setq confirm-kill-processes nil)
+  (setq indent-tabs-mode nil)
   (setq byte-compile-warnings nil)
+  (setq create-lockfiles nil)
   (setq make-backup-files nil)
   (setq word-wrap nil)
   (setq blink-cursor-mode nil)
@@ -54,3 +57,7 @@
   (setq scroll-margin 0)
   (setq scroll-conservatively 101)
   (setq scroll-preserve-screen-position t))
+
+(use-package eldoc
+  :ensure nil
+  :diminish eldoc-mode)
