@@ -54,3 +54,6 @@
 
 ;; Programming support.
 (load "rex-programming")
+
+;; Modal editing.
+(load "rex-evil")
