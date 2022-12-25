@@ -26,12 +26,6 @@
 ;; Strictly necessary for the operation of rex.
 (load "rex-bootstrap")
 
-;; Configuration unrelated to specific external packages.
-(load "rex-settings")
-
-;; Keybindings unrelated to any specific external packages.
-(load "rex-keybindings")
-
 ;; Theme and font-face settings.
 (load "rex-ui")
 
@@ -54,3 +48,11 @@
 
 ;; Programming support.
 (load "rex-programming")
+
+;; Global configuration unrelated to specific external packages. This
+;; should be one of the last files loaded, otherwise packages may
+;; override these settings.
+(load "rex-settings")
+
+;; Keybindings unrelated to specific external packages.
+(load "rex-keybindings")
