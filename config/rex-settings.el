@@ -2,6 +2,8 @@
   :defer t
   :config
   ;; disable some automatic warnings
+  (add-to-list 'warning-suppress-types '(iedit))
+  (add-to-list 'warning-suppress-log-types '(iedit))
   (add-to-list 'warning-suppress-types '(comp))
   (add-to-list 'warning-suppress-log-types '(comp))
   (add-to-list 'warning-suppress-types '(emacs))

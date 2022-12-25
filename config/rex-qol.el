@@ -22,3 +22,9 @@
   :general
   (rex-file-leader
     "r" 'crux-rename-file-and-buffer))
+
+;; Fast refactoring of text
+(use-package iedit
+  :general
+  (:states '(normal visual)
+           "?" 'iedit-mode))
