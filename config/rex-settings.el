@@ -31,8 +31,8 @@
 ;; general settings
 (use-package emacs
   :config
+  (setq-default indent-tabs-mode nil)
   (setq confirm-kill-processes nil)
-  (setq indent-tabs-mode nil)
   (setq byte-compile-warnings nil)
   (setq create-lockfiles nil)
   (setq make-backup-files nil)
