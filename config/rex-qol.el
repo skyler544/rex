@@ -28,3 +28,10 @@
   :general
   (:states '(normal visual)
            "?" 'iedit-mode))
+
+;; better pdf support
+(use-package pdf-tools
+  :diminish Pdf-View-Midnight
+  :mode ("\\.pdf\\'" . pdf-view-mode)
+  :config
+  (setq-default pdf-view-display-size 'fit-width))
