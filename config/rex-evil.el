@@ -2,6 +2,7 @@
 (use-package evil
   :init
   (setq evil-want-keybinding nil)
+  (setq evil-kill-on-visual-paste nil)
   (setq evil-want-Y-yank-to-eol t)
   (setq evil-undo-system 'undo-redo)
   (setq evil-want-fine-undo t)
