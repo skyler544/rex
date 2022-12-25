@@ -8,6 +8,7 @@
   (setq evil-move-beyond-eol t)
   (setq evil-respect-visual-line-mode t)
   :config
+  (add-hook 'git-commit-mode-hook 'evil-insert-state)
   (evil-mode))
 
 (use-package evil-collection
