@@ -1,15 +1,19 @@
 ;; The dark side.
 (use-package evil
   :init
+  (setq evil-want-keybinding nil)
   (setq evil-want-Y-yank-to-eol t)
   (setq evil-undo-system 'undo-redo)
   (setq evil-want-fine-undo t)
   (setq evil-move-beyond-eol t)
   (setq evil-respect-visual-line-mode t)
-  :bind (:map evil-normal-state-map
-	      ("q" . nil))
   :config
   (evil-mode))
+
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
 
 ;; Show a brief flash in the buffer indicating where an evil
 ;; operation takes affect.
