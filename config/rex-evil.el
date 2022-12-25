@@ -10,7 +10,8 @@
   (setq evil-respect-visual-line-mode t)
   :general
   (rex-leader
-    "w" 'evil-window-map)
+    :prefix "SPC w"
+    :prefix-map 'evil-window-map)
   :config
   (add-hook 'git-commit-mode-hook 'evil-insert-state)
   (evil-mode))

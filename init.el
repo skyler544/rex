@@ -1,11 +1,12 @@
 ;; Welcome to rex! This Emacs configuration is intended to be simple
 ;; to understand and extend. Emphasis is placed on the use of well-
 ;; documented, modular packages. Configuration is aided and organized
-;; via use-package.
+;; via use-package. Key bindings are defined with general.el.
 ;;
 ;; Each use-package block should contain configuration for a single
 ;; package and should be entirely standalone. Disabling a use-package
-;; block should not break the operation of any other package.
+;; block should not break the operation of any other package. This is
+;; not always entirely feasible, but the effort should be made.
 ;;
 ;; Configuration for specific areas-of-concern should be done within a
 ;; standalone file inside the config/ directory. Such files may then
@@ -26,6 +27,12 @@
 ;; Strictly necessary for the operation of rex.
 (load "rex-bootstrap")
 (load "rex-general")
+
+;; Modal editing.
+(load "rex-evil")
+
+;; Global configuration unrelated to specific external packages.
+(load "rex-settings")
 
 ;; Theme and font-face settings.
 (load "rex-ui")
@@ -49,11 +56,3 @@
 
 ;; Programming support.
 (load "rex-programming")
-
-;; Modal editing.
-(load "rex-evil")
-
-;; Global configuration unrelated to specific external packages. This
-;; should be one of the last files loaded, otherwise packages may
-;; override these settings.
-(load "rex-settings")

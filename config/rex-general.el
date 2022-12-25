@@ -1,4 +1,6 @@
-;; Define leaders
+;; Define leaders; the intention is for a tree-shaped layout of key
+;; chords, starting with the spacebar and branching out to various
+;; "leaves." Leaves may be single keys or further prefixes.
 (use-package general
   :config
   (general-create-definer rex-leader
@@ -7,9 +9,6 @@
   (general-create-definer rex-local-leader
     :keymaps '(visual normal motion)
     :prefix "SPC m")
-  (general-create-definer rex-project-leader
-    :keymaps '(visual normal motion)
-    :prefix "SPC p")
   (general-create-definer rex-search-leader
     :keymaps '(visual normal motion)
     :prefix "SPC s")
@@ -39,5 +38,6 @@
 (use-package project
   :ensure nil
   :general
-  (rex-project-leader
-    "f" 'project-find-file))
+  (rex-leader
+    :prefix "SPC p"
+    :prefix-map 'project-prefix-map))

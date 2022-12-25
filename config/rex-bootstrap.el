@@ -23,7 +23,8 @@
 (setq rex-packages
       '(use-package))
 
-(when (not package-archive-contents) (package-refresh-contents))
+(when (not package-archive-contents)
+  (package-refresh-contents))
 
 (dolist (pkg rex-packages)
   (when (and (not (package-installed-p pkg)) (assoc pkg package-archive-contents))
@@ -34,6 +35,8 @@
   :init
   (setq use-package-always-ensure t))
 
+;; Adds a keyword to use-package that makes hiding minor modes from
+;; the modeline simple
 (use-package diminish
   :demand t)
 

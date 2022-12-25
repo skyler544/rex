@@ -33,6 +33,8 @@
   :general
   ("C-," 'embark-act)
   ("C-h B" 'embark-bindings)
+  (rex-leader
+    "a" 'embark-act)
   :config
   (setq embark-indicators '(embark-minimal-indicator))
   (setq embark-prompter 'embark-completing-read-prompter))
