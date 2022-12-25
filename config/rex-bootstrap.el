@@ -1,4 +1,6 @@
 ;; This file initializes the package system and installs use-package.
+;; diminish and general are also initialized here as they are widely
+;; used throughout rex.
 ;;
 ;; This file should not be modified frequently (if at all).
 
@@ -35,5 +37,10 @@
 (use-package diminish
   :demand t)
 
+;; general makes defining keys (particularly when using leader keys)
+;; much simpler.
 (use-package general
-  :demand t)
+  :demand t
+  :config
+  (general-auto-unbind-keys)
+  (general-evil-setup t))

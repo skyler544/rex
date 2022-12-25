@@ -14,9 +14,11 @@
 ;; article and learn to use avy more in combination with embark:
 ;; https://karthinks.com/software/avy-can-do-anything/
 (use-package avy
-  :bind ("C-;" . avy-goto-char-timer))
+  :general
+  ("C-;" 'avy-goto-char-timer))
 
 ;; Some nice editing functions; not really necessary with evil.
 (use-package crux
-  :bind (("C-c n" . crux-cleanup-buffer-or-region)
-         ("C-c r" . crux-rename-file-and-buffer)))
+  :general
+  (rex-file-leader
+    "r" 'crux-rename-file-and-buffer))

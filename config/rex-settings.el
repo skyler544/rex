@@ -32,6 +32,7 @@
 (use-package emacs
   :config
   (setq-default indent-tabs-mode nil)
+  (put 'narrow-to-region 'disabled nil)
   (setq confirm-kill-processes nil)
   (setq byte-compile-warnings nil)
   (setq create-lockfiles nil)

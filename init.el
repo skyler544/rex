@@ -25,6 +25,7 @@
 
 ;; Strictly necessary for the operation of rex.
 (load "rex-bootstrap")
+(load "rex-general")
 
 ;; Theme and font-face settings.
 (load "rex-ui")
@@ -56,6 +57,3 @@
 ;; should be one of the last files loaded, otherwise packages may
 ;; override these settings.
 (load "rex-settings")
-
-;; Keybindings unrelated to specific external packages.
-(load "rex-keybindings")

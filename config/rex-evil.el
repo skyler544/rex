@@ -8,6 +8,9 @@
   (setq evil-want-fine-undo t)
   (setq evil-move-beyond-eol t)
   (setq evil-respect-visual-line-mode t)
+  :general
+  (rex-leader
+    "w" 'evil-window-map)
   :config
   (add-hook 'git-commit-mode-hook 'evil-insert-state)
   (evil-mode))
@@ -27,8 +30,11 @@
 
 ;; Make adding a pair of delimiters to the text fast and simple.
 (use-package evil-surround
-  :bind (:map evil-visual-state-map
-              ("s" . evil-surround-region)
-              ("S" . evil-Surround-region))
+  :general
+  (:states 'visual
+           "s" 'evil-surround-region
+           "S" 'evil-Surround-region)
+  (:states 'operator
+            "s" 'evil-surround-edit)
   :config
   (global-evil-surround-mode 1))
