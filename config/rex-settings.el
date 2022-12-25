@@ -58,6 +58,11 @@
   (setq scroll-conservatively 101)
   (setq scroll-preserve-screen-position t))
 
+;; builtin packages
 (use-package eldoc
   :ensure nil
   :diminish eldoc-mode)
+
+(use-package autorevert
+  :ensure nil
+  :diminish auto-revert-mode)
