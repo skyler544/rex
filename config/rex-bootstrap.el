@@ -12,7 +12,7 @@
 ;; Add the melpa package archive and initialize the
 ;; package system.
 (add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/"))
+             '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
 ;; Creating a list of packages in this way allows the code

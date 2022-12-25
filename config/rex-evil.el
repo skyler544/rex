@@ -27,7 +27,7 @@
 ;; Make adding a pair of delimiters to the text fast and simple.
 (use-package evil-surround
   :bind (:map evil-visual-state-map
-	      ("s" . evil-surround-region)
-	      ("S" . evil-Surround-region))
+              ("s" . evil-surround-region)
+              ("S" . evil-Surround-region))
   :config
   (global-evil-surround-mode 1))
