@@ -5,8 +5,10 @@
   (corfu-preselect 'prompt)
   :bind
   (:map corfu-map
+	("C-j" . corfu-next)
 	("TAB" . corfu-next)
 	([tab] . corfu-next)
+	("C-k" . corfu-previous)
 	("S-TAB" . corfu-previous)
 	([backtab] . corfu-previous))
   :hook (eshell . (lambda ()
