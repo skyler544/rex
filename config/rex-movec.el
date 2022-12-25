@@ -1,6 +1,9 @@
 (use-package vertico
   :init
   (vertico-mode)
+  :bind (:map vertico-map
+              ("C-j" . vertico-next)
+              ("C-k" . vertico-previous))
   :config
   (setq vertico-count 12)
   (setq vertico-resize nil))

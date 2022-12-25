@@ -49,6 +49,9 @@
 ;; Programming support.
 (load "rex-programming")
 
+;; Modal editing.
+(load "rex-evil")
+
 ;; Global configuration unrelated to specific external packages. This
 ;; should be one of the last files loaded, otherwise packages may
 ;; override these settings.
