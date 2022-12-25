@@ -34,3 +34,6 @@
 
 (use-package diminish
   :demand t)
+
+(use-package general
+  :demand t)
