@@ -20,6 +20,7 @@
 ;; keep emacs directory cleaner
 (use-package emacs
   :config
+  (setq bookmark-default-file (concat user-emacs-directory ".cache/bookmarks"))
   (setq savehist-file (concat user-emacs-directory ".cache/minibuffer-history"))
   (setq transient-history-file (concat user-emacs-directory ".cache/transient-history"))
   (setq tramp-auto-save-directory (concat user-emacs-directory ".cache/tramp-autosave")))

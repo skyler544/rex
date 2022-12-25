@@ -35,3 +35,15 @@
   :mode ("\\.pdf\\'" . pdf-view-mode)
   :config
   (setq-default pdf-view-display-size 'fit-width))
+
+;; Briefly flash current line after a long movement.
+(use-package pulsar
+  :after evil
+  :init
+  (setq pulsar-face 'pulsar-green)
+  :config
+  (add-to-list 'pulsar-pulse-functions 'evil-window-down)
+  (add-to-list 'pulsar-pulse-functions 'evil-window-up)
+  (face-spec-reset-face 'pulsar-green)
+  (set-face-attribute 'pulsar-green nil :inherit 'region)
+  (pulsar-global-mode))
