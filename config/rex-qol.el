@@ -3,6 +3,7 @@
   :hook (prog-mode . electric-pair-mode))
 
 (use-package ws-butler
+  :diminish ws-butler-mode
   :hook (prog-mode . ws-butler-mode))
 
 (use-package avy

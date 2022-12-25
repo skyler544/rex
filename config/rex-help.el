@@ -1,4 +1,5 @@
 (use-package which-key
+  :diminish which-key-mode
   :init
   (setq which-key-show-early-on-C-h t)
   (setq which-key-idle-delay 10000)
