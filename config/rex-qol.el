@@ -15,7 +15,8 @@
 ;; https://karthinks.com/software/avy-can-do-anything/
 (use-package avy
   :general
-  ("C-;" 'avy-goto-char-timer))
+  (:states 'normal
+           "f" 'avy-goto-char-timer))
 
 ;; Some nice editing functions; not really necessary with evil.
 (use-package crux
@@ -40,10 +41,10 @@
 (use-package pulsar
   :after evil
   :init
-  (setq pulsar-face 'pulsar-green)
+  (setq pulsar-face 'pulsar-generic)
   :config
   (add-to-list 'pulsar-pulse-functions 'evil-window-down)
   (add-to-list 'pulsar-pulse-functions 'evil-window-up)
-  (face-spec-reset-face 'pulsar-green)
-  (set-face-attribute 'pulsar-green nil :inherit 'region)
+  (face-spec-reset-face 'pulsar-generic)
+  (set-face-attribute 'pulsar-generic nil :inherit 'region)
   (pulsar-global-mode))

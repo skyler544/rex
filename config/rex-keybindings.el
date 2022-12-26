@@ -4,22 +4,22 @@
 (use-package general
   :config
   (general-create-definer rex-leader
-    :keymaps '(visual normal motion)
+    :keymaps '(visual normal)
     :prefix "SPC")
   (general-create-definer rex-local-leader
-    :keymaps '(visual normal motion)
+    :keymaps '(visual normal)
     :prefix "SPC m")
   (general-create-definer rex-search-leader
-    :keymaps '(visual normal motion)
+    :keymaps '(visual normal)
     :prefix "SPC s")
   (general-create-definer rex-goto-leader
-    :keymaps '(visual normal motion)
+    :keymaps '(visual normal)
     :prefix "SPC g")
   (general-create-definer rex-file-leader
-    :keymaps '(visual normal motion)
+    :keymaps '(visual normal)
     :prefix "SPC f")
   (general-create-definer rex-buffer-leader
-    :keymaps '(visual normal motion)
+    :keymaps '(visual normal)
     :prefix "SPC b"))
 
 ;; Miscellaneous keybindings

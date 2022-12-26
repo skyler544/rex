@@ -26,7 +26,7 @@
 
 ;; Strictly necessary for the operation of rex.
 (load "rex-bootstrap")
-(load "rex-general")
+(load "rex-keybindings")
 
 ;; Modal editing.
 (load "rex-evil")
