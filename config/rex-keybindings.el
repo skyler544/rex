@@ -1,3 +1,7 @@
+;; General is used to make keybinding simpler. This file has two
+;; purposes: to set up the keybinding framework and to define keys
+;; which are not related to external packages.
+;;
 ;; Define leaders; the intention is for a tree-shaped layout of key
 ;; chords, starting with the spacebar and branching out to various
 ;; "leaves." Leaves may be single keys or further prefixes.
@@ -31,10 +35,18 @@
     "x" 'Control-X-prefix
     "h" 'help-command)
   (rex-buffer-leader
+    "r" 'revert-buffer
     "k" 'kill-this-buffer)
   (rex-file-leader
     "s" 'save-buffer
+    "S" 'write-file
     "f" 'find-file))
+
+(use-package dired
+  :ensure nil
+  :general
+  (:keymaps 'dired-mode-map
+            :prefix "SPC"))
 
 (use-package project
   :ensure nil
