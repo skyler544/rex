@@ -5,7 +5,8 @@
   :config
   (general-create-definer rex-leader
     :keymaps '(visual normal)
-    :prefix "SPC")
+    :prefix "SPC"
+    :global-prefix "C-SPC")
   (general-create-definer rex-local-leader
     :keymaps '(visual normal)
     :prefix "SPC m")
