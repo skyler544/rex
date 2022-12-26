@@ -61,8 +61,10 @@
 ;; ring. Combine with Embark and mix well.
 (use-package consult
   :general
-  ("P" 'consult-yank-pop)
   ("C-x b" 'consult-buffer)
+  (:states '(normal visual)
+           "P" 'consult-yank-from-kill-ring
+           "," 'consult-line)
   (:keymaps 'vertico-map
     "M-s" 'consult-history)
   (rex-leader
