@@ -11,11 +11,14 @@
                     :family "Iosevka Custom Extended"
                     :slant 'oblique))
 
-(use-package autothemer)
+(use-package emacs
+  :config
+  (setq custom-theme-directory (concat user-emacs-directory "themes/")))
 
 ;; Manual installation of this theme to allow editing the modeline
 ;; without modifying the package inside the elpa folder.
 ;; https://github.com/emacsfodder/emacs-theme-creamsody
+(use-package autothemer)
 (use-package creamsody-theme
   :load-path "themes/emacs-theme-creamsody/"
   :init (require 'creamsody)

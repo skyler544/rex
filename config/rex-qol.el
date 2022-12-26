@@ -43,8 +43,23 @@
   :init
   (setq pulsar-face 'pulsar-generic)
   :config
-  (add-to-list 'pulsar-pulse-functions 'evil-window-down)
-  (add-to-list 'pulsar-pulse-functions 'evil-window-up)
+
+  (setq pulsar-functions
+        '(evil-window-down
+          evil-window-up
+          avy-goto-char-timer))
+  (dolist (fkt pulsar-functions)
+    (add-to-list 'pulsar-pulse-functions fkt))
+
   (face-spec-reset-face 'pulsar-generic)
   (set-face-attribute 'pulsar-generic nil :inherit 'region)
+
   (pulsar-global-mode))
+
+;; Show diffs in the fringe.
+(use-package diff-hl
+  :hook (prog-mode . diff-hl-mode))
+
+;; Highlight hex color strings (and some other kinds) in the buffer
+(use-package rainbow-mode
+  :commands 'rainbow-mode)
