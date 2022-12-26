@@ -62,26 +62,26 @@
 (use-package consult
   :general
   ("C-x b" 'consult-buffer)
-  (:states '(normal visual)
+  (:keymaps '(normal visual)
            "P" 'consult-yank-from-kill-ring
            "," 'consult-line)
   (:keymaps 'vertico-map
     "M-s" 'consult-history)
   (rex-leader
     ":" 'consult-complex-command
-    "," 'consult-buffer)
-  (rex-goto-leader
-    "g" 'consult-goto-line
-    "m" 'consult-mark
-    "k" 'consult-global-mark)
-  (rex-search-leader
-    "d" 'consult-ripgrep
-    "i" 'consult-imenu
-    "I" 'consult-imenu-multi
-    "l" 'consult-line
-    "e" 'consult-isearch-history)
-  (rex-local-leader
-    "m" 'consult-mode-command))
+    "," 'consult-buffer
+  ;; goto
+    "gg" 'consult-goto-line
+    "gm" 'consult-mark
+    "gk" 'consult-global-mark
+  ;; search
+    "sd" 'consult-ripgrep
+    "si" 'consult-imenu
+    "sI" 'consult-imenu-multi
+    "sl" 'consult-line
+    "se" 'consult-isearch-history
+  ;;local leader
+    "mm" 'consult-mode-command))
 
 ;; Allows you to insert directories into the minibuffer prompt. It
 ;; integrates with the minibuffer history, so it gets smarter the more

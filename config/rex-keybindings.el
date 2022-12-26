@@ -8,24 +8,15 @@
 (use-package general
   :config
   (general-create-definer rex-leader
-    :keymaps '(visual normal)
+    :keymaps '(visual normal emacs)
     :prefix "SPC"
-    :global-prefix "C-SPC")
-  (general-create-definer rex-local-leader
-    :keymaps '(visual normal)
-    :prefix "SPC m")
-  (general-create-definer rex-search-leader
-    :keymaps '(visual normal)
-    :prefix "SPC s")
-  (general-create-definer rex-goto-leader
-    :keymaps '(visual normal)
-    :prefix "SPC g")
-  (general-create-definer rex-file-leader
-    :keymaps '(visual normal)
-    :prefix "SPC f")
-  (general-create-definer rex-buffer-leader
-    :keymaps '(visual normal)
-    :prefix "SPC b"))
+    :global-prefix "C-SPC"
+    "m" '(:ignore t :which-key "local leader")
+    "s" '(:ignore t :which-key "search")
+    "g" '(:ignore t :which-key "goto")
+    "f" '(:ignore t :which-key "file")
+    "w" '(:ignore t :which-key "windows")
+    "b" '(:ignore t :which-key "buffer")))
 
 ;; Miscellaneous keybindings
 (use-package emacs
@@ -33,24 +24,23 @@
   (rex-leader
     "." 'find-file
     "x" 'Control-X-prefix
-    "h" 'help-command)
-  (rex-buffer-leader
-    "r" 'revert-buffer
-    "k" 'kill-this-buffer)
-  (rex-file-leader
-    "s" 'save-buffer
-    "S" 'write-file
-    "f" 'find-file))
+    "h" 'help-command
+    ;; buffers
+    "br" 'revert-buffer
+    "bk" 'kill-this-buffer
+    ;; files
+    "fs" 'save-buffer
+    "fS" 'write-file
+    "ff" 'find-file))
 
-(use-package dired
-  :ensure nil
-  :general
-  (:keymaps 'dired-mode-map
-            :prefix "SPC"))
+;; (use-package dired
+;;   :ensure nil
+;;   :general
+;;   (:keymaps 'dired-mode-map
+;;             :prefix "SPC"))
 
 (use-package project
   :ensure nil
   :general
   (rex-leader
-    :prefix "SPC p"
-    :prefix-map 'project-prefix-map))
+    "p" 'project-prefix-map))

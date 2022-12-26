@@ -11,8 +11,7 @@
   (setq evil-respect-visual-line-mode t)
   :general
   (rex-leader
-    :prefix "SPC w"
-    :prefix-map 'evil-window-map)
+    "w" 'evil-window-map)
   (:keymaps 'evil-inner-text-objects-map
             "g" '+evil:whole-buffer-txtobj)
   (:keymaps 'evil-outer-text-objects-map
@@ -40,10 +39,10 @@
 ;; Make adding a pair of delimiters to the text fast and simple.
 (use-package evil-surround
   :general
-  (:states 'visual
+  (:keymaps 'visual
            "s" 'evil-surround-region
            "S" 'evil-Surround-region)
-  (:states 'operator
+  (:keymaps 'operator
             "s" 'evil-surround-edit)
   :config
   (global-evil-surround-mode 1))

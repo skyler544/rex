@@ -15,19 +15,19 @@
 ;; https://karthinks.com/software/avy-can-do-anything/
 (use-package avy
   :general
-  (:states 'normal
+  (:keymaps 'normal
            "f" 'avy-goto-char-timer))
 
 ;; Some nice editing functions; not really necessary with evil.
 (use-package crux
   :general
-  (rex-file-leader
-    "r" 'crux-rename-file-and-buffer))
+  (rex-leader
+    "fr" 'crux-rename-file-and-buffer))
 
 ;; Fast refactoring of text
 (use-package iedit
   :general
-  (:states '(normal visual)
+  (:keymaps '(normal visual)
            "?" 'iedit-mode))
 
 ;; better pdf support

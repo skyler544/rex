@@ -1,7 +1,7 @@
 (use-package magit
   :general
-  (rex-goto-leader
-    "g" 'magit-status))
+  (rex-leader
+    "gg" 'magit-status))
 
 (use-package git-timemachine
   :commands (git-timemachine))
