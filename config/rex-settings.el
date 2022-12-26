@@ -94,4 +94,5 @@
 (use-package tramp
   :ensure nil
   :config
+  (setq tramp-persistency-file-name (concat user-emacs-directory ".cache/tramp-persistency-file"))
   (setq tramp-auto-save-directory (concat user-emacs-directory ".cache/tramp-autosave")))

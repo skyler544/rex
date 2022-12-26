@@ -18,10 +18,12 @@
   (:keymaps 'normal
            "f" 'avy-goto-char-timer))
 
-;; Some nice editing functions; not really necessary with evil.
+;; Some nice editing/auxiliary functions.
 (use-package crux
   :general
   (rex-leader
+    "fu" 'crux-sudo-edit
+    "fD" 'crux-delete-file-and-buffer
     "fr" 'crux-rename-file-and-buffer))
 
 ;; Fast refactoring of text
@@ -63,3 +65,52 @@
 ;; Highlight hex color strings (and some other kinds) in the buffer
 (use-package rainbow-mode
   :commands 'rainbow-mode)
+
+;; Makes creating 'keymap menus' simpler.
+(use-package hydra
+  :init
+  (require 'windmove)
+  (defun hydra-move-splitter-left (arg)
+    "Move window splitter left."
+    (interactive "p")
+    (if (let ((windmove-wrap-around))
+          (windmove-find-other-window 'right))
+        (shrink-window-horizontally arg)
+      (enlarge-window-horizontally arg)))
+
+  (defun hydra-move-splitter-right (arg)
+    "Move window splitter right."
+    (interactive "p")
+    (if (let ((windmove-wrap-around))
+          (windmove-find-other-window 'right))
+        (enlarge-window-horizontally arg)
+      (shrink-window-horizontally arg)))
+
+  (defun hydra-move-splitter-up (arg)
+    "Move window splitter up."
+    (interactive "p")
+    (if (let ((windmove-wrap-around))
+          (windmove-find-other-window 'up))
+        (enlarge-window arg)
+      (shrink-window arg)))
+
+  (defun hydra-move-splitter-down (arg)
+    "Move window splitter down."
+    (interactive "p")
+    (if (let ((windmove-wrap-around))
+          (windmove-find-other-window 'up))
+        (shrink-window arg)
+      (enlarge-window arg)))
+
+
+  (defhydra +hydra/window-nav (:hint nil)
+    "
+Resize: _h_: left  _j_: down  _k_: up  _l_: right "
+    ("h" hydra-move-splitter-left       )
+    ("j" hydra-move-splitter-down       )
+    ("k" hydra-move-splitter-up         )
+    ("l" hydra-move-splitter-right      )
+    ("q" nil                           ))
+  :general
+  (rex-leader
+    "ww" '+hydra/window-nav/body))
