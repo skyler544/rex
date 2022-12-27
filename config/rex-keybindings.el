@@ -38,15 +38,15 @@
     "fS" 'write-file
     "ff" 'find-file))
 
-;; (use-package dired
-;;   :ensure nil
-;;   :general
-;;   (:keymaps 'dired-mode-map
-;;             :prefix "SPC"))
-
 (use-package project
   :ensure nil
   :general
   (rex-leader
     "p" 'project-prefix-map
     "pf" 'project-find-file))
+
+(use-package ibuffer
+  :ensure nil
+  :general
+  (rex-leader
+    "bi" 'ibuffer))
