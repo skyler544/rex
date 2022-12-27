@@ -36,19 +36,19 @@
   (defun rex/add-capfs ()
     (dolist (fkt rex/capfs)
     (add-to-list 'completion-at-point-functions fkt)))
-  (defun rex/set-capf-nonexclusive (local-capf)
-    (setq-local
-     completion-at-point-functions
-     (list (cape-capf-properties local-capf :exclusive 'no))))
   (rex/add-capfs)
   :general
   (rex-leader
     "cd" 'cape-dabbrev
     "cf" 'cape-file))
 
-(use-package emacs
+(use-package tempel
+  :general
+  (:keymaps 'insert
+            "M-RET" 'tempel-expand)
   :config
-  :hook
-  (emacs-lisp-mode . (lambda () (rex/set-capf-nonexclusive #'elisp-completion-at-point))))
+  (add-to-list 'rex/capfs 'tempel-expand)
+  (rex/add-capfs))
 
-(use-package tempel)
+(use-package tempel-collection
+  :after tempel)
