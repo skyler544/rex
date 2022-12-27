@@ -30,14 +30,17 @@
 
 (use-package cape
   :init
-  (defun rex/set-nonexclusive-capfs (local-capfs)
-    "Set the capfs to be non-exclusive and add capes to the list."
-    (setq-local completion-at-point-functions
-                (list
-                 (cape-capf-properties local-capfs :exclusive 'no)
-                 #'cape-dabbrev
-                 #'cape-keyword
-                 #'cape-file)))
+  (setq rex/capfs
+        '(cape-dabbrev
+          cape-file))
+  (defun rex/add-capfs ()
+    (dolist (fkt rex/capfs)
+    (add-to-list 'completion-at-point-functions fkt)))
+  (defun rex/set-capf-nonexclusive (local-capf)
+    (setq-local
+     completion-at-point-functions
+     (list (cape-capf-properties local-capf :exclusive 'no))))
+  (rex/add-capfs)
   :general
   (rex-leader
     "cd" 'cape-dabbrev
@@ -46,4 +49,6 @@
 (use-package emacs
   :config
   :hook
-  (emacs-lisp-mode . (lambda () (rex/set-nonexclusive-capfs #'elisp-completion-at-point))))
+  (emacs-lisp-mode . (lambda () (rex/set-capf-nonexclusive #'elisp-completion-at-point))))
+
+(use-package tempel)
