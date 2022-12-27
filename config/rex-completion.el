@@ -8,6 +8,7 @@
 (use-package corfu
   :init
   (global-corfu-mode)
+  (corfu-popupinfo-mode)
   (corfu-echo-mode)
   :custom
   (corfu-auto t)
