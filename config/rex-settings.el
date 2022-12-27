@@ -34,6 +34,7 @@
   (put 'narrow-to-region 'disabled nil)
   (defalias 'yes-or-no-p 'y-or-n-p)
   (setq-default indent-tabs-mode nil)
+  (setq initial-major-mode 'fundamental-mode)
   (setq confirm-kill-processes nil)
   (setq byte-compile-warnings nil)
   (setq create-lockfiles nil)
