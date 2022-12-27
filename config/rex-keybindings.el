@@ -22,6 +22,7 @@
 (use-package emacs
   :general
   (rex-leader
+    "SPC" 'execute-extended-command
     "." 'find-file
     "x" 'Control-X-prefix
     "h" 'help-command
@@ -43,4 +44,5 @@
   :ensure nil
   :general
   (rex-leader
-    "p" 'project-prefix-map))
+    "p" 'project-prefix-map
+    "pf" 'project-find-file))

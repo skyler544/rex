@@ -70,17 +70,19 @@
   (rex-leader
     ":" 'consult-complex-command
     "," 'consult-buffer
-  ;; goto
+    ;; goto
     "gg" 'consult-goto-line
     "gm" 'consult-mark
     "gk" 'consult-global-mark
-  ;; search
+    ;; project
+    "pb" 'consult-project-buffer
+    ;; search
     "sd" 'consult-ripgrep
     "si" 'consult-imenu
     "sI" 'consult-imenu-multi
     "sl" 'consult-line
     "se" 'consult-isearch-history
-  ;;local leader
+    ;;local leader
     "mm" 'consult-mode-command))
 
 ;; Allows you to insert directories into the minibuffer prompt. It
