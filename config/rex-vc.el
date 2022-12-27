@@ -1,3 +1,6 @@
+;;; -*- lexical-binding: t -*-
+;;
+;; Version control utilities.
 (use-package magit
   :general
   (rex-leader

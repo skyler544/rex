@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+;;
 ;; Automatically closes pairs; works most of the time the right way
 ;; without needing to think about it.
 (use-package elec-pair

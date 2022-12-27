@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+;;
 ;; Welcome to rex! This Emacs configuration is intended to be simple
 ;; to understand and extend. Emphasis is placed on the use of well-
 ;; documented, modular packages. Configuration is aided and organized

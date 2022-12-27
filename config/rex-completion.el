@@ -1,5 +1,6 @@
 ;;; -*- lexical-binding: t -*-
-
+;;
+;; Add support for code completion and snippets.
 (use-package emacs
   :config
   (setq tab-always-indent 'complete))

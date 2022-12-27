@@ -1,3 +1,6 @@
+;;; -*- lexical-binding: t -*-
+;;
+;; Set the font and load a theme. Also disable unused GUI elements.
 (use-package emacs
   :init
   (scroll-bar-mode -1)

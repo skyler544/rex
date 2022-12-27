@@ -1,3 +1,6 @@
+;;; -*- lexical-binding: t -*-
+;;
+;; General settings for built-in packages.
 (use-package warnings
   :defer t
   :config

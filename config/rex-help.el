@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+;;
 ;; Show key hints onscreen; nice for getting to know a new mode,
 ;; somewhat distracting after a while. The delay can be toggled back
 ;; to 10000 if needed.

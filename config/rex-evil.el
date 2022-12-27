@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+;;
 ;; The dark side.
 (use-package evil
   :demand t

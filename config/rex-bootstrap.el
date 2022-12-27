@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+;;
 ;; This file initializes the package system and installs use-package.
 ;; diminish and general are also initialized here as they are widely
 ;; used throughout rex.
