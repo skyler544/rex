@@ -12,6 +12,8 @@
   (setq evil-move-beyond-eol t)
   (setq evil-respect-visual-line-mode t)
   :general
+  (:keymaps '(normal visual)
+            "C-w" 'evil-scroll-line-up)
   (rex-leader
     "w" 'evil-window-map)
   (:keymaps 'evil-inner-text-objects-map
@@ -46,6 +48,8 @@
            "S" 'evil-Surround-region)
   (:keymaps 'operator
             "s" 'evil-surround-edit)
+  (rex-leader
+    "bn" 'evil-buffer-new)
   :config
   (global-evil-surround-mode 1))
 

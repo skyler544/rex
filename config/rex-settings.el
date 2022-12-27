@@ -12,6 +12,8 @@
   (add-to-list 'warning-suppress-types '(emacs))
   (add-to-list 'warning-suppress-log-types '(emacs)))
 
+;; Save the 200 most recently visited files/directories for fast
+;; access.
 (use-package recentf
   :config
   (setq recentf-save-file (concat user-emacs-directory ".cache/recentf"))
@@ -29,9 +31,9 @@
 ;; general settings
 (use-package emacs
   :config
-  (defalias 'yes-or-no-p #'yes-or-no)
-  (setq-default indent-tabs-mode nil)
   (put 'narrow-to-region 'disabled nil)
+  (defalias 'yes-or-no-p 'y-or-n-p)
+  (setq-default indent-tabs-mode nil)
   (setq confirm-kill-processes nil)
   (setq byte-compile-warnings nil)
   (setq create-lockfiles nil)
@@ -58,7 +60,7 @@
   (setq scroll-conservatively 101)
   (setq scroll-preserve-screen-position t))
 
-;; builtin packages
+;; built-in packages
 (use-package eldoc
   :ensure nil
   :diminish eldoc-mode)

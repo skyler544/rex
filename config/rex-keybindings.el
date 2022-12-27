@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+;;
 ;; General is used to make keybinding simpler. This file has two
 ;; purposes: to set up the keybinding framework and to define keys
 ;; which are not related to external packages.
@@ -11,8 +13,10 @@
     :keymaps '(visual normal emacs)
     :prefix "SPC"
     :global-prefix "C-SPC"
+    :non-normal-prefix "C-SPC"
     "m" '(:ignore t :which-key "local leader")
     "s" '(:ignore t :which-key "search")
+    "c" '(:ignore t :which-key "code")
     "g" '(:ignore t :which-key "goto")
     "f" '(:ignore t :which-key "file")
     "w" '(:ignore t :which-key "windows")
