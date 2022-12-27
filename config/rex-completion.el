@@ -28,3 +28,22 @@
                     (setq-local corfu-auto nil)
                     (corfu-mode))))
 
+(use-package cape
+  :init
+  (defun rex/set-nonexclusive-capfs (local-capfs)
+    "Set the capfs to be non-exclusive and add capes to the list."
+    (setq-local completion-at-point-functions
+                (list
+                 (cape-capf-properties local-capfs :exclusive 'no)
+                 #'cape-dabbrev
+                 #'cape-keyword
+                 #'cape-file)))
+  :general
+  (rex-leader
+    "cd" 'cape-dabbrev
+    "cf" 'cape-file))
+
+(use-package emacs
+  :config
+  :hook
+  (emacs-lisp-mode . (lambda () (rex/set-nonexclusive-capfs #'elisp-completion-at-point))))
