@@ -43,6 +43,7 @@
   :general
   (rex-leader
     "p" 'project-prefix-map
+    "pp" 'project-switch-project
     "pf" 'project-find-file))
 
 (use-package ibuffer
