@@ -128,3 +128,7 @@ Resize: _h_: left  _j_: down  _k_: up  _l_: right "
   :general
   (rex-leader
     "ww" '+hydra/window-nav/body))
+
+;; Terminal emulation
+(use-package vterm
+  :commands vterm)
