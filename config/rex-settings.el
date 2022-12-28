@@ -7,6 +7,10 @@
   ;; disable some automatic warnings
   (add-to-list 'warning-suppress-types '(iedit))
   (add-to-list 'warning-suppress-log-types '(iedit))
+  (add-to-list 'warning-suppress-types '(eglot))
+  (add-to-list 'warning-suppress-log-types '(eglot))
+  (add-to-list 'warning-suppress-types '(use-package))
+  (add-to-list 'warning-suppress-log-types '(use-package))
   (add-to-list 'warning-suppress-types '(comp))
   (add-to-list 'warning-suppress-log-types '(comp))
   (add-to-list 'warning-suppress-types '(emacs))
@@ -34,6 +38,7 @@
   (put 'narrow-to-region 'disabled nil)
   (defalias 'yes-or-no-p 'y-or-n-p)
   (setq-default indent-tabs-mode nil)
+  (setq tab-width 4)
   (setq initial-major-mode 'fundamental-mode)
   (setq confirm-kill-processes nil)
   (setq byte-compile-warnings nil)
@@ -48,6 +53,7 @@
 ;; minibuffer settings
 (use-package emacs
   :config
+  (setq eldoc-echo-area-use-multiline-p nil)
   (setq enable-recursive-minibuffers t)
   (setq echo-keystrokes 0.02)
   (setq use-dialog-box nil)
