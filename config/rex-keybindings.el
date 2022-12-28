@@ -29,10 +29,13 @@
     "SPC" 'execute-extended-command
     "." 'find-file
     "x" 'Control-X-prefix
+    "Q" 'save-buffers-kill-emacs
+    ;; help
     "h" 'help-command
     "hF" 'describe-face
     "h'" 'describe-char
     ;; buffers
+    "bz" 'bury-buffer
     "br" 'revert-buffer
     "bk" 'kill-this-buffer
     ;; files
