@@ -10,6 +10,7 @@
             "C-j" 'vertico-next
             "C-k" 'vertico-previous)
   :config
+  (setq vertico-cycle t)
   (setq vertico-count 12)
   (setq vertico-resize nil))
 

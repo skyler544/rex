@@ -19,3 +19,8 @@
 (use-package lua-mode
   :config
   (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode)))
+
+(use-package tree-sitter
+  :hook (java-mode . tree-sitter-hl-mode))
+
+(use-package tree-sitter-langs)
