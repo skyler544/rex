@@ -143,6 +143,7 @@ Resize: _h_: left  _j_: down  _k_: up  _l_: right "
   (setq popper-window-height 0.25)
   (setq popper-reference-buffers
         '("\\*Messages\\*"
+          "\\*compilation\\*"
           "Output\\*$"
           "\\*vterm\\*" vterm-mode
           ("\\*Async Shell Command\\*" . hide)

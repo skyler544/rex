@@ -29,6 +29,11 @@
 
 ;; Strictly necessary for the operation of rex.
 (load "rex-bootstrap")
+
+;; Custom elisp functions.
+(load "rex-functions")
+
+;; Set up the keymap tree.
 (load "rex-keybindings")
 
 ;; Modal editing.

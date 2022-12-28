@@ -27,7 +27,7 @@
       (apply #'consult-completion-in-region completion-in-region--data)))
   :general
   (:keymaps 'corfu-map
-            "M-SPC" 'corfu-move-to-minibuffer
+            "C-SPC" 'corfu-move-to-minibuffer
             "RET" nil
             "C-j" 'corfu-next
             [tab] 'corfu-next

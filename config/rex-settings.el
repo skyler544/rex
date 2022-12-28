@@ -38,6 +38,7 @@
   (put 'narrow-to-region 'disabled nil)
   (defalias 'yes-or-no-p 'y-or-n-p)
   (setq-default indent-tabs-mode nil)
+  (setq-default truncate-lines t)
   (setq tab-width 4)
   (setq initial-major-mode 'fundamental-mode)
   (setq confirm-kill-processes nil)

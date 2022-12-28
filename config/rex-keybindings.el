@@ -27,6 +27,8 @@
 ;; Miscellaneous keybindings
 (use-package emacs
   :general
+  ("M-j" 'rex/scroll-other-window-down
+   "M-k" 'rex/scroll-other-window-up)
   (rex-leader
     "SPC" 'execute-extended-command
     "." 'find-file

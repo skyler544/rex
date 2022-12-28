@@ -49,7 +49,8 @@
 ;; make everything better than it was before.
 (use-package embark
   :general
-  ("C-," 'embark-act)
+  ("C-;" 'embark-act)
+  ("C-'" 'embark-act-all)
   ("C-h B" 'embark-bindings)
   (rex-leader
     "a" 'embark-act)
