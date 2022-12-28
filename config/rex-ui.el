@@ -18,6 +18,8 @@
   :config
   (setq custom-theme-directory (concat user-emacs-directory "themes/")))
 
+(use-package ef-themes)
+
 ;; Manual installation of this theme to allow editing the modeline
 ;; without modifying the package inside the elpa folder.
 ;; https://github.com/emacsfodder/emacs-theme-creamsody
@@ -28,3 +30,23 @@
   :config
   (load-theme 'creamsody t)
   (creamsody-modeline))
+
+(use-package kind-icon
+  :after corfu
+  :custom
+  (kind-icon-default-face 'corfu-default)
+  :config
+  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+
+(use-package all-the-icons)
+
+(use-package all-the-icons-dired
+  :hook (dired-mode . all-the-icons-dired-mode)
+  :config
+  (set-face-attribute 'all-the-icons-dired-dir-face nil
+                      :foreground nil
+                      :inherit 'font-lock-type-face))
+
+(use-package dired
+  :ensure nil
+  :hook (dired-mode . dired-hide-details-mode))

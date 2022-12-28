@@ -24,6 +24,7 @@
 (use-package crux
   :general
   (rex-leader
+    "fy" 'crux-kill-buffer-truename
     "fu" 'crux-sudo-edit
     "fD" 'crux-delete-file-and-buffer
     "fr" 'crux-rename-file-and-buffer))

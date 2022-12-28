@@ -30,6 +30,8 @@
     "." 'find-file
     "x" 'Control-X-prefix
     "h" 'help-command
+    "hF" 'describe-face
+    "h'" 'describe-char
     ;; buffers
     "br" 'revert-buffer
     "bk" 'kill-this-buffer
