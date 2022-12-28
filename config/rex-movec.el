@@ -68,7 +68,7 @@
            "P" 'consult-yank-from-kill-ring
            "," 'consult-line)
   (:keymaps 'vertico-map
-    "M-s" 'consult-history)
+            "M-s" 'consult-history)
   (rex-leader
     ":" 'consult-complex-command
     "," 'consult-buffer
@@ -94,3 +94,9 @@
   :general
   (:keymaps 'vertico-map
             "M-d" 'consult-dir))
+
+(use-package consult-eglot
+  :after eglot
+  :general
+  (rex-leader
+    "cs" 'consult-eglot-symbols))

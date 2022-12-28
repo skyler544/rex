@@ -19,8 +19,15 @@
   (corfu-echo-documentation 0.25)
   (corfu-preselect 'prompt)
   (corfu-preselect-first nil)
+  :config
+  (defun corfu-move-to-minibuffer ()
+    (interactive)
+    (let ((completion-extra-properties corfu--extra)
+          completion-cycle-threshold completion-cycling)
+      (apply #'consult-completion-in-region completion-in-region--data)))
   :general
   (:keymaps 'corfu-map
+            "M-SPC" 'corfu-move-to-minibuffer
             "RET" nil
             "C-j" 'corfu-next
             [tab] 'corfu-next

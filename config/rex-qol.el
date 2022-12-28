@@ -53,6 +53,9 @@
 ;; Briefly flash current line after a long movement.
 (use-package pulsar
   :after evil
+  :general
+  (rex-leader
+    "C-SPC" 'pulsar-highlight-line)
   :init
   (setq pulsar-face 'pulsar-generic)
   :config
