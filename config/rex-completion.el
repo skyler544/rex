@@ -13,6 +13,7 @@
   :custom
   (corfu-auto t)
   (corfu-cycle t)
+  (corfu-max-width 80)
   (corfu-auto-prefix 2)
   (corfu-auto-delay 0.0)
   (corfu-echo-documentation 0.25)
@@ -47,9 +48,15 @@
   :general
   (:keymaps 'insert
             "M-RET" 'tempel-expand)
+  (:keymaps 'tempel-map
+            "TAB" 'tempel-next
+            "S-TAB" 'tempel-previous)
   :config
   (add-to-list 'rex/capfs 'tempel-expand)
   (rex/add-capfs))
 
 (use-package tempel-collection
+  :load-path "~/build/tempel-collection/"
+  :ensure nil
+  :init (require 'tempel-collection.el)
   :after tempel)
