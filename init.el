@@ -17,7 +17,8 @@
 ;; the configuration. One exception is the bootstrap file; without it,
 ;; use-package will not be loaded and none of the rest of the
 ;; configuration will work.
-(add-to-list 'load-path (concat user-emacs-directory "config/"))
+(setq config-dir (concat user-emacs-directory "config/"))
+(add-to-list 'load-path config-dir)
 
 ;; Do not add custom settings to the end of init.el. This file is never
 ;; loaded; the intention is to have a place where the code generated
