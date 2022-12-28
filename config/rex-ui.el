@@ -43,3 +43,7 @@
 (use-package dired
   :ensure nil
   :hook (dired-mode . dired-hide-details-mode))
+
+(use-package eros
+  :config
+  (eros-mode 1))
