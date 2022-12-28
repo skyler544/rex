@@ -18,6 +18,7 @@
     "s" '(:ignore t :which-key "search")
     "c" '(:ignore t :which-key "code")
     "g" '(:ignore t :which-key "goto")
+    "p" '(:ignore t :which-key "project")
     "f" '(:ignore t :which-key "file")
     "w" '(:ignore t :which-key "windows")
     "b" '(:ignore t :which-key "buffer")))
@@ -47,9 +48,7 @@
   :ensure nil
   :general
   (rex-leader
-    "p" 'project-prefix-map
-    "pp" 'project-switch-project
-    "pf" 'project-find-file))
+    "p" project-prefix-map))
 
 (use-package ibuffer
   :ensure nil

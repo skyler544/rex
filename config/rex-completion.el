@@ -46,6 +46,8 @@
 
 (use-package tempel
   :general
+  (rex-leader
+    "ct" 'tempel-insert)
   (:keymaps 'insert
             "M-RET" 'tempel-expand)
   (:keymaps 'tempel-map

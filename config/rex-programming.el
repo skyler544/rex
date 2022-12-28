@@ -5,6 +5,8 @@
   :general
   (rex-leader
     "cf" 'eglot-format-buffer
+    "cd" 'eglot-find-declaration
+    "cD" 'eglot-find-implementation
     "cr" 'eglot-rename
     "ca" 'eglot-code-actions)
   :commands (eglot))
