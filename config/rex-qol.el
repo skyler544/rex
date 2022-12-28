@@ -132,3 +132,21 @@ Resize: _h_: left  _j_: down  _k_: up  _l_: right "
 ;; Terminal emulation
 (use-package vterm
   :commands vterm)
+
+(use-package popper
+  :general
+  (rex-leader
+    "tc" 'popper-cycle
+    "tl" 'popper-toggle-latest
+    "tp" 'popper-toggle-type)
+  :init
+  (setq popper-window-height 0.25)
+  (setq popper-reference-buffers
+        '("\\*Messages\\*"
+          "Output\\*$"
+          "\\*vterm\\*" vterm-mode
+          ("\\*Async Shell Command\\*" . hide)
+          help-mode
+          compilation-mode))
+  :config
+  (popper-mode))

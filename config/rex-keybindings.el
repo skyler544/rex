@@ -20,6 +20,7 @@
     "g" '(:ignore t :which-key "goto")
     "p" '(:ignore t :which-key "project")
     "f" '(:ignore t :which-key "file")
+    "t" '(:ignore t :which-key "toggle")
     "w" '(:ignore t :which-key "windows")
     "b" '(:ignore t :which-key "buffer")))
 
@@ -31,6 +32,9 @@
     "." 'find-file
     "x" 'Control-X-prefix
     "Q" 'save-buffers-kill-emacs
+    "&" 'async-shell-command
+    ;; toggle
+    "tt" 'toggle-truncate-lines
     ;; help
     "h" 'help-command
     "hF" 'describe-face
