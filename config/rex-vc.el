@@ -19,3 +19,18 @@
   :general
   (rex-leader
     "tw" 'why-this-mode))
+
+;; Change the vc-mode function to display the current project root
+;; name instead of the vc backend. Since I have no reason to use any
+;; other VCS than git, seeing the project name is more useful.
+(use-package emacs
+  :config
+  (defun rex/last-dir (str)
+    (substring str (string-match "[^/]+/+$" str) -1))
+
+  (defadvice vc-mode-line (after strip-backend () activate)
+    (when (stringp vc-mode)
+      (let ((noback (replace-regexp-in-string
+                     (format "^ %s" (vc-backend buffer-file-name))
+                     (concat " " (rex/last-dir (project-root (project-current)))) vc-mode)))
+        (setq vc-mode noback)))))
