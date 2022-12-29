@@ -21,6 +21,7 @@
   (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode)))
 
 (use-package tree-sitter
+  :diminish tree-sitter-mode
   :hook (java-mode . tree-sitter-hl-mode))
 
 (use-package tree-sitter-langs)

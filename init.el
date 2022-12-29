@@ -36,11 +36,11 @@
 ;; Set up the keymap tree.
 (load "rex-keybindings")
 
-;; Hydra lets you create keymap menus
-(load "rex-hydra")
-
 ;; Modal editing.
 (load "rex-evil")
+
+;; Hydra lets you create keymap menus
+(load "rex-hydra")
 
 ;; Global configuration unrelated to specific external packages.
 (load "rex-settings")
