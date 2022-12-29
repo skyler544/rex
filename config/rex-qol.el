@@ -1,6 +1,5 @@
 ;;; -*- lexical-binding: t -*-
 ;;
-
 ;; Removes unintentional whitespace edits from lines that you've
 ;; touched while editing a file.
 (use-package ws-butler
@@ -49,6 +48,8 @@
 (use-package vterm
   :commands vterm)
 
+(use-package eat)
+
 ;; Control temporary windows programmatically
 (use-package popper
   :general
@@ -63,6 +64,7 @@
           "\\*compilation\\*"
           "Output\\*$"
           "\\*vterm\\*" vterm-mode
+          "\\*eat\\*" eat-mode
           ("\\*Async Shell Command\\*" . hide)
           help-mode
           compilation-mode))
