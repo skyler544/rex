@@ -90,6 +90,12 @@
   :ensure nil
   :diminish abbrev-mode)
 
+;; Automatically closes pairs; works most of the time the right way
+;; without needing to think about it.
+(use-package elec-pair
+  :ensure nil
+  :hook (prog-mode . electric-pair-mode))
+
 (use-package autorevert
   :ensure nil
   :diminish auto-revert-mode)
