@@ -54,7 +54,6 @@
 ;; minibuffer settings
 (use-package emacs
   :config
-  (setq eldoc-echo-area-use-multiline-p nil)
   (setq enable-recursive-minibuffers t)
   (setq echo-keystrokes 0.02)
   (setq use-dialog-box nil)
@@ -84,7 +83,9 @@
 ;; built-in packages
 (use-package eldoc
   :ensure nil
-  :diminish eldoc-mode)
+  :diminish eldoc-mode
+  :config
+  (setq eldoc-echo-area-use-multiline-p nil))
 
 (use-package abbrev
   :ensure nil

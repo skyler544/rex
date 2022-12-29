@@ -2,8 +2,13 @@
 ;;
 ;; Add support for some programming tools such as language servers.
 (use-package eglot
+  :hook
+  (eglot-managed-mode . (lambda ()
+                          (setq eldoc-documentation-function
+                                'eldoc-documentation-compose-eagerly)))
   :general
   (rex-leader
+    "ch" 'eldoc
     "cf" 'eglot-format-buffer
     "cd" 'eglot-find-declaration
     "cD" 'eglot-find-implementation

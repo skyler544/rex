@@ -63,6 +63,8 @@
         '("\\*Messages\\*"
           "\\*compilation\\*"
           "Output\\*$"
+          "\\*helpful.*\\*"
+          "\\*eldoc\\*" eldoc-mode
           "\\*vterm\\*" vterm-mode
           "\\*eat\\*" eat-mode
           ("\\*Async Shell Command\\*" . hide)
