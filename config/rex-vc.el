@@ -8,3 +8,8 @@
 
 (use-package git-timemachine
   :commands (git-timemachine))
+
+(use-package why-this
+  :general
+  (rex-leader
+    "tw" 'why-this-mode))
