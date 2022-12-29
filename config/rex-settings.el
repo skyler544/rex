@@ -73,7 +73,6 @@
   :hook (calendar-today-visible . calendar-mark-today)
   :config
   (setq calendar-week-start-day 1)
-
   (setq calendar-intermonth-text
         '(propertize
           (format "%2d"
@@ -86,6 +85,10 @@
 (use-package eldoc
   :ensure nil
   :diminish eldoc-mode)
+
+(use-package abbrev
+  :ensure nil
+  :diminish abbrev-mode)
 
 (use-package autorevert
   :ensure nil

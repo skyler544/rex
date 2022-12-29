@@ -7,6 +7,8 @@
   (menu-bar-mode -1)
   (tool-bar-mode -1)
 
+  (set-fringe-mode 4)
+
   (setq default-frame-alist
         (append (list '(font . "Iosevka Custom Extended:size=20"))))
 
