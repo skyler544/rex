@@ -50,32 +50,6 @@
   :after pdf-view
   :hook (pdf-view-mode . pdf-view-roll-minor-mode))
 
-;; Briefly flash current line after a long movement.
-(use-package pulsar
-  :after evil
-  :general
-  (rex-leader
-    "C-SPC" 'pulsar-highlight-line)
-  :init
-  (setq pulsar-face 'pulsar-generic)
-  :config
-
-  (setq pulsar-functions
-        '(evil-window-down
-          evil-window-up
-          avy-goto-char-timer))
-  (dolist (fkt pulsar-functions)
-    (add-to-list 'pulsar-pulse-functions fkt))
-
-  (face-spec-reset-face 'pulsar-generic)
-  (set-face-attribute 'pulsar-generic nil :inherit 'region)
-
-  (pulsar-global-mode))
-
-;; Highlight hex color strings (and some other kinds) in the buffer
-(use-package rainbow-mode
-  :commands 'rainbow-mode)
-
 ;; Terminal emulation
 (use-package vterm
   :commands vterm)

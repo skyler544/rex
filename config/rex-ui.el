@@ -20,8 +20,6 @@
   :config
   (setq custom-theme-directory (concat user-emacs-directory "themes/")))
 
-(use-package ef-themes)
-
 ;; Manual installation of this theme to allow editing the modeline
 ;; without modifying the package inside the elpa folder.
 ;; https://github.com/emacsfodder/emacs-theme-creamsody
@@ -42,13 +40,41 @@
                       :foreground nil
                       :inherit 'font-lock-type-face))
 
+;; Hide the long details by default
 (use-package dired
   :ensure nil
   :hook (dired-mode . dired-hide-details-mode))
 
+;; Show the results of C-x C-e directly in the buffer
 (use-package eros
   :config
   (eros-mode 1))
+
+;; Briefly flash current line after a long movement.
+(use-package pulsar
+  :after evil
+  :general
+  (rex-leader
+    "C-SPC" 'pulsar-highlight-line)
+  :init
+  (setq pulsar-face 'pulsar-generic)
+  :config
+
+  (setq pulsar-functions
+        '(evil-window-down
+          evil-window-up
+          avy-goto-char-timer))
+  (dolist (fkt pulsar-functions)
+    (add-to-list 'pulsar-pulse-functions fkt))
+
+  (face-spec-reset-face 'pulsar-generic)
+  (set-face-attribute 'pulsar-generic nil :inherit 'region)
+
+  (pulsar-global-mode))
+
+;; Highlight hex color strings (and some other kinds) in the buffer
+(use-package rainbow-mode
+  :commands 'rainbow-mode)
 
 ;; Redefine the fringe arrows.
 (use-package emacs
