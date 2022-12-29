@@ -68,6 +68,20 @@
   (setq scroll-conservatively 101)
   (setq scroll-preserve-screen-position t))
 
+;; calendar
+(use-package emacs
+  :hook (calendar-today-visible . calendar-mark-today)
+  :config
+  (setq calendar-week-start-day 1)
+
+  (setq calendar-intermonth-text
+        '(propertize
+          (format "%2d"
+                  (car
+                   (calendar-iso-from-absolute
+                    (calendar-absolute-from-gregorian (list month day year)))))
+          'font-lock-face 'font-lock-keyword-face)))
+
 ;; built-in packages
 (use-package eldoc
   :ensure nil
