@@ -80,6 +80,7 @@
 (use-package vterm
   :commands vterm)
 
+;; Control temporary windows programmatically
 (use-package popper
   :general
   (rex-leader

@@ -5,6 +5,8 @@
   :config
   (setq tab-always-indent 'complete))
 
+;; Corfu displays a popup with current candidates from the active
+;; completion-at-point-function
 (use-package corfu
   :init
   (global-corfu-mode)
@@ -37,6 +39,8 @@
                     (setq-local corfu-auto nil)
                     (corfu-mode))))
 
+;; Cape provides capfs for better in-buffer completion, as well as
+;; ways to combine / transform such functions.
 (use-package cape
   :init
   (setq rex/capfs
@@ -51,6 +55,8 @@
     "cd" 'cape-dabbrev
     "cf" 'cape-file))
 
+;; Tempel provides a framework for defining / using snippets in plain
+;; elisp.
 (use-package tempel
   :general
   (rex-leader
@@ -64,6 +70,7 @@
   (add-to-list 'rex/capfs 'tempel-expand)
   (rex/add-capfs))
 
+;; Some predefined snippets
 (use-package tempel-collection
   :load-path "~/build/tempel-collection/"
   :ensure nil
