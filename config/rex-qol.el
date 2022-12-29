@@ -72,10 +72,6 @@
 
   (pulsar-global-mode))
 
-;; Show diffs in the fringe.
-(use-package diff-hl
-  :hook (prog-mode . diff-hl-mode))
-
 ;; Highlight hex color strings (and some other kinds) in the buffer
 (use-package rainbow-mode
   :commands 'rainbow-mode)
