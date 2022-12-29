@@ -48,7 +48,7 @@
   :config
   (eros-mode 1))
 
-;; Redefine the fring arrows.
+;; Redefine the fringe arrows.
 (use-package emacs
   :config
   (define-fringe-bitmap 'right-arrow
