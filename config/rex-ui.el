@@ -6,7 +6,6 @@
   (scroll-bar-mode -1)
   (menu-bar-mode -1)
   (tool-bar-mode -1)
-
   (set-fringe-mode 4)
 
   (setq default-frame-alist
@@ -16,20 +15,23 @@
                     :family "Iosevka Custom Extended"
                     :slant 'oblique))
 
-(use-package emacs
+;; Huge theme pack 
+(use-package doom-themes
   :config
-  (setq custom-theme-directory (concat user-emacs-directory "themes/")))
+  (load-theme 'doom-nord-aurora t)
+  (set-face-attribute 'line-number nil
+                      :slant 'normal)
+  (set-face-attribute 'line-number-current-line nil
+                      :slant 'normal))
 
-;; Manual installation of this theme to allow editing the modeline
-;; without modifying the package inside the elpa folder.
-;; https://github.com/emacsfodder/emacs-theme-creamsody
-(use-package autothemer)
-(use-package creamsody-theme
-  :load-path "themes/emacs-theme-creamsody/"
-  :init (require 'creamsody)
+;; Flashy modeline
+(use-package moody
   :config
-  (load-theme 'creamsody t)
-  (creamsody-modeline))
+  (setq x-underline-at-descent-line t)
+  (setq moody-mode-line-height 38)
+  (moody-replace-mode-line-buffer-identification)
+  (moody-replace-vc-mode)
+  (moody-replace-eldoc-minibuffer-message-function))
 
 (use-package all-the-icons)
 
