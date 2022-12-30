@@ -14,7 +14,6 @@
   :hook
   (org-mode . auto-fill-mode))
 
-
 (use-package org-superstar
   :hook (org-mode . (lambda () (org-superstar-mode 1)))
   :config

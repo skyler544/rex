@@ -59,7 +59,7 @@
     "tl" 'popper-toggle-latest
     "tp" 'popper-toggle-type)
   :init
-  (setq popper-window-height 0.25)
+  (setq popper-window-height 0.3)
   (setq popper-reference-buffers
         '("\\*Messages\\*"
           "\\*compilation\\*"

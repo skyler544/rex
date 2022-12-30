@@ -74,6 +74,8 @@
   (rex-leader
     ":" 'consult-complex-command
     "," 'consult-buffer
+    ;; code
+    "ce" 'consult-flymake
     ;; files
     "fF" 'consult-find
     ;; goto
