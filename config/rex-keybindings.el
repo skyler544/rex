@@ -39,6 +39,7 @@
     "x" 'Control-X-prefix
     "Q" 'save-buffers-kill-emacs
     "&" 'async-shell-command
+    "!" 'shell-command
     ;; toggle
     "tt" 'toggle-truncate-lines
     ;; help

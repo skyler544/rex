@@ -25,6 +25,13 @@
   (dolist (face '(org-block org-block-begin-line org-block-end-line))
     (set-face-attribute face nil :background nil)))
 
+;; keybindings
+(use-package org
+  :general
+  (:states '(normal insert)
+   :keymaps 'org-mode-map
+            "M-RET" 'org-insert-heading-respect-content))
+
 (use-package org-superstar
   :hook (org-mode . (lambda () (org-superstar-mode 1)))
   :config
