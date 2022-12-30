@@ -18,8 +18,7 @@
 
 (use-package eglot-java
   :hook
-  (java-mode . eglot-java-mode)
-  (java-mode . (lambda () (setq tab-width 4))))
+  (java-mode . eglot-java-mode))
 
 (use-package lua-mode
   :config
@@ -30,3 +29,15 @@
   :hook (java-mode . tree-sitter-hl-mode))
 
 (use-package tree-sitter-langs)
+
+(use-package flymake
+  :ensure nil
+  :config
+  (setq flymake-mode-line-format
+        '(" " flymake-mode-line-exception flymake-mode-line-counters)))
+
+(use-package compile
+  :ensure nil
+  :config
+  (set-face-attribute 'compilation-warning nil :slant 'normal)
+  (set-face-attribute 'compilation-error nil :weight 'normal))
