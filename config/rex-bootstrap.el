@@ -15,9 +15,9 @@
 
 ;; Add the melpa package archive and initialize the
 ;; package system.
+(package-initialize)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
-(package-initialize)
 
 ;; Creating a list of packages in this way allows the code
 ;; to be more reusable, though this is not actually intended
