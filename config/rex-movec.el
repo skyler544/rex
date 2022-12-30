@@ -74,8 +74,10 @@
   (rex-leader
     ":" 'consult-complex-command
     "," 'consult-buffer
+    ;; files
+    "fF" 'consult-find
     ;; goto
-    "gg" 'consult-goto-line
+    "gl" 'consult-goto-line
     "gm" 'consult-mark
     "gk" 'consult-global-mark
     ;; project
