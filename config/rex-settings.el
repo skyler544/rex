@@ -49,6 +49,7 @@
   (setq blink-cursor-mode nil)
   (setq fast-but-imprecise-scrolling t)
   (setq redisplay-skip-fontification-on-input t)
+  (menu-bar-mode -1)
   (column-number-mode))
 
 ;; minibuffer settings
