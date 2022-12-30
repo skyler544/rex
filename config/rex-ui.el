@@ -78,3 +78,18 @@
 ;; Highlight hex color strings (and some other kinds) in the buffer
 (use-package rainbow-mode
   :commands 'rainbow-mode)
+
+;; better pdf support
+(use-package pdf-tools
+  :load-path "~/build/pdf-tools/lisp"
+  :diminish Pdf-View-Midnight
+  :mode ("\\.pdf\\'" . pdf-view-mode)
+  :hook (pdf-view-mode . pdf-view-themed-minor-mode)
+  :config
+  (setq-default pdf-view-display-size 'fit-width))
+
+(use-package image-roll
+  :load-path "~/build/image-roll.el/"
+  :init (require 'image-roll)
+  :after pdf-view
+  :hook (pdf-view-mode . pdf-view-roll-minor-mode))
