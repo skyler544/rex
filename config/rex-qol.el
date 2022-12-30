@@ -57,6 +57,7 @@
   (rex-leader
     "tc" 'popper-cycle
     "tl" 'popper-toggle-latest
+    "tk" 'popper-kill-latest-popup
     "tp" 'popper-toggle-type)
   :init
   (setq popper-window-height 0.3)
