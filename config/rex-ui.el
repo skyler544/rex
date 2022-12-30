@@ -53,6 +53,7 @@
 
 ;; Briefly flash current line after a long movement.
 (use-package pulsar
+  :demand t
   :after evil
   :general
   (rex-leader
@@ -64,6 +65,8 @@
   (setq pulsar-functions
         '(evil-window-down
           evil-window-up
+          evil-window-right
+          evil-window-left
           avy-goto-char-timer))
   (dolist (fkt pulsar-functions)
     (add-to-list 'pulsar-pulse-functions fkt))
