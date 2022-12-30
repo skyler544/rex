@@ -9,11 +9,12 @@
 ;; "leaves." Leaves may be single keys or further prefixes.
 (use-package general
   :config
+  (general-override-mode)
   (general-create-definer rex-leader
-    :keymaps '(visual normal emacs)
-    :prefix "SPC"
-    :global-prefix "C-SPC"
-    :non-normal-prefix "C-SPC"
+    :states '(normal visual)
+    :keymaps 'override
+    :prefix "SPC")
+  (rex-leader
     "m" '(:ignore t :which-key "local leader")
     "s" '(:ignore t :which-key "search")
     "c" '(:ignore t :which-key "code")
