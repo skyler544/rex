@@ -67,3 +67,6 @@
 
 ;; Programming support.
 (load "rex-programming")
+
+;; Org mode, the swiss-army outline tool
+(load "rex-org")
