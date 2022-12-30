@@ -18,7 +18,12 @@
 (use-package why-this
   :general
   (rex-leader
-    "tw" 'why-this-mode))
+    "tw" 'why-this-mode)
+  :config
+  (set-face-attribute 'why-this-face nil :foreground nil)
+  (set-face-attribute 'why-this-face nil
+                      :inherit 'font-lock-comment-face
+                      :slant 'normal))
 
 ;; Change the vc-mode function to display the current project root
 ;; name instead of the vc backend. Since I have no reason to use any
