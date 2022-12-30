@@ -74,3 +74,6 @@ still unanswered LSP requests to the server\n")))))))
   :config
   (set-face-attribute 'compilation-warning nil :slant 'normal)
   (set-face-attribute 'compilation-error nil :weight 'normal))
+
+(use-package hl-todo
+  :hook (prog-mode . hl-todo-mode))
