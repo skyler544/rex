@@ -39,7 +39,7 @@
   (defalias 'yes-or-no-p 'y-or-n-p)
   (setq-default indent-tabs-mode nil)
   (setq-default truncate-lines t)
-  (setq tab-width 4)
+  (setq-default tab-width 4)
   (setq initial-major-mode 'fundamental-mode)
   (setq confirm-kill-processes nil)
   (setq byte-compile-warnings nil)
