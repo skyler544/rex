@@ -17,7 +17,8 @@
 ;; package system.
 (package-initialize)
 (add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/"))
+             '("melpa" . "https://melpa.org/packages/")
+             '("org" . "https://orgmode.org/elpa/"))
 
 ;; Creating a list of packages in this way allows the code
 ;; to be more reusable, though this is not actually intended
