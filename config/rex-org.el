@@ -15,6 +15,8 @@
 (use-package org
   :config
   (setq org-ellipsis " ⯆")
+  ;; I prefer not to have lots of colors for different heading levels;
+  ;; the indentation is enough and the colors seem noisy.
   (setq rex/org-levels
         '(org-level-1 org-level-2
           org-level-3 org-level-4
@@ -32,6 +34,11 @@
    :keymaps 'org-mode-map
             "M-RET" 'org-insert-heading-respect-content))
 
+;; This package lets you pick how the leading symbol for each level of
+;; heading should look in general; I use it to enforce a single bullet
+;; style for plain org-mode headings. I prefer this because I already
+;; prefer the headings to not have gaudy colors; why use gaudy unicode
+;; symbols?
 (use-package org-superstar
   :hook (org-mode . (lambda () (org-superstar-mode 1)))
   :config
