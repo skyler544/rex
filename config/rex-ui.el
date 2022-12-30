@@ -6,10 +6,8 @@
   (scroll-bar-mode -1)
   (tool-bar-mode -1)
   (set-fringe-mode 4)
-
   (setq default-frame-alist
         (append (list '(font . "Iosevka Custom Extended:size=20"))))
-
   (set-face-attribute 'variable-pitch nil
                     :family "Iosevka Custom Extended"
                     :slant 'oblique))
@@ -67,6 +65,7 @@
           evil-window-right
           evil-window-left
           evil-avy-goto-char-timer
+          other-window
           isearch-repeat-forward
           isearch-repeat-backward))
   (dolist (fkt pulsar-functions)

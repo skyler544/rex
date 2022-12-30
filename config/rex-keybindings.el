@@ -29,7 +29,10 @@
 (use-package emacs
   :general
   ("M-j" 'rex/scroll-other-window-down
-   "M-k" 'rex/scroll-other-window-up)
+   "M-k" 'rex/scroll-other-window-up
+   "C-=" 'text-scale-increase
+   "C--" 'text-scale-decrease
+   "C-0" 'text-scale-adjust)
   (rex-leader
     "SPC" 'execute-extended-command
     "." 'find-file
