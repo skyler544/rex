@@ -52,6 +52,7 @@
 
 ;; Control temporary windows programmatically
 (use-package popper
+  :demand t
   :general
   (rex-leader
     "tc" 'popper-cycle
