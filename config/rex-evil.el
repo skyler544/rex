@@ -2,7 +2,6 @@
 ;;
 ;; The dark side.
 (use-package evil
-  :demand t
   :init
   (setq evil-want-keybinding nil)
   (setq evil-kill-on-visual-paste nil)
