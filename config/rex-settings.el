@@ -87,6 +87,7 @@
   :ensure nil
   :diminish eldoc-mode
   :config
+  (advice-add 'eldoc-doc-buffer :after (lambda () (other-window 1)))
   (setq eldoc-echo-area-use-multiline-p nil))
 
 (use-package abbrev
