@@ -45,15 +45,18 @@
     "tk" 'popper-kill-latest-popup
     "tp" 'popper-toggle-type)
   :init
-  (setq popper-window-height 0.3)
+  (setq popper-echo-mode t)
+  (setq popper-window-height 0.35)
   (setq popper-reference-buffers
         '("\\*Messages\\*"
           "\\*compilation\\*"
           "Output\\*$"
           "\\*helpful.*\\*"
+          "\\*Apropos*\\*"
           "\\*eldoc\\*" eldoc-mode
           "\\*vterm\\*" vterm-mode
           "\\*eat\\*" eat-mode
+          comint-mode
           ("\\*Async Shell Command\\*" . hide)
           help-mode
           compilation-mode))

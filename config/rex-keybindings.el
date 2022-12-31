@@ -18,6 +18,7 @@
     "m" '(:ignore t :which-key "local leader")
     "s" '(:ignore t :which-key "search")
     "c" '(:ignore t :which-key "code")
+    "o" '(:ignore t :which-key "open")
     "g" '(:ignore t :which-key "goto")
     "p" '(:ignore t :which-key "project")
     "f" '(:ignore t :which-key "file")

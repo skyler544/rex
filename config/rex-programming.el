@@ -17,6 +17,14 @@
   :commands (eglot))
 
 (use-package eglot-java
+  :config
+  (defun rex/open-jshell ()
+    (interactive)
+    (comint-run "jshell"))
+    :general
+  (rex-leader
+    :keymaps 'java-mode-map
+    "or" 'rex/open-jshell)
   :hook
   (java-mode . eglot-java-mode))
 
