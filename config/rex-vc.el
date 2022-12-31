@@ -18,7 +18,7 @@
 (use-package why-this
   :general
   (rex-leader
-    "tw" 'why-this-mode)
+    "tb" 'why-this-mode)
   :config
   (set-face-attribute 'why-this-face nil :foreground nil)
   (set-face-attribute 'why-this-face nil
