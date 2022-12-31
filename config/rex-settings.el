@@ -20,7 +20,7 @@
 ;; access.
 (use-package recentf
   :config
-  (setq recentf-save-file (concat user-emacs-directory ".cache/recentf"))
+  (setq recentf-save-file (concat rex/cache-dir "recentf"))
   (setq recentf-max-saved-items 200)
   (setq recentf-max-menu-items 200)
   (recentf-mode 1)
@@ -109,31 +109,31 @@
 (use-package saveplace
   :ensure nil
   :config
-  (setq save-place-file (concat user-emacs-directory ".cache/places"))
+  (setq save-place-file (concat rex/cache-dir "places"))
   (save-place-mode t))
 
 (use-package project
   :ensure nil
   :config
-  (setq project-list-file (concat user-emacs-directory ".cache/projects")))
+  (setq project-list-file (concat rex/cache-dir "projects")))
 
 (use-package bookmark
   :ensure nil
   :config
-  (setq bookmark-default-file (concat user-emacs-directory ".cache/bookmarks")))
+  (setq bookmark-default-file (concat rex/cache-dir "bookmarks")))
 
 (use-package savehist
   :ensure nil
   :config
-  (setq savehist-file (concat user-emacs-directory ".cache/minibuffer-history")))
+  (setq savehist-file (concat rex/cache-dir "minibuffer-history")))
 
 (use-package transient
   :ensure nil
   :config
-  (setq transient-history-file (concat user-emacs-directory ".cache/transient-history")))
+  (setq transient-history-file (concat rex/cache-dir "transient-history")))
 
 (use-package tramp
   :ensure nil
   :config
-  (setq tramp-persistency-file-name (concat user-emacs-directory ".cache/tramp-persistency-file"))
-  (setq tramp-auto-save-directory (concat user-emacs-directory ".cache/tramp-autosave")))
+  (setq tramp-persistency-file-name (concat rex/cache-dir "tramp-persistency-file"))
+  (setq tramp-auto-save-directory (concat rex/cache-dir "tramp-autosave")))
