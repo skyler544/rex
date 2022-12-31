@@ -19,8 +19,4 @@
     "Split window right."
     (interactive)
     (split-window-right)
-    (other-window 1))
-  :general
-  (rex-leader
-    "ws" 'rex/split-and-follow-horizontally
-    "wv" 'rex/split-and-follow-vertically))
+    (other-window 1)))

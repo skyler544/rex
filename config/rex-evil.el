@@ -14,7 +14,10 @@
   (:keymaps '(normal visual)
             "C-w" 'evil-scroll-line-up)
   (rex-leader
-    "w" 'evil-window-map)
+    "w" 'evil-window-map
+    "wr" 'nil
+    "ws" 'rex/split-and-follow-horizontally
+    "wv" 'rex/split-and-follow-vertically)
   (:keymaps 'evil-inner-text-objects-map
             "g" '+evil:whole-buffer-txtobj)
   (:keymaps 'evil-outer-text-objects-map
