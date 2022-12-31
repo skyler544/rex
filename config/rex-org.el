@@ -30,6 +30,9 @@
 ;; keybindings
 (use-package org
   :general
+  (rex-leader
+    :keymaps 'org-mode-map
+    "me" 'org-export-dispatch)
   (:states '(normal insert)
    :keymaps 'org-mode-map
             "M-RET" 'org-insert-heading-respect-content))
