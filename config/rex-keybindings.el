@@ -66,3 +66,13 @@
   :general
   (rex-leader
     "bi" 'ibuffer))
+
+(use-package winner
+  :demand t
+  :config
+  (winner-mode)
+  :general
+  (rex-leader
+    :keymaps 'winner-mode-map
+    "wr" 'winner-redo
+    "wu" 'winner-undo))
