@@ -77,3 +77,9 @@ still unanswered LSP requests to the server\n")))))))
 
 (use-package hl-todo
   :hook (prog-mode . hl-todo-mode))
+
+(use-package flymake
+  :ensure nil
+  :general
+  (rex-leader
+    "tf" 'flymake-mode))
