@@ -93,6 +93,8 @@
     ;;local leader
     "mm" 'consult-mode-command))
 
+(use-package embark-consult)
+
 ;; Allows you to insert directories into the minibuffer prompt. It
 ;; integrates with the minibuffer history, so it gets smarter the more
 ;; you use it.
