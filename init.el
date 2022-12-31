@@ -17,15 +17,16 @@
 ;; the configuration. One exception is the bootstrap file; without it,
 ;; use-package will not be loaded and none of the rest of the
 ;; configuration will work.
-(setq config-dir (concat user-emacs-directory "config/"))
-(add-to-list 'load-path config-dir)
+(setq rex/config-dir (concat user-emacs-directory "config/"))
+(setq rex/cache-dir (concat user-emacs-directory ".cache/"))
+(add-to-list 'load-path rex/config-dir)
 
 ;; Do not add custom settings to the end of init.el. This file is never
 ;; loaded; the intention is to have a place where the code generated
 ;; by custom can land, and if desired, may be added to the
 ;; configuration programmatically. This file may be deleted at any
 ;; time without adverse effects.
-(setq custom-file (concat user-emacs-directory ".cache/custom.el"))
+(setq custom-file (concat rex/cache-dir "custom.el"))
 
 ;; Strictly necessary for the operation of rex.
 (load "rex-bootstrap")
@@ -70,3 +71,6 @@
 
 ;; Org mode, the swiss-army outline tool
 (load "rex-org")
+
+;; Hacky code
+(load "rex-hacks")
