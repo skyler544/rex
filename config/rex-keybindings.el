@@ -43,6 +43,7 @@
     "!" 'shell-command
     ;; toggle
     "tt" 'toggle-truncate-lines
+    "tw" 'toggle-word-wrap
     ;; help
     "h" 'help-command
     "hF" 'describe-face
