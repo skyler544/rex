@@ -65,6 +65,7 @@
           evil-window-right
           evil-window-left
           evil-avy-goto-char-timer
+          dired-jump
           other-window
           isearch-repeat-forward
           isearch-repeat-backward))
