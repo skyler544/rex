@@ -100,6 +100,7 @@
   :ensure nil
   :hook (prog-mode . electric-pair-mode))
 
+;; Revert buffers on a timer
 (use-package autorevert
   :ensure nil
   :diminish auto-revert-mode)
