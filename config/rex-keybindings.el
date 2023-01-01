@@ -41,6 +41,7 @@
     "Q" 'save-buffers-kill-emacs
     "&" 'async-shell-command
     "!" 'shell-command
+    "R" 'rex/shell-command-on-region-or-line
     ;; toggle
     "tt" 'toggle-truncate-lines
     "tw" 'toggle-word-wrap

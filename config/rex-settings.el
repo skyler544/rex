@@ -40,6 +40,7 @@
   (setq-default indent-tabs-mode nil)
   (setq-default truncate-lines t)
   (setq-default tab-width 4)
+  (setq max-mini-window-height 8)
   (setq inhibit-compacting-font-caches t)
   (setq confirm-kill-processes nil)
   (setq byte-compile-warnings nil)
