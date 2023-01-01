@@ -1,6 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 ;;
 ;; General settings
+(load "rex-org-functions")
 (use-package org
   :config
   (setq-default org-agenda-window-setup 'current-window)
@@ -30,6 +31,9 @@
 ;; keybindings
 (use-package org
   :general
+  (:states 'normal
+   :keymaps 'org-mode-map
+            "RET" 'rex/org-dwim-at-point)
   (rex-leader
     :keymaps 'org-mode-map
     "me" 'org-export-dispatch)
