@@ -24,6 +24,8 @@
     :general
   (rex-leader
     :keymaps 'java-mode-map
+    "cR" 'eglot-java-run-main
+    "cT" 'eglot-java-run-test
     "or" 'rex/open-jshell)
   :hook
   (java-mode . eglot-java-mode))

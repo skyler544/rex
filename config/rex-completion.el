@@ -65,10 +65,7 @@
             "M-RET" 'tempel-expand)
   (:keymaps 'tempel-map
             "TAB" 'tempel-next
-            "S-TAB" 'tempel-previous)
-  :config
-  (add-to-list 'rex/capfs 'tempel-expand)
-  (rex/add-capfs))
+            "S-TAB" 'tempel-previous))
 
 ;; Some predefined snippets
 (use-package tempel-collection
