@@ -28,6 +28,12 @@
   (dolist (face '(org-block org-block-begin-line org-block-end-line))
     (set-face-attribute face nil :background nil)))
 
+(use-package evil-org
+  :config (defun rex/start-evil-org-mode ()
+            (evil-org-mode))
+  :after org
+  :hook (org-mode . rex/start-evil-org-mode))
+
 ;; keybindings
 (use-package org
   :general
@@ -36,10 +42,7 @@
             "RET" 'rex/org-dwim-at-point)
   (rex-leader
     :keymaps 'org-mode-map
-    "me" 'org-export-dispatch)
-  (:states '(normal insert)
-   :keymaps 'org-mode-map
-            "M-RET" 'org-insert-heading-respect-content))
+    "me" 'org-export-dispatch))
 
 ;; This package lets you pick how the leading symbol for each level of
 ;; heading should look in general; I use it to enforce a single bullet
