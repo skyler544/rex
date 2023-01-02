@@ -29,14 +29,6 @@
   (:keymaps '(normal visual)
            "?" 'iedit-mode))
 
-;; Terminal emulation
-(use-package vterm
-  :commands vterm)
-
-(use-package eat
-  :config
-  (setq eat-term-name "rxvt-unicode-256color"))
-
 ;; Control temporary windows programmatically
 (use-package popper
   :demand t

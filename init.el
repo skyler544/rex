@@ -97,6 +97,9 @@
 ;; user experience but do not fall into a more specific category.
 (load "rex-qol")
 
+;; Utility packages
+(load "rex-utilities")
+
 ;; Programming support.
 (load "rex-programming")
 
