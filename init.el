@@ -17,6 +17,37 @@
 ;; the configuration. One exception is the bootstrap file; without it,
 ;; use-package will not be loaded and none of the rest of the
 ;; configuration will work.
+
+;; https://github.com/karthink/.emacs.d/blob/cc34b599f4478441ab7eccb60b7516303a2b330d/early-init.el#L16
+;; This snippet has something of the "cargo cult" about it, but it did shave a
+;; few hundredths of a second off of the init time. Absolutely critical feature
+;; here. -.-
+(unless (or (daemonp) noninteractive)
+  (let ((old-file-name-handler-alist file-name-handler-alist))
+    (setq-default file-name-handler-alist nil)
+    (defun my/reset-file-handler-alist ()
+      (setq file-name-handler-alist
+            (delete-dups (append file-name-handler-alist
+                                 old-file-name-handler-alist))))
+    (add-hook 'emacs-startup-hook #'my/reset-file-handler-alist 101))
+
+  (setq-default inhibit-redisplay t
+                inhibit-message t)
+  (add-hook 'window-setup-hook
+            (lambda ()
+              (setq-default inhibit-redisplay nil
+                            inhibit-message nil)
+              (redisplay)))
+  (define-advice load-file (:override (file) silence)
+    (load file nil 'nomessage))
+  (define-advice startup--load-user-init-file (:before (&rest _) nomessage-remove)
+    (advice-remove #'load-file #'load-file@silence)))
+
+;; Don't warn about native comp stuff
+(setq native-comp-async-report-warnings-errors 'silent)
+(setq native-comp-deferred-compilation t)
+
+;; Set up config and cache directories
 (setq rex/config-dir (concat user-emacs-directory "config/"))
 (setq rex/cache-dir (concat user-emacs-directory ".cache/"))
 (add-to-list 'load-path rex/config-dir)
