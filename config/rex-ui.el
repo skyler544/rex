@@ -52,11 +52,6 @@
                       :foreground nil
                       :inherit 'font-lock-type-face))
 
-;; Hide the long details by default
-(use-package dired
-  :ensure nil
-  :hook (dired-mode . dired-hide-details-mode))
-
 ;; Show the results of C-x C-e directly in the buffer
 (use-package eros
   :config

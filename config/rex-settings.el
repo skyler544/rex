@@ -32,6 +32,15 @@
   :config
   (setq display-line-numbers-width-start t))
 
+;; Dired settings
+(use-package dired
+  :ensure nil
+  :config
+  (setq dired-dwim-target t)
+  :hook
+  (dired-mode . dired-hide-details-mode)
+  (dired-mode . (lambda () (load "dired-x"))))
+
 ;; general settings
 (use-package emacs
   :config
@@ -40,6 +49,7 @@
   (setq-default indent-tabs-mode nil)
   (setq-default truncate-lines t)
   (setq-default tab-width 4)
+  (setq-default fill-column 80)
   (setq max-mini-window-height 8)
   (setq inhibit-compacting-font-caches t)
   (setq confirm-kill-processes nil)
