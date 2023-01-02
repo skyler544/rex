@@ -27,6 +27,12 @@
     (let ((completion-extra-properties corfu--extra)
           completion-cycle-threshold completion-cycling)
       (apply #'consult-completion-in-region completion-in-region--data)))
+  (defun corfu-enable-in-minibuffer ()
+    "Enable Corfu in the minibuffer if `completion-at-point' is bound."
+    (when (where-is-internal #'completion-at-point (list (current-local-map)))
+      (setq-local corfu-echo-delay nil
+                  corfu-popupinfo-delay nil)
+      (corfu-mode 1)))
   :general
   (:keymaps 'corfu-map
             "C-SPC" 'corfu-move-to-minibuffer
@@ -35,7 +41,9 @@
             [tab] 'corfu-next
             "C-k" 'corfu-previous
             [backtab] 'corfu-previous)
-  :hook (eshell . (lambda ()
+  :hook
+  (minibuffer-setup . corfu-enable-in-minibuffer)
+  (eshell . (lambda ()
                     (setq-local corfu-auto nil)
                     (corfu-mode))))
 
@@ -61,7 +69,7 @@
   :general
   (rex-leader
     "ct" 'tempel-insert)
-  (:keymaps 'insert
+  (:keymaps 'prog-mode-map
             "M-RET" 'tempel-expand)
   (:keymaps 'tempel-map
             "TAB" 'tempel-next
