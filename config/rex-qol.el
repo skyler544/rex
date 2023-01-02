@@ -71,3 +71,8 @@
 (use-package wgrep
   :config
   (setq wgrep-auto-save-buffer t))
+
+(use-package olivetti
+  :general
+  (rex-leader
+    "to" 'olivetti-mode))

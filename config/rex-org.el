@@ -9,6 +9,9 @@
   (setq org-startup-indented t)
   (setq org-startup-folded nil)
   (setq org-hide-leading-stars t)
+  (setq org-catch-invisible-edits 'show-and-error)
+  (setq org-M-RET-may-split-line nil)
+  (setq org-hide-emphasis-markers t)
   :hook
   (org-mode . auto-fill-mode))
 
@@ -40,6 +43,9 @@
   (:states 'normal
    :keymaps 'org-mode-map
             "RET" 'rex/org-dwim-at-point)
+  (rex-leader
+    "ma" 'org-agenda
+    "ml" 'org-store-link)
   (rex-leader
     :keymaps 'org-mode-map
     "me" 'org-export-dispatch))
