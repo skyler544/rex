@@ -3,6 +3,7 @@
 ;; Add support for some programming tools such as language servers.
 (use-package eglot
   :hook
+  (c++-mode . eglot-ensure)
   (eglot-managed-mode . (lambda ()
                           (setq eldoc-documentation-function
                                 'eldoc-documentation-compose-eagerly)))
@@ -36,7 +37,9 @@
 
 (use-package tree-sitter
   :diminish tree-sitter-mode
-  :hook (java-mode . tree-sitter-hl-mode))
+  :hook
+  (c-mode-common . tree-sitter-hl-mode)
+  (java-mode . tree-sitter-hl-mode))
 
 (use-package tree-sitter-langs)
 
