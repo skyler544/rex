@@ -32,15 +32,6 @@
   :config
   (setq display-line-numbers-width-start t))
 
-;; Dired settings
-(use-package dired
-  :ensure nil
-  :config
-  (setq dired-dwim-target t)
-  :hook
-  (dired-mode . dired-hide-details-mode)
-  (dired-mode . (lambda () (load "dired-x"))))
-
 ;; general settings
 (use-package emacs
   :config
@@ -122,6 +113,11 @@
   (setq save-place-file (concat rex/cache-dir "places"))
   (save-place-mode t))
 
+(use-package eshell
+  :ensure nil
+  :config
+  (setq eshell-directory-name (concat rex/cache-dir "eshell")))
+
 (use-package project
   :ensure nil
   :config
@@ -147,3 +143,12 @@
   :config
   (setq tramp-persistency-file-name (concat rex/cache-dir "tramp-persistency-file"))
   (setq tramp-auto-save-directory (concat rex/cache-dir "tramp-autosave")))
+
+;; Dired settings
+(use-package dired
+  :ensure nil
+  :config
+  (setq dired-dwim-target t)
+  :hook
+  (dired-mode . dired-hide-details-mode)
+  (dired-mode . (lambda () (load "dired-x"))))
