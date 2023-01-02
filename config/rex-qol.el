@@ -53,14 +53,15 @@
         '("\\*Messages\\*"
           "\\*compilation\\*"
           "Output\\*$"
-          "\\*helpful.*\\*"
+          "\\*help.*\\*" help-mode
+          "\\*Calendar\\*"
+          ("\\*Org Links\\*" . hide)
           "\\*Apropos*\\*"
           "\\*eldoc\\*" eldoc-mode
           "\\*vterm\\*" vterm-mode
           "\\*eat\\*" eat-mode
           comint-mode
           ("\\*Async Shell Command\\*" . hide)
-          help-mode
           compilation-mode))
   :config
   (popper-mode))
