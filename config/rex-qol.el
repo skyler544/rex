@@ -52,6 +52,7 @@
           "\\*eldoc\\*" eldoc-mode
           "\\*vterm\\*" vterm-mode
           "\\*eat\\*" eat-mode
+          "\\*eshell\\*" eshell-mode
           comint-mode
           ("\\*Async Shell Command\\*" . hide)
           compilation-mode))
