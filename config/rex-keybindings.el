@@ -48,6 +48,7 @@
     "R" 'rex/shell-command-on-region-or-line
     ;; open
     "oe" 'eshell
+    "oc" 'calendar
     ;; toggle
     "tt" 'toggle-truncate-lines
     "tw" 'toggle-word-wrap
