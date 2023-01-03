@@ -23,6 +23,7 @@
   (:keymaps 'evil-outer-text-objects-map
             "g" '+evil:whole-buffer-txtobj)
   :config
+  (evil-set-initial-state 'org-agenda-mode 'normal)
   (evil-define-text-object +evil:whole-buffer-txtobj (count &optional _beg _end type)
     "Text object to select the whole buffer."
     (evil-range (point-min) (point-max) type))
