@@ -44,6 +44,8 @@
 ;; keybindings
 (use-package org
   :general
+  (:keymaps 'org-src-mode-map
+            "C-c C-c" 'org-edit-src-exit)
   (:states 'normal
    :keymaps 'org-mode-map
             "RET" 'rex/org-dwim-at-point)
