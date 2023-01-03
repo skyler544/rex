@@ -64,3 +64,8 @@
             "b" 'evil-textobj-anyblock-inner-block)
   (:keymaps 'evil-outer-text-objects-map
             "b" 'evil-textobj-anyblock-a-block))
+
+(defun evil-record-macro ()
+  "Noop -- there must be a better way of disabling this."
+  (interactive)
+  (ignore))
