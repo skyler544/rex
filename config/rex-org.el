@@ -6,6 +6,7 @@
   (setq org-link-frame-setup '((file . find-file)))
   (setq org-fontify-whole-heading-line t)
   (setq org-startup-indented t)
+  (setq org-adapt-indentation t)
   (setq org-startup-folded nil)
   (setq org-hide-leading-stars t)
   (setq org-catch-invisible-edits 'show-and-error)
@@ -23,7 +24,6 @@
   (setq org-agenda-span 10)
   (setq org-agenda-start-on-weekday nil)
   (setq org-agenda-start-day "-3d")
-  (setq org-agenda-inhibit-startup t)
   (setq org-agenda-files '("~/mega/org/todo.org" "~/mega/org/fh.org" "~/mega/org/habits.org"))
   (setq org-log-into-drawer t)
   (setq org-log-done 'time)
@@ -93,6 +93,9 @@ headline or follow a link."
 ;; keybindings
 (use-package org
   :general
+  (:states 'normal
+   :keymaps 'org-agenda-mode-map
+            "RET" 'org-agenda-goto)
   (:keymaps 'org-src-mode-map
             "C-c C-c" 'org-edit-src-exit)
   (:states 'normal
