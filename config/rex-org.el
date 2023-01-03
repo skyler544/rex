@@ -39,6 +39,15 @@
           ("IDEA" . (:inherit (bold font-lock-string-face org-todo)))
           ("DONE" . (:inherit (bold font-lock-comment-face org-todo)))
           ("KILL" . (:inherit (bold error org-todo)))))
+  (set-face-attribute 'org-agenda-date nil
+                      :foreground (face-foreground 'font-lock-comment-face)
+                      :weight 'semi-bold)
+  (set-face-attribute 'org-agenda-date-today nil
+                      :foreground (face-foreground 'success)
+                      :weight 'semi-bold)
+  (set-face-attribute 'org-agenda-date-weekend nil
+                      :foreground (face-foreground 'font-lock-keyword-face)
+                      :weight 'semi-bold)
   (setq org-ellipsis " ⯆")
   ;; I prefer not to have lots of colors for different heading levels;
   ;; the indentation is enough and the colors seem noisy.
