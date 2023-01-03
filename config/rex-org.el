@@ -28,11 +28,17 @@
   (setq org-log-into-drawer t)
   (setq org-log-done 'time)
   (setq org-enforce-todo-dependencies t)
-  (setq org-todo-keywords '((sequence "TODO" "PROJ" "IDEA" "|" "DONE"))))
+  (setq org-todo-keywords '((sequence "TODO" "PROJ" "IDEA" "|" "DONE" "KILL"))))
 
 ;; Font settings
 (use-package org
   :config
+  (setq org-todo-keyword-faces
+        '(("TODO" . (:inherit (bold success org-todo)))
+          ("PROJ" . (:inherit (bold warning org-todo)))
+          ("IDEA" . (:inherit (bold font-lock-string-face org-todo)))
+          ("DONE" . (:inherit (bold font-lock-comment-face org-todo)))
+          ("KILL" . (:inherit (bold error org-todo)))))
   (setq org-ellipsis " ⯆")
   ;; I prefer not to have lots of colors for different heading levels;
   ;; the indentation is enough and the colors seem noisy.
