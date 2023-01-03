@@ -4,6 +4,8 @@
 (load "rex-org-functions")
 (use-package org
   :config
+  (setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
+  (setf (cdr (rassoc 'find-file-other-window org-link-frame-setup)) 'find-file)
   (setq-default org-agenda-window-setup 'current-window)
   (setq org-fontify-whole-heading-line t)
   (setq org-startup-indented t)
