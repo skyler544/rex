@@ -13,7 +13,6 @@
                     :slant 'oblique)
   (set-face-attribute 'help-key-binding nil
                       :background 'nil
-                      ;; :foreground (face-foreground 'font-lock-builtin-face)
                       :foreground 'nil
                       :weight 'bold
                       :box '(:line-width -1)))
@@ -24,7 +23,6 @@
   (set-face-attribute 'info-menu-star nil :foreground 'nil)
   (set-face-attribute 'Info-quoted nil :inherit 'nil)
   (set-face-attribute 'Info-quoted nil :inherit 'font-lock-function-name-face))
-
 
 ;; Huge theme pack 
 (use-package doom-themes

@@ -8,6 +8,7 @@
 
 (use-package eat
   :config
+  ;; why doesn't terminfo work here?
   (setq eat-term-name "rxvt-unicode-256color")
   (setq eshell-visual-commands nil)
   (eat-eshell-mode))
