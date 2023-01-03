@@ -34,7 +34,10 @@
    "M-k" 'rex/scroll-other-window-up
    "C-=" 'text-scale-increase
    "C--" 'text-scale-decrease
-   "C-0" 'text-scale-adjust)
+   "C-0" 'text-scale-adjust
+   "M-n" 'forward-list
+   "M-p" 'backward-list
+   "C-<tab>" 'indent-region)
   (rex-leader
     "SPC" 'execute-extended-command
     "." 'find-file
@@ -43,6 +46,8 @@
     "&" 'async-shell-command
     "!" 'shell-command
     "R" 'rex/shell-command-on-region-or-line
+    ;; open
+    "oe" 'eshell
     ;; toggle
     "tt" 'toggle-truncate-lines
     "tw" 'toggle-word-wrap
