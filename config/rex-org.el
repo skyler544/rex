@@ -93,6 +93,11 @@ headline or follow a link."
 ;; keybindings
 (use-package org
   :general
+  (:keymaps 'org-read-date-minibuffer-local-map
+            "C-h" '(lambda () (interactive) (org-eval-in-calendar '(calendar-backward-day 1)))
+            "C-j" '(lambda () (interactive) (org-eval-in-calendar '(calendar-forward-week 1)))
+            "C-k" '(lambda () (interactive) (org-eval-in-calendar '(calendar-backward-week 1)))
+            "C-l" '(lambda () (interactive) (org-eval-in-calendar '(calendar-forward-day 1))))
   (:states 'normal
    :keymaps 'org-agenda-mode-map
             "RET" 'org-agenda-goto)
