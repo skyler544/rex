@@ -18,11 +18,14 @@
   :hook
   (org-mode . auto-fill-mode))
 
-;; Agenda settings
+;; Agenda / workflow settings
 (use-package org
   :config
-  (setq org-todo-keywords '((sequence "TODO" "PROJ" "|" "DONE")))
-  (setq org-agenda-files '("~/mega/org/todo.org" "~/mega/org/fh.org")))
+  (setq org-log-into-drawer t)
+  (setq org-log-done 'time)
+  (setq org-enforce-todo-dependencies t)
+  (setq org-todo-keywords '((sequence "TODO" "PROJ" "IDEA" "|" "DONE")))
+  (setq org-agenda-files '("~/mega/org/todo.org" "~/mega/org/fh.org" "~/mega/org/habits.org")))
 
 ;; Font settings
 (use-package org
