@@ -14,6 +14,8 @@
   (setq org-catch-invisible-edits 'show-and-error)
   (setq org-M-RET-may-split-line nil)
   (setq org-hide-emphasis-markers t)
+  (setq org-list-demote-modify-bullet
+        '(("+" . "-") ("-" . "+") ("*" . "+")))
   :hook
   (org-mode . auto-fill-mode))
 
