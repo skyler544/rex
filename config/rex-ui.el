@@ -21,6 +21,7 @@
 (use-package info
   :ensure nil
   :config
+  (set-face-attribute 'info-menu-star nil :foreground 'nil)
   (set-face-attribute 'Info-quoted nil :inherit 'nil)
   (set-face-attribute 'Info-quoted nil :inherit 'font-lock-function-name-face))
 
