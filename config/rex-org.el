@@ -21,7 +21,7 @@
 ;; Agenda settings
 (use-package org
   :config
-  (setq org-todo-keywords '(sequence "TODO" "PROJ" "|" "DONE"))
+  (setq org-todo-keywords '((sequence "TODO" "PROJ" "|" "DONE")))
   (setq org-agenda-files '("~/mega/org/todo.org" "~/mega/org/fh.org")))
 
 ;; Font settings
