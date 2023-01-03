@@ -64,6 +64,9 @@
 ;; with jumping between various things and interacting with the kill
 ;; ring. Combine with Embark and mix well.
 (use-package consult
+  :config
+  (consult-customize consult-themes :preview-key (kbd "M-.")
+                     consult-buffer :preview-key (kbd "M-."))
   :general
   ("C-x b" 'consult-buffer)
   (:keymaps '(normal visual)
