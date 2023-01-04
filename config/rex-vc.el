@@ -2,6 +2,8 @@
 ;;
 ;; Version control utilities.
 (use-package magit
+  :config
+  (setq magit-save-repository-buffers nil)
   :general
   (rex-leader
     "gg" 'magit-status))

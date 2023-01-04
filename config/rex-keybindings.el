@@ -41,6 +41,7 @@
   (rex-leader
     "SPC" 'execute-extended-command
     "." 'find-file
+    "d" 'dired-jump
     "x" 'Control-X-prefix
     "Q" 'save-buffers-kill-emacs
     "&" 'async-shell-command
