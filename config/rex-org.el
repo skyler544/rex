@@ -66,6 +66,11 @@
   (setq org-eldoc-breadcrumb-separator " :: "))
 
 (use-package evil-org
+  :general
+  (:states '(normal visual)
+   :keymaps 'org-agenda-mode-map
+            "k" 'org-agenda-previous-line
+            "j" 'org-agenda-next-line)
   :config (defun rex/start-evil-org-mode ()
             (evil-org-mode))
   :after org
@@ -115,8 +120,12 @@ headline or follow a link."
   (:states 'normal
    :keymaps 'org-mode-map
             "RET" 'rex/org-dwim-at-point)
+  (:states 'insert
+   :keymaps 'org-mode-map
+            "C-o" 'evil-org-open-below)
   (rex-leader
     "ma" 'org-agenda
+    "md" 'org-deadline
     "ml" 'org-store-link)
   (rex-leader
     :keymaps 'org-mode-map
