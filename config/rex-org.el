@@ -48,6 +48,10 @@
   (set-face-attribute 'org-agenda-date-weekend nil
                       :foreground (face-foreground 'font-lock-keyword-face)
                       :weight 'semi-bold)
+  (set-face-attribute 'org-date-selected nil
+                      :foreground 'unspecified
+                      :inverse-video 'unspecified
+                      :inherit 'highlight)
   (setq org-ellipsis " ⯆")
   ;; I prefer not to have lots of colors for different heading levels;
   ;; the indentation is enough and the colors seem noisy.
@@ -63,7 +67,7 @@
 
 (use-package org-contrib
   :config
-  (setq org-eldoc-breadcrumb-separator " :: "))
+  (setq org-eldoc-breadcrumb-separator "::"))
 
 (use-package evil-org
   :general
