@@ -144,3 +144,7 @@ headline or follow a link."
   :hook (org-mode . (lambda () (org-superstar-mode 1)))
   :config
   (setq org-superstar-headline-bullets-list '("●")))
+
+(use-package org-pdftools
+  :commands org-pdftools-export
+  :hook (org-mode . org-pdftools-setup-link))
