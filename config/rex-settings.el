@@ -30,7 +30,8 @@
 (use-package emacs
   :hook (prog-mode . display-line-numbers-mode)
   :config
-  (setq display-line-numbers-width-start t))
+  (setq-default display-line-numbers-width 3)
+  (setq-default display-line-numbers-widen t))
 
 ;; general settings
 (use-package emacs
