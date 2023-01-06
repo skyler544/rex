@@ -17,6 +17,12 @@
   :hook
   (org-mode . auto-fill-mode))
 
+;; Habit settings
+(use-package org
+  :config
+  (add-to-list 'org-modules 'org-habit)
+  (setq org-habit-show-habits-only-for-today nil))
+
 ;; Agenda / workflow settings
 (use-package org
   :config
@@ -118,6 +124,7 @@ headline or follow a link."
             "C-l" '(lambda () (interactive) (org-eval-in-calendar '(calendar-forward-day 1))))
   (:states 'normal
    :keymaps 'org-agenda-mode-map
+            "q" 'org-agenda-quit
             "RET" 'org-agenda-goto)
   (:keymaps 'org-src-mode-map
             "C-c C-c" 'org-edit-src-exit)
@@ -128,6 +135,7 @@ headline or follow a link."
    :keymaps 'org-mode-map
             "C-o" 'evil-org-open-below)
   (rex-leader
+    "mt" 'org-todo
     "ma" 'org-agenda
     "md" 'org-deadline
     "ml" 'org-store-link)
@@ -146,5 +154,6 @@ headline or follow a link."
   (setq org-superstar-headline-bullets-list '("●")))
 
 (use-package org-pdftools
+  :after org
   :commands org-pdftools-export
   :hook (org-mode . org-pdftools-setup-link))
