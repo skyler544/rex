@@ -49,6 +49,7 @@
           "\\*Calendar\\*"
           ("\\*Org Links\\*" . hide)
           "\\*Apropos*\\*"
+          "\\*.*docker.*\\*"
           "\\*eldoc\\*" eldoc-mode
           "\\*vterm\\*" vterm-mode
           "\\*eat\\*" eat-mode

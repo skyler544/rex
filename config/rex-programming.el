@@ -36,6 +36,9 @@
   :config
   (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode)))
 
+(use-package yaml-mode
+  :mode ("\\.yml$" . yaml-mode))
+
 (use-package tree-sitter
   :diminish tree-sitter-mode
   :hook

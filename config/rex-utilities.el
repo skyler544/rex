@@ -13,6 +13,10 @@
   (setq eshell-visual-commands nil)
   (eat-eshell-mode))
 
+(use-package docker
+  :general
+  (rex-leader
+    "mD" 'docker))
 
 ;; Keep this around just in case, but it seems like overkill to me
 ;; (use-package run-stuff
