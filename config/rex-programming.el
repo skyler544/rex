@@ -34,6 +34,9 @@
   :hook
   (java-mode . eglot-java-mode))
 
+(use-package c-mode
+  :ensure nil
+  :hook (c-mode . (lambda () (setq c-basic-offset 4))))
 
 (use-package php-mode
   :mode ("\\.php$" . php-mode))
