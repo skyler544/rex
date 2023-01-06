@@ -88,6 +88,7 @@
 
 ;; better pdf support
 (use-package pdf-tools
+  :diminish pdf-view-midnight-minor-mode
   :mode ("\\.pdf\\'" . pdf-view-mode)
   :hook (pdf-view-mode . pdf-view-themed-minor-mode)
   :config (setq-default pdf-view-display-size 'fit-width))

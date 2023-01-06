@@ -18,6 +18,7 @@
 
 ;; Display git blame for the current line
 (use-package why-this
+  :diminish why-this-mode
   :general
   (rex-leader
     "tb" 'why-this-mode)
