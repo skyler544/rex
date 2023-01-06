@@ -48,7 +48,7 @@
           "\\*help.*\\*" help-mode
           "\\*Calendar\\*"
           ("\\*Org Links\\*" . hide)
-          "\\*Apropos*\\*"
+          "\\*Apropos\\*"
           "\\*.*docker.*\\*"
           "\\*eldoc\\*" eldoc-mode
           "\\*vterm\\*" vterm-mode
