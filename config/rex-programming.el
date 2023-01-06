@@ -16,7 +16,9 @@
     "cD" 'eglot-find-implementation
     "cr" 'eglot-rename
     "ca" 'eglot-code-actions)
-  :commands (eglot))
+  :commands (eglot)
+  :config (add-to-list 'eglot-server-programs
+  '(php-mode . ("intelephense" "--stdio"))))
 
 (use-package eglot-java
   :config
@@ -32,9 +34,12 @@
   :hook
   (java-mode . eglot-java-mode))
 
+
+(use-package php-mode
+  :mode ("\\.php$" . php-mode))
+
 (use-package lua-mode
-  :config
-  (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode)))
+  :mode ("\\.lua$" . lua-mode))
 
 (use-package yaml-mode
   :mode ("\\.yml$" . yaml-mode))
