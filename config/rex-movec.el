@@ -65,6 +65,10 @@
 ;; ring. Combine with Embark and mix well.
 (use-package consult
   :config
+  (defun rex/consult-ripgrep-in-project ()
+    "Run consult-ripgrep in the current project root."
+    (interactive)
+    (consult-ripgrep (project-root (project-current))))
   (consult-customize consult-themes :preview-key (kbd "M-.")
                      consult-buffer :preview-key (kbd "M-."))
   :general
@@ -93,6 +97,7 @@
     "sI" 'consult-imenu-multi
     "sl" 'consult-line
     "se" 'consult-isearch-history
+    "sp" 'rex/consult-ripgrep-in-project
     ;;local leader
     "mm" 'consult-mode-command))
 
