@@ -88,6 +88,11 @@
 
 (use-package org
   :config
+  (defun rex/reload-agenda ()
+    "Revert all org buffers and reload the agenda."
+    (interactive)
+    (org-revert-all-org-buffers)
+    (org-agenda-redo))
   ;; A function that is mostly just stolen from Doom, but is trimmed down to only
   ;; do things that I need it to do.
   (defun rex/org-dwim-at-point (&optional arg)
@@ -124,6 +129,7 @@ headline or follow a link."
             "C-l" '(lambda () (interactive) (org-eval-in-calendar '(calendar-forward-day 1))))
   (:states 'normal
    :keymaps 'org-agenda-mode-map
+            "R" 'rex/reload-agenda
             "q" 'org-agenda-quit
             "RET" 'org-agenda-goto)
   (:keymaps 'org-src-mode-map
