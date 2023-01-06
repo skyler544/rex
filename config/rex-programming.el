@@ -4,6 +4,7 @@
 (use-package eglot
   :hook
   (c++-mode . eglot-ensure)
+  (c-mode . eglot-ensure)
   (eglot-managed-mode . (lambda ()
                           (setq eldoc-documentation-function
                                 'eldoc-documentation-compose-eagerly)))
