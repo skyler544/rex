@@ -12,6 +12,7 @@
   (setq org-catch-invisible-edits 'show-and-error)
   (setq org-M-RET-may-split-line nil)
   (setq org-hide-emphasis-markers t)
+  (add-to-list 'org-file-apps '("\\.png\\'" . "feh %s"))
   (setq org-list-demote-modify-bullet
         '(("+" . "-") ("-" . "+") ("*" . "+")))
   :hook
