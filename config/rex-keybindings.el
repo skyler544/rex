@@ -20,6 +20,7 @@
     "s" '(:ignore t :which-key "search")
     "c" '(:ignore t :which-key "code")
     "o" '(:ignore t :which-key "open")
+    "e" '(:ignore t :which-key "eval")
     "g" '(:ignore t :which-key "goto")
     "p" '(:ignore t :which-key "project")
     "f" '(:ignore t :which-key "file")
@@ -47,8 +48,13 @@
     "&" 'async-shell-command
     "!" 'shell-command
     "R" 'rex/shell-command-on-region-or-line
+    ;; eval
+    "eb" 'eval-buffer
+    "er" 'eval-region
+    "ef" 'eval-defun
     ;; open
     "oe" 'eshell
+    "om" 'man
     "oc" 'calendar
     ;; toggle
     "tt" 'toggle-truncate-lines
