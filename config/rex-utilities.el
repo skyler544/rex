@@ -4,6 +4,9 @@
 
 ;; Terminal emulation
 (use-package vterm
+  :general
+  (rex-leader
+    "ot" 'vterm)
   :commands vterm)
 
 (use-package eat
