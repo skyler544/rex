@@ -42,6 +42,7 @@
   (setq-default truncate-lines t)
   (setq-default tab-width 4)
   (setq-default fill-column 80)
+  (setq Man-notify-method 'aggressive)
   (setq max-mini-window-height 8)
   (setq inhibit-compacting-font-caches t)
   (setq confirm-kill-processes nil)
