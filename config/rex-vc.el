@@ -3,6 +3,7 @@
 ;; Version control utilities.
 (use-package magit
   :config
+  (setq magit-diff-refine-hunk t)
   (setq magit-save-repository-buffers nil)
   :general
   (rex-leader
