@@ -78,7 +78,7 @@
 (load "rex-settings")
 
 ;; Theme and font-face settings.
-(when (display-graphic-p) (load "rex-ui"))
+(load "rex-ui")
 
 ;; Help utilities.
 (load "rex-help")
