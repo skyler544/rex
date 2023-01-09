@@ -110,3 +110,6 @@
 
 ;; Hacky code
 (load "rex-hacks")
+
+;; mu4e
+(load "~/build/rex-email/rex-email")
