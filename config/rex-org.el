@@ -2,6 +2,7 @@
 ;;
 ;; General settings
 (use-package org
+  :diminish org-indent-mode
   :config
   (setq org-link-frame-setup '((file . find-file)))
   (setq org-fontify-whole-heading-line t)
@@ -74,6 +75,7 @@
   (setq org-eldoc-breadcrumb-separator "::"))
 
 (use-package evil-org
+  :diminish evil-org-mode
   :general
   (:states 'normal
    :keymaps 'org-agenda-mode-map
