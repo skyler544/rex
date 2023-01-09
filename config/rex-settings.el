@@ -43,7 +43,6 @@
   (setq-default tab-width 4)
   (setq-default fill-column 80)
   (setq auth-sources '("~/.authinfo.gpg"))
-  (setq mode-line-client nil)
   (setq Man-notify-method 'aggressive)
   (setq max-mini-window-height 8)
   (setq inhibit-compacting-font-caches t)
@@ -57,6 +56,24 @@
   (setq redisplay-skip-fontification-on-input t)
   (menu-bar-mode -1)
   (column-number-mode))
+
+;; mode line settings
+(use-package emacs
+  :config
+  (setq mode-line-client nil)
+  (setq-default
+   mode-line-mule-info
+   `("" (current-input-method
+      (:propertize ("" current-input-method-title)
+                   local-map ,mode-line-input-method-map
+                   mouse-face mode-line-highlight))
+     (:eval
+      (propertize (cond ((memq buffer-file-coding-system '(utf-8-unix)) "-")
+        (t (propertize "%z" 'face 'warning)))
+       'help-echo 'mode-line-mule-info-help-echo
+       'mouse-face 'mode-line-highlight
+       'local-map mode-line-coding-system-map))
+     (:eval (mode-line-eol-desc)))))
 
 ;; minibuffer settings
 (use-package emacs
