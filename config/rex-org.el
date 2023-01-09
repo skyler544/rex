@@ -75,7 +75,7 @@
 
 (use-package evil-org
   :general
-  (:states '(normal visual)
+  (:states 'normal
    :keymaps 'org-agenda-mode-map
             "k" 'org-agenda-previous-line
             "j" 'org-agenda-next-line)
