@@ -4,13 +4,15 @@
 (use-package emacs
   :init
   (scroll-bar-mode -1)
-  (tool-bar-mode -1))
+  (tool-bar-mode -1)
+  :custom-face
+  (variable-pitch ((t (:family "monospace"))))
+  (help-key-binding
+   ((t (:foreground nil :background nil :box nil :inverse-video t)))))
 
 (use-package info
   :ensure nil
   :custom-face
-  (help-key-binding
-   ((t (:foreground nil :background nil :box nil :inverse-video t))))
   (info-menu-star ((t (:foreground nil))))
   (Info-quoted
    ((t (:inherit nil :inherit font-lock-function-name-face)))))
