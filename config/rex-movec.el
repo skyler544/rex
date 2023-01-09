@@ -81,6 +81,8 @@
   (rex-leader
     ":" 'consult-complex-command
     "," 'consult-buffer
+    ;; buffers
+    "bb" 'consult-bookmark
     ;; code
     "ce" 'consult-flymake
     ;; files

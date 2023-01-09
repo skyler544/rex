@@ -68,6 +68,7 @@
     "br" 'revert-buffer
     "bk" 'kill-this-buffer
     ;; files
+    "fP" 'ffap
     "fs" 'save-buffer
     "fS" 'write-file
     "ff" 'find-file))
