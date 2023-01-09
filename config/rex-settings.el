@@ -43,6 +43,7 @@
   (setq-default tab-width 4)
   (setq-default fill-column 80)
   (setq auth-sources '("~/.authinfo.gpg"))
+  (setq mode-line-client nil)
   (setq Man-notify-method 'aggressive)
   (setq max-mini-window-height 8)
   (setq inhibit-compacting-font-caches t)
