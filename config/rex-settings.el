@@ -69,7 +69,7 @@
                    mouse-face mode-line-highlight))
      (:eval
       (propertize (cond ((memq buffer-file-coding-system '(utf-8-unix)) "-")
-        (t (propertize "%z" 'face 'warning)))
+        (t (propertize "%z" 'face 'mode-line)))
        'help-echo 'mode-line-mule-info-help-echo
        'mouse-face 'mode-line-highlight
        'local-map mode-line-coding-system-map))
