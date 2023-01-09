@@ -21,6 +21,13 @@
   (rex-leader
     "mD" 'docker))
 
+(use-package bufler)
+
+(use-package burly
+  :general
+  (rex-leader
+    "bB" 'burly-bookmark-windows))
+
 ;; Keep this around just in case, but it seems like overkill to me
 ;; (use-package run-stuff
 ;;   :general
