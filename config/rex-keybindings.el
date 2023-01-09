@@ -68,6 +68,7 @@
     "br" 'revert-buffer
     "bk" 'kill-this-buffer
     ;; files
+    "fw" 'fixup-whitespace
     "fP" 'ffap
     "fs" 'save-buffer
     "fS" 'write-file

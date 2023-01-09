@@ -65,10 +65,10 @@
 ;; ring. Combine with Embark and mix well.
 (use-package consult
   :config
-  (defun rex/consult-ripgrep-in-project ()
-    "Run consult-ripgrep in the current project root."
+  (defun rex/consult-grep-in-current-directory ()
+    "Run consult-grep in the current directory."
     (interactive)
-    (consult-ripgrep (project-root (project-current))))
+    (consult-grep default-directory))
   (consult-customize consult-themes :preview-key (kbd "M-.")
                      consult-buffer :preview-key (kbd "M-."))
   :general
@@ -94,12 +94,12 @@
     ;; project
     "pb" 'consult-project-buffer
     ;; search
-    "sd" 'consult-ripgrep
+    "sd" 'rex/consult-grep-in-current-directory
     "si" 'consult-imenu
     "sI" 'consult-imenu-multi
     "sl" 'consult-line
     "se" 'consult-isearch-history
-    "sp" 'rex/consult-ripgrep-in-project
+    "sp" 'consult-grep
     ;;local leader
     "mm" 'consult-mode-command))
 
