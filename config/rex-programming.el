@@ -63,9 +63,9 @@
 
 (use-package compile
   :ensure nil
-  :config
-  (set-face-attribute 'compilation-warning nil :slant 'normal)
-  (set-face-attribute 'compilation-error nil :weight 'normal))
+  :custom-face
+  (compilation-warning ((t (:slant normal))))
+  (compilation-error ((t (:weight normal)))))
 
 (use-package hl-todo
   :hook (prog-mode . hl-todo-mode))

@@ -13,21 +13,16 @@
 (use-package git-timemachine
   :commands (git-timemachine))
 
-;; Show diffs in the fringe.
-(use-package diff-hl
-  :hook (prog-mode . diff-hl-mode))
-
 ;; Display git blame for the current line
 (use-package why-this
   :diminish why-this-mode
   :general
   (rex-leader
     "tb" 'why-this-mode)
-  :config
-  (set-face-attribute 'why-this-face nil :foreground nil)
-  (set-face-attribute 'why-this-face nil
-                      :inherit 'font-lock-comment-face
-                      :slant 'normal))
+  :custom-face
+  (why-this-face ((t (:foreground nil))))
+  (why-this-face
+   ((t (:inherit font-lock-comment-face :slant normal)))))
 
 ;; Change the vc-mode function to display the current project root
 ;; name instead of the vc backend. Since I have no reason to use any

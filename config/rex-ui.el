@@ -4,34 +4,26 @@
 (use-package emacs
   :init
   (scroll-bar-mode -1)
-  (tool-bar-mode -1)
-  (set-fringe-mode 4)
-  (setq default-frame-alist
-        (append (list '(font . "Iosevka Custom Extended:size=20"))))
-  (set-face-attribute 'variable-pitch nil
-                    :family "Iosevka Custom Extended"
-                    :slant 'oblique)
-  (set-face-attribute 'help-key-binding nil
-                      :background 'nil
-                      :foreground 'nil
-                      :weight 'bold
-                      :box '(:line-width -1)))
+  (tool-bar-mode -1))
 
 (use-package info
   :ensure nil
-  :config
-  (set-face-attribute 'info-menu-star nil :foreground 'nil)
-  (set-face-attribute 'Info-quoted nil :inherit 'nil)
-  (set-face-attribute 'Info-quoted nil :inherit 'font-lock-function-name-face))
+  :custom-face
+  (help-key-binding
+   ((t (:foreground nil :background nil :box nil :inverse-video t))))
+  (info-menu-star ((t (:foreground nil))))
+  (Info-quoted
+   ((t (:inherit nil :inherit font-lock-function-name-face)))))
 
 ;; Huge theme pack 
 (use-package doom-themes
+  :custom-face
+  (line-number
+   ((t (:inherit nil :background nil :slant normal))))
+  (line-number-current-line
+   ((t (:inherit nil :background nil :slant normal))))
   :config
-  (load-theme 'doom-nord-aurora t)
-  (set-face-attribute 'line-number nil
-                      :slant 'normal)
-  (set-face-attribute 'line-number-current-line nil
-                      :slant 'normal))
+  (load-theme 'doom-nord-aurora t))
 
 ;; Flashy modeline
 (use-package moody
@@ -46,10 +38,9 @@
 
 (use-package all-the-icons-dired
   :hook (dired-mode . all-the-icons-dired-mode)
-  :config
-  (set-face-attribute 'all-the-icons-dired-dir-face nil
-                      :foreground nil
-                      :inherit 'font-lock-type-face))
+  :custom-face
+  (all-the-icons-dired-dir-face
+   ((t (:foreground nil :inherit font-lock-type-face)))))
 
 ;; Show the results of C-x C-e directly in the buffer
 (use-package eros
@@ -60,6 +51,8 @@
 (use-package pulsar
   :demand t
   :after evil
+  :custom-face
+  (pulsar-generic ((t (:background nil :inherit region))))
   :general
   (rex-leader
     "C-SPC" 'pulsar-highlight-line)
@@ -78,8 +71,6 @@
           isearch-repeat-backward))
   (dolist (fkt pulsar-functions)
     (add-to-list 'pulsar-pulse-functions fkt))
-  (face-spec-reset-face 'pulsar-generic)
-  (set-face-attribute 'pulsar-generic nil :inherit 'region)
   (pulsar-global-mode))
 
 ;; Highlight hex color strings (and some other kinds) in the buffer
@@ -95,3 +86,18 @@
 
 (use-package saveplace-pdf-view
   :after pdf-tools)
+
+;; Show diffs in the fringe.
+(use-package diff-hl
+  :custom-face
+  (diff-hl-insert ((t (:background nil))))
+  (diff-hl-change ((t (:background nil))))
+  (diff-hl-delete ((t (:background nil))))
+  :config
+  (let* ((height (frame-char-height))
+         (width 4)
+         (ones (1- (expt 2 width)))
+         (bits (make-vector height ones)))
+    (define-fringe-bitmap 'rex/diff-hl-bitmap bits height width))
+  (setq diff-hl-fringe-bmp-function (lambda (type pos) 'rex/diff-hl-bitmap))
+  :hook (prog-mode . diff-hl-mode))

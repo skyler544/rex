@@ -39,6 +39,18 @@
 
 ;; Font settings
 (use-package org
+  :custom-face
+  (org-agenda-date
+   ((t (:foreground nil :inherit font-lock-comment-face :weight semi-bold))))
+  (org-agenda-date-today
+   ((t (:foreground nil :inherit success :weight semi-bold))))
+  (org-agenda-date-weekend
+   ((t (:foreground nil :inherit font-lock-keyword-face :weight semi-bold))))
+  (org-date-selected
+   ((t (:foreground nil :inverse-video nil :inherit highlight))))
+  (org-block ((t (:background nil))))
+  (org-block-begin-line ((t (:background nil))))
+  (org-block-end-line ((t (:background nil))))
   :config
   (setq org-todo-keyword-faces
         '(("TODO" . (:inherit (bold success org-todo)))
@@ -46,19 +58,6 @@
           ("IDEA" . (:inherit (bold font-lock-string-face org-todo)))
           ("DONE" . (:inherit (bold font-lock-comment-face org-todo)))
           ("KILL" . (:inherit (bold error org-todo)))))
-  (set-face-attribute 'org-agenda-date nil
-                      :foreground (face-foreground 'font-lock-comment-face)
-                      :weight 'semi-bold)
-  (set-face-attribute 'org-agenda-date-today nil
-                      :foreground (face-foreground 'success)
-                      :weight 'semi-bold)
-  (set-face-attribute 'org-agenda-date-weekend nil
-                      :foreground (face-foreground 'font-lock-keyword-face)
-                      :weight 'semi-bold)
-  (set-face-attribute 'org-date-selected nil
-                      :foreground 'unspecified
-                      :inverse-video 'unspecified
-                      :inherit 'highlight)
   (setq org-ellipsis " ⯆")
   ;; I prefer not to have lots of colors for different heading levels;
   ;; the indentation is enough and the colors seem noisy.
@@ -68,9 +67,7 @@
           org-level-5 org-level-6
           org-level-7 org-level-8))
   (dolist (face rex/org-levels)
-    (set-face-attribute face nil :inherit nil :weight 'bold))
-  (dolist (face '(org-block org-block-begin-line org-block-end-line))
-    (set-face-attribute face nil :background nil)))
+    (set-face-attribute face nil :inherit nil :weight 'bold)))
 
 (use-package org-contrib
   :config
