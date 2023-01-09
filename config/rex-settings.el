@@ -42,6 +42,7 @@
   (setq-default truncate-lines t)
   (setq-default tab-width 4)
   (setq-default fill-column 80)
+  (setq auth-sources '("~/.authinfo.gpg"))
   (setq Man-notify-method 'aggressive)
   (setq max-mini-window-height 8)
   (setq inhibit-compacting-font-caches t)
@@ -84,6 +85,16 @@
                    (calendar-iso-from-absolute
                     (calendar-absolute-from-gregorian (list month day year)))))
           'font-lock-face 'font-lock-keyword-face)))
+
+;; automatically make directories if necessary
+(use-package emacs
+  :config
+  (defadvice find-file (before make-directory-maybe (filename &optional wildcards) activate)
+    "Create parent directory if not exists while visiting file."
+    (unless (file-exists-p filename)
+      (let ((dir (file-name-directory filename)))
+        (unless (file-exists-p dir)
+          (make-directory dir t))))))
 
 ;; built-in packages
 (use-package eldoc

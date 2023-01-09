@@ -18,6 +18,8 @@
 ;; use-package will not be loaded and none of the rest of the
 ;; configuration will work.
 
+(setq load-prefer-newer noninteractive)
+
 ;; https://github.com/karthink/.emacs.d/blob/cc34b599f4478441ab7eccb60b7516303a2b330d/early-init.el#L16
 ;; This snippet has something of the "cargo cult" about it, but it did shave a
 ;; few hundredths of a second off of the init time. Absolutely critical feature

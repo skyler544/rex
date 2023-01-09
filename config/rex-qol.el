@@ -40,6 +40,8 @@
     "tk" 'popper-kill-latest-popup
     "tp" 'popper-toggle-type)
   :init
+  (setq popper-mode-line
+        (propertize " ▼ " 'face 'mode-line-emphasis))
   (setq popper-echo-mode t)
   (setq popper-window-height 0.35)
   (setq popper-reference-buffers
@@ -50,6 +52,7 @@
           "\\*Calendar\\*"
           ("\\*Org Links\\*" . hide)
           "\\*Apropos\\*"
+          "\\*Process List\\*"
           "\\*.*docker.*\\*"
           "\\*eldoc\\*" eldoc-mode
           "\\*vterm\\*" vterm-mode
