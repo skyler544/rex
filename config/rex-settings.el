@@ -68,8 +68,7 @@
                    local-map ,mode-line-input-method-map
                    mouse-face mode-line-highlight))
      (:eval
-      (propertize (cond ((memq buffer-file-coding-system '(utf-8-unix)) "-")
-        (t (propertize "%z" 'face 'mode-line)))
+      (propertize "-"
        'help-echo 'mode-line-mule-info-help-echo
        'mouse-face 'mode-line-highlight
        'local-map mode-line-coding-system-map))
