@@ -178,7 +178,11 @@
 (use-package dired
   :ensure nil
   :config
+  (defun rex/set-file-associations ()
+    (add-to-list 'dired-guess-shell-alist-user '("\\.pdf\\'" "zathura"))
+    (add-to-list 'dired-guess-shell-alist-user '("\\.mp4\\'" "vlc")))
   (setq dired-dwim-target t)
   :hook
+  (dired-mode . rex/set-file-associations)
   (dired-mode . dired-hide-details-mode)
   (dired-mode . (lambda () (load "dired-x"))))
