@@ -167,6 +167,6 @@ headline or follow a link."
   (setq org-superstar-headline-bullets-list '("●")))
 
 (use-package org-pdftools
-  :after '(org pdf-tools)
+  :after pdf-loader
   :commands org-pdftools-export
   :hook (org-mode . org-pdftools-setup-link))
