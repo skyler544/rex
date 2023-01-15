@@ -69,3 +69,58 @@
   "Noop -- there must be a better way of disabling this."
   (interactive)
   (ignore))
+
+(use-package evil-lion
+  :config (evil-lion-mode))
+
+;; window movement; stolen from doom
+(use-package evil
+  :config
+  (defun rex--window-swap (direction)
+    "Move current window to the next window in DIRECTION.
+If there are no windows there and there is only one window, split in that
+direction and place this window there. If there are no windows and this isn't
+the only window, use evil-window-move-* (e.g. `evil-window-move-far-left')."
+    (when (window-dedicated-p)
+      (user-error "Cannot swap a dedicated window"))
+    (let* ((this-window (selected-window))
+           (this-buffer (current-buffer))
+           (that-window (windmove-find-other-window direction nil this-window))
+           (that-buffer (window-buffer that-window)))
+      (when (or (minibufferp that-buffer)
+                (window-dedicated-p this-window))
+        (setq that-buffer nil that-window nil))
+      (if (not (or that-window (one-window-p t)))
+          (funcall (pcase direction
+                     ('left  #'evil-window-move-far-left)
+                     ('right #'evil-window-move-far-right)
+                     ('up    #'evil-window-move-very-top)
+                     ('down  #'evil-window-move-very-bottom)))
+        (unless that-window
+          (setq that-window
+                (split-window this-window nil
+                              (pcase direction
+                                ('up 'above)
+                                ('down 'below)
+                                (_ direction))))
+          (setq that-buffer (window-buffer that-window)))
+        (window-swap-states this-window that-window)
+        (select-window that-window))))
+  (defun rex/window-move-left ()
+    "Swap windows to the left."
+    (interactive) (rex--window-swap 'left))
+  (defun rex/window-move-down ()
+    "Swap windows downward."
+    (interactive) (rex--window-swap 'down))
+  (defun rex/window-move-up ()
+    "Swap windows upward."
+    (interactive) (rex--window-swap 'up))
+  (defun rex/window-move-right ()
+    "Swap windows to the right"
+    (interactive) (rex--window-swap 'right))
+  :general
+  (rex-leader
+    "wH" 'rex/window-move-left
+    "wJ" 'rex/window-move-down
+    "wK" 'rex/window-move-up
+    "wL" 'rex/window-move-right))
