@@ -84,3 +84,7 @@
 
 (use-package highlight-quoted
   :hook (emacs-lisp-mode . highlight-quoted-mode))
+
+(use-package ess
+  :hook (ess-r-mode . eglot-ensure)
+  :mode ("\\.R$" . R-mode))
