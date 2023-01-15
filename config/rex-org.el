@@ -88,6 +88,10 @@
 
 (use-package org
   :config
+  (defun rex/agenda ()
+    "Open the agenda with all todos."
+    (interactive)
+    (org-agenda 1 "n"))
   (defun rex/reload-agenda ()
     "Revert all org buffers and reload the agenda."
     (interactive)
@@ -142,7 +146,7 @@ headline or follow a link."
             "C-o" 'evil-org-open-below)
   (rex-leader
     "mt" 'org-todo
-    "ma" 'org-agenda
+    "ma" 'rex/agenda
     "md" 'org-deadline
     "ml" 'org-store-link)
   (rex-leader
