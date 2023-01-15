@@ -23,7 +23,10 @@
 (use-package org
   :config
   (add-to-list 'org-modules 'org-habit)
-  (setq org-habit-show-habits-only-for-today nil))
+  (setq org-habit-show-habits-only-for-today nil)
+  :general
+  (:keymaps 'normal
+    "K" 'org-habit-toggle-display-in-agenda))
 
 ;; Agenda / workflow settings
 (use-package org
