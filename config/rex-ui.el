@@ -83,8 +83,11 @@
 (use-package pdf-tools
   :diminish pdf-view-midnight-minor-mode
   :mode ("\\.pdf\\'" . pdf-view-mode)
-  :hook (pdf-view-mode . pdf-view-themed-minor-mode)
-  :config (setq-default pdf-view-display-size 'fit-width))
+  :config
+  (pdf-loader-install)
+  (setq pdf-view-resize-factor 1.1)
+  (setq-default pdf-view-display-size 'fit-width)
+  :hook (pdf-view-mode . pdf-view-themed-minor-mode))
 
 (use-package saveplace-pdf-view
   :after pdf-tools)
