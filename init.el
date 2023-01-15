@@ -79,12 +79,6 @@
 ;; Global configuration unrelated to specific external packages.
 (load "rex-settings")
 
-;; Theme and font-face settings.
-(when (or
-       (boundp 'server-process)
-       (display-graphic-p)
-       (load "rex-ui")))
-
 ;; Help utilities.
 (load "rex-help")
 
@@ -114,5 +108,5 @@
 ;; Hacky code
 (load "rex-hacks")
 
-;; mu4e
-(load "~/build/rex-email/rex-email")
+(use-package modus-themes
+  :config (load-theme 'modus-vivendi t))
