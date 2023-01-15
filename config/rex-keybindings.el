@@ -67,6 +67,7 @@
     "bz" 'bury-buffer
     "br" 'revert-buffer
     "bk" 'kill-this-buffer
+    "bm" 'bookmark-set
     ;; files
     "fw" 'fixup-whitespace
     "fP" 'ffap
