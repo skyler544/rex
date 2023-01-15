@@ -20,9 +20,13 @@
   (rex-leader
     "tb" 'why-this-mode)
   :custom-face
-  (why-this-face ((t (:foreground nil))))
   (why-this-face
-   ((t (:inherit font-lock-comment-face :slant normal)))))
+   ((t (:foreground nil :inherit font-lock-comment-face :slant normal)))))
+
+;; Disable support for obscure VCS
+(use-package emacs
+  :config
+  (setq-default vc-handled-backends '(Git)))
 
 ;; Change the vc-mode function to display the current project root
 ;; name instead of the vc backend. Since I have no reason to use any
@@ -38,3 +42,12 @@
                      (format "^ %s" (vc-backend buffer-file-name))
                      (concat " " (rex/last-dir (project-root (project-current)))) vc-mode)))
         (setq vc-mode noback)))))
+
+;; Disable vc-mode when remotely editing
+(use-package emacs
+  :config
+  (defun rex/vc-off-remote ()
+    "Disable vc-mode while editing remote files."
+    (if (file-remote-p (buffer-file-name))
+        (setq-local vc-handled-backends nil)))
+  :hook (find-file . rex/vc-off-remote))
