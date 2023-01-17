@@ -82,3 +82,9 @@
   :general
   (rex-leader
     "to" 'olivetti-mode))
+
+(use-package expand-region
+  :general
+  (rex-leader
+    "=" 'er/expand-region
+    "-" 'er/contract-region))
