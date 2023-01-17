@@ -22,6 +22,8 @@
             "g" '+evil:whole-buffer-txtobj)
   (:keymaps 'evil-outer-text-objects-map
             "g" '+evil:whole-buffer-txtobj)
+  (:keymaps 'insert
+            "C-k" 'ignore)
   :config
   (evil-set-initial-state 'org-agenda-mode 'normal)
   (evil-define-text-object +evil:whole-buffer-txtobj (count &optional _beg _end type)
