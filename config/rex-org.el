@@ -84,6 +84,11 @@
    :keymaps 'org-agenda-mode-map
             "k" 'org-agenda-previous-line
             "j" 'org-agenda-next-line)
+  (:keymaps 'evil-inner-text-objects-map
+            "e" 'evil-org-inner-object
+            "E" 'evil-org-inner-element
+            "r" 'evil-org-inner-greater-element
+            "R" 'evil-org-inner-subtree)
   :config (defun rex/start-evil-org-mode ()
             (evil-org-mode))
   :after org
