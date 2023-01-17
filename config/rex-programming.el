@@ -88,3 +88,6 @@
 (use-package ess
   :hook (ess-r-mode . eglot-ensure)
   :mode ("\\.R$" . R-mode))
+
+(use-package markdown-mode
+  :mode ("\\.md$" . markdown-mode))
