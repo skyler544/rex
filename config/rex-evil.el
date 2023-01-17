@@ -61,10 +61,30 @@
 ;; Add keybindings for changing inner/outer blocks/quotes.
 (use-package evil-textobj-anyblock
   :config
+  (evil-define-text-object rex/evil-textobj-anyblock-inner-quote
+    (count &optional beg end type)
+    "Select the closest inner quote."
+    (let ((evil-textobj-anyblock-blocks
+           '(("'" . "'")
+             ("\"" . "\"")
+             ("`" . "'")
+             ("“" . "”"))))
+      (evil-textobj-anyblock--make-textobj beg end type count nil)))
+  (evil-define-text-object rex/evil-textobj-anyblock-a-quote
+    (count &optional beg end type)
+    "Select the closest outer quote."
+    (let ((evil-textobj-anyblock-blocks
+           '(("'" . "'")
+             ("\"" . "\"")
+             ("`" . "'")
+             ("“" . "”"))))
+      (evil-textobj-anyblock--make-textobj beg end type count t)))
   :general
   (:keymaps 'evil-inner-text-objects-map
+            "q" 'rex/evil-textobj-anyblock-inner-quote
             "b" 'evil-textobj-anyblock-inner-block)
   (:keymaps 'evil-outer-text-objects-map
+            "q" 'rex/evil-textobj-anyblock-a-quote
             "b" 'evil-textobj-anyblock-a-block))
 
 (defun evil-record-macro ()
