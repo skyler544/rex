@@ -80,10 +80,7 @@
 (load "rex-settings")
 
 ;; Theme and font-face settings.
-(when (or
-       (boundp 'server-process)
-       (display-graphic-p)
-       (load "rex-ui")))
+(load "rex-ui")
 
 ;; Help utilities.
 (load "rex-help")
