@@ -91,3 +91,24 @@
 
 (use-package markdown-mode
   :mode ("\\.md$" . markdown-mode))
+
+(use-package eldoc-box
+  :after eglot
+  :config
+  (defun rex/eldoc-box-scroll-up ()
+    "Scroll up in `eldoc-box--frame'"
+    (interactive)
+    (with-current-buffer eldoc-box--buffer
+      (with-selected-frame eldoc-box--frame
+        (scroll-down 3))))
+  (defun rex/eldoc-box-scroll-down ()
+    "Scroll down in `eldoc-box--frame'"
+    (interactive)
+    (with-current-buffer eldoc-box--buffer
+      (with-selected-frame eldoc-box--frame
+        (scroll-up 3))))
+  :general
+  (:keymaps 'eglot-mode-map
+            "C-k" 'rex/eldoc-box-scroll-up
+            "C-j" 'rex/eldoc-box-scroll-down
+            "M-h" 'eldoc-box-eglot-help-at-point))
