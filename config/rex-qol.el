@@ -88,3 +88,6 @@
   (rex-leader
     "=" 'er/expand-region
     "-" 'er/contract-region))
+
+(use-package default-text-scale
+  :config (default-text-scale-mode))
