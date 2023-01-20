@@ -21,6 +21,8 @@
   (rex-leader
     "mD" 'docker))
 
+(use-package docker-tramp)
+
 (use-package bufler)
 
 (use-package burly
