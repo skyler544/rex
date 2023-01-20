@@ -5,6 +5,7 @@
   :init
   (scroll-bar-mode -1)
   (tool-bar-mode -1)
+  (setq custom-theme-directory (concat user-emacs-directory "themes/"))
   :custom-face
   (variable-pitch ((t (:family "monospace"))))
   (help-key-binding
@@ -26,6 +27,7 @@
    ((t (:inherit nil :background nil :slant normal))))
   :config
   (load-theme 'doom-nord-aurora t))
+  ;; (load-theme 'doom-opera-light-alt t))
 
 ;; Flashy modeline
 (use-package moody
