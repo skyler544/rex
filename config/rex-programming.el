@@ -10,7 +10,6 @@
                                 'eldoc-documentation-compose-eagerly)))
   :general
   (rex-leader
-    "ch" 'eldoc
     "cf" 'eglot-format-buffer
     "cd" 'eglot-find-declaration
     "cD" 'eglot-find-implementation
