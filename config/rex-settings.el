@@ -185,7 +185,14 @@
     (add-to-list 'dired-guess-shell-alist-user '("\\.pdf\\'" "zathura"))
     (add-to-list 'dired-guess-shell-alist-user '("\\.mp4\\'" "vlc")))
   (setq dired-dwim-target t)
+  (setq dired-auto-revert-buffer t)
   :hook
   (dired-mode . rex/set-file-associations)
   (dired-mode . dired-hide-details-mode)
   (dired-mode . (lambda () (load "dired-x"))))
+
+(use-package proced
+  :ensure nil
+  :config
+  (setq-default proced-auto-update-flag t)
+  (setq proced-auto-update-interval 2))
