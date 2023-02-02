@@ -76,11 +76,28 @@
     (consult-ripgrep default-directory))
   (consult-customize consult-themes :preview-key (kbd "M-.")
                      consult-buffer :preview-key (kbd "M-."))
+
+  (defun rex/consult-buffer-state-no-tramp ()
+    "Buffer state function that doesn't preview Tramp buffers."
+    (let ((orig-state (consult--buffer-state))
+          (filter (lambda (action cand)
+                    (if (or (eq action 'return)
+                            (let ((buffer (get-buffer cand)))
+                              (and buffer
+                                   (not (file-remote-p (buffer-local-value 'default-directory buffer))))))
+                        cand
+                      nil))))
+      (lambda (action cand)
+        (funcall orig-state action (funcall filter action cand)))))
+
+  (setq consult--source-buffer
+        (plist-put consult--source-buffer :state #'rex/consult-buffer-state-no-tramp))
+
   :general
   ("C-x b" 'consult-buffer)
   (:keymaps '(normal visual)
-           "P" 'consult-yank-from-kill-ring
-           "," 'consult-line)
+            "P" 'consult-yank-from-kill-ring
+            "," 'consult-line)
   (:keymaps 'vertico-map
             "M-s" 'consult-history)
   (rex-leader
