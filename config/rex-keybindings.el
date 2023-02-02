@@ -45,7 +45,6 @@
     "d" 'dired-jump
     "x" 'Control-X-prefix
     "Q" 'save-buffers-kill-emacs
-    "&" 'async-shell-command
     "!" 'shell-command
     "R" 'rex/shell-command-on-region-or-line
     ;; eval
