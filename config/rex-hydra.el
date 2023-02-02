@@ -45,6 +45,10 @@ Resize: _h_: left  _j_: down  _k_: up  _l_: right "
     ("k" hydra-move-splitter-up         )
     ("l" hydra-move-splitter-right      )
     ("q" nil                           ))
+
+  (setq hydra--work-around-dedicated nil)
+  (hydra-set-property '+hydra/window-nav :verbosity 0)
+
   :general
   (rex-leader
     "ww" '+hydra/window-nav/body))
