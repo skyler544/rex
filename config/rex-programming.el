@@ -92,7 +92,7 @@
   :mode ("\\.md$" . markdown-mode))
 
 (use-package eldoc-box
-  :after eglot
+  :defer t
   :config
   (defun rex/eldoc-box-scroll-up ()
     "Scroll up in `eldoc-box--frame'"
@@ -111,3 +111,10 @@
             "C-k" 'rex/eldoc-box-scroll-up
             "C-j" 'rex/eldoc-box-scroll-down
             "M-h" 'eldoc-box-eglot-help-at-point))
+
+(use-package treemacs
+  :defer t
+  :commands 'treemacs)
+
+(use-package emacs
+  :hook (after-save . executable-make-buffer-file-executable-if-script-p))
