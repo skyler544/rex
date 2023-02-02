@@ -14,6 +14,7 @@
   (setq org-M-RET-may-split-line nil)
   (setq org-hide-emphasis-markers t)
   (add-to-list 'org-file-apps '("\\.png\\'" . "feh %s"))
+  (add-to-list 'org-export-backends 'md)
   (setq org-list-demote-modify-bullet
         '(("+" . "-") ("-" . "+") ("*" . "+")))
   :hook
