@@ -30,6 +30,8 @@
   (rex-leader
     "bB" 'burly-bookmark-windows))
 
+(use-package dash)
+
 ;; Keep this around just in case, but it seems like overkill to me
 ;; (use-package run-stuff
 ;;   :general
