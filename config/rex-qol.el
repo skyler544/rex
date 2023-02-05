@@ -90,3 +90,24 @@
     "&" 'detached-shell-command)
   :custom ((detached-show-output-on-attach t)
            (detached-terminal-data-command system-type)))
+
+(use-package diredfl
+  :hook (dired-mode . diredfl-mode))
+
+(use-package dired-collapse
+  :load-path "~/build/dired-hacks/"
+  :hook (dired-mode . dired-collapse-mode))
+
+(use-package dired-subtree
+  :load-path "~/build/dired-hacks/"
+  :config
+  (setq rex/dired-subtree-levels
+        '(dired-subtree-depth-1-face dired-subtree-depth-2-face
+          dired-subtree-depth-3-face dired-subtree-depth-4-face
+          dired-subtree-depth-5-face dired-subtree-depth-6-face))
+  (dolist (face rex/dired-subtree-levels)
+    (set-face-attribute face nil :extend t))
+  :general
+  (:states 'normal
+   :keymaps 'dired-mode-map
+            "TAB" 'dired-subtree-toggle))
