@@ -26,7 +26,8 @@
   (add-to-list 'org-modules 'org-habit)
   (setq org-habit-show-habits-only-for-today nil)
   :general
-  (:keymaps 'normal
+  (:states 'normal
+   :keymaps 'org-agenda-mode-map
     "K" 'org-habit-toggle-display-in-agenda))
 
 ;; Agenda / workflow settings
