@@ -185,6 +185,7 @@
     (add-to-list 'dired-guess-shell-alist-user '("\\.pdf\\'" "zathura"))
     (add-to-list 'dired-guess-shell-alist-user '("\\.mp4\\'" "vlc"))
     (add-to-list 'dired-guess-shell-alist-user '("\\.mkv\\'" "vlc")))
+  (setq dired-listing-switches "-alh --group-directories-first --no-group")
   (setq dired-dwim-target t)
   (setq dired-auto-revert-buffer t)
   :hook
