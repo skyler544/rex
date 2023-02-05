@@ -197,4 +197,5 @@
   :ensure nil
   :config
   (setq-default proced-auto-update-flag t)
-  (setq proced-auto-update-interval 2))
+  (setq proced-auto-update-interval 2)
+  (setq dired-hide-details-hide-symlink-targets nil))
