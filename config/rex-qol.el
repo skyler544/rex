@@ -64,16 +64,6 @@
   :config
   (popper-mode))
 
-(use-package ibuffer-project
-  :config
-  (setq ibuffer-project-cache (concat rex/cache-dir "ibuffer-project-cache"))
-  (setq ibuffer-project-use-cache t)
-  :hook
-  (ibuffer . (lambda ()
-               (setq ibuffer-filter-groups (ibuffer-project-generate-filter-groups))
-               (unless (eq ibuffer-sorting-mode 'project-file-relative)
-                 (ibuffer-do-sort-by-project-file-relative)))))
-
 (use-package wgrep
   :config
   (setq wgrep-auto-save-buffer t))
