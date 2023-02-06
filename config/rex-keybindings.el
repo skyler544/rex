@@ -31,9 +31,7 @@
 ;; Miscellaneous keybindings
 (use-package emacs
   :general
-  ("M-j" 'rex/scroll-other-window-down
-   "M-k" 'rex/scroll-other-window-up
-   "C-=" 'text-scale-increase
+  ("C-=" 'text-scale-increase
    "C--" 'text-scale-decrease
    "C-0" 'text-scale-adjust
    "M-n" 'forward-list
