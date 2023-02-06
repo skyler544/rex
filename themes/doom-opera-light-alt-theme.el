@@ -104,6 +104,7 @@ determine the exact padding."
    (vc-modified    orange)
    (vc-added       green)
    (vc-deleted     red)
+   (cursor         base7)
 
    ;; custom categories
    (hidden     `(,(car bg) "black" "black"))
