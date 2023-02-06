@@ -58,7 +58,10 @@
   :ensure nil
   :config
   (setq flymake-mode-line-format
-        '(" " flymake-mode-line-exception flymake-mode-line-counters)))
+        '(" " flymake-mode-line-exception flymake-mode-line-counters))
+  :general
+  (rex-leader
+    "tf" 'flymake-mode))
 
 (use-package compile
   :ensure nil
@@ -68,12 +71,6 @@
 
 (use-package hl-todo
   :hook (prog-mode . hl-todo-mode))
-
-(use-package flymake
-  :ensure nil
-  :general
-  (rex-leader
-    "tf" 'flymake-mode))
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
