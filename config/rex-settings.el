@@ -188,6 +188,7 @@
   (setq dired-listing-switches "-alh --group-directories-first --no-group")
   (setq dired-dwim-target t)
   (setq dired-auto-revert-buffer t)
+  (setq dired-clean-confirm-killing-deleted-buffers nil)
   :hook
   (dired-mode . rex/set-file-associations)
   (dired-mode . dired-hide-details-mode)
