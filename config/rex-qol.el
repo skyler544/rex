@@ -120,4 +120,4 @@
   :general
   (:states 'normal
    :keymaps 'dired-mode-map
-            "TAB" 'dired-subtree-toggle))
+   "o" 'dired-subtree-cycle))
