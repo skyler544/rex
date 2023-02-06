@@ -161,6 +161,8 @@ headline or follow a link."
     "ml" 'org-store-link)
   (rex-leader
     :keymaps 'org-mode-map
+    "mco" 'org-clock-out
+    "mci" 'org-clock-in
     "me" 'org-export-dispatch))
 
 ;; This package lets you pick how the leading symbol for each level of
