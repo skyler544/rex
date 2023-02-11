@@ -87,7 +87,7 @@ determine the exact padding."
    (selection      dark-blue)
    (builtin        teal)
    (comments       (doom-darken base6 0.2))
-   (doc-comments   (doom-lighten (if doom-opera-light-alt-brighter-comments dark-cyan base5) 0.25))
+   (doc-comments   (doom-darken base6 0.2))
    (constants      magenta)
    (functions      teal)
    (keywords       blue)
