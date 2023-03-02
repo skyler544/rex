@@ -18,6 +18,7 @@
   (setq org-list-demote-modify-bullet
         '(("+" . "-") ("-" . "+") ("*" . "+")))
   :hook
+  (org-mode . electric-pair-mode)
   (org-mode . auto-fill-mode))
 
 ;; Habit settings
