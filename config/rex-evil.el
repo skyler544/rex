@@ -25,6 +25,7 @@
   (:keymaps 'insert
             "C-k" 'ignore)
   :config
+  (setq evil-mode-line-format '(before . moody-mode-line-buffer-identification))
   (evil-set-initial-state 'org-agenda-mode 'normal)
   (evil-define-text-object +evil:whole-buffer-txtobj (count &optional _beg _end type)
     "Text object to select the whole buffer."
