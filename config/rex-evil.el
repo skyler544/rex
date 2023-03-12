@@ -147,3 +147,8 @@ the only window, use evil-window-move-* (e.g. `evil-window-move-far-left')."
     "wJ" 'rex/window-move-down
     "wK" 'rex/window-move-up
     "wL" 'rex/window-move-right))
+
+(use-package evil-nerd-commenter
+  :general
+  (:keymaps '(normal visual)
+            "gcc" 'evilnc-comment-or-uncomment-lines))
