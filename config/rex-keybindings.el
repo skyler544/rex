@@ -50,6 +50,7 @@
     "er" 'eval-region
     "ef" 'eval-defun
     ;; open
+    "of" 'make-frame
     "oe" 'eshell
     "om" 'man
     "oc" 'calendar
@@ -83,6 +84,11 @@
   :general
   (rex-leader
     "bi" 'ibuffer))
+
+(use-package dired
+  :ensure nil
+  :general (:keymaps '(normal dired-mode-map)
+                     "C-k" 'dired-kill-line))
 
 (use-package winner
   :demand t
