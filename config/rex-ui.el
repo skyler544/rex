@@ -89,7 +89,14 @@
   (pdf-loader-install)
   (setq pdf-view-resize-factor 1.1)
   (setq-default pdf-view-display-size 'fit-width)
-  :hook (pdf-view-mode . pdf-view-themed-minor-mode))
+  (setq pdf-view-use-scaling t)
+  (setq pdf-view-use-imagemagick nil)
+  :general
+  (:keymaps 'pdf-view-mode-map
+            "M-m" 'pdf-view-themed-minor-mode)
+  :hook
+  (pdf-view-mode . (lambda () (auto-composition-mode -1)))
+  (pdf-view-mode . pdf-view-themed-minor-mode))
 
 (use-package saveplace-pdf-view
   :after pdf-tools)
@@ -101,10 +108,14 @@
   (diff-hl-change ((t (:background nil))))
   (diff-hl-delete ((t (:background nil))))
   :config
-  (let* ((height (frame-char-height))
-         (width 4)
-         (ones (1- (expt 2 width)))
-         (bits (make-vector height ones)))
-    (define-fringe-bitmap 'rex/diff-hl-bitmap bits height width))
-  (setq diff-hl-fringe-bmp-function (lambda (type pos) 'rex/diff-hl-bitmap))
-  :hook (prog-mode . diff-hl-mode))
+  (defun rex/diff-hl-settings-apply ()
+    (interactive)
+    (let* ((height (frame-char-height))
+           (width 4)
+           (ones (1- (expt 2 width)))
+           (bits (make-vector height ones)))
+      (define-fringe-bitmap 'rex/diff-hl-bitmap bits height width))
+    (setq diff-hl-fringe-bmp-function (lambda (type pos) 'rex/diff-hl-bitmap)))
+  :hook
+  (prog-mode . diff-hl-mode)
+  (diff-hl-mode . rex/diff-hl-settings-apply))
