@@ -23,6 +23,7 @@
   (setq recentf-save-file (concat rex/cache-dir "recentf"))
   (setq recentf-max-saved-items 200)
   (setq recentf-max-menu-items 200)
+  (add-to-list 'recentf-exclude '("\\/sudo:root@localhost.*"))
   (recentf-mode 1)
   (run-at-time nil (* 5 60) 'recentf-save-list))
 
