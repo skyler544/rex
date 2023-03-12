@@ -92,15 +92,6 @@
 (use-package default-text-scale
   :config (default-text-scale-mode))
 
-(use-package detached
-  :init
-  (detached-init)
-  :general
-  (rex-leader
-    "&" 'detached-shell-command)
-  :custom ((detached-show-output-on-attach t)
-           (detached-terminal-data-command system-type)))
-
 (use-package diredfl
   :hook (dired-mode . diredfl-mode))
 
