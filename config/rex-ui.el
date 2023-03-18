@@ -7,6 +7,8 @@
   (tool-bar-mode -1)
   (setq custom-theme-directory (concat user-emacs-directory "themes/"))
   :custom-face
+  (whitespace-newline ((t (:foreground nil :inherit font-lock-warning-face))))
+  (whitespace-space ((t (:foreground nil :inherit font-lock-warning-face))))
   (variable-pitch ((t (:family "monospace"))))
   (help-key-binding
    ((t (:foreground nil :background nil :box nil :inverse-video t)))))
