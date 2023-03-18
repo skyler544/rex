@@ -112,8 +112,14 @@
             "M-h" 'eldoc-box-eglot-help-at-point))
 
 (use-package treemacs
-  :defer t
+  :init
+  (require 'treemacs-all-the-icons)
+  (treemacs-load-theme "all-the-icons")
+  :config
+  (setq treemacs-wrap-around nil)
   :commands 'treemacs)
+
+(use-package treemacs-evil)
 
 (use-package emacs
   :hook (after-save . executable-make-buffer-file-executable-if-script-p))
