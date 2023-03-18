@@ -123,3 +123,11 @@
 
 (use-package emacs
   :hook (after-save . executable-make-buffer-file-executable-if-script-p))
+
+(use-package fancy-compilation
+  :commands (fancy-compilation-mode))
+
+(with-eval-after-load 'compile
+  (fancy-compilation-mode))
+
+(use-package prism)
