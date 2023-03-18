@@ -5,6 +5,8 @@
 (use-package vertico
   :init
   (vertico-mode)
+  :custom-face
+  (vertico-group-title ((t (:inherit font-lock-comment-face))))
   :general
   (:keymaps 'vertico-map
             "C-j" 'vertico-next
@@ -55,6 +57,8 @@
   ("C-h B" 'embark-bindings)
   (rex-leader
     "a" 'embark-act)
+  (:keymaps 'minibuffer-mode-map
+            "C-c C-e" 'embark-export)
   :config
   (setq embark-indicators '(embark-minimal-indicator))
   (setq embark-prompter 'embark-completing-read-prompter))
@@ -70,12 +74,12 @@
     (interactive)
     (let ((current-prefix-arg 1))
       (call-interactively 'consult-ripgrep)))
-  (defun rex/consult-grep-in-current-directory ()
+  (defun rex/consult-ripgrep-in-current-directory ()
     "Run consult-grep in the current directory."
     (interactive)
     (consult-ripgrep default-directory))
-  (consult-customize consult-themes :preview-key (kbd "M-.")
-                     consult-buffer :preview-key (kbd "M-."))
+
+  (consult-customize consult-buffer :preview-key nil)
 
   (defun rex/consult-buffer-state-no-tramp ()
     "Buffer state function that doesn't preview Tramp buffers."
@@ -116,14 +120,13 @@
     ;; project
     "pb" 'consult-project-buffer
     ;; search
-    "sg" 'rex/consult-ripgrep
-    "sd" 'rex/consult-grep-in-current-directory
+    "sd" 'rex/consult-ripgrep-in-current-directory
     "sD" 'rex/consult-ripgrep-in-a-directory
     "si" 'consult-imenu
     "sI" 'consult-imenu-multi
     "sl" 'consult-line
     "se" 'consult-isearch-history
-    "sp" 'consult-grep
+    "sp" 'consult-ripgrep
     ;;local leader
     "mm" 'consult-mode-command))
 
