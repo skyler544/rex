@@ -188,6 +188,8 @@
 ;; Dired settings
 (use-package dired
   :ensure nil
+  :init
+  (load "dired-x")
   :config
   (defun rex/set-file-associations ()
     (add-to-list 'dired-guess-shell-alist-user '("\\.pdf\\'" "zathura"))
@@ -199,8 +201,7 @@
   (setq dired-clean-confirm-killing-deleted-buffers nil)
   :hook
   (dired-mode . rex/set-file-associations)
-  (dired-mode . dired-hide-details-mode)
-  (dired-mode . (lambda () (load "dired-x"))))
+  (dired-mode . dired-hide-details-mode))
 
 (use-package proced
   :ensure nil
