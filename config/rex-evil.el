@@ -89,7 +89,7 @@
             "b" 'evil-textobj-anyblock-a-block))
 
 (defun evil-record-macro ()
-  "Noop -- there must be a better way of disabling this."
+  "NoOp -- there must be a better way of disabling this."
   (interactive)
   (ignore))
 
