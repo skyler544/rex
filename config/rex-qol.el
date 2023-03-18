@@ -34,6 +34,10 @@
 (use-package popper
   :demand t
   :general
+  (:keymaps '(normal visual)
+            "C-`" 'popper-toggle-latest
+            "M-`" 'popper-cycle
+            "C-M-`" 'popper-toggle-type)
   (rex-leader
     "tc" 'popper-cycle
     "tl" 'popper-toggle-latest
