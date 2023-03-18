@@ -1,18 +1,5 @@
 ;;; -*- lexical-binding: t -*-
 ;;
-;; Set the font and load a theme. Also disable unused GUI elements.
-(use-package emacs
-  :init
-  (scroll-bar-mode -1)
-  (tool-bar-mode -1)
-  (setq custom-theme-directory (concat user-emacs-directory "themes/"))
-  :custom-face
-  (whitespace-newline ((t (:foreground nil :inherit font-lock-warning-face))))
-  (whitespace-space ((t (:foreground nil :inherit font-lock-warning-face))))
-  (variable-pitch ((t (:family "monospace"))))
-  (help-key-binding
-   ((t (:foreground nil :background nil :box nil :inverse-video t)))))
-
 (use-package info
   :ensure nil
   :custom-face
@@ -23,17 +10,14 @@
 ;; Huge theme pack 
 (use-package doom-themes
   :custom-face
-  (line-number
-   ((t (:inherit nil :background nil :slant normal))))
-  (line-number-current-line
-   ((t (:inherit nil :background nil :slant normal))))
-  :config
-  (load-theme 'doom-nord-aurora t))
-  ;; (load-theme 'doom-opera-light-alt t))
+  (line-number ((t (:slant normal))))
+  (line-number-current-line ((t (:slant normal))))
+  :config (load-theme 'doom-nord-aurora t))
 
 ;; Flashy modeline
 (use-package moody
   :config
+  (setq evil-mode-line-format '(before . moody-mode-line-buffer-identification))
   (setq x-underline-at-descent-line t)
   (setq moody-mode-line-height 38)
   (moody-replace-mode-line-buffer-identification)
@@ -51,7 +35,10 @@
 ;; Show the results of C-x C-e directly in the buffer
 (use-package eros
   :config
-  (eros-mode 1))
+  (setq eros-eval-result-prefix "-> ")
+  (eros-mode 1)
+  :custom-face
+  (eros-result-overlay-face ((t (:box nil :inverse-video t)))))
 
 ;; Briefly flash current line after a long movement.
 (use-package pulsar
@@ -88,7 +75,6 @@
   :diminish pdf-view-midnight-minor-mode
   :mode ("\\.pdf\\'" . pdf-view-mode)
   :config
-  (pdf-loader-install)
   (setq pdf-view-resize-factor 1.1)
   (setq-default pdf-view-display-size 'fit-width)
   (setq pdf-view-use-scaling t)
