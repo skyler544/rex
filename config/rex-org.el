@@ -58,6 +58,8 @@
   (org-block ((t (:background nil))))
   (org-block-begin-line ((t (:background nil))))
   (org-block-end-line ((t (:background nil))))
+  (org-table ((t (:foreground nil :inverse-video t))))
+  (org-document-info-keyword ((t (:foreground nil :inherit font-lock-comment-face))))
   :config
   (setq org-todo-keyword-faces
         '(("TODO" . (:inherit (bold success org-todo)))
