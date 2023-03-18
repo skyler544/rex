@@ -4,14 +4,6 @@
 ;; packages.
 (use-package emacs
   :config
-  (defun rex/scroll-other-window-down ()
-    "Scroll the other window by a single line."
-    (interactive)
-    (scroll-other-window 1))
-  (defun rex/scroll-other-window-up ()
-    "Scroll the other window by a single line."
-    (interactive)
-    (scroll-other-window -1))
   (defun rex/split-and-follow-horizontally ()
     "Split window below and place point in the new window."
     (interactive)
