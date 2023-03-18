@@ -23,17 +23,38 @@
 
 (use-package docker-tramp)
 
-(use-package bufler)
-
-(use-package burly
-  :general
-  (rex-leader
-    "bB" 'burly-bookmark-windows))
-
 (use-package dash)
 
-;; Keep this around just in case, but it seems like overkill to me
-;; (use-package run-stuff
-;;   :general
-;;   (rex-leader
-;;     "R" 'run-stuff-command-on-region-or-line))
+;; Removes unintentional whitespace edits from lines that you've
+;; touched while editing a file.
+(use-package ws-butler
+  :diminish ws-butler-mode
+  :hook (prog-mode . ws-butler-mode))
+
+;; Provides many handy jump functions.  TODO: follow up on this
+;; article and learn to use avy more in combination with embark:
+;; https://karthinks.com/software/avy-can-do-anything/
+(use-package avy
+  :general
+  (:keymaps 'normal
+           "f" 'avy-goto-char-timer))
+
+;; Some nice editing/auxiliary functions.
+(use-package crux
+  :general
+  (rex-leader
+    "bK" 'crux-kill-other-buffers
+    "fy" 'crux-kill-buffer-truename
+    "fu" 'crux-sudo-edit
+    "fD" 'crux-delete-file-and-buffer
+    "fr" 'crux-rename-file-and-buffer))
+
+;; Fast refactoring of text
+(use-package iedit
+  :general
+  (:keymaps '(normal visual)
+           "?" 'iedit-mode))
+
+(use-package wgrep
+  :config
+  (setq wgrep-auto-save-buffer t))
