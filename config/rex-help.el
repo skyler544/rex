@@ -10,7 +10,6 @@
   (setq which-key-idle-delay 2)
   (setq which-key-add-column-padding 1)
   (setq which-key-side-window-slot -10)
-  ;; (setq which-key-idle-delay 10000)
   (setq which-key-idle-secondary-delay 0.05)
   (which-key-mode))
 
@@ -19,6 +18,7 @@
 ;; tree.
 (use-package helpful
   :general
+  ("C-h s" 'helpful-symbol)
   ("C-h f" 'helpful-callable)
   ("C-h k" 'helpful-key)
   ("C-h v" 'helpful-variable))

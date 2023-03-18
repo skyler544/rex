@@ -43,6 +43,7 @@
     "d" 'dired-jump
     "x" 'Control-X-prefix
     "Q" 'save-buffers-kill-emacs
+    "qf" 'delete-frame
     "!" 'shell-command
     "R" 'rex/shell-command-on-region-or-line
     ;; eval
@@ -63,6 +64,7 @@
     "h'" 'describe-char
     ;; buffers
     "bz" 'bury-buffer
+    "bR" 'rename-buffer
     "br" 'revert-buffer
     "bk" 'kill-this-buffer
     "bm" 'bookmark-set
