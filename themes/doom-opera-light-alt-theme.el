@@ -54,12 +54,12 @@ determine the exact padding."
   "A light Opera theme."
 
   ;; name        default   256       16
-  ((bg         '("#fdfdfd" nil       nil ))
+  ((bg         '("#f4f4f4" nil       nil ))
    (bg-alt     '("#eeeeee" nil       nil ))
    (base0      '("#fafafa" "#dfdfdf" nil ))
    (base1      '("#f5f5f5" "#979797" nil ))
    (base2      '("#eeeeee" "#6b6b6b" nil ))
-   (base3      '("#e0e0e0" "#525252" nil ))
+   (base3      '("#e0e0e5" "#525252" nil ))
    (base4      '("#B8C5DB" "#3f3f3f" "brightblack"))
    (base5      '("#AEBACF" "#525252" "brightblack"))
    (base6      '("#A1ACC0" "#6b6b6b" "brightblack"))
@@ -81,13 +81,15 @@ determine the exact padding."
    (cyan       '("#398eac" "#46D9FF" nil ))
    (dark-cyan  '("#2c7088" "#5699AF" nil ))
 
+   (grey-blue  '("#5d6d7d" "#5d6d7d" nil ))
+
    ;; face categories -- required for all themes
    (highlight      blue)
    (vertical-bar   (doom-darken base1 0.2))
    (selection      dark-blue)
    (builtin        teal)
-   (comments       (doom-darken base6 0.2))
-   (doc-comments   (doom-darken base6 0.2))
+   (comments       (doom-darken base6 0.3))
+   (doc-comments   (doom-darken base6 0.3))
    (constants      magenta)
    (functions      teal)
    (keywords       blue)
@@ -97,7 +99,7 @@ determine the exact padding."
    (strings        green)
    (variables      magenta)
    (numbers        magenta)
-   (region         (doom-lighten base4 0.2))
+   (region         (doom-lighten grey-blue 0.6))
    (error          red)
    (warning        yellow)
    (success        green)
@@ -114,17 +116,14 @@ determine the exact padding."
       (if (integerp doom-opera-light-alt-padded-modeline) doom-opera-light-alt-padded-modeline 4)))
 
    (modeline-fg     nil)
-   (modeline-fg-alt base5)
+   (modeline-fg-alt base7)
 
-   (modeline-bg
-    (if -modeline-bright
-        (doom-darken blue 0.45)
-      `(,(doom-darken (car bg-alt) 0.1) ,@(cdr base0))))
+   (modeline-bg (doom-lighten (doom-blend base0 grey-blue 0.5) 0.2))
    (modeline-bg-l
     (if -modeline-bright
         (doom-darken blue 0.475)
       `(,(doom-darken (car bg-alt) 0.15) ,@(cdr base0))))
-   (modeline-bg-inactive   `(,(car bg-alt) ,@(cdr base1)))
+   (modeline-bg-inactive (doom-lighten modeline-bg 0.2))
    (modeline-bg-inactive-l (doom-darken bg-alt 0.1)))
 
   ;;;; Base theme face overrides
@@ -140,6 +139,8 @@ determine the exact padding."
     :background modeline-bg-inactive :foreground modeline-fg-alt
     :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg-inactive)))
    (mode-line-emphasis :foreground (if -modeline-bright base8 highlight))
+
+   ((hl-line &override) :background (doom-lighten grey-blue 0.8))
 
    ;;;; doom-modeline
    (doom-modeline-bar :background (if -modeline-bright modeline-bg highlight))
