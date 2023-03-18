@@ -3,10 +3,7 @@
 ;; General programming utilities / settings
 ;; ****************************************
 (use-package tree-sitter
-  :diminish tree-sitter-mode
-  :hook
-  (c-mode-common . tree-sitter-hl-mode)
-  (java-mode . tree-sitter-hl-mode))
+  :diminish tree-sitter-mode)
 
 (use-package tree-sitter-langs)
 
