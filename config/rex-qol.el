@@ -47,10 +47,9 @@
   (setq popper-mode-line
         (propertize " ▼ " 'face 'mode-line-emphasis))
   (setq popper-echo-mode t)
-  (setq popper-window-height 0.35)
+  (setq popper-window-height 0.4)
   (setq popper-reference-buffers
         '("\\*Messages\\*"
-          "\\*compilation\\*"
           "Output\\*$"
           "\\*help.*\\*" help-mode
           "\\*Calendar\\*"
@@ -61,10 +60,7 @@
           "\\*eldoc\\*" eldoc-mode
           "\\*vterm\\*" vterm-mode
           "\\*eat\\*" eat-mode
-          "\\*eshell\\*" eshell-mode
-          comint-mode
-          ("\\*Async Shell Command\\*" . hide)
-          compilation-mode))
+          "\\*eshell\\*" eshell-mode))
   :config
   (popper-mode))
 
