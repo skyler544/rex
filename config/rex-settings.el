@@ -23,6 +23,7 @@
   (setq recentf-save-file (concat rex/cache-dir "recentf"))
   (setq recentf-max-saved-items 200)
   (setq recentf-max-menu-items 200)
+  (setq ring-bell-function 'ignore)
   (add-to-list 'recentf-exclude '("\\/sudo:root@localhost.*"))
   (recentf-mode 1)
   (run-at-time nil (* 5 60) 'recentf-save-list))
@@ -43,6 +44,7 @@
   (setq-default truncate-lines t)
   (setq-default tab-width 4)
   (setq-default fill-column 80)
+  (setq-default sentence-end-double-space nil)
   (setq auth-sources '("~/.authinfo.gpg"))
   (setq Man-notify-method 'aggressive)
   (setq max-mini-window-height 8)
@@ -51,12 +53,13 @@
   (setq byte-compile-warnings nil)
   (setq create-lockfiles nil)
   (setq make-backup-files nil)
-  (setq word-wrap nil)
+  (setq word-wrap t)
   (setq blink-cursor-mode nil)
   (setq fast-but-imprecise-scrolling t)
   (setq redisplay-skip-fontification-on-input t)
   (menu-bar-mode -1)
-  (column-number-mode))
+  (column-number-mode)
+  (subword-mode))
 
 ;; mode line settings
 (use-package emacs
@@ -177,6 +180,10 @@
   :config
   (setq tramp-persistency-file-name (concat rex/cache-dir "tramp-persistency-file"))
   (setq tramp-auto-save-directory (concat rex/cache-dir "tramp-autosave")))
+
+(use-package emacs
+  :config
+  (setq auto-save-list-file-prefix (concat rex/cache-dir "auto-save-list")))
 
 ;; Dired settings
 (use-package dired
