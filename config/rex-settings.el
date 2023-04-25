@@ -39,6 +39,7 @@
 (use-package emacs
   :config
   (put 'narrow-to-region 'disabled nil)
+  (put 'downcase-region 'disabled nil)
   (defalias 'yes-or-no-p 'y-or-n-p)
   (setq-default indent-tabs-mode nil)
   (setq-default truncate-lines t)
