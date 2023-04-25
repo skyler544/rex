@@ -48,6 +48,8 @@
                  (ibuffer-do-sort-by-project-file-relative)))))
 
 (use-package olivetti
+  :init
+  (setq olivetti-body-width 0.8)
   :general
   (rex-leader
     "to" 'olivetti-mode))
