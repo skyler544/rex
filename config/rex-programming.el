@@ -74,6 +74,8 @@
 ;; Language server support
 ;; ****************************************
 (use-package eglot
+  :custom-face
+  (eglot-inlay-hint-face ((t (:foreground nil :inherit font-lock-comment-face))))
   :hook
   (eglot-managed-mode . (lambda ()
                           (setq eldoc-documentation-function
