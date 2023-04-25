@@ -18,6 +18,8 @@
   (rex-leader
     "tf" 'flymake-mode))
 
+(use-package treemacs-all-the-icons)
+
 (use-package treemacs
   :init
   (require 'treemacs-all-the-icons)
