@@ -45,6 +45,7 @@
     "Q" 'save-buffers-kill-emacs
     "qf" 'delete-frame
     "!" 'shell-command
+    "&" 'async-shell-command
     "R" 'rex/shell-command-on-region-or-line
     ;; eval
     "eb" 'eval-buffer
@@ -57,7 +58,8 @@
     "oc" 'calendar
     ;; toggle
     "tt" 'toggle-truncate-lines
-    "tw" 'toggle-word-wrap
+    "tw" 'visual-line-mode
+    "tv" 'visible-mode
     ;; help
     "h" 'help-command
     "hF" 'describe-face
