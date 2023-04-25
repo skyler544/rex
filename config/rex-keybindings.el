@@ -71,6 +71,7 @@
     "bk" 'kill-this-buffer
     "bm" 'bookmark-set
     ;; files
+    "fy" 'rex/kill-relative-path
     "fw" 'fixup-whitespace
     "fP" 'ffap
     "fs" 'save-buffer
