@@ -21,7 +21,15 @@
                              (buffer-substring (region-beginning) (region-end))
                            (thing-at-point 'line t))))
 
+  (defun rex/large-file-read-only ()
+    "If a file is over a given size, make the buffer read only (and don't waste memory trying to use undo)"
+    (when (> (buffer-size) (* 1024 1024))
+      (setq buffer-read-only t)
+      (buffer-disable-undo)))
+
   (defun rex/kill-relative-path ()
     "Kill the path to the currect file relative to the project root."
     (interactive)
-    (kill-new (file-relative-name buffer-file-name (project-root (project-current t))))))
+    (kill-new (file-relative-name buffer-file-name (project-root (project-current t)))))
+
+  :hook (find-file . rex/large-file-read-only))
