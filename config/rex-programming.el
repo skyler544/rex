@@ -185,3 +185,21 @@
   :hook
   (rex/vue-mode . eglot-ensure)
   (rex/vue-mode . (lambda () (electric-indent-local-mode -1))))
+
+(use-package emacs
+  :hook
+  (TeX-mode . display-line-numbers-mode)
+  (TeX-mode . visual-line-mode)
+  :config
+
+  (setq tex-start-options "--shell-escape"))
+
+(use-package auctex
+  :mode ("\\.tex\\'" . LaTeX-mode))
+
+(use-package auctex-latexmk
+  :hook (LaTeX-mode . (lambda () (setq TeX-command-default "LatexMk")))
+  :init
+  (setq auctex-latexmk-inherit-TeX-PDF-mode t)
+  :config
+  (auctex-latexmk-setup))
