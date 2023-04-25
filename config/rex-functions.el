@@ -19,4 +19,9 @@
     (interactive)
     (async-shell-command (if (use-region-p)
                              (buffer-substring (region-beginning) (region-end))
-                           (thing-at-point 'line t)))))
+                           (thing-at-point 'line t))))
+
+  (defun rex/kill-relative-path ()
+    "Kill the path to the currect file relative to the project root."
+    (interactive)
+    (kill-new (file-relative-name buffer-file-name (project-root (project-current t))))))
