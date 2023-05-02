@@ -6,16 +6,23 @@
 ;;
 ;; This file should not be modified frequently (if at all).
 
+(setq package-enable-at-startup nil)
+(setq debug-on-error t)
+
 ;; Startup speed, annoyance suppression
 (setq gc-cons-threshold 10000000)
 (setq byte-compile-warnings '(not obsolete))
 (setq warning-suppress-log-types '((comp) (bytecomp)))
 
+(load (concat user-emacs-directory "elpaca-loader"))
+
 (use-package use-package
+  :elpaca nil
   :config
   (setq use-package-always-ensure t))
 
 (use-package emacs
+  :elpaca nil
   :init
   (scroll-bar-mode -1)
   (tool-bar-mode -1)
@@ -29,16 +36,6 @@
   (help-key-binding
    ((t (:foreground nil :background nil :box nil :inverse-video t)))))
 
-;; Add the melpa package archive and initialize the
-;; package system.
-(package-initialize)
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/")
-             '("org" . "https://orgmode.org/elpa/"))
-
-(when (not package-archive-contents)
-  (package-refresh-contents))
-
 ;; Adds a keyword to use-package that makes hiding minor modes from the modeline
 ;; simple
 (use-package diminish :demand t)
@@ -50,3 +47,5 @@
   :config
   (general-auto-unbind-keys)
   (general-evil-setup t))
+
+(elpaca-wait)

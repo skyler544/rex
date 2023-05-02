@@ -1,7 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 ;;
 (use-package info
-  :ensure nil
+  :elpaca nil
   :custom-face
   (info-menu-star ((t (:foreground nil))))
   (Info-quoted

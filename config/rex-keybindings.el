@@ -8,6 +8,8 @@
 ;; chords, starting with the spacebar and branching out to various
 ;; "leaves." Leaves may be single keys or further prefixes.
 (use-package general
+  :elpaca nil
+  :ensure nil
   :config
   (general-override-mode)
   (general-create-definer rex-leader
@@ -29,7 +31,7 @@
     "b" '(:ignore t :which-key "buffer")))
 
 ;; Miscellaneous keybindings
-(use-package emacs
+(use-package emacs :elpaca nil
   :general
   ("C-=" 'text-scale-increase
    "C--" 'text-scale-decrease
@@ -79,23 +81,25 @@
     "ff" 'find-file))
 
 (use-package project
-  :ensure nil
+  :elpaca nil
   :general
   (rex-leader
     "p" project-prefix-map))
 
 (use-package ibuffer
-  :ensure nil
+  :elpaca nil
   :general
   (rex-leader
     "bi" 'ibuffer))
 
 (use-package dired
+  :elpaca nil
   :ensure nil
   :general (:keymaps '(normal dired-mode-map)
                      "C-k" 'dired-kill-line))
 
 (use-package winner
+  :elpaca nil
   :demand t
   :config
   (winner-mode)
