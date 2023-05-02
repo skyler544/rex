@@ -56,7 +56,6 @@
   (setq make-backup-files nil)
   (setq word-wrap t)
   (setq blink-cursor-mode nil)
-  (setq fast-but-imprecise-scrolling t)
   (setq redisplay-skip-fontification-on-input t)
   (menu-bar-mode -1)
   (column-number-mode)
@@ -91,9 +90,11 @@
 ;; scrolling
 (use-package emacs
   :config
+  (setq fast-but-imprecise-scrolling t)
   (setq scroll-margin 0)
   (setq scroll-conservatively 101)
-  (setq scroll-preserve-screen-position t))
+  (setq scroll-preserve-screen-position t)
+  (pixel-scroll-precision-mode))
 
 ;; calendar
 (use-package emacs
