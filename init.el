@@ -18,73 +18,70 @@
 ;; use-package will not be loaded and none of the rest of the
 ;; configuration will work.
 
-(setq load-prefer-newer noninteractive)
+(use-package emacs
+  :elpaca nil
+  :config
+  ;; Set up config and cache directories
+  (setq rex/config-dir (concat user-emacs-directory "config/"))
+  (setq rex/cache-dir (concat user-emacs-directory ".cache/"))
+  (add-to-list 'load-path rex/config-dir)
 
-;; Don't warn about native comp stuff
-(setq native-comp-async-report-warnings-errors 'silent)
-(setq native-comp-deferred-compilation t)
+  ;; Do not add custom settings to the end of init.el. This file is never
+  ;; loaded; the intention is to have a place where the code generated
+  ;; by custom can land, and if desired, may be added to the
+  ;; configuration programmatically. This file may be deleted at any
+  ;; time without adverse effects.
+  (setq custom-file (concat rex/cache-dir "custom.el"))
 
-;; Set up config and cache directories
-(setq rex/config-dir (concat user-emacs-directory "config/"))
-(setq rex/cache-dir (concat user-emacs-directory ".cache/"))
-(add-to-list 'load-path rex/config-dir)
+  ;; Custom elisp functions.
+  (load "rex-functions")
 
-;; Do not add custom settings to the end of init.el. This file is never
-;; loaded; the intention is to have a place where the code generated
-;; by custom can land, and if desired, may be added to the
-;; configuration programmatically. This file may be deleted at any
-;; time without adverse effects.
-(setq custom-file (concat rex/cache-dir "custom.el"))
+  ;; Set up the keymap tree.
+  (load "rex-keybindings")
 
-;; Custom elisp functions.
-(load "rex-functions")
+  ;; Modal editing.
+  (load "rex-evil")
 
-;; Set up the keymap tree.
-(load "rex-keybindings")
+  ;; Hydra lets you create keymap menus
+  (load "rex-hydra")
 
-;; Modal editing.
-(load "rex-evil")
+  ;; Global configuration unrelated to specific external packages.
+  (load "rex-settings")
 
-;; Hydra lets you create keymap menus
-(load "rex-hydra")
+  ;; Theme and font-face settings.
+  (load "rex-ui")
 
-;; Global configuration unrelated to specific external packages.
-(load "rex-settings")
+  ;; Help utilities.
+  (load "rex-help")
 
-;; Theme and font-face settings.
-(load "rex-ui")
+  ;; Marginalia Orderless Vertico Embark Consult
+  ;; M.         O.        V.      E.     C.
+  (load "rex-movec")
 
-;; Help utilities.
-(load "rex-help")
+  ;; Utilities related to code-completion.
+  (load "rex-completion")
 
-;; Marginalia Orderless Vertico Embark Consult
-;; M.         O.        V.      E.     C.
-(load "rex-movec")
+  ;; Version-control helpers.
+  (load "rex-vc")
 
-;; Utilities related to code-completion.
-(load "rex-completion")
+  ;; Packages considered "nice to have" or which otherwise improve the
+  ;; user experience but do not fall into a more specific category.
+  (load "rex-qol")
 
-;; Version-control helpers.
-(load "rex-vc")
+  ;; Utility packages
+  (load "rex-utilities")
 
-;; Packages considered "nice to have" or which otherwise improve the
-;; user experience but do not fall into a more specific category.
-(load "rex-qol")
+  ;; Programming support.
+  (load "rex-programming")
 
-;; Utility packages
-(load "rex-utilities")
+  ;; Org mode, the swiss-army outline tool
+  (load "rex-org")
 
-;; Programming support.
-(load "rex-programming")
+  ;; Hacky code
+  (load "rex-hacks")
 
-;; Org mode, the swiss-army outline tool
-(load "rex-org")
+  ;; mu4e
+  (load "~/build/rex-email/rex-email")
 
-;; Hacky code
-(load "rex-hacks")
-
-;; mu4e
-(load "~/build/rex-email/rex-email")
-
-;; restore gc-cons-threshold
-(setq gc-cons-threshold 800000)
+  ;; restore gc-cons-threshold
+  (setq gc-cons-threshold 800000))

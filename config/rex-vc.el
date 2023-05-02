@@ -97,14 +97,14 @@ window that already exists in that direction. It will split otherwise."
    ((t (:foreground unspecified :inherit font-lock-comment-face :slant normal)))))
 
 ;; Disable support for obscure VCS
-(use-package emacs
+(use-package emacs :elpaca nil
   :config
   (setq-default vc-handled-backends '(Git)))
 
 ;; Change the vc-mode function to display the current project root
 ;; name instead of the vc backend. Since I have no reason to use any
 ;; other VCS than git, seeing the project name is more useful.
-(use-package emacs
+(use-package emacs :elpaca nil
   :config
   (defun rex/last-dir (str)
     (substring str (string-match "[^/]+/+$" str) -1))
@@ -117,7 +117,7 @@ window that already exists in that direction. It will split otherwise."
         (setq vc-mode noback)))))
 
 ;; Disable vc-mode when remotely editing
-(use-package emacs
+(use-package emacs :elpaca nil
   :config
   (defun rex/vc-off-remote ()
     "Disable vc-mode while editing remote files."
@@ -126,6 +126,8 @@ window that already exists in that direction. It will split otherwise."
   :hook (find-file . rex/vc-off-remote))
 
 (use-package smerge-mode
+  :elpaca nil
+  :ensure nil
   :defer t
   :config
   (defhydra unpackaged/smerge-hydra

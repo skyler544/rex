@@ -1,13 +1,14 @@
 ;;; -*- lexical-binding: t -*-
 ;;
 ;; Add support for code completion and snippets.
-(use-package emacs
+(use-package emacs :elpaca nil
   :config
   (setq tab-always-indent 'complete))
 
 ;; Corfu displays a popup with current candidates from the active
 ;; completion-at-point-function
 (use-package corfu
+  :elpaca (:files (:defaults "extensions/*"))
   :init
   (global-corfu-mode)
   (corfu-popupinfo-mode)
@@ -79,5 +80,6 @@
 (use-package tempel-collection
   :load-path "~/build/tempel-collection/"
   :ensure nil
+  :elpaca nil
   :init (require 'tempel-collection.el)
   :after tempel)

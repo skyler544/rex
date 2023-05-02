@@ -14,8 +14,6 @@
   (rex-leader
     "mD" 'docker))
 
-(use-package docker-tramp)
-
 (use-package dash)
 
 ;; Removes unintentional whitespace edits from lines that you've
@@ -59,6 +57,8 @@
   :hook (rfc-mode . page-break-lines-mode))
 
 (use-package image-dired
+  :elpaca nil
+  :ensure nil
   :defer t)
 
 (use-package adaptive-wrap

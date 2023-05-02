@@ -2,7 +2,7 @@
 ;;
 ;; This file defines any custom functions unrelated to specific
 ;; packages.
-(use-package emacs
+(use-package emacs :elpaca nil
   :config
   (defun rex/split-and-follow-horizontally ()
     "Split window below and place point in the new window."

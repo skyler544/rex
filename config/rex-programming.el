@@ -8,7 +8,7 @@
 (use-package tree-sitter-langs)
 
 (use-package flymake
-  :ensure nil
+  :elpaca nil
   :init
   (setq-default flymake-no-changes-timeout 1)
   :config
@@ -30,19 +30,19 @@
 
 (use-package treemacs-evil)
 
-(use-package emacs
+(use-package emacs :elpaca nil
   :hook (after-save . executable-make-buffer-file-executable-if-script-p))
 
 (use-package fancy-compilation
-  :commands (fancy-compilation-mode))
+  :commands 'fancy-compilation-mode
+  :config
+  (with-eval-after-load 'compile
+    (fancy-compilation-mode)))
 
-(with-eval-after-load 'compile
-  (fancy-compilation-mode))
-
-(use-package prism)
+;; (use-package prism)
 
 (use-package compile
-  :ensure nil
+  :elpaca nil
   :custom-face
   (compilation-warning ((t (:slant normal))))
   (compilation-error ((t (:weight normal)))))
@@ -131,6 +131,7 @@
 ;; Language config
 ;; ****************************************
 (use-package c-mode
+  :elpaca nil
   :ensure nil
   :hook
   (c-mode . eglot-ensure)
@@ -168,6 +169,8 @@
   ("\\.twig$" . web-mode))
 
 (use-package js
+  :elpaca nil
+  :ensure nil
   :hook
   (js-mode . tree-sitter-hl-mode)
   :mode ("\\.js$" . js-mode))
@@ -177,7 +180,7 @@
   (typescript-mode . tree-sitter-hl-mode)
   :mode ("\\.ts$" . typescript-mode))
 
- (use-package emacs
+ (use-package emacs :elpaca nil
   :after eglot
   :init
   (define-derived-mode rex/vue-mode web-mode "rex/vue"
@@ -188,7 +191,7 @@
   (rex/vue-mode . eglot-ensure)
   (rex/vue-mode . (lambda () (electric-indent-local-mode -1))))
 
-(use-package emacs
+(use-package emacs :elpaca nil
   :hook
   (TeX-mode . display-line-numbers-mode)
   (TeX-mode . visual-line-mode)

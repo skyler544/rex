@@ -3,6 +3,7 @@
 ;; This provides a vertical view of the current candidates while
 ;; interacting with the minibuffer.
 (use-package vertico
+  :elpaca (vertico :files (:defaults "extensions/*"))
   :init
   (vertico-mode)
   :custom-face
@@ -20,6 +21,7 @@
 ;; navigating directories.
 (use-package vertico-directory
   :after vertico
+  :elpaca nil
   :ensure nil
   :general
   (:keymaps 'vertico-map
