@@ -52,6 +52,12 @@
   :config
   (setq wgrep-auto-save-buffer t))
 
+(use-package page-break-lines)
+
+(use-package rfc-mode
+  :defer t
+  :hook (rfc-mode . page-break-lines-mode))
+
 (use-package image-dired
   :defer t)
 
