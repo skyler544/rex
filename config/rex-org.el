@@ -2,6 +2,7 @@
 ;;
 ;; General settings
 (use-package org
+  :defer t
   :diminish org-indent-mode
   :config
   (setq org-link-frame-setup '((file . find-file)))
@@ -29,23 +30,22 @@
   :general
   (:states 'normal
    :keymaps 'org-agenda-mode-map
-    "K" 'org-habit-toggle-display-in-agenda))
+    "K" 'org-habit-toggle-display-in-agenda)
 
-;; Agenda / workflow settings
-(use-package org
+  ;; Agenda / workflow settings
   :config
   (setq-default org-agenda-window-setup 'current-window)
   (setq org-agenda-span 10)
   (setq org-agenda-start-on-weekday nil)
   (setq org-agenda-start-day "-3d")
-  (setq org-agenda-files '("~/mega/org/todo.org" "~/mega/org/fh.org" "~/mega/org/habits.org"))
+  (setq org-agenda-files '("~/mega/org/todo.org" "~/mega/org/fh.org"))
+  ;; (setq org-agenda-files '("~/mega/org/todo.org" "~/mega/org/fh.org" "~/mega/org/habits.org"))
   (setq org-log-into-drawer t)
   (setq org-log-done 'time)
   (setq org-enforce-todo-dependencies t)
-  (setq org-todo-keywords '((sequence "TODO" "PROJ" "IDEA" "|" "DONE" "KILL"))))
+  (setq org-todo-keywords '((sequence "TODO" "PROJ" "IDEA" "|" "DONE" "KILL")))
 
-;; Font settings
-(use-package org
+  ;; Font settings
   :custom-face
   (org-agenda-date
    ((t (:foreground nil :inherit font-lock-comment-face :weight semi-bold))))
@@ -76,30 +76,8 @@
           org-level-5 org-level-6
           org-level-7 org-level-8))
   (dolist (face rex/org-levels)
-    (set-face-attribute face nil :inherit nil :weight 'bold)))
+    (set-face-attribute face nil :inherit nil :weight 'bold))
 
-(use-package org-contrib
-  :config
-  (setq org-eldoc-breadcrumb-separator "::"))
-
-(use-package evil-org
-  :diminish evil-org-mode
-  :general
-  (:states 'normal
-   :keymaps 'org-agenda-mode-map
-            "k" 'org-agenda-previous-line
-            "j" 'org-agenda-next-line)
-  (:keymaps 'evil-inner-text-objects-map
-            "e" 'evil-org-inner-object
-            "E" 'evil-org-inner-element
-            "r" 'evil-org-inner-greater-element
-            "R" 'evil-org-inner-subtree)
-  :config (defun rex/start-evil-org-mode ()
-            (evil-org-mode))
-  :after org
-  :hook (org-mode . rex/start-evil-org-mode))
-
-(use-package org
   :config
   (defun rex/agenda ()
     "Open the agenda with all todos."
@@ -134,10 +112,9 @@ headline or follow a link."
         ;; toggle a checkbox
         ((guard (org-element-property :checkbox (org-element-lineage context '(item) t)))
          (let ((match (and (org-at-item-checkbox-p) (match-string 1))))
-           (org-toggle-checkbox (if (equal match "[ ]") '(16)))))))))
+           (org-toggle-checkbox (if (equal match "[ ]") '(16))))))))
 
-;; keybindings
-(use-package org
+  ;; keybindings
   :general
   (:keymaps 'org-read-date-minibuffer-local-map
             "C-h" '(lambda () (interactive) (org-eval-in-calendar '(calendar-backward-day 1)))
@@ -167,6 +144,27 @@ headline or follow a link."
     "mco" 'org-clock-out
     "mci" 'org-clock-in
     "me" 'org-export-dispatch))
+
+(use-package org-contrib
+  :config
+  (setq org-eldoc-breadcrumb-separator "::"))
+
+(use-package evil-org
+  :diminish evil-org-mode
+  :general
+  (:states 'normal
+   :keymaps 'org-agenda-mode-map
+            "k" 'org-agenda-previous-line
+            "j" 'org-agenda-next-line)
+  (:keymaps 'evil-inner-text-objects-map
+            "e" 'evil-org-inner-object
+            "E" 'evil-org-inner-element
+            "r" 'evil-org-inner-greater-element
+            "R" 'evil-org-inner-subtree)
+  :config (defun rex/start-evil-org-mode ()
+            (evil-org-mode))
+  :after org
+  :hook (org-mode . rex/start-evil-org-mode))
 
 ;; This package lets you pick how the leading symbol for each level of
 ;; heading should look in general; I use it to enforce a single bullet
