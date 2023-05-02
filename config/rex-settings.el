@@ -3,8 +3,7 @@
 ;; General settings for built-in packages.
 
 ;; Save the 200 most recently visited files/directories
-(use-package emacs
-  :elpaca nil
+(use-package emacs :elpaca nil
   :config
   (setq recentf-save-file (concat rex/cache-dir "recentf"))
   (setq recentf-max-saved-items 200)
@@ -48,7 +47,7 @@
   (subword-mode))
 
 ;; mode line settings
-(use-package emacs
+(use-package emacs :elpaca nil
   :config
   (setq mode-line-client nil)
   (setq-default

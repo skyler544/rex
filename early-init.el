@@ -16,16 +16,12 @@
 
 (load (concat user-emacs-directory "elpaca-loader"))
 
-(use-package use-package
-  :elpaca nil
-  :config
-  (setq use-package-always-ensure t))
-
 (use-package emacs
   :elpaca nil
   :init
   (scroll-bar-mode -1)
   (tool-bar-mode -1)
+  (setq use-package-always-ensure t)
   (setq frame-resize-pixelwise t)
   (setq custom-theme-directory (concat user-emacs-directory "themes/"))
   :custom-face
