@@ -52,5 +52,13 @@
   :config
   (setq wgrep-auto-save-buffer t))
 
+(use-package image-dired
+  :defer t)
+
+(use-package adaptive-wrap
+  :hook (visual-line-mode . adaptive-wrap-prefix-mode)
+  :config
+  (setq-default adaptive-wrap-extra-indent 3))
+
 (use-package esup
   :defer t)
