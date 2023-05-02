@@ -94,7 +94,7 @@ window that already exists in that direction. It will split otherwise."
     "tb" 'why-this-mode)
   :custom-face
   (why-this-face
-   ((t (:foreground nil :inherit font-lock-comment-face :slant normal)))))
+   ((t (:foreground unspecified :inherit font-lock-comment-face :slant normal)))))
 
 ;; Disable support for obscure VCS
 (use-package emacs

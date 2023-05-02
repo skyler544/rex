@@ -3,7 +3,7 @@
 (use-package info
   :ensure nil
   :custom-face
-  (info-menu-star ((t (:foreground nil))))
+  (info-menu-star ((t (:foreground unspecified))))
   (Info-quoted
    ((t (:inherit nil :inherit font-lock-function-name-face)))))
 
@@ -30,7 +30,7 @@
   :hook (dired-mode . all-the-icons-dired-mode)
   :custom-face
   (all-the-icons-dired-dir-face
-   ((t (:foreground nil :inherit font-lock-type-face)))))
+   ((t (:foreground unspecified :inherit font-lock-type-face)))))
 
 ;; Show the results of C-x C-e directly in the buffer
 (use-package eros
@@ -45,7 +45,7 @@
   :demand t
   :after evil
   :custom-face
-  (pulsar-generic ((t (:background nil :inherit region))))
+  (pulsar-generic ((t (:background unspecified :inherit region))))
   :general
   (rex-leader
     "C-SPC" 'pulsar-highlight-line)
@@ -92,9 +92,9 @@
 ;; Show diffs in the fringe.
 (use-package diff-hl
   :custom-face
-  (diff-hl-insert ((t (:background nil))))
-  (diff-hl-change ((t (:background nil))))
-  (diff-hl-delete ((t (:background nil))))
+  (diff-hl-insert ((t (:background unspecified))))
+  (diff-hl-change ((t (:background unspecified))))
+  (diff-hl-delete ((t (:background unspecified))))
   :config
   (defun rex/diff-hl-settings-apply ()
     (interactive)

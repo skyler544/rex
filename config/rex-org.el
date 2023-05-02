@@ -46,18 +46,18 @@
   ;; Font settings
   :custom-face
   (org-agenda-date
-   ((t (:foreground nil :inherit font-lock-comment-face :weight semi-bold))))
+   ((t (:foreground unspecified :inherit font-lock-comment-face :weight semi-bold))))
   (org-agenda-date-today
-   ((t (:foreground nil :inherit success :weight semi-bold))))
+   ((t (:foreground unspecified :inherit success :weight semi-bold))))
   (org-agenda-date-weekend
-   ((t (:foreground nil :inherit font-lock-keyword-face :weight semi-bold))))
+   ((t (:foreground unspecified :inherit font-lock-keyword-face :weight semi-bold))))
   (org-date-selected
-   ((t (:foreground nil :inverse-video nil :inherit highlight))))
-  (org-block ((t (:background nil))))
-  (org-block-begin-line ((t (:background nil))))
-  (org-block-end-line ((t (:background nil))))
-  (org-table ((t (:foreground nil :inverse-video t))))
-  (org-document-info-keyword ((t (:foreground nil :inherit font-lock-comment-face))))
+   ((t (:foreground unspecified :inverse-video nil :inherit highlight))))
+  (org-block ((t (:background unspecified))))
+  (org-block-begin-line ((t (:background unspecified))))
+  (org-block-end-line ((t (:background unspecified))))
+  (org-table ((t (:foreground unspecified :inverse-video t))))
+  (org-document-info-keyword ((t (:foreground unspecified :inherit font-lock-comment-face))))
   :config
   (setq org-todo-keyword-faces
         '(("TODO" . (:inherit (bold success org-todo)))

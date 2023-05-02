@@ -76,7 +76,7 @@
 (use-package eglot
   :defer t
   :custom-face
-  (eglot-inlay-hint-face ((t (:foreground nil :inherit font-lock-comment-face))))
+  (eglot-inlay-hint-face ((t (:foreground unspecified :inherit font-lock-comment-face))))
   :hook
   (eglot-managed-mode . (lambda ()
                           (setq eldoc-documentation-function
@@ -159,7 +159,7 @@
 
 (use-package markdown-mode
   :custom-face
-  (markdown-code-face ((t (:background nil))))
+  (markdown-code-face ((t (:background unspecified))))
   :mode ("\\.md$" . markdown-mode))
 
 (use-package web-mode
