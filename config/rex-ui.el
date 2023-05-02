@@ -11,7 +11,7 @@
 (use-package doom-themes
   :custom-face
   (line-number ((t (:slant normal))))
-  (line-number-current-line ((t (:slant normal))))
+  (line-number-current-line ((t (:inherit nil :inherit 'default :slant normal :weight semi-bold))))
   :config (load-theme 'doom-nord-aurora t))
 
 ;; Flashy modeline
