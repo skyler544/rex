@@ -33,8 +33,7 @@ Can be an integer to determine the exact padding."
   "A theme inspired by Void linux"
 
   ;; name        default   256       16
-  (
-   (bg         '("#252525" nil       nil            )) ;; void-bg
+  ((bg         '("#252525" nil       nil            )) ;; void-bg
    (bg-alt     '("#222222" nil       nil            )) ;; vid-bg-05
    (base0      '("#000000" "black"   "black"        )) ;; void-bg-2
    (base1      '("#2B2B2B" "#1e1e1e" "brightblack"  )) ;; void-bg-1
@@ -49,26 +48,26 @@ Can be an integer to determine the exact padding."
    (fg-alt     '("#989890" "#2d2d2d" "white"        )) ;; void-fg-05
 
    (grey       base4)
-   (red        '("#CC9393" "#ff6655" "red"          )) ;; void-red
-   (orange     '("#DFAF8F" "#dd8844" "brightred"    )) ;; void-orange
-   (green      '("#295340" "#99bb66" "green"        )) ;; void-green
+   (red        '("#be443f" "#ff6655" "red"          )) ;; void-red
+   (orange     '("#dd8844" "#dd8844" "brightred"    )) ;; void-orange
+   (green      '("#7FA27F" "#99bb66" "green"        )) ;; void-green
    (teal       '("#4db5bd" "#44b9b1" "brightgreen"  )) ;; void-??
-   (yellow     '("#F0DFAF" "#ECBE7B" "yellow"       )) ;; void-yellow
+   (yellow     '("#c0aB6B" "#ECBE7B" "yellow"       )) ;; void-yellow
    (blue       '("#8CD0D3" "#51afef" "brightblue"   )) ;; void-blue
    (dark-blue  '("#2257A0" "#2257A0" "blue"         )) ;; void-??
-   (magenta    '("#DC8CC3" "#c678dd" "brightmagenta")) ;; void-magenta
+   (magenta    '("#c792ea" "#c678dd" "brightmagenta")) ;; void-magenta
    (violet     '("#a9a1e1" "#a9a1e1" "magenta"      )) ;; zendurn-??
-   (cyan       '("#88C0D0" "#46D9FF" "brightcyan"   )) ;; void-cyan
+   (cyan       '("#88b9c9" "#46D9FF" "brightcyan"   )) ;; void-cyan
    (dark-cyan  '("#5699AF" "#5699AF" "cyan"         )) ;; void-??
 
    ;; Extra void colors
    (fg-1       '("#656555"))
    (fg+2       '("#FFFFFD"))
-   (red-4      '("#8C5353"))
-   (red-1      '("#BC8383"))
-   (red+1      '("#DCA3A3"))
-   (yellow-2   '("#D0BF8F"))
-   (yellow-1   '("#E0CF9F"))
+   (red-4      '("#7e443f"))
+   (red-1      '("#ae443f"))
+   (red+1      '("#ce443f"))
+   (yellow-2   '("#a08B4B"))
+   (yellow-1   '("#c09B5B"))
    (green-2    '("#5F7F5F"))
    (green+1    '("#8FB28F"))
    (green+2    '("#9FC59F"))
@@ -86,19 +85,19 @@ Can be an integer to determine the exact padding."
    (highlight      blue)
    (vertical-bar   (doom-darken base1 0.1))
    (selection      dark-blue)
-   (builtin        fg)
+   (builtin        red)
    (comments       green+1)
    (doc-comments   green+2)
-   (constants      green+4)
+   (constants      red)
    (functions      cyan)
-   (keywords       yellow)
-   (methods        cyan)
-   (operators      blue)
-   (type           blue-1)
-   (strings        red)
-   (variables      orange)
-   (numbers        fg)
-   (region         (doom-darken green-2 0.1))
+   (keywords       green)
+   (methods        blue-2)
+   (operators      red)
+   (type           yellow)
+   (strings        violet)
+   (variables      dark-cyan)
+   (numbers        red)
+   (region         (doom-darken green 0.4))
    (error          red)
    (warning        yellow)
    (success        green)
@@ -133,15 +132,6 @@ Can be an integer to determine the exact padding."
    ;; (cursor :foreground fg :background base8)
    (cursor :background blue-2)
    (escape-glyph :foreground yellow :weight 'bold)
-   (font-lock-builtin-face :foreground fg :weight 'bold)
-   ;; (font-lock-comment-delimiter-face :foreground green-2)
-   ((font-lock-comment-face &override)
-    :background (if doom-void-comment-bg (doom-lighten bg 0.05)))
-   (font-lock-constant-face :foreground green+4)
-   (font-lock-doc-face :foreground green+2)
-   (font-lock-type-face :foreground blue-1)
-   (font-lock-warning-face :foreground yellow-1 :weight 'bold)
-   (font-lock-keyword-face :foreground yellow :weight 'bold)
    (highlight :background base3)
    (isearch :foreground yellow-2 :weight 'bold :background base6)
    (isearch-fail :foreground fg :background red-4)
