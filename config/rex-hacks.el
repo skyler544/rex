@@ -1,4 +1,5 @@
 (use-package eglot
+  :defer t
   :config
   ;; override this function to make the modeline less noisy
   (defun eglot--mode-line-format ()

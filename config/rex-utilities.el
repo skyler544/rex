@@ -58,3 +58,6 @@
 (use-package wgrep
   :config
   (setq wgrep-auto-save-buffer t))
+
+(use-package esup
+  :defer t)

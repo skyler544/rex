@@ -85,3 +85,6 @@
 
 ;; mu4e
 (load "~/build/rex-email/rex-email")
+
+;; restore gc-cons-threshold
+(setq gc-cons-threshold 800000)

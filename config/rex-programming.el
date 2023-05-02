@@ -74,6 +74,7 @@
 ;; Language server support
 ;; ****************************************
 (use-package eglot
+  :defer t
   :custom-face
   (eglot-inlay-hint-face ((t (:foreground nil :inherit font-lock-comment-face))))
   :hook
@@ -92,6 +93,7 @@
                        '(php-mode . ("phpactor" "language-server"))))
 
 (use-package eglot-java
+  :defer t
   :config
   (defun rex/open-jshell ()
     (interactive)

@@ -6,21 +6,10 @@
 ;;
 ;; This file should not be modified frequently (if at all).
 
-;; Add the melpa package archive and initialize the
-;; package system.
-(package-initialize)
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/")
-             '("org" . "https://orgmode.org/elpa/"))
-
-(when (not package-archive-contents)
-  (package-refresh-contents))
-
-;; This setting must be made before (require 'use-package)
-(setq use-package-enable-imenu-support t)
-
-(require 'use-package)
-(require 'use-package-ensure)
+;; Startup speed, annoyance suppression
+(setq gc-cons-threshold 10000000)
+(setq byte-compile-warnings '(not obsolete))
+(setq warning-suppress-log-types '((comp) (bytecomp)))
 
 (use-package use-package
   :config
@@ -39,6 +28,16 @@
   (variable-pitch ((t (:family "monospace"))))
   (help-key-binding
    ((t (:foreground nil :background nil :box nil :inverse-video t)))))
+
+;; Add the melpa package archive and initialize the
+;; package system.
+(package-initialize)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/")
+             '("org" . "https://orgmode.org/elpa/"))
+
+(when (not package-archive-contents)
+  (package-refresh-contents))
 
 ;; Adds a keyword to use-package that makes hiding minor modes from the modeline
 ;; simple

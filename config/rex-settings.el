@@ -152,6 +152,7 @@
   (save-place-mode t))
 
 (use-package eshell
+  :defer t
   :ensure nil
   :config
   (setq eshell-directory-name (concat rex/cache-dir "eshell")))
@@ -177,6 +178,7 @@
   (setq transient-history-file (concat rex/cache-dir "transient-history")))
 
 (use-package tramp
+  :defer t
   :ensure nil
   :config
   (setq tramp-persistency-file-name (concat rex/cache-dir "tramp-persistency-file"))
@@ -188,6 +190,7 @@
 
 ;; Dired settings
 (use-package dired
+  :defer t
   :ensure nil
   :init
   (load "dired-x")
@@ -205,6 +208,7 @@
   (dired-mode . dired-hide-details-mode))
 
 (use-package proced
+  :defer t
   :ensure nil
   :config
   (setq-default proced-auto-update-flag t)

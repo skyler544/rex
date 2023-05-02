@@ -126,6 +126,7 @@ window that already exists in that direction. It will split otherwise."
   :hook (find-file . rex/vc-off-remote))
 
 (use-package smerge-mode
+  :defer t
   :config
   (defhydra unpackaged/smerge-hydra
     (:color pink :hint nil :post (smerge-auto-leave))
