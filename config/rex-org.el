@@ -20,10 +20,8 @@
         '(("+" . "-") ("-" . "+") ("*" . "+")))
   :hook
   (org-mode . electric-pair-mode)
-  (org-mode . auto-fill-mode))
+  (org-mode . auto-fill-mode)
 
-;; Habit settings
-(use-package org
   :config
   (add-to-list 'org-modules 'org-habit)
   (setq org-habit-show-habits-only-for-today nil)
