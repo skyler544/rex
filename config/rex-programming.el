@@ -2,13 +2,13 @@
 ;;
 ;; General programming utilities / settings
 ;; ****************************************
+;; TODO: set up the integrated version
 (use-package tree-sitter
   :diminish tree-sitter-mode)
 
 (use-package tree-sitter-langs)
 
-(use-package flymake
-  :elpaca nil
+(use-package flymake :elpaca nil
   :init
   (setq-default flymake-no-changes-timeout 1)
   :config
@@ -39,13 +39,12 @@
   (with-eval-after-load 'compile
     (fancy-compilation-mode)))
 
-;; (use-package prism)
-
-(use-package compile
-  :elpaca nil
+(use-package compile :elpaca nil
   :custom-face
-  (compilation-warning ((t (:slant normal))))
-  (compilation-error ((t (:weight normal)))))
+  (compilation-warning
+   ((t ( :slant normal))))
+  (compilation-error
+   ((t ( :weight normal)))))
 
 (use-package hl-todo
   :hook (prog-mode . hl-todo-mode))
@@ -73,10 +72,12 @@
 
 ;; Language server support
 ;; ****************************************
-(use-package eglot
+(use-package eglot :elpaca nil
   :defer t
   :custom-face
-  (eglot-inlay-hint-face ((t (:foreground unspecified :inherit font-lock-comment-face))))
+  (eglot-inlay-hint-face
+   ((t ( :foreground unspecified
+         :inherit font-lock-comment-face))))
   :hook
   (eglot-managed-mode . (lambda ()
                           (setq eldoc-documentation-function
@@ -91,21 +92,6 @@
   :commands (eglot)
   :config (add-to-list 'eglot-server-programs
                        '(php-mode . ("phpactor" "language-server"))))
-
-(use-package eglot-java
-  :defer t
-  :config
-  (defun rex/open-jshell ()
-    (interactive)
-    (comint-run "jshell"))
-    :general
-  (rex-leader
-    :keymaps 'java-mode-map
-    "cR" 'eglot-java-run-main
-    "cT" 'eglot-java-run-test
-    "or" 'rex/open-jshell)
-  :hook
-  (java-mode . eglot-java-mode))
 
 (use-package eldoc-box
   :defer t
@@ -137,6 +123,21 @@
   (c-mode . eglot-ensure)
   (c-mode . tree-sitter-hl-mode)
   :hook (c-mode . (lambda () (setq c-basic-offset 4))))
+
+(use-package eglot-java
+  :defer t
+  :config
+  (defun rex/open-jshell ()
+    (interactive)
+    (comint-run "jshell"))
+    :general
+  (rex-leader
+    :keymaps 'java-mode-map
+    "cR" 'eglot-java-run-main
+    "cT" 'eglot-java-run-test
+    "or" 'rex/open-jshell)
+  :hook
+  (java-mode . eglot-java-mode))
 
 (use-package php-mode
   :hook
@@ -196,7 +197,6 @@
   (TeX-mode . display-line-numbers-mode)
   (TeX-mode . visual-line-mode)
   :config
-
   (setq tex-start-options "--shell-escape"))
 
 (use-package auctex

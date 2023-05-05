@@ -1,6 +1,5 @@
-(use-package eglot
+(use-package eglot :elpaca nil
   :defer t
-  :elpaca nil
   :config
   ;; override this function to make the modeline less noisy
   (defun eglot--mode-line-format ()
