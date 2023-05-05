@@ -14,9 +14,7 @@
 ;; standalone file inside the config/ directory. Such files may then
 ;; be explicitly loaded here. Disabling a file by removing or
 ;; commenting out the line that loads it should not break the rest of
-;; the configuration. One exception is the bootstrap file; without it,
-;; use-package will not be loaded and none of the rest of the
-;; configuration will work.
+;; the configuration.
 
 (use-package emacs
   :elpaca nil
