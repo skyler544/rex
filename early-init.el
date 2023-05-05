@@ -25,16 +25,26 @@
   (setq frame-resize-pixelwise t)
   (setq custom-theme-directory (concat user-emacs-directory "themes/"))
   :custom-face
-  (whitespace-newline ((t (:foreground nil :inherit font-lock-warning-face))))
-  (whitespace-space ((t (:foreground nil :inherit font-lock-warning-face))))
-  (fringe ((t (:background nil))))
-  (variable-pitch ((t (:family "monospace"))))
+  (whitespace-newline
+   ((t ( :foreground nil
+         :inherit font-lock-warning-face))))
+  (whitespace-space
+   ((t ( :foreground nil
+         :inherit font-lock-warning-face))))
+  (fringe
+   ((t ( :background nil))))
+  (variable-pitch
+   ((t ( :family "monospace"))))
   (help-key-binding
-   ((t (:foreground nil :background nil :box nil :inverse-video t)))))
+   ((t ( :foreground nil
+         :background nil
+         :box nil
+         :inverse-video t)))))
 
 ;; Adds a keyword to use-package that makes hiding minor modes from the modeline
 ;; simple
-(use-package diminish :demand t)
+(use-package diminish
+  :demand t)
 
 ;; general makes defining keys (particularly when using leader keys)
 ;; much simpler.
