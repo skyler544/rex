@@ -4,6 +4,7 @@
 (use-package hydra
   :init
   (require 'windmove)
+
   (defun hydra-move-splitter-left (arg)
     "Move window splitter left."
     (interactive "p")
@@ -35,7 +36,6 @@
           (windmove-find-other-window 'up))
         (shrink-window arg)
       (enlarge-window arg)))
-
 
   (defhydra +hydra/window-nav (:hint nil)
     "
