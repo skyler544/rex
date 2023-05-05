@@ -3,16 +3,6 @@
 ;; Control temporary windows programmatically
 (use-package popper
   :demand t
-  :general
-  (:keymaps '(normal visual)
-            "C-`" 'popper-toggle-latest
-            "M-`" 'popper-cycle
-            "C-M-`" 'popper-toggle-type)
-  (rex-leader
-    "tc" 'popper-cycle
-    "tl" 'popper-toggle-latest
-    "tk" 'popper-kill-latest-popup
-    "tp" 'popper-toggle-type)
   :init
   (setq popper-mode-line
         (propertize " ▼ " 'face 'mode-line-emphasis))
@@ -34,18 +24,24 @@
           comint-mode
           ("\\*Async Shell Command\\*" . hide)
           compilation-mode))
+  :general
+  (rex-leader
+    "tc" 'popper-cycle
+    "tl" 'popper-toggle-latest
+    "tk" 'popper-kill-latest-popup
+    "tp" 'popper-toggle-type)
   :config
   (popper-mode))
 
 (use-package ibuffer-project
   :config
-  (setq ibuffer-project-cache (concat rex/cache-dir "ibuffer-project-cache"))
   (setq ibuffer-project-use-cache t)
-  :hook
-  (ibuffer . (lambda ()
-               (setq ibuffer-filter-groups (ibuffer-project-generate-filter-groups))
+  (defun rex/enable-ibuffer-project ()
+    (setq ibuffer-filter-groups (ibuffer-project-generate-filter-groups))
                (unless (eq ibuffer-sorting-mode 'project-file-relative)
-                 (ibuffer-do-sort-by-project-file-relative)))))
+                 (ibuffer-do-sort-by-project-file-relative)))
+  :hook
+  (ibuffer . rex/enable-ibuffer-project))
 
 (use-package olivetti
   :init
