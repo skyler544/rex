@@ -49,9 +49,6 @@
   ;; Theme and font-face settings.
   (load "rex-ui")
 
-  ;; Help utilities.
-  (load "rex-help")
-
   ;; Marginalia Orderless Vertico Embark Consult
   ;; M.         O.        V.      E.     C.
   (load "rex-movec")
