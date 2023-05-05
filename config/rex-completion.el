@@ -13,6 +13,7 @@
   (global-corfu-mode)
   (corfu-popupinfo-mode)
   (corfu-echo-mode)
+
   :custom
   (corfu-auto t)
   (corfu-cycle t)
@@ -22,39 +23,34 @@
   (corfu-echo-documentation 0.25)
   (corfu-preselect 'prompt)
   (corfu-preselect-first nil)
+
   :config
-  (defun corfu-move-to-minibuffer ()
-    (interactive)
-    (let ((completion-extra-properties corfu--extra)
-          completion-cycle-threshold completion-cycling)
-      (apply #'consult-completion-in-region completion-in-region--data)))
   (defun corfu-enable-in-minibuffer ()
     "Enable Corfu in the minibuffer if `completion-at-point' is bound."
     (when (where-is-internal #'completion-at-point (list (current-local-map)))
       (setq-local corfu-echo-delay nil
                   corfu-popupinfo-delay nil)
       (corfu-mode 1)))
+
   :general
   (:keymaps 'corfu-map
-            "C-SPC" 'corfu-move-to-minibuffer
             "RET" nil
             "C-j" 'corfu-next
             [tab] 'corfu-next
             "C-k" 'corfu-previous
             [backtab] 'corfu-previous)
+
   :hook
   (minibuffer-setup . corfu-enable-in-minibuffer)
   (eshell . (lambda ()
                     (setq-local corfu-auto nil)
                     (corfu-mode))))
 
-;; Cape provides capfs for better in-buffer completion, as well as
-;; ways to combine / transform such functions.
+;; Cape provides capfs for better in-buffer completion, as well as ways to
+;; combine / transform such functions.
 (use-package cape
   :init
-  (setq rex/capfs
-        '(cape-dabbrev
-          cape-file))
+  (setq rex/capfs '(cape-dabbrev cape-file))
   (defun rex/add-capfs ()
     (dolist (fkt rex/capfs)
     (add-to-list 'completion-at-point-functions fkt)))
@@ -64,8 +60,7 @@
     "cd" 'cape-dabbrev
     "cf" 'cape-file))
 
-;; Tempel provides a framework for defining / using snippets in plain
-;; elisp.
+;; Tempel provides a framework for defining / using snippets in plain elisp.
 (use-package tempel
   :general
   (rex-leader
@@ -77,9 +72,8 @@
             "S-TAB" 'tempel-previous))
 
 ;; Some predefined snippets
-(use-package tempel-collection
-  :load-path "~/build/tempel-collection/"
+(use-package tempel-collection :elpaca nil
   :ensure nil
-  :elpaca nil
+  :load-path "~/build/tempel-collection/"
   :init (require 'tempel-collection.el)
   :after tempel)
