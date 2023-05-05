@@ -1,4 +1,8 @@
 ;;; -*- lexical-binding: t -*-
+;;
+;; This file installs and initializes elpaca as described in its readme.
+;; https://github.com/progfolio/elpaca
+
 (defvar elpaca-installer-version 0.4)
 (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
 (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
