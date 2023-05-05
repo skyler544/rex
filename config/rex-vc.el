@@ -3,13 +3,13 @@
 ;; Version control utilities.
 (use-package magit
   :init
+  ;; most of this is stolen from doom
   (defvar rex/magit-open-windows-in-direction 'right
     "What direction to open new windows from the status buffer.
 For example, diffs and log buffers. Accepts `left', `right', `up', and `down'.")
 
   (defun rex/magit-display-buffer-fn (buffer)
     "Same as `magit-display-buffer-traditional', except...
-
 - If opened from a commit window, it will open below it.
 - Magit process windows are always opened in small windows below the current.
 - Everything else will reuse the same window."
@@ -43,7 +43,6 @@ For example, diffs and log buffers. Accepts `left', `right', `up', and `down'.")
 
   (defun rex/magit--display-buffer-in-direction (buffer alist)
     "`display-buffer-alist' handler that opens BUFFER in a direction.
-
 This differs from `display-buffer-in-direction' in one way: it will try to use a
 window that already exists in that direction. It will split otherwise."
     (let ((direction (or (alist-get 'direction alist)
@@ -72,6 +71,7 @@ window that already exists in that direction. It will split otherwise."
       (unless magit-display-buffer-noselect
         (switch-to-buffer buffer t t)
         (selected-window))))
+
   :config
   (setq magit-diff-refine-hunk t)
   (setq magit-save-repository-buffers nil)
@@ -94,7 +94,9 @@ window that already exists in that direction. It will split otherwise."
     "tb" 'why-this-mode)
   :custom-face
   (why-this-face
-   ((t (:foreground unspecified :inherit font-lock-comment-face :slant normal)))))
+   ((t ( :foreground unspecified
+         :inherit font-lock-comment-face
+         :slant normal)))))
 
 ;; Disable support for obscure VCS
 (use-package emacs :elpaca nil
@@ -125,44 +127,9 @@ window that already exists in that direction. It will split otherwise."
         (setq-local vc-handled-backends nil)))
   :hook (find-file . rex/vc-off-remote))
 
-(use-package smerge-mode
-  :elpaca nil
+(use-package smerge-mode :elpaca nil
   :ensure nil
   :defer t
-  :config
-  (defhydra unpackaged/smerge-hydra
-    (:color pink :hint nil :post (smerge-auto-leave))
-    "
-^Move^       ^Keep^               ^Diff^                 ^Other^
-^^-----------^^-------------------^^---------------------^^-------
-_n_ext       _b_ase               _<_: upper/base        _C_ombine
-_p_rev       _u_pper              _=_: upper/lower       _r_esolve
-^^           _l_ower              _>_: base/lower        _k_ill current
-^^           _a_ll                _R_efine
-^^           _RET_: current       _E_diff
-"
-    ("n" smerge-next)
-    ("p" smerge-prev)
-    ("b" smerge-keep-base)
-    ("u" smerge-keep-upper)
-    ("l" smerge-keep-lower)
-    ("a" smerge-keep-all)
-    ("RET" smerge-keep-current)
-    ("\C-m" smerge-keep-current)
-    ("<" smerge-diff-base-upper)
-    ("=" smerge-diff-upper-lower)
-    (">" smerge-diff-base-lower)
-    ("R" smerge-refine)
-    ("E" smerge-ediff)
-    ("C" smerge-combine-with-next)
-    ("r" smerge-resolve)
-    ("k" smerge-kill-current)
-    ("ZZ" (lambda ()
-            (interactive)
-            (save-buffer)
-            (bury-buffer))
-     "Save and bury buffer" :color blue)
-    ("q" nil "cancel" :color blue))
   :hook (magit-diff-visit-file . (lambda ()
                                    (when smerge-mode
                                      (unpackaged/smerge-hydra/body)))))
