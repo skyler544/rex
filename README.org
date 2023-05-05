@@ -9,6 +9,13 @@ Comments in the code itself (wip) attempt to make certain aspects more clear.
 
 
 Why is it called rex? I don't know. Maybe it's an acronym; maybe it's just short and easy to type.
+
+** Package Installation
+Packages are now installed with [[https://github.com/progfolio/elpaca][Elpaca]].
+
+** Historical Note
+Rex has become my main Emacs configuration; this tibit is no longer relevant for me personally. However, for commits corresponding to the tag `before-elpaca` and older, this should still work.
+
 I use [[https://github.com/alphapapa/with-emacs.sh][with-emacs.sh]] (alphapapa) for starting it, like this:
 
 =~/.local/bin/rex=: 
