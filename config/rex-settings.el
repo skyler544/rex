@@ -2,24 +2,6 @@
 ;;
 ;; General settings for built-in packages.
 
-;; Save the 200 most recently visited files/directories
-(use-package emacs :elpaca nil
-  :config
-  (setq recentf-save-file (concat rex/cache-dir "recentf"))
-  (setq recentf-max-saved-items 200)
-  (setq recentf-max-menu-items 200)
-  (setq ring-bell-function 'ignore)
-  (recentf-mode 1)
-  (add-to-list 'recentf-exclude '("\\/sudo:root@localhost.*"))
-  (run-at-time nil (* 5 60) 'recentf-save-list))
-
-;; line numbers
-(use-package emacs :elpaca nil
-  :hook (prog-mode . display-line-numbers-mode)
-  :config
-  (setq-default display-line-numbers-width 3)
-  (setq-default display-line-numbers-widen t))
-
 ;; general settings
 (use-package emacs :elpaca nil
   :config
@@ -72,6 +54,24 @@
   (setq completion-ignore-case t)
   (savehist-mode))
 
+;; Save the 200 most recently visited files/directories
+(use-package emacs :elpaca nil
+  :config
+  (setq recentf-save-file (concat rex/cache-dir "recentf"))
+  (setq recentf-max-saved-items 200)
+  (setq recentf-max-menu-items 200)
+  (setq ring-bell-function 'ignore)
+  (recentf-mode 1)
+  (add-to-list 'recentf-exclude '("\\/sudo:root@localhost.*"))
+  (run-at-time nil (* 5 60) 'recentf-save-list))
+
+;; line numbers
+(use-package emacs :elpaca nil
+  :hook (prog-mode . display-line-numbers-mode)
+  :config
+  (setq-default display-line-numbers-width 3)
+  (setq-default display-line-numbers-widen t))
+
 ;; scrolling
 (use-package emacs :elpaca nil
   :config
@@ -105,8 +105,7 @@
           (make-directory dir t))))))
 
 ;; built-in packages
-(use-package eldoc
-  :elpaca nil
+(use-package eldoc :elpaca nil
   :diminish eldoc-mode
   :general
   (rex-leader
@@ -115,58 +114,48 @@
   (advice-add 'eldoc-doc-buffer :after (lambda () (other-window 1)))
   (setq eldoc-echo-area-use-multiline-p nil))
 
-(use-package abbrev
-  :elpaca nil
+(use-package abbrev :elpaca nil
   :ensure nil
   :diminish abbrev-mode)
 
 ;; Automatically closes pairs; works most of the time the right way
 ;; without needing to think about it.
-(use-package elec-pair
-  :elpaca nil
+(use-package elec-pair :elpaca nil
   :hook (prog-mode . electric-pair-mode))
 
 ;; Revert buffers on a timer
-(use-package autorevert
-  :elpaca nil
+(use-package autorevert :elpaca nil
   :diminish auto-revert-mode)
 
 ;; keep emacs directory cleaner
-(use-package saveplace
-  :elpaca nil
+(use-package saveplace :elpaca nil
   :config
   (setq save-place-file (concat rex/cache-dir "places"))
   (save-place-mode t))
 
-(use-package eshell
+(use-package eshell :elpaca nil
   :defer t
-  :elpaca nil
   :config
   (setq eshell-directory-name (concat rex/cache-dir "eshell")))
 
-(use-package project
-  :elpaca nil
+(use-package project :elpaca nil
   :config
   (setq project-list-file (concat rex/cache-dir "projects")))
 
-(use-package bookmark
-  :elpaca nil
+(use-package bookmark :elpaca nil
   :config
   (setq bookmark-default-file (concat rex/cache-dir "bookmarks")))
 
-(use-package savehist
-  :elpaca nil
+(use-package savehist :elpaca nil
   :config
   (setq savehist-file (concat rex/cache-dir "minibuffer-history")))
 
-(use-package transient
-  :elpaca nil
+(use-package transient :elpaca nil
   :config
   (setq transient-history-file (concat rex/cache-dir "transient-history")))
 
-(use-package tramp
+(use-package tramp :elpaca nil
   :defer t
-  :elpaca nil
   :config
   (setq tramp-persistency-file-name (concat rex/cache-dir "tramp-persistency-file"))
   (setq tramp-auto-save-directory (concat rex/cache-dir "tramp-autosave")))
@@ -176,8 +165,7 @@
   (setq auto-save-list-file-prefix (concat rex/cache-dir "auto-save-list")))
 
 ;; Dired settings
-(use-package dired
-  :elpaca nil
+(use-package dired :elpaca nil
   :ensure nil
   :init
   (load "dired-x")
@@ -194,9 +182,8 @@
   (dired-mode . rex/set-file-associations)
   (dired-mode . dired-hide-details-mode))
 
-(use-package proced
+(use-package proced :elpaca nil
   :defer t
-  :elpaca nil
   :config
   (setq-default proced-auto-update-flag t)
   (setq proced-auto-update-interval 2)
