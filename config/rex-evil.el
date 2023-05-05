@@ -48,7 +48,7 @@
   (evil-collection-init))
 
 ;; Show a brief flash in the buffer indicating where an evil
-;; operation takes affect.
+;; operation takes effect.
 (use-package evil-goggles
   :diminish evil-goggles-mode
   :config
