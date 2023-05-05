@@ -31,7 +31,9 @@
     "wr" 'nil
     "ws" 'rex/split-and-follow-horizontally
     "wv" 'rex/split-and-follow-vertically)
-  (:keymaps '(normal visual)
+  (:states 'normal
+           "q" 'ignore)
+  (:states '(normal visual)
             "C-w" 'evil-scroll-line-up)
   (:keymaps 'evil-inner-text-objects-map
             "g" '+evil:whole-buffer-txtobj)
@@ -57,10 +59,10 @@
 ;; Make adding a pair of delimiters to the text fast and simple.
 (use-package evil-surround
   :general
-  (:keymaps 'visual
+  (:states 'visual
            "s" 'evil-surround-region
            "S" 'evil-Surround-region)
-  (:keymaps 'operator
+  (:states 'operator
             "s" 'evil-surround-edit)
   (rex-leader
     "bn" 'evil-buffer-new)
@@ -96,15 +98,10 @@
             "q" 'rex/evil-textobj-anyblock-a-quote
             "b" 'evil-textobj-anyblock-a-block))
 
-(defun evil-record-macro ()
-  "NoOp -- there must be a better way of disabling this."
-  (interactive)
-  (ignore))
-
 (use-package evil-lion
   :config (evil-lion-mode))
 
 (use-package evil-nerd-commenter
   :general
-  (:keymaps '(normal visual)
+  (:states '(normal visual)
             "gcc" 'evilnc-comment-or-uncomment-lines))
