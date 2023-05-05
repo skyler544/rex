@@ -7,8 +7,7 @@
 ;; Define leaders; the intention is for a tree-shaped layout of key
 ;; chords, starting with the spacebar and branching out to various
 ;; "leaves." Leaves may be single keys or further prefixes.
-(use-package general
-  :elpaca nil
+(use-package general :elpaca nil
   :ensure nil
   :config
   (general-override-mode)
@@ -80,26 +79,23 @@
     "fS" 'write-file
     "ff" 'find-file))
 
-(use-package project
-  :elpaca nil
+(use-package project :elpaca nil
   :general
   (rex-leader
     "p" project-prefix-map))
 
-(use-package ibuffer
-  :elpaca nil
+(use-package ibuffer :elpaca nil
   :general
   (rex-leader
     "bi" 'ibuffer))
 
-(use-package dired
-  :elpaca nil
+(use-package dired :elpaca nil
   :ensure nil
-  :general (:keymaps '(normal dired-mode-map)
-                     "C-k" 'dired-kill-line))
+  :general
+  (:keymaps '(normal dired-mode-map)
+            "C-k" 'dired-kill-line))
 
-(use-package winner
-  :elpaca nil
+(use-package winner :elpaca nil
   :demand t
   :config
   (winner-mode)
