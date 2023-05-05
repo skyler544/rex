@@ -23,17 +23,16 @@
 
   :general
   (rex-leader
+    "w" 'evil-window-map
     "wH" 'rex/window-move-left
     "wJ" 'rex/window-move-down
     "wK" 'rex/window-move-up
-    "wL" 'rex/window-move-right)
-  (:keymaps '(normal visual)
-            "C-w" 'evil-scroll-line-up)
-  (rex-leader
-    "w" 'evil-window-map
+    "wL" 'rex/window-move-right
     "wr" 'nil
     "ws" 'rex/split-and-follow-horizontally
     "wv" 'rex/split-and-follow-vertically)
+  (:keymaps '(normal visual)
+            "C-w" 'evil-scroll-line-up)
   (:keymaps 'evil-inner-text-objects-map
             "g" '+evil:whole-buffer-txtobj)
   (:keymaps 'evil-outer-text-objects-map
