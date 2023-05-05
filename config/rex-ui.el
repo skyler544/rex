@@ -1,17 +1,23 @@
 ;;; -*- lexical-binding: t -*-
 ;;
-(use-package info
-  :elpaca nil
+(use-package info :elpaca nil
   :custom-face
-  (info-menu-star ((t (:foreground unspecified))))
+  (info-menu-star
+   ((t ( :foreground unspecified))))
   (Info-quoted
-   ((t (:inherit nil :inherit font-lock-function-name-face)))))
+   ((t ( :inherit nil
+         :inherit font-lock-function-name-face)))))
 
 ;; Huge theme pack 
 (use-package doom-themes
   :custom-face
-  (line-number ((t (:slant normal))))
-  (line-number-current-line ((t (:inherit nil :inherit 'default :slant normal :weight semi-bold))))
+  (line-number
+   ((t ( :slant normal))))
+  (line-number-current-line
+   ((t ( :inherit nil
+         :inherit 'default
+         :slant normal
+         :weight semi-bold))))
   :config (load-theme 'doom-nord-aurora t))
 
 ;; Flashy modeline
@@ -30,7 +36,8 @@
   :hook (dired-mode . all-the-icons-dired-mode)
   :custom-face
   (all-the-icons-dired-dir-face
-   ((t (:foreground unspecified :inherit font-lock-type-face)))))
+   ((t ( :foreground unspecified
+         :inherit font-lock-type-face)))))
 
 ;; Show the results of C-x C-e directly in the buffer
 (use-package eros
@@ -38,19 +45,20 @@
   (setq eros-eval-result-prefix "-> ")
   (eros-mode 1)
   :custom-face
-  (eros-result-overlay-face ((t (:box nil :inverse-video t)))))
+  (eros-result-overlay-face
+   ((t ( :box nil
+         :inverse-video t)))))
 
 ;; Briefly flash current line after a long movement.
 (use-package pulsar
   :demand t
   :after evil
-  :custom-face
-  (pulsar-generic ((t (:background unspecified :inherit region))))
-  :general
-  (rex-leader
-    "C-SPC" 'pulsar-highlight-line)
   :init
   (setq pulsar-face 'pulsar-generic)
+  :custom-face
+  (pulsar-generic
+   ((t ( :background unspecified
+         :inherit region))))
   :config
   (setq pulsar-functions
         '(evil-window-down
@@ -58,7 +66,6 @@
           evil-window-right
           evil-window-left
           evil-avy-goto-char-timer
-          dired-jump
           other-window
           isearch-repeat-forward
           isearch-repeat-backward))
@@ -75,8 +82,8 @@
   :diminish pdf-view-midnight-minor-mode
   :mode ("\\.pdf\\'" . pdf-view-mode)
   :config
-  (setq pdf-view-resize-factor 1.1)
   (setq-default pdf-view-display-size 'fit-width)
+  (setq pdf-view-resize-factor 1.1)
   (setq pdf-view-use-scaling t)
   (setq pdf-view-use-imagemagick nil)
   :general
@@ -92,9 +99,12 @@
 ;; Show diffs in the fringe.
 (use-package diff-hl
   :custom-face
-  (diff-hl-insert ((t (:background unspecified))))
-  (diff-hl-change ((t (:background unspecified))))
-  (diff-hl-delete ((t (:background unspecified))))
+  (diff-hl-insert
+   ((t ( :background unspecified))))
+  (diff-hl-change
+   ((t ( :background unspecified))))
+  (diff-hl-delete
+   ((t ( :background unspecified))))
   :config
   (defun rex/diff-hl-settings-apply ()
     (interactive)
