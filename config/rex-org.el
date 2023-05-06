@@ -1,9 +1,12 @@
 ;;; -*- lexical-binding: t -*-
 ;;
-;; General settings
-(use-package org
-  :defer t
-  :diminish org-indent-mode
+(use-package org :defer t :diminish org-indent-mode
+
+  ;; General settings
+  ;; ****************************************
+  :hook
+  (org-mode . electric-pair-mode)
+  (org-mode . auto-fill-mode)
   :config
   (setq org-link-frame-setup '((file . find-file)))
   (setq org-fontify-whole-heading-line t)
@@ -14,25 +17,29 @@
   (setq org-catch-invisible-edits 'show-and-error)
   (setq org-M-RET-may-split-line nil)
   (setq org-hide-emphasis-markers t)
-  (add-to-list 'org-file-apps '("\\.png\\'" . "feh %s"))
-  (add-to-list 'org-export-backends 'md)
+  (setq org-ellipsis " ⯆")
   (setq org-list-demote-modify-bullet
         '(("+" . "-") ("-" . "+") ("*" . "+")))
-  :hook
-  (org-mode . electric-pair-mode)
-  (org-mode . auto-fill-mode)
-
-  :config
+  (add-to-list 'org-file-apps '("\\.png\\'" . "feh %s"))
+  (add-to-list 'org-export-backends 'md)
   (add-to-list 'org-modules 'org-habit)
-  (setq org-habit-show-habits-only-for-today nil)
-  :general
-  (:states 'normal
-   :keymaps 'org-agenda-mode-map
-    "K" 'org-habit-toggle-display-in-agenda)
+
 
   ;; Agenda / workflow settings
-  :config
+  ;; ****************************************
+  (defun rex/agenda ()
+    "Open the agenda with all todos."
+    (interactive)
+    (org-agenda 1 "n"))
+
+  (defun rex/reload-agenda ()
+    "Revert all org buffers and reload the agenda."
+    (interactive)
+    (org-revert-all-org-buffers)
+    (org-agenda-redo))
+
   (setq-default org-agenda-window-setup 'current-window)
+  (setq org-habit-show-habits-only-for-today nil)
   (setq org-agenda-span 10)
   (setq org-agenda-start-on-weekday nil)
   (setq org-agenda-start-day "-3d")
@@ -40,57 +47,19 @@
   ;; (setq org-agenda-files '("~/mega/org/todo.org" "~/mega/org/fh.org" "~/mega/org/habits.org"))
   (setq org-log-into-drawer t)
   (setq org-log-done 'time)
+
   (setq org-enforce-todo-dependencies t)
   (setq org-todo-keywords '((sequence "TODO" "PROJ" "IDEA" "|" "DONE" "KILL")))
-
-  ;; Font settings
-  :custom-face
-  (org-agenda-date
-   ((t (:foreground unspecified :inherit font-lock-comment-face :weight semi-bold))))
-  (org-agenda-date-today
-   ((t (:foreground unspecified :inherit success :weight semi-bold))))
-  (org-agenda-date-weekend
-   ((t (:foreground unspecified :inherit font-lock-keyword-face :weight semi-bold))))
-  (org-date-selected
-   ((t (:foreground unspecified :inverse-video nil :inherit highlight))))
-  (org-block ((t (:background unspecified))))
-  (org-block-begin-line ((t (:background unspecified))))
-  (org-block-end-line ((t (:background unspecified))))
-  (org-table ((t (:foreground unspecified :inverse-video t))))
-  (org-document-info-keyword ((t (:foreground unspecified :inherit font-lock-comment-face))))
-  :config
   (setq org-todo-keyword-faces
         '(("TODO" . (:inherit (bold success org-todo)))
           ("PROJ" . (:inherit (bold warning org-todo)))
           ("IDEA" . (:inherit (bold font-lock-string-face org-todo)))
           ("DONE" . (:inherit (bold font-lock-comment-face org-todo)))
           ("KILL" . (:inherit (bold error org-todo)))))
-  (setq org-ellipsis " ⯆")
-  ;; I prefer not to have lots of colors for different heading levels;
-  ;; the indentation is enough and the colors seem noisy.
-  (setq rex/org-levels
-        '(org-level-1 org-level-2
-          org-level-3 org-level-4
-          org-level-5 org-level-6
-          org-level-7 org-level-8))
-  (dolist (face rex/org-levels)
-    (set-face-attribute face nil :inherit nil :weight 'bold))
 
-  :config
-  (defun rex/agenda ()
-    "Open the agenda with all todos."
-    (interactive)
-    (org-agenda 1 "n"))
-  (defun rex/reload-agenda ()
-    "Revert all org buffers and reload the agenda."
-    (interactive)
-    (org-revert-all-org-buffers)
-    (org-agenda-redo))
-  ;; A function that is mostly just stolen from Doom, but is trimmed down to only
-  ;; do things that I need it to do.
+  ;; Stolen from doom, but trimmed down to only what I need.
   (defun rex/org-dwim-at-point (&optional arg)
-    "Do what I mean at point. This will toggle the todo state of a
-headline or follow a link."
+    "Toggle the todo state of a headline or follow a link."
     (interactive)
     (let* ((context (org-element-context))
            (type (org-element-type context)))
@@ -112,7 +81,50 @@ headline or follow a link."
          (let ((match (and (org-at-item-checkbox-p) (match-string 1))))
            (org-toggle-checkbox (if (equal match "[ ]") '(16))))))))
 
-  ;; keybindings
+
+  ;; Font settings
+  ;; ****************************************
+  (setq rex/org-levels
+        '(org-level-1 org-level-2
+          org-level-3 org-level-4
+          org-level-5 org-level-6
+          org-level-7 org-level-8))
+  (dolist (face rex/org-levels)
+    (set-face-attribute face nil :inherit nil :weight 'bold))
+
+  :custom-face
+  (org-agenda-date
+   ((t ( :foreground unspecified
+         :inherit font-lock-comment-face
+         :weight semi-bold))))
+  (org-agenda-date-today
+   ((t ( :foreground unspecified
+         :inherit success
+         :weight semi-bold))))
+  (org-agenda-date-weekend
+   ((t ( :foreground unspecified
+         :inherit font-lock-keyword-face
+         :weight semi-bold))))
+  (org-date-selected
+   ((t ( :foreground unspecified
+         :inverse-video nil
+         :inherit highlight))))
+  (org-block
+   ((t ( :background unspecified))))
+  (org-block-begin-line
+   ((t ( :background unspecified))))
+  (org-block-end-line
+   ((t ( :background unspecified))))
+  (org-table
+   ((t ( :foreground unspecified
+         :inverse-video t))))
+  (org-document-info-keyword
+   ((t ( :foreground unspecified
+         :inherit font-lock-comment-face))))
+
+
+  ;; Keybindings
+  ;; ****************************************
   :general
   (:keymaps 'org-read-date-minibuffer-local-map
             "C-h" '(lambda () (interactive) (org-eval-in-calendar '(calendar-backward-day 1)))
@@ -123,7 +135,8 @@ headline or follow a link."
    :keymaps 'org-agenda-mode-map
             "R" 'rex/reload-agenda
             "q" 'org-agenda-quit
-            "RET" 'org-agenda-goto)
+            "RET" 'org-agenda-goto
+            "K" 'org-habit-toggle-display-in-agenda)
   (:keymaps 'org-src-mode-map
             "C-c C-c" 'org-edit-src-exit)
   (:states 'normal
@@ -133,16 +146,19 @@ headline or follow a link."
    :keymaps 'org-mode-map
             "C-o" 'evil-org-open-below)
   (rex-leader
-    "mt" 'org-todo
     "ma" 'rex/agenda
-    "md" 'org-deadline
     "ml" 'org-store-link)
   (rex-leader
     :keymaps 'org-mode-map
+    "mt" 'org-todo
+    "md" 'org-deadline
     "mco" 'org-clock-out
     "mci" 'org-clock-in
     "me" 'org-export-dispatch))
 
+
+;; Extensions
+;; ****************************************
 (use-package org-contrib
   :config
   (setq org-eldoc-breadcrumb-separator "::"))
@@ -164,11 +180,6 @@ headline or follow a link."
   :after org
   :hook (org-mode . rex/start-evil-org-mode))
 
-;; This package lets you pick how the leading symbol for each level of
-;; heading should look in general; I use it to enforce a single bullet
-;; style for plain org-mode headings. I prefer this because I already
-;; prefer the headings to not have gaudy colors; why use gaudy unicode
-;; symbols?
 (use-package org-superstar
   :hook (org-mode . (lambda () (org-superstar-mode 1)))
   :config
