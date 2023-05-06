@@ -25,18 +25,21 @@
   (setq custom-theme-directory (concat user-emacs-directory "themes/"))
   :custom-face
   (whitespace-newline
-   ((t ( :foreground nil
+   ((t ( :foreground unspecified
          :inherit font-lock-warning-face))))
   (whitespace-space
-   ((t ( :foreground nil
+   ((t ( :foreground unspecified
          :inherit font-lock-warning-face))))
   (fringe
-   ((t ( :background nil))))
+   ((t ( :background unspecified))))
   (variable-pitch
    ((t ( :family "monospace"))))
+  (shadow
+   ((t ( :foreground unspecified
+         :inherit font-lock-comment-face))))
   (help-key-binding
-   ((t ( :foreground nil
-         :background nil
+   ((t ( :foreground unspecified
+         :background unspecified
          :box nil
          :inverse-video t)))))
 
