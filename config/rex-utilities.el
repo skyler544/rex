@@ -150,12 +150,12 @@
 
 ;; this shows long directory paths with a single file in them on one line
 (use-package dired-collapse
-  :load-path "~/build/dired-hacks/"
+  :elpaca (:host github :repo "Fuco1/dired-hacks")
   :hook (dired-mode . dired-collapse-mode))
 
 ;; tree-like directory navigation; very slow, but it looks cool
 (use-package dired-subtree
-  :load-path "~/build/dired-hacks/"
+  :elpaca (:host github :repo "Fuco1/dired-hacks")
   :config
   (setq rex/dired-subtree-levels
         '(dired-subtree-depth-1-face dired-subtree-depth-2-face

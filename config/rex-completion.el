@@ -72,8 +72,7 @@
             "S-TAB" 'tempel-previous))
 
 ;; Some predefined snippets
-(use-package tempel-collection :elpaca nil
-  :ensure nil
-  :load-path "~/build/tempel-collection/"
+(use-package tempel-collection
+  :elpaca (:host github :repo "Crandel/tempel-collection")
   :init (require 'tempel-collection.el)
   :after tempel)
