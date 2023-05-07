@@ -47,7 +47,8 @@
     "qf" 'delete-frame
     "!" 'shell-command
     "&" 'async-shell-command
-    "R" 'rex/shell-command-on-region-or-line
+    "R" 'rex/async-shell-command-on-region-or-line
+    "X" 'rex/shell-command-on-region-or-line
     ;; eval
     "eb" 'eval-buffer
     "er" 'eval-region

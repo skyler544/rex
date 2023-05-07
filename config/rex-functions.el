@@ -63,12 +63,19 @@ the only window, use evil-window-move-* (e.g. `evil-window-move-far-left')."
     (other-window 1))
 
   ;; simple way to run pieces of a buffer as shell commands
-  (defun rex/shell-command-on-region-or-line ()
+  (defun rex/async-shell-command-on-region-or-line ()
     "Run the command at point or in the selected region in the shell."
     (interactive)
     (async-shell-command (if (use-region-p)
                              (buffer-substring (region-beginning) (region-end))
                            (thing-at-point 'line t))))
+
+  (defun rex/shell-command-on-region-or-line ()
+    "Run the command at point or in the selected region in the shell."
+    (interactive)
+    (shell-command (if (use-region-p)
+                       (buffer-substring (region-beginning) (region-end))
+                     (thing-at-point 'line t))))
 
   (defun rex/large-file-read-only ()
     "If a file is over a given size, make the buffer read only (and don't waste memory trying to use undo)"
