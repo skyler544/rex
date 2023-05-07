@@ -63,6 +63,7 @@
   (setq ring-bell-function 'ignore)
   (recentf-mode 1)
   (add-to-list 'recentf-exclude '("\\/sudo:root@localhost.*"))
+  (add-to-list 'recentf-exclude (recentf-expand-file-name "~/.emacs.d/.cache/bookmarks"))
   (run-at-time nil (* 5 60) 'recentf-save-list))
 
 ;; line numbers
