@@ -118,6 +118,8 @@ determine the exact padding."
    (modeline-fg     nil)
    (modeline-fg-alt base7)
 
+   (shadow base3)
+
    (modeline-bg (doom-lighten (doom-blend base0 grey-blue 0.5) 0.2))
    (modeline-bg-l
     (if -modeline-bright
