@@ -168,6 +168,19 @@
    :keymaps 'dired-mode-map
    "o" 'dired-subtree-cycle))
 
+(use-package treemacs-all-the-icons)
+
+(use-package treemacs
+  :init
+  (require 'treemacs-all-the-icons)
+  (treemacs-load-theme "all-the-icons")
+  :config
+  (setq treemacs-wrap-around nil)
+  :commands 'treemacs)
+
+(use-package treemacs-evil)
+
+
 (use-package hide-mode-line)
 
 (use-package page-break-lines)

@@ -18,18 +18,6 @@
   (rex-leader
     "tf" 'flymake-mode))
 
-(use-package treemacs-all-the-icons)
-
-(use-package treemacs
-  :init
-  (require 'treemacs-all-the-icons)
-  (treemacs-load-theme "all-the-icons")
-  :config
-  (setq treemacs-wrap-around nil)
-  :commands 'treemacs)
-
-(use-package treemacs-evil)
-
 (use-package emacs :elpaca nil
   :hook (after-save . executable-make-buffer-file-executable-if-script-p))
 
@@ -199,6 +187,8 @@
   :config
   (setq tex-start-options "--shell-escape"))
 
+;; LaTeX
+;; ****************************************
 (use-package auctex
   :mode ("\\.tex\\'" . LaTeX-mode))
 
