@@ -63,7 +63,7 @@
   :general
   (rex-leader
     "bK" 'crux-kill-other-buffers
-    "fy" 'crux-kill-buffer-truename
+    "fY" 'crux-kill-buffer-truename
     "fu" 'crux-sudo-edit
     "fD" 'crux-delete-file-and-buffer
     "fr" 'crux-rename-file-and-buffer))
