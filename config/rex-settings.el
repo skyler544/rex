@@ -177,6 +177,7 @@
     (add-to-list 'dired-guess-shell-alist-user '("\\.pdf\\'" "zathura"))
     (add-to-list 'dired-guess-shell-alist-user '("\\.mp4\\'" "vlc"))
     (add-to-list 'dired-guess-shell-alist-user '("\\.mkv\\'" "vlc")))
+  (setq dired-hide-details-hide-symlink-targets nil)
   (setq dired-listing-switches "-alh --group-directories-first --no-group")
   (setq dired-dwim-target t)
   (setq dired-auto-revert-buffer t)
@@ -187,7 +188,7 @@
 
 (use-package proced :elpaca nil
   :defer t
-  :config
+  :init
   (setq-default proced-auto-update-flag t)
-  (setq proced-auto-update-interval 2)
-  (setq dired-hide-details-hide-symlink-targets nil))
+  :config
+  (setq proced-auto-update-interval 2))
