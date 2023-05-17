@@ -74,5 +74,5 @@
 ;; Some predefined snippets
 (use-package tempel-collection
   :elpaca (:host github :repo "Crandel/tempel-collection")
-  :init (require 'tempel-collection.el)
+  :init (require 'tempel-collection)
   :after tempel)
