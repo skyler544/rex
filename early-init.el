@@ -40,7 +40,8 @@
   (help-key-binding
    ((t ( :foreground unspecified
          :background unspecified
-         :box nil
+         :weight bold
+         :box unspecified
          :inverse-video t)))))
 
 ;; Adds a keyword to use-package for hiding minor modes from the modeline
