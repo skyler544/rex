@@ -86,6 +86,12 @@
   (setq pdf-view-resize-factor 1.1)
   (setq pdf-view-use-scaling t)
   (setq pdf-view-use-imagemagick nil)
+
+  (defun rex/ignore-errors (&rest r)
+    (ignore-errors (apply (car r) (cdr r))))
+
+  (advice-add 'pdf-view-goto-page :around #'rex/ignore-errors)
+
   :general
   (:keymaps 'pdf-view-mode-map
             "M-m" 'pdf-view-themed-minor-mode)
