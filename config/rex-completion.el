@@ -67,6 +67,8 @@
     "ct" 'tempel-insert)
   (:keymaps 'prog-mode-map
             "M-RET" 'tempel-expand)
+  (:keymaps 'org-mode-map
+            "C-c e" 'tempel-expand)
   (:keymaps 'tempel-map
             "TAB" 'tempel-next
             "S-TAB" 'tempel-previous))
