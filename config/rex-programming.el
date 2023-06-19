@@ -58,6 +58,8 @@
   :config
   (add-hook 'xref-backend-functions  #'dumb-jump-xref-activate))
 
+(use-package string-inflection)
+
 ;; Language server support
 ;; ****************************************
 (use-package eglot :elpaca nil
@@ -152,13 +154,19 @@
 
 (use-package markdown-mode
   :custom-face
-  (markdown-code-face ((t (:background unspecified))))
-  :mode ("\\.md$" . markdown-mode))
+  (markdown-code-face
+   ((t ( :background unspecified))))
+  :mode ("\\.md$" . markdown-mode)
+  :hook (markdown-mode . olivetti-mode))
 
 (use-package web-mode
   :mode
   ("\\.html$" . web-mode)
   ("\\.twig$" . web-mode))
+
+(use-package htmlize)
+
+(use-package impatient-mode)
 
 (use-package js
   :elpaca nil
