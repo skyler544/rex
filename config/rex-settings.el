@@ -190,7 +190,29 @@
 
 (use-package proced :elpaca nil
   :defer t
+  :custom-face
+  (proced-executable
+   ((t ( :foreground nil
+         :inherit font-lock-escape-face))))
+  (proced-cpu
+   ((t ( :foreground nil
+         :inherit font-lock-builtin-face))))
+  (proced-mem
+   ((t ( :foreground nil
+         :inherit font-lock-builtin-face))))
+  (proced-pid
+   ((t ( :foreground nil
+         :inherit font-lock-string-face))))
+  (proced-emacs-pid
+   ((t ( :foreground nil
+         :weight bold
+         :inherit font-lock-warning-face))))
+  (proced-time-colon
+   ((t ( :foreground nil
+         :inherit font-lock-warning-face))))
   :init
   (setq-default proced-auto-update-flag t)
   :config
+  (setq proced-tree-flag t)
+  (setq proced-enable-color-flag t)
   (setq proced-auto-update-interval 2))
