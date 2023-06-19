@@ -39,6 +39,9 @@
     "ot" 'vterm)
   :commands vterm)
 
+(use-package eat
+  :elpaca (:host codeberg :repo "akib/emacs-eat" :files (:defaults "./*")))
+
 (use-package docker
   :general
   (rex-leader
@@ -188,3 +191,7 @@
 (use-package rfc-mode
   :defer t
   :hook (rfc-mode . page-break-lines-mode))
+
+(use-package deadgrep)
+
+(use-package wgrep-deadgrep)
