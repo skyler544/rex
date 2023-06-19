@@ -88,4 +88,19 @@ the only window, use evil-window-move-* (e.g. `evil-window-move-far-left')."
     (interactive)
     (kill-new (file-relative-name buffer-file-name (project-root (project-current t)))))
 
+
+  (defun rex/ansi-color-apply-on-region (begin end)
+    (interactive "r")
+    (ansi-color-apply-on-region begin end t))
+
+  (defun rex/dark-theme ()
+    "Switch to a dark theme."
+    (interactive)
+    (load-theme 'doom-nord-aurora t))
+
+  (defun rex/light-theme ()
+    "Switch to a light theme."
+    (interactive)
+    (load-theme 'doom-opera-light-alt t))
+
   :hook (find-file . rex/large-file-read-only))
