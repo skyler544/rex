@@ -23,7 +23,10 @@
   (setq use-package-always-ensure t)
   (setq frame-resize-pixelwise t)
   (setq custom-theme-directory (concat user-emacs-directory "themes/"))
+  (setq inhibit-x-resources t)
   :custom-face
+  (cursor
+   ((t ( :background unspecified))))
   (whitespace-newline
    ((t ( :foreground unspecified
          :inherit font-lock-warning-face))))
