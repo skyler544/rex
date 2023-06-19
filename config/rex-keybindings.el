@@ -92,12 +92,6 @@
   (rex-leader
     "bi" 'ibuffer))
 
-(use-package dired :elpaca nil
-  :ensure nil
-  :general
-  (:keymaps '(normal dired-mode-map)
-            "C-k" 'dired-kill-line))
-
 (use-package winner :elpaca nil
   :demand t
   :config
