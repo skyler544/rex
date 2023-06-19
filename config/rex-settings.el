@@ -114,7 +114,9 @@
   (rex-leader
     "ch" 'eldoc)
   :config
-  (advice-add 'eldoc-doc-buffer :after (lambda () (other-window 1)))
+  (advice-add 'eldoc-doc-buffer :after
+              (lambda (&optional interactive)
+                (other-window -1)))
   (setq eldoc-echo-area-use-multiline-p nil))
 
 (use-package abbrev :elpaca nil
