@@ -59,6 +59,8 @@
     "om" 'man
     "oc" 'calendar
     ;; toggle
+    "td" 'rex/dark-theme
+    "tD" 'rex/light-theme
     "tt" 'toggle-truncate-lines
     "tw" 'visual-line-mode
     "tv" 'visible-mode
