@@ -192,6 +192,9 @@
   :defer t
   :hook (rfc-mode . page-break-lines-mode))
 
-(use-package deadgrep)
+(use-package deadgrep
+  :general
+  (rex-leader
+    "sD" 'deadgrep))
 
 (use-package wgrep-deadgrep)
