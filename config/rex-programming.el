@@ -70,24 +70,22 @@
 ;; ****************************************
 (use-package eglot :elpaca nil
   :defer t
+  :commands (eglot)
   :custom-face
   (eglot-inlay-hint-face
    ((t ( :foreground unspecified
          :inherit font-lock-comment-face))))
-  :hook
-  (eglot-managed-mode . (lambda ()
-                          (setq eldoc-documentation-function
-                                'eldoc-documentation-compose-eagerly)))
-  :general
-  (rex-leader
+  :general (rex-leader
     "cf" 'eglot-format-buffer
     "cd" 'eglot-find-declaration
     "cD" 'eglot-find-implementation
     "cr" 'eglot-rename
     "ca" 'eglot-code-actions)
-  :commands (eglot)
   :config (add-to-list 'eglot-server-programs
-                       '(php-mode . ("phpactor" "language-server"))))
+                       '(php-mode . ("phpactor" "language-server")))
+  :hook (eglot-managed-mode . (lambda ()
+                                (setq eldoc-documentation-function
+                                      'eldoc-documentation-compose-eagerly))))
 
 (use-package eldoc-box
   :defer t
@@ -108,7 +106,7 @@
   (:keymaps 'eglot-mode-map
             "C-k" 'rex/eldoc-box-scroll-up
             "C-j" 'rex/eldoc-box-scroll-down
-            "M-h" 'eldoc-box-eglot-help-at-point))
+            "M-h" 'eldoc-box-help-at-point))
 
 ;; Language config
 ;; ****************************************
@@ -121,7 +119,13 @@
 
 (use-package java-mode :elpaca nil
   :ensure nil
-  :hook (java-mode . tree-sitter-hl-mode))
+  :hook
+  (java-mode . eglot-ensure)
+  (java-mode . tree-sitter-hl-mode)
+  (java-mode . (lambda () (cl-defmethod eglot-execute-command
+                            (_server (_cmd (eql java.apply.workspaceEdit)) arguments)
+                            "Eclipse JDT breaks spec and replies with edits as arguments."
+                            (mapc #'eglot--apply-workspace-edit arguments)))))
 
 (use-package eglot-java
   :defer t
