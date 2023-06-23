@@ -119,7 +119,13 @@
 
 (use-package java-mode :elpaca nil
   :ensure nil
-  :hook (java-mode . tree-sitter-hl-mode))
+  :hook
+  (java-mode . eglot-ensure)
+  (java-mode . tree-sitter-hl-mode)
+  (java-mode . (lambda () (cl-defmethod eglot-execute-command
+                            (_server (_cmd (eql java.apply.workspaceEdit)) arguments)
+                            "Eclipse JDT breaks spec and replies with edits as arguments."
+                            (mapc #'eglot--apply-workspace-edit arguments)))))
 
 (use-package eglot-java
   :defer t
