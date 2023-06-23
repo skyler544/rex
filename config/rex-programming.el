@@ -28,6 +28,12 @@
     (fancy-compilation-mode)))
 
 (use-package compile :elpaca nil
+  :config
+  (require 'ansi-color)
+  (defun rex/ansi-colorize-buffer ()
+    (let ((buffer-read-only nil))
+      (ansi-color-apply-on-region (point-min) (point-max))))
+  (add-hook 'compilation-filter-hook 'rex/ansi-colorize-buffer)
   :custom-face
   (compilation-warning
    ((t ( :slant normal))))
