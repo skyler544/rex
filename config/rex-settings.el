@@ -63,6 +63,7 @@
   (setq recentf-max-saved-items 200)
   (setq recentf-max-menu-items 200)
   (setq ring-bell-function 'ignore)
+  (defun emacs-session-save ())
   (recentf-mode 1)
   (add-to-list 'recentf-exclude '("\\/sudo:root@localhost.*"))
   (add-to-list 'recentf-exclude (recentf-expand-file-name "~/.emacs.d/.cache/bookmarks"))
