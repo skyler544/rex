@@ -108,7 +108,7 @@
   (:keymaps 'eglot-mode-map
             "C-k" 'rex/eldoc-box-scroll-up
             "C-j" 'rex/eldoc-box-scroll-down
-            "M-h" 'eldoc-box-eglot-help-at-point))
+            "M-h" 'eldoc-box-help-at-point))
 
 ;; Language config
 ;; ****************************************
