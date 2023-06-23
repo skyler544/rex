@@ -70,24 +70,22 @@
 ;; ****************************************
 (use-package eglot :elpaca nil
   :defer t
+  :commands (eglot)
   :custom-face
   (eglot-inlay-hint-face
    ((t ( :foreground unspecified
          :inherit font-lock-comment-face))))
-  :hook
-  (eglot-managed-mode . (lambda ()
-                          (setq eldoc-documentation-function
-                                'eldoc-documentation-compose-eagerly)))
-  :general
-  (rex-leader
+  :general (rex-leader
     "cf" 'eglot-format-buffer
     "cd" 'eglot-find-declaration
     "cD" 'eglot-find-implementation
     "cr" 'eglot-rename
     "ca" 'eglot-code-actions)
-  :commands (eglot)
   :config (add-to-list 'eglot-server-programs
-                       '(php-mode . ("phpactor" "language-server"))))
+                       '(php-mode . ("phpactor" "language-server")))
+  :hook (eglot-managed-mode . (lambda ()
+                                (setq eldoc-documentation-function
+                                      'eldoc-documentation-compose-eagerly))))
 
 (use-package eldoc-box
   :defer t
