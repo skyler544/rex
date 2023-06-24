@@ -177,12 +177,14 @@
   :init
   (require 'treemacs-all-the-icons)
   (treemacs-load-theme "all-the-icons")
+  :general
+  (rex-leader
+    "tT" 'treemacs)
   :config
   (setq treemacs-wrap-around nil)
   :commands 'treemacs)
 
 (use-package treemacs-evil)
-
 
 (use-package hide-mode-line)
 
