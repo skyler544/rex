@@ -186,6 +186,7 @@
   (setq dired-auto-revert-buffer t)
   (setq dired-clean-confirm-killing-deleted-buffers nil)
   :hook
+  (dired-mode . auto-revert-mode)
   (dired-mode . rex/set-file-associations)
   (dired-mode . dired-hide-details-mode))
 
