@@ -188,6 +188,12 @@
 
 (use-package page-break-lines)
 
+(use-package whitespace-mode :elpaca nil
+  :ensure nil
+  :general
+  (rex-leader
+    "tW" 'whitespace-mode))
+
 (use-package rfc-mode
   :defer t
   :hook (rfc-mode . page-break-lines-mode))
