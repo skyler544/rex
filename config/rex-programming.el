@@ -174,6 +174,11 @@
   ("\\.html$" . web-mode)
   ("\\.twig$" . web-mode))
 
+(use-package nxml-mode :elpaca nil
+  :ensure nil
+  :config
+  (setq nxml-child-indent 4))
+
 (use-package htmlize)
 
 (use-package impatient-mode)
