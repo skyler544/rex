@@ -176,6 +176,7 @@
 
 (use-package nxml-mode :elpaca nil
   :ensure nil
+  :mode ("\\.fxml$" . nxml-mode)
   :config
   (setq nxml-child-indent 4))
 
