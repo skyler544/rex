@@ -88,6 +88,31 @@ the only window, use evil-window-move-* (e.g. `evil-window-move-far-left')."
     (interactive)
     (kill-new (file-relative-name buffer-file-name (project-root (project-current t)))))
 
+  (defun rex/docker-up ()
+    "Start docker"
+    (interactive)
+    (let ((default-directory "/sudo::"))
+      (shell-command "sv up docker")))
+
+  (defun rex/docker-down ()
+    "Stop docker"
+    (interactive)
+    (let ((default-directory "/sudo::"))
+      (shell-command "sv down docker")))
+
+  (defun rex/docker-compose-up ()
+    "Run docker-compose up -d in the docker-local directory of the current project."
+    (interactive)
+    (async-shell-command (concat "docker-compose -f "
+                    (project-root (project-current t))
+                    "docker-local/docker-compose.yml up -d")))
+
+  (defun rex/docker-compose-down ()
+    "Run docker-compose down in the docker-local directory of the current project."
+    (interactive)
+    (async-shell-command (concat "docker-compose -f "
+                    (project-root (project-current t))
+                    "docker-local/docker-compose.yml up -d")))
 
   (defun rex/ansi-color-apply-on-region (begin end)
     (interactive "r")
