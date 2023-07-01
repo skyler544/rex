@@ -14,6 +14,27 @@
             "C-j" 'vertico-next
             "C-k" 'vertico-previous)
   :config
+  (vertico-multiform-mode)
+
+  (defvar +vertico-transform-functions nil)
+
+  (cl-defmethod vertico--format-candidate :around
+    (cand prefix suffix index start &context ((not +vertico-transform-functions) null))
+    (dolist (fun (ensure-list +vertico-transform-functions))
+      (setq cand (funcall fun cand)))
+    (cl-call-next-method cand prefix suffix index start))
+
+  (defun rex/vertico-highlight-file-base-name (file)
+    "If FILE is a relative path with directory components, highlight only the base filename."
+    (if (and (string-match "/" file) (not (string-suffix-p "/" file)))
+        (concat
+         (propertize (file-name-directory file) 'face 'marginalia-file-name)
+         (propertize (file-name-nondirectory file) 'face 'marginalia-file-priv-exec))
+      file))
+
+  (add-to-list 'vertico-multiform-categories
+               '(project-file (+vertico-transform-functions . rex/vertico-highlight-file-base-name)))
+
   (setq vertico-cycle t)
   (setq vertico-count 12)
   (setq vertico-resize nil))
