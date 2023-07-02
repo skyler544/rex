@@ -112,7 +112,7 @@ the only window, use evil-window-move-* (e.g. `evil-window-move-far-left')."
     (interactive)
     (async-shell-command (concat "docker-compose -f "
                     (project-root (project-current t))
-                    "docker-local/docker-compose.yml up -d")))
+                    "docker-local/docker-compose.yml down")))
 
   (defun rex/ansi-color-apply-on-region (begin end)
     (interactive "r")
