@@ -153,8 +153,7 @@
 
 ;; this shows long directory paths with a single file in them on one line
 (use-package dired-collapse
-  :elpaca (:host github :repo "Fuco1/dired-hacks")
-  :hook (dired-mode . dired-collapse-mode))
+  :elpaca (:host github :repo "Fuco1/dired-hacks"))
 
 ;; tree-like directory navigation; very slow, but it looks cool
 (use-package dired-subtree
