@@ -27,9 +27,10 @@
   (defun rex/vertico-highlight-file-base-name (file)
     "If FILE is a relative path with directory components, highlight only the base filename."
     (if (and (string-match "/" file) (not (string-suffix-p "/" file)))
-        (concat
-         (propertize (file-name-directory file) 'face 'marginalia-file-name)
-         (propertize (file-name-nondirectory file) 'face 'marginalia-file-priv-exec))
+        (progn (add-face-text-property
+                (length (file-name-directory file)) (length file)
+                'font-lock-escape-face nil file)
+               file)
       file))
 
   (add-to-list 'vertico-multiform-categories
