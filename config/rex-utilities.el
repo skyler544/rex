@@ -43,13 +43,19 @@
 
 ;; Terminal emulation
 (use-package vterm
-  :general
-  (rex-leader
-    "ot" 'vterm)
   :commands vterm)
 
 (use-package eat
-  :elpaca (:host codeberg :repo "akib/emacs-eat" :files (:defaults "./*")))
+  :elpaca (:host codeberg :repo "akib/emacs-eat" :files (:defaults "./*"))
+  :general
+  (rex-leader
+    "ot" 'eat)
+  (:states 'normal
+           :keymaps 'eat-semi-char-mode-map
+           "RET" 'eat-self-input
+           "p" 'eat-yank)
+  :config
+  (add-to-list 'evil-insert-state-modes 'eat-mode))
 
 (use-package docker
   :general
