@@ -224,3 +224,19 @@
 (use-package restclient
   :mode ("\\.http" . restclient-mode))
 
+(use-package shell-command-x
+  :config
+  (shell-command-x-mode 1))
+
+;; built-in shell mode fixes
+(use-package emacs :elpaca nil
+  :custom-face
+  (ansi-color-bright-black
+   ((t ( :background unspecified
+         :foreground unspecified))))
+  :config
+  (add-hook 'term-exec-hook
+          (function
+           (lambda ()
+             (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix)))))
+
