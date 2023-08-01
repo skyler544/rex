@@ -28,9 +28,18 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
+(use-package helm-make)
+
 ;; TODO Set this up; should make it possible to register commands and
 ;; select them via completion
-(use-package run-command)
+(use-package run-command
+  :general
+  (rex-leader
+    "R" 'run-command)
+  :config
+  (require 'run-command-recipes)
+  (require 'term)
+  (setq run-command-recipes '(run-command-recipe-package-json run-command-recipe-make)))
 
 ;; Terminal emulation
 (use-package vterm
