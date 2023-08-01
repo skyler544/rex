@@ -220,3 +220,7 @@
     "sD" 'deadgrep))
 
 (use-package wgrep-deadgrep)
+
+(use-package restclient
+  :mode ("\\.http" . restclient-mode))
+
