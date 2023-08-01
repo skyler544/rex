@@ -262,3 +262,63 @@
            (lambda ()
              (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix)))))
 
+(use-package xref :elpaca nil
+  :custom-face
+  (xref-file-header
+   ((t ( :foreground unspecified
+         :inherit 'default
+         :weight bold)))))
+
+;; override this function so that xref output is a little more readable
+;; TODO do this in a way that isn't so hacky
+(defun xref--insert-xrefs (xref-alist)
+  "Insert XREF-ALIST in the current buffer.
+XREF-ALIST is of the form ((GROUP . (XREF ...)) ...), where
+GROUP is a string for decoration purposes and XREF is an
+`xref-item' object."
+  (require 'compile) ; For the compilation faces.
+  (cl-loop for (group . xrefs) in xref-alist
+           for max-line = (cl-loop for xref in xrefs
+                                   maximize (xref-location-line
+                                             (xref-item-location xref)))
+           for line-format = (and max-line
+                                  (format
+                                   #("%%%dd: " 0 4 (face xref-line-number) 5 6 (face shadow))
+                                   (1+ (floor (log max-line 10)))))
+           with item-text-props = (list 'mouse-face 'highlight
+                                        'keymap xref--button-map
+                                        'help-echo
+                                        (concat "mouse-2: display in another window, "
+                                                "RET or mouse-1: follow reference"))
+           with prev-group = nil
+           with prev-line = nil
+           do
+           (xref--insert-propertized '(face xref-file-header xref-group t)
+                                     group "\n")
+           (dolist (xref xrefs)
+             (pcase-let (((cl-struct xref-item summary location) xref))
+               (let* ((line (xref-location-line location))
+                      (prefix
+                       (cond
+                        ((not line) "  ")
+                        ((and (equal line prev-line)
+                              (equal prev-group group))
+                         "")
+                        (t (format line-format line)))))
+                 ;; Render multiple matches on the same line, together.
+                 (when (and (equal prev-group group)
+                            (or (null line)
+                                (not (equal prev-line line))))
+                   (insert "\n"))
+                 (xref--insert-propertized (nconc (list 'xref-item xref)
+                                                  item-text-props)
+                                           prefix summary)
+                 (setq prev-line line
+                       prev-group group))))
+           (insert "\n\n"))
+  (add-to-invisibility-spec '(ellipsis . t))
+  (save-excursion
+    (goto-char (point-min))
+    (while (= 0 (forward-line 1))
+      (xref--apply-truncation)))
+  (run-hooks 'xref-after-update-hook))
