@@ -215,9 +215,31 @@
   :hook (rfc-mode . page-break-lines-mode))
 
 (use-package deadgrep
+  :config
+  (defun deadgrep-edit-mode ()
+    (interactive)
+    (wgrep-change-to-wgrep-mode))
+
+  (defun rex/embark-become-deadgrep (&optional full)
+    (interactive "P")
+    (unless (minibufferp)
+      (user-error "Not in a minibuffer"))
+    (let* ((target (embark--display-string ; remove invisible portions
+                    (if full
+                        (minibuffer-contents)
+                      (pcase-let ((`(,beg . ,end) (embark--boundaries)))
+                        (string-remove-prefix
+                         "#" (substring (minibuffer-contents) beg
+                                        (+ end (embark--minibuffer-point)))))))))
+      (embark--become-command #'deadgrep target)))
+
   :general
   (rex-leader
-    "sD" 'deadgrep))
+    "sD" 'deadgrep)
+  (:keymaps 'embark-consult-async-search-map
+            "D" 'deadgrep)
+  (:keymaps 'minibuffer-mode-map
+            "C-c C-d" 'rex/embark-become-deadgrep))
 
 (use-package wgrep-deadgrep)
 
