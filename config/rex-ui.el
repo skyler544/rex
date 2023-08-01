@@ -30,7 +30,9 @@
   (moody-replace-vc-mode)
   (moody-replace-eldoc-minibuffer-message-function))
 
-(use-package all-the-icons)
+(use-package all-the-icons
+  :config
+  (setq all-the-icons-color-icons nil))
 
 (use-package all-the-icons-dired
   :hook (dired-mode . all-the-icons-dired-mode)
