@@ -16,7 +16,8 @@
         '(" " flymake-mode-line-exception flymake-mode-line-counters))
   :general
   (rex-leader
-    "tf" 'flymake-mode))
+    "tf" 'flymake-mode
+    "pD" 'flymake-show-project-diagnostics))
 
 (use-package emacs :elpaca nil
   :hook (after-save . executable-make-buffer-file-executable-if-script-p))
