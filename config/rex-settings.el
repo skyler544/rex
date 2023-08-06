@@ -194,23 +194,23 @@
   :defer t
   :custom-face
   (proced-executable
-   ((t ( :foreground nil
+   ((t ( :foreground unspecified
          :inherit font-lock-escape-face))))
   (proced-cpu
-   ((t ( :foreground nil
+   ((t ( :foreground unspecified
          :inherit font-lock-builtin-face))))
   (proced-mem
-   ((t ( :foreground nil
+   ((t ( :foreground unspecified
          :inherit font-lock-builtin-face))))
   (proced-pid
-   ((t ( :foreground nil
+   ((t ( :foreground unspecified
          :inherit font-lock-string-face))))
   (proced-emacs-pid
-   ((t ( :foreground nil
+   ((t ( :foreground unspecified
          :weight bold
          :inherit font-lock-warning-face))))
   (proced-time-colon
-   ((t ( :foreground nil
+   ((t ( :foreground unspecified
          :inherit font-lock-warning-face))))
   :init
   (setq-default proced-auto-update-flag t)
