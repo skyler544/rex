@@ -14,6 +14,8 @@
 (setq byte-compile-warnings '(not obsolete))
 (setq warning-suppress-log-types '((comp) (bytecomp)))
 
+(setq rex/original-gc-value gc-cons-threshold)
+(setq gc-cons-threshold most-positive-fixnum)
 (load (concat user-emacs-directory "elpaca-loader"))
 
 (use-package emacs :elpaca nil

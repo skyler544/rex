@@ -75,4 +75,4 @@
   (load "~/build/rex-email/rex-email")
 
   ;; restore gc-cons-threshold
-  (setq gc-cons-threshold 800000))
+  (setq gc-cons-threshold rex/original-gc-value))
