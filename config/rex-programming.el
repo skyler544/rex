@@ -200,6 +200,15 @@
   :config
   (setq tex-start-options "--shell-escape"))
 
+(use-package sly
+  :mode ("\\.cl\\'" . common-lisp-mode)
+  :config (setq inferior-lisp-program "sbcl")
+  :general
+  (rex-leader
+    :keymaps 'sly-mode-map
+    "or" 'sly)
+  (:keymaps 'sly-mode-map
+            "M-h" 'sly-describe-symbol))
 ;; LaTeX
 ;; ****************************************
 (use-package auctex
