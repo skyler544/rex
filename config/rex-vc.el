@@ -123,8 +123,9 @@ window that already exists in that direction. It will split otherwise."
   :config
   (defun rex/vc-off-remote ()
     "Disable vc-mode while editing remote files."
-    (if (file-remote-p (buffer-file-name))
-        (setq-local vc-handled-backends nil)))
+    (when (buffer-file-name)
+     (if (file-remote-p (buffer-file-name))
+         (setq-local vc-handled-backends nil))))
   :hook (find-file . rex/vc-off-remote))
 
 (use-package smerge-mode :elpaca nil
