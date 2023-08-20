@@ -111,12 +111,13 @@
 
 ;; Language config
 ;; ****************************************
-(use-package c-mode :elpaca nil
+(use-package cc-mode :elpaca nil
   :ensure nil
+  :init
+  (setq-default c-basic-offset 4)
   :hook
   (c-mode . eglot-ensure)
-  (c-mode . tree-sitter-hl-mode)
-  :hook (c-mode . (lambda () (setq c-basic-offset 4))))
+  (c-mode . tree-sitter-hl-mode))
 
 (use-package java-mode :elpaca nil
   :ensure nil
