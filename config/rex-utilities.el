@@ -90,7 +90,14 @@
 (use-package iedit
   :general
   (:states '(normal visual)
-           "?" 'iedit-mode))
+           "?" 'iedit-mode)
+  (:keymaps 'isearch-mode-map
+            "C-;" 'iedit-mode-from-isearch))
+
+(use-package goto-chg
+  :general
+  (:states 'normal
+           "C-," 'goto-last-change))
 
 (use-package wgrep
   :config
