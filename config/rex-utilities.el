@@ -262,6 +262,19 @@
            (lambda ()
              (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix)))))
 
+(use-package drag-stuff
+  :diminish
+  :config
+  (drag-stuff-define-keys)
+  (drag-stuff-global-mode 1)
+  :general
+  (:states 'normal
+           "M-j" 'drag-stuff-down
+           "M-k" 'drag-stuff-up))
+
+(use-package so-long
+  :hook (after-init . global-so-long-mode))
+
 (use-package xref :elpaca nil
   :custom-face
   (xref-file-header
