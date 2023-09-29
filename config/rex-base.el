@@ -72,7 +72,8 @@
   (put 'narrow-to-region 'disabled nil)
   (put 'downcase-region 'disabled nil)
   (put 'upcase-region 'disabled nil)
-  (column-number-mode))
+  (column-number-mode)
+  (winner-mode))
 
 
 ;; Tweaks

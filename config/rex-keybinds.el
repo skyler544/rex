@@ -85,15 +85,7 @@
     "fP" 'ffap
     "fs" 'save-buffer
     "fS" 'write-file
-    "ff" 'find-file
-    ;; windows
-    "wH" 'rex/window-move-left
-    "wJ" 'rex/window-move-down
-    "wK" 'rex/window-move-up
-    "wL" 'rex/window-move-right
-    "wr" 'nil
-    "ws" 'rex/split-and-follow-horizontally
-    "wv" 'rex/split-and-follow-vertically))
+    "ff" 'find-file))
 
 ;; Modal editing
 ;; ----------------------------------------------------
@@ -113,8 +105,16 @@
     (evil-range (point-min) (point-max) type))
   :general
   (rex-leader
+    ;; windows
     "w" 'evil-window-map
-    "wr" 'nil)
+    "wH" 'rex/window-move-left
+    "wJ" 'rex/window-move-down
+    "wK" 'rex/window-move-up
+    "wL" 'rex/window-move-right
+    "wu" 'winner-undo
+    "wr" 'winner-redo
+    "ws" 'rex/split-and-follow-horizontally
+    "wv" 'rex/split-and-follow-vertically)
   (:states 'normal
            "q" 'ignore)
   (:states '(normal visual)
