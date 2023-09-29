@@ -130,15 +130,20 @@ the only window, use evil-window-move-* (e.g. `evil-window-move-far-left')."
     (interactive "r")
     (ansi-color-apply-on-region begin end t))
 
+  (defun rex/clean-load-theme (theme)
+    (mapc #'disable-theme custom-enabled-themes)
+    (load-theme theme t))
+
   (defun rex/dark-theme ()
     "Switch to a dark theme."
     (interactive)
-    (load-theme 'doom-nord-aurora t))
+    ;; (load-theme 'doom-nord-aurora t))
+    (rex/clean-load-theme 'doom-spacegrey-alt))
 
   (defun rex/light-theme ()
     "Switch to a light theme."
     (interactive)
-    (load-theme 'doom-opera-light-alt t))
+    (rex/clean-load-theme 'doom-opera-light-alt))
 
   (defun rex/load-fonts ()
     "Load the font file."
