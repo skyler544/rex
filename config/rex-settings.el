@@ -14,6 +14,7 @@
   (setq-default tab-width 4)
   (setq-default fill-column 80)
   (setq-default sentence-end-double-space nil)
+  (setq auto-hscroll-mode 'current-line)
   (setq inhibit-startup-screen t)
   (setq auth-sources '("~/.authinfo.gpg"))
   (setq Man-notify-method 'aggressive)
