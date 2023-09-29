@@ -245,12 +245,22 @@
 
 (use-package wgrep-deadgrep)
 
+;; Program for turning a buffer into a webpage
+(use-package htmlize)
+
+;; Serve a buffer via http
+(use-package impatient-mode)
+
 (use-package restclient
   :mode ("\\.http" . restclient-mode))
 
 (use-package shell-command-x
   :config
   (shell-command-x-mode 1))
+
+(use-package power-mode
+  :config
+  (setq power-mode-streak-shake-threshold nil))
 
 ;; built-in shell mode fixes
 (use-package emacs :elpaca nil

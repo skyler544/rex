@@ -222,10 +222,6 @@
   :config
   (setq nxml-child-indent 4))
 
-(use-package htmlize)
-
-(use-package impatient-mode)
-
 (use-package emacs :elpaca nil
   :after treesit
   :custom-face
