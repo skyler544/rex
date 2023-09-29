@@ -1,74 +1,45 @@
 ;;; -*- lexical-binding: t -*-
 ;;
-;; This file initializes the package system and installs use-package.
-;; diminish and general are also initialized here as they are widely
-;; used throughout rex. Frame related setup is also performed here.
-;;
-;; This file should not be modified frequently (if at all).
+;; Basic initialization
+;; ----------------------------------------------------
+;; Redirect native-comp cache.
+(when (fboundp 'startup-redirect-eln-cache)
+  (startup-redirect-eln-cache
+   (convert-standard-filename
+    (expand-file-name "var/eln-cache" user-emacs-directory))))
 
-;; elpaca handles packages
-(setq package-enable-at-startup nil)
+;; If something goes wrong, try to fix it interactively.
 (setq debug-on-error t)
 
-;; Startup speed
-(setq rex/original-gc-value gc-cons-threshold)
-(setq gc-cons-threshold most-positive-fixnum)
-(load (concat user-emacs-directory "elpaca-loader"))
+;; Package management
+;; ----------------------------------------------------
+;; Start up the built-in Emacs package manager.
+(package-initialize)
 
-(use-package emacs :elpaca nil
+;; Add a larger package repository.
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
+
+;; If the package list is empty, initialize it.
+(unless package-archive-contents
+  (package-refresh-contents))
+
+;; Enable use-package; not necessary on Emacs 29+.
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+(use-package use-package
+  :config (setq-default use-package-always-ensure t))
+
+;; Enable the :vc keyword for use-package
+(unless (package-installed-p 'vc-use-package)
+  (package-vc-install "https://github.com/slotThe/vc-use-package"))
+
+;; Garbage collection
+;; ----------------------------------------------------
+(use-package gcmh
+  :diminish
+  :hook (emacs-startup . gcmh-mode)
   :init
-  (scroll-bar-mode -1)
-  (tool-bar-mode -1)
-  (setq use-package-always-ensure t)
-  (setq frame-resize-pixelwise t)
-  (setq custom-theme-directory (concat user-emacs-directory "themes/"))
-  (setq byte-compile-warnings '(not obsolete))
-  (setq warning-suppress-log-types '((comp) (bytecomp)))
-  (setq native-comp-async-report-warnings-errors nil)
-  (setq warning-minimum-level :error)
-  (setq load-prefer-newer noninteractive)
-  (setq inhibit-x-resources t)
-
-  ;; Set up config and cache directories
-  (setq rex/config-dir (concat user-emacs-directory "config/"))
-  (setq rex/cache-dir (concat user-emacs-directory ".cache/"))
-  (add-to-list 'load-path rex/config-dir)
-  (startup-redirect-eln-cache (concat rex/cache-dir "eln-cache"))
-
-  :custom-face
-  (cursor
-   ((t ( :background unspecified))))
-  (whitespace-newline
-   ((t ( :foreground unspecified
-         :inherit font-lock-warning-face))))
-  (whitespace-space
-   ((t ( :foreground unspecified
-         :inherit font-lock-warning-face))))
-  (fringe
-   ((t ( :background unspecified))))
-  (variable-pitch
-   ((t ( :family "monospace"))))
-  (shadow
-   ((t ( :foreground unspecified
-         :inherit font-lock-comment-face))))
-  (help-key-binding
-   ((t ( :foreground unspecified
-         :background unspecified
-         :weight bold
-         :box unspecified
-         :inverse-video t)))))
-
-;; Adds a keyword to use-package for hiding minor modes from the modeline
-(use-package diminish
-  :demand t)
-
-;; general makes defining keys (particularly when using leader keys) much
-;; simpler. Installing it here and configuring it later keeps this file simpler.
-(use-package general
-  :demand t
-  :config
-  (general-auto-unbind-keys)
-  (general-evil-setup t))
-
-;; Necessary after installing packages that add keywords to use-package
-(elpaca-wait)
+  (setq gcmh-idle-delay 'auto
+        gcmh-auto-idle-delay-factor 10
+        gcmh-high-cons-threshold #x1000000)) ; 16MB

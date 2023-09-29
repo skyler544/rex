@@ -1,8 +1,5 @@
-/eln-cache/
-/elpa/
-/.cache/
-/share/
-/eglot-eclipse-jdt-cache/
-/image-dired/
-/eglot-java-eclipse-jdt-cache/
 /elpaca/
+/var/
+/elpa/
+/etc/
+/tree-sitter/

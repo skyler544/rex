@@ -1,14 +1,47 @@
 ;;; -*- lexical-binding: t -*-
 ;;
-(use-package info :elpaca nil
-  :custom-face
-  (info-menu-star
-   ((t ( :foreground unspecified))))
-  (Info-quoted
-   ((t ( :inherit nil
-         :inherit font-lock-function-name-face)))))
+;; User Interface configuration
+;; ----------------------------------------------------
 
-;; Huge theme pack 
+
+;; Fonts
+;; ----------------------------------------------------
+(use-package emacs
+  :config
+  (set-face-attribute 'variable-pitch t :family "monospace")
+  (setq *rex/face-size* 120)
+
+  (defun rex/font-exists (fam)
+    (if (null (x-list-fonts fam)) nil t))
+
+  (defun rex/frame-init (face fam size)
+    (set-face-attribute face nil
+                        :family fam
+                        :height size))
+
+  (defun rex/frame-init-aux (fam size)
+    (when (rex/font-exists fam)
+      (let ((faces '(default fixed-pitch variable-pitch)))
+        (dolist (face faces)
+          (rex/frame-init face fam size)))))
+
+  (defun rex/frame-init-iosevka ()
+    (interactive)
+    (rex/frame-init-aux "Iosevka Custom" *rex/face-size*))
+  (defun rex/frame-init-commit ()
+    (interactive)
+    (rex/frame-init-aux "Commit Mono" *rex/face-size*))
+
+  (if (daemonp)
+      (add-hook 'after-make-frame-functions
+                (lambda (frame)
+                  (select-frame frame)
+                  (rex/frame-init-commit)))
+    (rex/frame-init-commit)))
+
+
+;; Themes
+;; ----------------------------------------------------
 (use-package doom-themes
   :custom-face
   (line-number
@@ -19,12 +52,10 @@
          :slant normal
          :weight semi-bold))))
   :config (load-theme 'doom-opera-light-alt t))
-  ;; :config (load-theme 'doom-nord-aurora t))
 
-;; TODO theme based on time of day
-;; https://stackoverflow.com/a/14760833
 
-;; Flashy modeline
+;; Mode Line
+;; ----------------------------------------------------
 (use-package moody
   :config
   (setq evil-mode-line-format '(before . moody-mode-line-buffer-identification))
@@ -34,6 +65,10 @@
   (moody-replace-vc-mode)
   (moody-replace-eldoc-minibuffer-message-function))
 
+
+
+;; Icons
+;; ----------------------------------------------------
 (use-package all-the-icons
   :config
   (setq all-the-icons-color-icons nil))
@@ -45,6 +80,9 @@
    ((t ( :foreground unspecified
          :inherit font-lock-type-face)))))
 
+
+;; Feedback
+;; ----------------------------------------------------
 ;; Show the results of C-x C-e directly in the buffer
 (use-package eros
   :config
@@ -83,36 +121,6 @@
     (add-to-list 'pulsar-pulse-functions fkt))
   (pulsar-global-mode))
 
-;; Highlight hex color strings (and some other kinds) in the buffer
-(use-package rainbow-mode
-  :commands 'rainbow-mode)
-
-;; better pdf support
-(use-package pdf-tools
-  :elpaca (:host github :repo "vedang/pdf-tools")
-  :diminish pdf-view-midnight-minor-mode
-  :mode ("\\.pdf\\'" . pdf-view-mode)
-  :config
-  (setq-default pdf-view-display-size 'fit-width)
-  (setq pdf-view-resize-factor 1.1)
-  (setq pdf-view-use-scaling t)
-  (setq pdf-view-use-imagemagick nil)
-
-  (defun rex/ignore-errors (&rest r)
-    (ignore-errors (apply (car r) (cdr r))))
-
-  (advice-add 'pdf-view-goto-page :around #'rex/ignore-errors)
-
-  :general
-  (:keymaps 'pdf-view-mode-map
-            "M-m" 'pdf-view-themed-minor-mode)
-  :hook
-  (pdf-view-mode . (lambda () (auto-composition-mode -1)))
-  (pdf-view-mode . pdf-view-themed-minor-mode))
-
-(use-package saveplace-pdf-view
-  :after pdf-tools)
-
 ;; Show diffs in the fringe.
 (use-package diff-hl
   :custom-face
@@ -134,3 +142,34 @@
   :hook
   (prog-mode . diff-hl-mode)
   (diff-hl-mode . rex/diff-hl-settings-apply))
+
+;; Face overrides
+;; ----------------------------------------------------
+(use-package emacs
+  :custom-face
+  (cursor
+   ((t ( :background unspecified))))
+  (whitespace-newline
+   ((t ( :foreground unspecified
+         :inherit font-lock-warning-face))))
+  (whitespace-space
+   ((t ( :foreground unspecified
+         :inherit font-lock-warning-face))))
+  (fringe
+   ((t ( :background unspecified))))
+  (variable-pitch
+   ((t ( :family "monospace"))))
+  (shadow
+   ((t ( :foreground unspecified
+         :inherit font-lock-comment-face))))
+  (help-key-binding
+   ((t ( :foreground unspecified
+         :background unspecified
+         :weight bold
+         :box unspecified
+         :inverse-video t))))
+  (info-menu-star
+   ((t ( :foreground unspecified))))
+  (Info-quoted
+   ((t ( :inherit nil
+         :inherit font-lock-function-name-face)))))

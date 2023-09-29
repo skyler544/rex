@@ -1,9 +1,103 @@
 ;;; -*- lexical-binding: t -*-
 ;;
-;; The dark side.
-(use-package evil
-  :init
+;; Keybinding management
+;; ----------------------------------------------------
+;; general makes defining keys simpler.
+(use-package general
+  :config
+  ;; base options
+  (general-auto-unbind-keys)
+  (general-evil-setup t)
   (setq evil-want-keybinding nil)
+
+  ;; leader setup
+  (general-override-mode)
+  (general-create-definer rex-leader
+    :states '(normal visual insert emacs)
+    :keymaps 'override
+    :prefix "SPC"
+    :non-normal-prefix "C-SPC")
+  (rex-leader
+    "m" '(:ignore t :which-key "local leader")
+    "s" '(:ignore t :which-key "search")
+    "c" '(:ignore t :which-key "code")
+    "o" '(:ignore t :which-key "open")
+    "e" '(:ignore t :which-key "eval")
+    "g" '(:ignore t :which-key "goto")
+    "p" '(:ignore t :which-key "project")
+    "f" '(:ignore t :which-key "file")
+    "t" '(:ignore t :which-key "toggle")
+    "w" '(:ignore t :which-key "windows")
+    "b" '(:ignore t :which-key "buffer"))
+
+  ;; must be enabled by general
+  (evil-mode))
+
+(use-package emacs
+  :general
+  ("C-=" 'text-scale-increase
+   "C--" 'text-scale-decrease
+   "C-0" 'text-scale-adjust)
+  (rex-leader
+    "SPC" 'execute-extended-command
+    "." 'find-file
+    "d" 'dired-jump
+    "x" 'Control-X-prefix
+    "Q" 'save-buffers-kill-emacs
+    "qf" 'delete-frame
+    "!" 'shell-command
+    "&" 'async-shell-command
+    "l" 'recenter-top-bottom
+    "r" 'move-to-window-line-top-bottom
+    "C" 'rex/async-shell-command-on-region-or-line
+    "X" 'rex/shell-command-on-region-or-line
+    ;; eval
+    "eb" 'eval-buffer
+    "er" 'eval-region
+    "ef" 'eval-defun
+    ;; open
+    "of" 'make-frame
+    "om" 'man
+    "oc" 'calendar
+    ;; toggle
+    "td" 'rex/dark-theme
+    "tD" 'rex/light-theme
+    "tt" 'toggle-truncate-lines
+    "tw" 'visual-line-mode
+    "tW" 'whitespace-mode
+    "tv" 'visible-mode
+    "tL" 'display-line-numbers-mode
+    ;; help
+    "h" 'help-command
+    "hF" 'describe-face
+    "h'" 'describe-char
+    ;; buffers
+    "bz" 'bury-buffer
+    "bR" 'rename-buffer
+    "br" 'revert-buffer
+    "bk" 'kill-this-buffer
+    "bm" 'bookmark-set
+    ;; files
+    "fy" 'rex/kill-relative-path
+    "fw" 'fixup-whitespace
+    "fP" 'ffap
+    "fs" 'save-buffer
+    "fS" 'write-file
+    "ff" 'find-file
+    ;; windows
+    "wH" 'rex/window-move-left
+    "wJ" 'rex/window-move-down
+    "wK" 'rex/window-move-up
+    "wL" 'rex/window-move-right
+    "wr" 'nil
+    "ws" 'rex/split-and-follow-horizontally
+    "wv" 'rex/split-and-follow-vertically))
+
+;; Modal editing
+;; ----------------------------------------------------
+(use-package evil
+  :after general
+  :init
   (setq evil-kill-on-visual-paste nil)
   (setq evil-want-Y-yank-to-eol t)
   (setq evil-undo-system 'undo-redo)
@@ -11,31 +105,18 @@
   (setq evil-move-beyond-eol t)
   (setq evil-respect-visual-line-mode t)
   (setq evil-disable-insert-state-bindings t)
-
   :config
-  (setq evil-mode-line-format '(before . moody-mode-line-buffer-identification))
-  (evil-set-initial-state 'org-agenda-mode 'normal)
-
   (evil-define-text-object +evil:whole-buffer-txtobj (count &optional _beg _end type)
     "Text object to select the whole buffer."
     (evil-range (point-min) (point-max) type))
-
-  (evil-mode)
-
   :general
   (rex-leader
     "w" 'evil-window-map
-    "wH" 'rex/window-move-left
-    "wJ" 'rex/window-move-down
-    "wK" 'rex/window-move-up
-    "wL" 'rex/window-move-right
-    "wr" 'nil
-    "ws" 'rex/split-and-follow-horizontally
-    "wv" 'rex/split-and-follow-vertically)
+    "wr" 'nil)
   (:states 'normal
            "q" 'ignore)
   (:states '(normal visual)
-            "C-w" 'evil-scroll-line-up)
+           "C-w" 'evil-scroll-line-up)
   (:keymaps 'evil-inner-text-objects-map
             "g" '+evil:whole-buffer-txtobj)
   (:keymaps 'evil-outer-text-objects-map
@@ -67,7 +148,7 @@
            "s" 'evil-surround-region
            "S" 'evil-Surround-region)
   (:states 'operator
-            "s" 'evil-surround-edit)
+           "s" 'evil-surround-edit)
   (rex-leader
     "bn" 'evil-buffer-new)
   :config

@@ -1,10 +1,9 @@
 ;;; -*- lexical-binding: t -*-
 ;;
-;; This file defines any custom functions unrelated to specific
-;; packages.
-(use-package emacs :elpaca nil
+;; Custom elisp functions, some original, some stolen.
+;; ----------------------------------------------------
+(use-package emacs
   :config
-
   ;; window movement; stolen from doom
   (defun rex--window-swap (direction)
     "Move current window to the next window in DIRECTION.
@@ -131,15 +130,15 @@ the only window, use evil-window-move-* (e.g. `evil-window-move-far-left')."
     "Run docker-compose up -d in the docker-local directory of the current project."
     (interactive)
     (async-shell-command (concat "docker-compose -f "
-                    (project-root (project-current t))
-                    "docker-local/docker-compose.yml up -d")))
+                                 (project-root (project-current t))
+                                 "docker-local/docker-compose.yml up -d")))
 
   (defun rex/docker-compose-down ()
     "Run docker-compose down in the docker-local directory of the current project."
     (interactive)
     (async-shell-command (concat "docker-compose -f "
-                    (project-root (project-current t))
-                    "docker-local/docker-compose.yml down")))
+                                 (project-root (project-current t))
+                                 "docker-local/docker-compose.yml down")))
 
   (defun rex/ansi-color-apply-on-region (begin end)
     (interactive "r")
@@ -152,7 +151,6 @@ the only window, use evil-window-move-* (e.g. `evil-window-move-far-left')."
   (defun rex/dark-theme ()
     "Switch to a dark theme."
     (interactive)
-    ;; (load-theme 'doom-nord-aurora t))
     (rex/clean-load-theme 'doom-spacegrey-alt))
 
   (defun rex/light-theme ()

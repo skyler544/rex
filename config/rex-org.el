@@ -1,9 +1,10 @@
 ;;; -*- lexical-binding: t -*-
 ;;
-(use-package org :defer t :diminish org-indent-mode
-
+;; Outliner, agenda, project manager
+;; ----------------------------------------------------
+(use-package org
   ;; General settings
-  ;; ****************************************
+  ;; ----------------------------------------------------
   :hook
   (org-mode . electric-pair-mode)
   (org-mode . auto-fill-mode)
@@ -26,7 +27,7 @@
 
 
   ;; Agenda / workflow settings
-  ;; ****************************************
+  ;; ----------------------------------------------------
   (defun rex/agenda ()
     "Open the agenda with all todos."
     (interactive)
@@ -85,7 +86,7 @@
 
 
   ;; Font settings
-  ;; ****************************************
+  ;; ----------------------------------------------------
   (setq rex/org-levels
         '(org-level-1 org-level-2
           org-level-3 org-level-4
@@ -126,7 +127,7 @@
 
 
   ;; Keybindings
-  ;; ****************************************
+  ;; ----------------------------------------------------
   :general
   (:keymaps 'org-read-date-minibuffer-local-map
             "C-h" '(lambda () (interactive) (org-eval-in-calendar '(calendar-backward-day 1)))
@@ -134,19 +135,19 @@
             "C-k" '(lambda () (interactive) (org-eval-in-calendar '(calendar-backward-week 1)))
             "C-l" '(lambda () (interactive) (org-eval-in-calendar '(calendar-forward-day 1))))
   (:states 'normal
-   :keymaps 'org-agenda-mode-map
-            "R" 'rex/reload-agenda
-            "q" 'org-agenda-quit
-            "RET" 'org-agenda-goto
-            "K" 'org-habit-toggle-display-in-agenda)
+           :keymaps 'org-agenda-mode-map
+           "R" 'rex/reload-agenda
+           "q" 'org-agenda-quit
+           "RET" 'org-agenda-goto
+           "K" 'org-habit-toggle-display-in-agenda)
   (:keymaps 'org-src-mode-map
             "C-c C-c" 'org-edit-src-exit)
   (:states 'normal
-   :keymaps 'org-mode-map
-            "RET" 'rex/org-dwim-at-point)
+           :keymaps 'org-mode-map
+           "RET" 'rex/org-dwim-at-point)
   (:states 'insert
-   :keymaps 'org-mode-map
-            "C-o" 'evil-org-open-below)
+           :keymaps 'org-mode-map
+           "C-o" 'evil-org-open-below)
   (rex-leader
     "ma" 'rex/agenda
     "ml" 'org-store-link)
@@ -160,7 +161,7 @@
 
 
 ;; Extensions
-;; ****************************************
+;; ----------------------------------------------------
 (use-package org-contrib
   :after org
   :config
