@@ -240,28 +240,38 @@
   ("\\.ts$" . typescript-ts-mode)
   ("\\.tsx$" . tsx-ts-mode))
 
-(use-package js
-  :elpaca nil
-  :ensure nil
-  :hook
-  (js-mode . tree-sitter-hl-mode)
-  :mode ("\\.js$" . js-mode))
-
-(use-package typescript-mode
-  :hook
-  (typescript-mode . tree-sitter-hl-mode)
-  :mode ("\\.ts$" . typescript-mode))
-
- (use-package emacs :elpaca nil
-  :after eglot
+(use-package nvm
+  :elpaca (:host github :repo "rejeep/nvm.el")
   :init
-  (define-derived-mode rex/vue-mode web-mode "rex/vue"
-    "A major mode derived from web-mode, for editing .vue files with LSP support.")
-  (add-to-list 'eglot-server-programs '(rex/vue-mode "vls"))
-  :mode ("\\.vue\\'" . rex/vue-mode)
+  (setq rex/nvm-enabled nil)
+  (defun rex/load-nvm ()
+    "Start nvm."
+    (interactive)
+    (setq rex/nvm-enabled t)
+    (async-shell-command "source ~/.local/bin/load-nvm"))
+  (defun rex/nvm-use ()
+    "Use the .nvmrc file."
+    (interactive)
+    (unless rex/nvm-enabled
+      (rex/load-nvm))
+    (nvm-use-for))
+  :general
+  (rex-leader
+    "bv" 'rex/nvm-use))
+
+(use-package add-node-modules-path
   :hook
-  (rex/vue-mode . eglot-ensure)
-  (rex/vue-mode . (lambda () (electric-indent-local-mode -1))))
+  (tsx-ts-mode . add-node-modules-path)
+  (typescript-ts-mode . add-node-modules-path))
+
+(use-package prettier-js
+  :diminish prettier-js-mode
+  :hook
+  (tsx-ts-mode . prettier-js-mode)
+  (typescript-ts-mode . prettier-js-mode))
+
+(use-package fence-edit
+  :elpaca (:host github :repo "aaronbieber/fence-edit.el"))
 
 (use-package emacs :elpaca nil
   :hook
