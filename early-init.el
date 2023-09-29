@@ -6,14 +6,11 @@
 ;;
 ;; This file should not be modified frequently (if at all).
 
+;; elpaca handles packages
 (setq package-enable-at-startup nil)
 (setq debug-on-error t)
 
-;; Startup speed, annoyance suppression
-(setq gc-cons-threshold 10000000)
-(setq byte-compile-warnings '(not obsolete))
-(setq warning-suppress-log-types '((comp) (bytecomp)))
-
+;; Startup speed
 (setq rex/original-gc-value gc-cons-threshold)
 (setq gc-cons-threshold most-positive-fixnum)
 (load (concat user-emacs-directory "elpaca-loader"))
@@ -25,6 +22,11 @@
   (setq use-package-always-ensure t)
   (setq frame-resize-pixelwise t)
   (setq custom-theme-directory (concat user-emacs-directory "themes/"))
+  (setq byte-compile-warnings '(not obsolete))
+  (setq warning-suppress-log-types '((comp) (bytecomp)))
+  (setq native-comp-async-report-warnings-errors nil)
+  (setq warning-minimum-level :error)
+  (setq load-prefer-newer noninteractive)
   (setq inhibit-x-resources t)
   :custom-face
   (cursor

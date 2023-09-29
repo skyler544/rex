@@ -72,7 +72,12 @@
   (load "rex-hacks")
 
   ;; mu4e
-  (load "~/build/rex-email/rex-email")
+  (load "~/build/rex-email/rex-email"))
 
-  ;; restore gc-cons-threshold
-  (setq gc-cons-threshold rex/original-gc-value))
+(use-package gcmh
+  :diminish
+  :hook (emacs-startup . gcmh-mode)
+  :init
+  (setq gcmh-idle-delay 'auto
+        gcmh-auto-idle-delay-factor 10
+        gcmh-high-cons-threshold #x1000000)) ; 16MB
