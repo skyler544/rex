@@ -127,8 +127,8 @@
   :general
   ("C-x b" 'consult-buffer)
   (:states '(normal visual)
-            "P" 'consult-yank-from-kill-ring
-            "," 'consult-line)
+           "P" 'consult-yank-from-kill-ring
+           "," 'consult-line)
   (:keymaps 'vertico-map
             "M-s" 'consult-history)
   (rex-leader
