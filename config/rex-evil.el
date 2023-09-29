@@ -54,6 +54,9 @@
 ;; operation takes effect.
 (use-package evil-goggles
   :diminish evil-goggles-mode
+  :custom-face
+  (evil-goggles-default-face
+   ((t (:background nil :inherit lazy-highlight))))
   :config
   (evil-goggles-mode))
 
