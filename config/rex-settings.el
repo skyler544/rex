@@ -53,6 +53,7 @@
 (use-package emacs :elpaca nil
   :config
   (setq enable-recursive-minibuffers t)
+  (minibuffer-depth-indicate-mode)
   (setq echo-keystrokes 0.02)
   (setq use-dialog-box nil)
   (setq completion-ignore-case t)
