@@ -100,7 +100,6 @@
              "ca" 'eglot-code-actions)
   :config
   (with-eval-after-load 'eglot (fset #'jsonrpc--log-event #'ignore))
-  ;; (load "./rex-eglot-hack.el")
   (setq eglot-confirm-server-initiated-edits nil)
   (setq eglot-sync-connect 0)
   (setq eglot-autoshutdown t)
@@ -110,8 +109,7 @@
               '(prisma-mode "prisma-language-server" "--stdio")
               '(tsx-ts-mode "typescript-language-server" "--stdio")
               '(rex/mdx-mode "mdx-language-server" "--stdio")
-              '(php-mode "phpactor" "language-server"))
-        )
+              '(php-mode "phpactor" "language-server")))
   (dolist (server rex/language-servers)
     (add-to-list 'eglot-server-programs server))
   :hook
@@ -169,10 +167,25 @@
                             "Eclipse JDT breaks spec and replies with edits as arguments."
                             (mapc #'eglot--apply-workspace-edit arguments)))))
 
+(use-package emacs :elpaca nil
+  :config
+  (define-derived-mode rex/vue-mode web-mode "rex/vue"
+    "A major mode derived from web-mode, for editing .vue files with LSP support.")
+  (define-derived-mode rex/mdx-mode tsx-ts-mode "rex/mdx"
+    "A major mode derived from tsx-ts-mode, for editing .mdx files with LSP support.")
+  :mode
+  ("\\.vue\\'" . rex/vue-mode)
+  ("\\.mdx\\'" . rex/mdx-mode)
+  ("\\.env.test$" . conf-mode)
+  ("\\.env.local$" . conf-mode)
+  ("\\.env.sample$" . conf-mode)
+  ("\\.env$" . conf-mode)
+  (rex/vue-mode . (lambda () (electric-indent-local-mode -1))))
+
 (use-package php-mode
-  :hook
-  (php-mode . eglot-ensure)
-  (php-mode . tree-sitter-hl-mode)
+  :hook (php-mode . tree-sitter-hl-mode)
+  :config
+  (setq php-mode-template-compatibility nil)
   :general
   (:keymaps '(normal php-mode)
             "gr" 'xref-find-references))
