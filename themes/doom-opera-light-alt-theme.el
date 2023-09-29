@@ -55,7 +55,7 @@ determine the exact padding."
 
   ;; name        default   256       16
   ((bg         '("#f4f4f4" nil       nil ))
-   (bg-alt     '("#eeeeee" nil       nil ))
+   (bg-alt     '("#eeeeef" nil       nil ))
    (base0      '("#fafafa" "#dfdfdf" nil ))
    (base1      '("#f5f5f5" "#979797" nil ))
    (base2      '("#eeeeee" "#6b6b6b" nil ))

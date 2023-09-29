@@ -84,7 +84,7 @@ Can be an integer to determine the exact padding."
    (yellow-2   '("#D0BF8F"))
    (yellow-1   '("#E0CF9F"))
    (green-2    '("#5F7F5F"))
-   (green+1    '("#8FB28F"))
+   (green+1    '("#90B390"))
    (green+2    '("#9FC59F"))
    (green+3    '("#AFD8AF"))
    (green+4    '("#BFEBBF"))
