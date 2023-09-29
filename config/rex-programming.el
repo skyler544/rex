@@ -206,9 +206,15 @@
   :hook (markdown-mode . olivetti-mode))
 
 (use-package web-mode
+  :config
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-markup-indent-offset 2)
   :mode
   ("\\.html$" . web-mode)
   ("\\.twig$" . web-mode))
+
+(use-package prisma-mode
+  :elpaca (:host github :repo "pimeys/emacs-prisma-mode"))
 
 (use-package nxml-mode :elpaca nil
   :ensure nil
