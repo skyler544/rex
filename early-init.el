@@ -28,6 +28,13 @@
   (setq warning-minimum-level :error)
   (setq load-prefer-newer noninteractive)
   (setq inhibit-x-resources t)
+
+  ;; Set up config and cache directories
+  (setq rex/config-dir (concat user-emacs-directory "config/"))
+  (setq rex/cache-dir (concat user-emacs-directory ".cache/"))
+  (add-to-list 'load-path rex/config-dir)
+  (startup-redirect-eln-cache (concat rex/cache-dir "eln-cache"))
+
   :custom-face
   (cursor
    ((t ( :background unspecified))))
