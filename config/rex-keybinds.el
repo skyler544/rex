@@ -59,6 +59,8 @@
     "of" 'make-frame
     "om" 'man
     "oc" 'calendar
+	;; projects
+    "p" project-prefix-map
     ;; toggle
     "td" 'rex/dark-theme
     "tD" 'rex/light-theme
