@@ -10,6 +10,7 @@
   (setq evil-want-fine-undo t)
   (setq evil-move-beyond-eol t)
   (setq evil-respect-visual-line-mode t)
+  (setq evil-disable-insert-state-bindings t)
 
   :config
   (setq evil-mode-line-format '(before . moody-mode-line-buffer-identification))
