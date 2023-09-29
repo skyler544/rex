@@ -119,9 +119,7 @@
   (rex-leader
     "ch" 'eldoc)
   :config
-  (advice-add 'eldoc-doc-buffer :after
-              (lambda (&optional interactive)
-                (other-window -1)))
+  (setq eldoc-idle-delay 0.5)
   (setq eldoc-echo-area-use-multiline-p nil))
 
 (use-package abbrev :elpaca nil
