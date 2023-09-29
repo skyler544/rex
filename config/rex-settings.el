@@ -25,6 +25,7 @@
   (setq create-lockfiles nil)
   (setq make-backup-files nil)
   (setq word-wrap t)
+  (setq async-shell-command-display-buffer nil)
   (setq blink-cursor-mode nil)
   (setq redisplay-skip-fontification-on-input t)
   (menu-bar-mode -1)
