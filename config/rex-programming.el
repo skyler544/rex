@@ -211,14 +211,24 @@
     "or" 'sly)
   (:keymaps 'sly-mode-map
             "M-h" 'sly-describe-symbol))
+
+  :init
 ;; LaTeX
 ;; ****************************************
-(use-package auctex
-  :mode ("\\.tex\\'" . LaTeX-mode))
-
-(use-package auctex-latexmk
-  :hook (LaTeX-mode . (lambda () (setq TeX-command-default "LatexMk")))
-  :init
-  (setq auctex-latexmk-inherit-TeX-PDF-mode t)
+(use-package tex
+  :elpaca (:host github :repo "emacs-straight/auctex"
+                 :pre-build (("chmod" "775" "autogen.sh") ("./autogen.sh")))
   :config
-  (auctex-latexmk-setup))
+  (add-to-list 'TeX-expand-list
+               '("%(-PDF)"
+                 (lambda ()
+                   (if TeX-PDF-mode
+                       (cond ((eq TeX-engine 'default) "-pdf")
+                             ((eq TeX-engine 'xetex) "-pdfxe")
+                             ((eq TeX-engine 'luatex) "-pdflua")) ""))))
+  (add-to-list 'TeX-command-list
+               '("LaTeXmk" "latexmk %(-PDF) -%(PDF)%(latex)='%`%l%(mode)%'' %(output-dir) %t"
+                 TeX-run-format nil (latex-mode doctex-mode) :help "Run Latexmk"))
+  (with-eval-after-load 'latex
+    (setq LaTeX-clean-intermediate-suffixes
+          (append LaTeX-clean-intermediate-suffixes '("\\.fdb_latexmk" "\\.fls")))))
