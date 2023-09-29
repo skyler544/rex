@@ -204,6 +204,7 @@
 (use-package sly
   :mode ("\\.cl\\'" . common-lisp-mode)
   :config (setq inferior-lisp-program "sbcl")
+  :hook (lisp-mode . (lambda () (setq-local fill-column 72)))
   :general
   (rex-leader
     :keymaps 'sly-mode-map
