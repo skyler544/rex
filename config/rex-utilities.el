@@ -57,11 +57,6 @@
   :config
   (add-to-list 'evil-insert-state-modes 'eat-mode))
 
-(use-package docker
-  :general
-  (rex-leader
-    "mD" 'docker))
-
 ;; Removes unintentional whitespace edits from lines that you've
 ;; touched while editing a file.
 (use-package ws-butler
