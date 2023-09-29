@@ -49,13 +49,14 @@
   (setq org-log-done 'time)
 
   (setq org-enforce-todo-dependencies t)
-  (setq org-todo-keywords '((sequence "TODO" "PROJ" "IDEA" "|" "DONE" "KILL") (sequence "NOTE")))
+  (setq org-todo-keywords '((sequence "TODO" "PROJ" "IDEA" "|" "DONE" "KILL") (sequence "NOTE" "HOLD")))
   (setq org-todo-keyword-faces
         '(("TODO" . (:inherit (bold success org-todo)))
           ("PROJ" . (:inherit (bold warning org-todo)))
           ("NOTE" . (:inherit (bold warning org-todo)))
           ("IDEA" . (:inherit (bold font-lock-string-face org-todo)))
           ("DONE" . (:inherit (bold font-lock-comment-face org-todo)))
+          ("HOLD" . (:inherit (bold font-lock-comment-face org-todo)))
           ("KILL" . (:inherit (bold error org-todo)))))
 
   ;; Stolen from doom, but trimmed down to only what I need.
