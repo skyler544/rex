@@ -91,6 +91,10 @@
 (use-package consult
   :config
 
+  (with-eval-after-load 'xref
+    (setq xref-show-xrefs-function #'consult-xref
+          xref-show-definitions-function #'consult-xref))
+
   (consult-customize consult-buffer :preview-key nil)
 
   (defun rex/consult-ripgrep-in-a-directory ()

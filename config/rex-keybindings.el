@@ -103,3 +103,10 @@
     :keymaps 'winner-mode-map
     "wr" 'winner-redo
     "wu" 'winner-undo))
+
+(use-package info :elpaca nil
+  :general
+  ( :keymaps 'Info-mode-map
+    :states 'normal
+    "n" 'Info-forward-node
+    "p" 'Info-backward-node))
