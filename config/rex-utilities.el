@@ -110,7 +110,7 @@
   (setq popper-mode-line
         (propertize " ▼ " 'face 'mode-line-emphasis))
   (setq popper-echo-mode t)
-  (setq popper-window-height 0.4)
+  (setq popper-window-height 0.3)
   (setq popper-reference-buffers
         '("\\*Messages\\*"
           "Output\\*$"
@@ -121,12 +121,7 @@
           "\\*Process List\\*"
           "\\*.*docker.*\\*"
           "\\*eldoc\\*" eldoc-mode
-          "\\*vterm\\*" vterm-mode
-          "\\*eat\\*" eat-mode
-          "\\*eshell\\*" eshell-mode
-          comint-mode
-          ("\\*Async Shell Command\\*" . hide)
-          compilation-mode))
+          "\\*sly" sly-mrepl-mode))
   :general
   (rex-leader
     "tc" 'popper-cycle
