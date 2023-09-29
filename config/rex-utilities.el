@@ -195,7 +195,9 @@
   (rex-leader
     "tT" 'treemacs)
   :config
+  (setq treemacs-user-mode-line-format 'none)
   (setq treemacs-wrap-around nil)
+  (setq treemacs-wide-toggle-width 50)
   :commands 'treemacs)
 
 (use-package treemacs-evil)
