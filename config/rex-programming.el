@@ -2,11 +2,25 @@
 ;;
 ;; General programming utilities / settings
 ;; ****************************************
-;; TODO: set up the integrated version
-(use-package tree-sitter
+;; https://github.com/casouri/tree-sitter-module
+(use-package emacs :elpaca nil
   :diminish tree-sitter-mode)
 
-(use-package tree-sitter-langs)
+;; fallback to the package for languages that don't have a dedicated mode yet
+(use-package tree-sitter
+  :demand t
+  :diminish tree-sitter-mode
+  :config
+  (setq treesit-font-lock-level 4))
+
+(use-package tree-sitter-langs
+  :after tree-sitter)
+
+(use-package treesit-auto
+  :config
+  (add-to-list 'global-treesit-auto-modes '(not org-mode))
+  (setq treesit-auto-install t)
+  (global-treesit-auto-mode))
 
 (use-package flymake :elpaca nil
   :init
