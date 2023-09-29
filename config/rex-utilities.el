@@ -101,6 +101,13 @@
   :config
   (setq wgrep-auto-save-buffer t))
 
+(use-package uniquify :elpaca nil
+  :ensure nil
+  :config
+  (setq uniquify-buffer-name-style 'post-forward)
+  (setq uniquify-separator " | ")
+  (setq uniquify-after-kill-buffer-p t))
+
 (use-package adaptive-wrap
   :hook (visual-line-mode . adaptive-wrap-prefix-mode)
   :config
