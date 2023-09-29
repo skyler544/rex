@@ -56,8 +56,7 @@
   (minibuffer-depth-indicate-mode)
   (setq echo-keystrokes 0.02)
   (setq use-dialog-box nil)
-  (setq completion-ignore-case t)
-  (savehist-mode))
+  (setq completion-ignore-case t))
 
 ;; Save the 200 most recently visited files/directories
 (use-package emacs :elpaca nil
@@ -155,8 +154,17 @@
   (setq bookmark-default-file (concat rex/cache-dir "bookmarks")))
 
 (use-package savehist :elpaca nil
+  :ensure nil
+  :init
+  (setq savehist-additional-variables
+        '(file-name-history
+          search-ring
+          command-history
+          regexp-search-ring))
+  (setq savehist-ignored-variables '(magit-revision-history))
+  (setq savehist-file (concat rex/cache-dir "minibuffer-history"))
   :config
-  (setq savehist-file (concat rex/cache-dir "minibuffer-history")))
+  (savehist-mode))
 
 (use-package transient :elpaca nil
   :config
