@@ -70,6 +70,21 @@ the only window, use evil-window-move-* (e.g. `evil-window-move-far-left')."
                              (buffer-substring (region-beginning) (region-end))
                            (thing-at-point 'line t))))
 
+  (defun rex/buffer-info ()
+    "Briefly describe the current buffer."
+    (interactive)
+    (message (concat "Name:\t" (buffer-name)
+                     "\nFile:\t"
+                     (if (buffer-file-name)
+                         (buffer-file-name)
+                       "no file")
+                     "\nSize:\t" (int-to-string (buffer-size)))))
+
+  (defun rex/kill-relative-path ()
+    "Kill the path to the current project relative to the project root."
+    (interactive)
+    (kill-new (file-relative-name buffer-file-name (project-root (project-current t)))))
+
   (defun rex/shell-command-on-region-or-line ()
     "Run the command at point or in the selected region in the shell."
     (interactive)
