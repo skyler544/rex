@@ -41,6 +41,9 @@
   (require 'term)
   (setq run-command-recipes '(run-command-recipe-package-json run-command-recipe-make)))
 
+;; TODO here is another very interesting idea
+;; https://gitlab.com/howardabrams/emacs-piper
+
 ;; Terminal emulation
 (use-package vterm
   :commands vterm)
