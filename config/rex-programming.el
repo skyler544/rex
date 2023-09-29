@@ -179,8 +179,7 @@
   ("\\.env.test$" . conf-mode)
   ("\\.env.local$" . conf-mode)
   ("\\.env.sample$" . conf-mode)
-  ("\\.env$" . conf-mode)
-  (rex/vue-mode . (lambda () (electric-indent-local-mode -1))))
+  ("\\.env$" . conf-mode))
 
 (use-package php-mode
   :hook (php-mode . tree-sitter-hl-mode)
