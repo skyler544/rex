@@ -212,7 +212,32 @@
   (:keymaps 'sly-mode-map
             "M-h" 'sly-describe-symbol))
 
+(use-package lispy
+  :diminish
+  ;; :config
+  ;; (lispy-set-key-theme '(lispy c-digits))
+  :hook
+  (emacs-lisp-mode . lispy-mode)
+  (sly-mrepl-mode . lispy-mode)
+  (lisp-mode . lispy-mode))
+
+(use-package lispyville
+  :diminish
+  :hook (lispy-mode . lispyville-mode)
   :init
+  (setq lispyville-key-theme
+        '(operators
+          text-objects
+          commentary
+          additional
+          ;; additional-movement
+          ))
+  :general
+  ( :states '(normal insert)
+    :keymaps 'lispyville-mode-map
+    "M-L" 'lispyville->
+    "M-H" 'lispyville-<))
+
 ;; LaTeX
 ;; ****************************************
 (use-package tex
