@@ -41,6 +41,7 @@
             [backtab] 'corfu-previous)
 
   :hook
+  (evil-insert-state-exit . corfu-quit)
   (minibuffer-setup . corfu-enable-in-minibuffer)
   (eshell . (lambda ()
                     (setq-local corfu-auto nil)
