@@ -71,6 +71,10 @@
           evil-window-up
           evil-window-right
           evil-window-left
+          evil-close-fold
+          evil-open-fold
+          evil-open-folds
+          rex/hs-fold-imports-lang
           evil-avy-goto-char-timer
           other-window
           isearch-repeat-forward
