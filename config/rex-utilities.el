@@ -277,9 +277,9 @@
          :foreground unspecified))))
   :config
   (add-hook 'term-exec-hook
-          (function
-           (lambda ()
-             (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix)))))
+            (function
+             (lambda ()
+               (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix)))))
 
 (use-package drag-stuff
   :diminish
