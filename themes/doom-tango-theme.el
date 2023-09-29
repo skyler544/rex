@@ -70,7 +70,7 @@ determine the exact padding."
    (base6      '("#A1ACC0" "#6b6b6b" "brightblack"))
    (base7      '("#60728C" "#979797" "brightblack"))
    (base8      '("#485163" "#dfdfdf" "white"))
-   (fg         '("#2a2a2a" "#2a2a2a" nil ))
+   (fg         '("#2e3436" "#2a2a2a" nil ))
    (fg-alt     '("#454545" "#757575" nil ))
    (alum-5     '("#5f615c" "#5f615c" nil))
 
@@ -88,6 +88,7 @@ determine the exact padding."
    (dark-cyan  '("#2c7088" "#5699AF" nil ))
 
    (grey-blue  '("#5d6d7d" "#5d6d7d" nil ))
+   (bruise         (doom-blend alum-5 violet 0.6))
 
    ;; face categories -- required for all themes
    (highlight      blue)
@@ -95,7 +96,7 @@ determine the exact padding."
    (selection      dark-blue)
    (builtin        teal)
    (comments       alum-5)
-   (doc-comments   alum-5)
+   (doc-comments   bruise)
    (constants      dark-blue)
    (functions      red)
    (keywords       green)
@@ -138,7 +139,7 @@ determine the exact padding."
   (((font-lock-comment-face &override)
     :background (if doom-tango-comment-bg (doom-lighten bg 0.05)))
    (lazy-highlight :background (doom-blend bg highlight 0.7) :weight 'bold)
-   ((line-number &override) :foreground base6)
+   ((line-number &override) :foreground bruise)
    ((line-number-current-line &override) :foreground fg)
    (mode-line
     :background modeline-bg :foreground modeline-fg
