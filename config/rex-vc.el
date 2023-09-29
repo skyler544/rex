@@ -74,10 +74,14 @@ window that already exists in that direction. It will split otherwise."
 
   :config
   (setq magit-diff-refine-hunk t)
+  (setq magit-pre-refresh-hook nil)
+  (add-to-list 'magit-section-initial-visibility-alist '(untracked . hide))
   (setq magit-save-repository-buffers nil)
   (setq transient-display-buffer-action '(display-buffer-below-selected))
   (setq magit-display-buffer-function #'rex/magit-display-buffer-fn)
   (setq magit-bury-buffer-function #'magit-mode-quit-window)
+  (setq auto-revert-buffer-list-filter
+        'magit-auto-revert-repository-buffer-p)
   :general
   (rex-leader
     "gg" 'magit-status))
@@ -123,9 +127,8 @@ window that already exists in that direction. It will split otherwise."
   :config
   (defun rex/vc-off-remote ()
     "Disable vc-mode while editing remote files."
-    (when (buffer-file-name)
-     (if (file-remote-p (buffer-file-name))
-         (setq-local vc-handled-backends nil))))
+    (if (file-remote-p (buffer-file-name))
+        (setq-local vc-handled-backends nil)))
   :hook (find-file . rex/vc-off-remote))
 
 (use-package smerge-mode :elpaca nil
