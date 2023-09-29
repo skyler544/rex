@@ -102,7 +102,11 @@
 (use-package evil-lion
   :config (evil-lion-mode))
 
-(use-package evil-nerd-commenter
-  :general
-  (:states '(normal visual)
-            "gcc" 'evilnc-comment-or-uncomment-lines))
+(use-package evil-commentary
+  :diminish
+  :config
+  (evil-commentary-mode))
+
+(use-package evil-mc
+  :config
+  (global-evil-mc-mode))
