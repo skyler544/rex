@@ -226,6 +226,20 @@
 
 (use-package impatient-mode)
 
+(use-package emacs :elpaca nil
+  :after treesit
+  :custom-face
+  (typescript-ts-jsx-tag-face
+   ((t ( :inherit font-lock-type-face))))
+  :delight
+  (typescript-ts-mode "TS")
+  (tsx-ts-mode "TS[tsx]")
+  (js-ts-mode "JS")
+  :mode
+  ("\\.js$" . js-ts-mode)
+  ("\\.ts$" . typescript-ts-mode)
+  ("\\.tsx$" . tsx-ts-mode))
+
 (use-package js
   :elpaca nil
   :ensure nil
