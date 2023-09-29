@@ -66,10 +66,12 @@
     "tt" 'toggle-truncate-lines
     "tw" 'visual-line-mode
     "tv" 'visible-mode
+    "tL" 'display-line-numbers-mode
     ;; help
     "h" 'help-command
     "hF" 'describe-face
     "h'" 'describe-char
+    "hp" 'elpaca-info
     ;; buffers
     "bz" 'bury-buffer
     "bR" 'rename-buffer
@@ -79,6 +81,7 @@
     ;; files
     "fy" 'rex/kill-relative-path
     "fw" 'fixup-whitespace
+    "fy" 'rex/kill-relative-path
     "fP" 'ffap
     "fs" 'save-buffer
     "fS" 'write-file
@@ -106,7 +109,7 @@
 
 (use-package info :elpaca nil
   :general
-  ( :keymaps 'Info-mode-map
-    :states 'normal
+  ( :states 'normal
+    :keymaps 'Info-mode-map
     "n" 'Info-forward-node
     "p" 'Info-backward-node))
