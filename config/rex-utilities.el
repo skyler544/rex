@@ -370,3 +370,52 @@ GROUP is a string for decoration purposes and XREF is an
          :weight bold))))
   :config
   (dired-async-mode 1))
+
+(use-package hideshow :elpaca nil
+  :delight hs-minor-mode
+  :ensure nil
+  :config
+
+  (defvar rex/hs-fold-imports-alist
+    '((php-mode . "^use ")
+      (tsx-ts-mode . "^import {*[\s*\n*[:alnum:]*,* ]*\n*}*")
+      (rex/mdx-mode . "^import {*[\s*\n*[:alnum:]*,* ]*\n*}*")
+      (typescript-ts-mode . "^import ")))
+
+  (defun rex/hs-fold-imports (pattern)
+    (save-excursion
+      (goto-char (point-min))
+      (ignore-errors (re-search-forward pattern))
+      (set-mark (point))
+      (while (ignore-errors (re-search-forward pattern)))
+      (ignore-errors (hs-hide-comment-region (region-beginning) (region-end)))
+      (deactivate-mark t)))
+
+  (defun rex/hs-fold-imports-lang ()
+    "Hide the initial block of import statements in a buffer of `major-mode'."
+    (interactive)
+    (rex/hs-fold-imports
+     (when (boundp 'rex/hs-fold-imports-alist)
+       (alist-get major-mode rex/hs-fold-imports-alist))))
+
+  :hook
+  (prog-mode . hs-minor-mode)
+  (php-mode . rex/hs-fold-imports-lang)
+  (tsx-ts-mode . rex/hs-fold-imports-lang)
+  (rex/mdx-mode . rex/hs-fold-imports-lang)
+  :general
+  (:keymaps 'prog-mode-map :states 'normal
+            "zC" 'rex/hs-fold-imports-lang))
+
+(use-package aggressive-indent
+  :diminish
+  :hook (emacs-lisp-mode . aggressive-indent-mode))
+
+(use-package copy-as-format)
+
+(use-package dedicated)
+
+(use-package edit-indirect
+  :general
+  ( :states 'visual
+    "C-c '" 'edit-indirect-region))
