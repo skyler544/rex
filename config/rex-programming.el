@@ -198,10 +198,6 @@
   ("\\.yml.dist$" . yaml-mode)
   ("\\.yml$" . yaml-mode))
 
-(use-package ess
-  :hook (ess-r-mode . eglot-ensure)
-  :mode ("\\.R$" . R-mode))
-
 (use-package markdown-mode
   :custom-face
   (markdown-code-face
