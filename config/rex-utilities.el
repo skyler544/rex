@@ -28,8 +28,6 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
-(use-package helm-make)
-
 ;; TODO Set this up; should make it possible to register commands and
 ;; select them via completion
 (use-package run-command
@@ -38,7 +36,7 @@
     "R" 'run-command)
   :config
   (require 'run-command-recipes)
-  (require 'term)
+  (setq run-command-default-runner 'run-command-runner-eat)
   (setq run-command-recipes '(run-command-recipe-package-json run-command-recipe-make)))
 
 ;; TODO here is another very interesting idea
@@ -52,12 +50,14 @@
   :elpaca (:host codeberg :repo "akib/emacs-eat" :files (:defaults "./*"))
   :general
   (rex-leader
-    "ot" 'eat)
+    "ot" 'eat
+    "pt" 'eat-project)
   (:states 'normal
            :keymaps 'eat-semi-char-mode-map
            "RET" 'eat-self-input
            "p" 'eat-yank)
   :config
+  (setq eat-term-scrollback-size nil)
   (add-to-list 'evil-insert-state-modes 'eat-mode))
 
 ;; Removes unintentional whitespace edits from lines that you've
