@@ -271,8 +271,8 @@
   (drag-stuff-global-mode 1)
   :general
   (:states 'normal
-           "M-j" 'drag-stuff-down
-           "M-k" 'drag-stuff-up))
+           "M-J" 'drag-stuff-down
+           "M-K" 'drag-stuff-up))
 
 (use-package so-long
   :hook (after-init . global-so-long-mode))
