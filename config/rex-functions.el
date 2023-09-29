@@ -156,7 +156,7 @@ the only window, use evil-window-move-* (e.g. `evil-window-move-far-left')."
   (defun rex/light-theme ()
     "Switch to a light theme."
     (interactive)
-    (rex/clean-load-theme 'doom-opera-light-alt))
+    (rex/clean-load-theme 'doom-tango))
 
   (defun rex/load-fonts ()
     "Load the font file."

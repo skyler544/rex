@@ -51,7 +51,7 @@
          :inherit 'default
          :slant normal
          :weight semi-bold))))
-  :config (load-theme 'doom-opera-light-alt t))
+  :config (load-theme 'doom-tango t))
 
 
 ;; Mode Line

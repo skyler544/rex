@@ -14,7 +14,7 @@
 
   (setq switch-to-buffer-obey-display-actions t)
 
-  (defun lispmacs/toggle-window-dedication ()
+  (defun rex/toggle-window-dedication ()
     "Toggles window dedication in the selected window."
     (interactive)
     (set-window-dedicated-p (selected-window)
