@@ -332,3 +332,19 @@ GROUP is a string for decoration purposes and XREF is an
     (while (= 0 (forward-line 1))
       (xref--apply-truncation)))
   (run-hooks 'xref-after-update-hook))
+
+(use-package ispell :elpaca nil
+  :ensure nil
+  :config
+  (setq ispell-program-name "aspell"))
+
+(use-package dired-async
+  :elpaca (:host github :repo "jwiegley/emacs-async")
+  :diminish
+  :custom-face
+  (dired-async-message
+   ((t ( :foreground unspecified
+         :background unspecified
+         :weight bold))))
+  :config
+  (dired-async-mode 1))
