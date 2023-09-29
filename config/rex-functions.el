@@ -88,6 +88,18 @@ the only window, use evil-window-move-* (e.g. `evil-window-move-far-left')."
     (interactive)
     (kill-new (file-relative-name buffer-file-name (project-root (project-current t)))))
 
+  (defun rex/fh-vpn-up ()
+    "Start the FH OpenVPN connection."
+    (interactive)
+    (let ((default-directory "/sudo::"))
+      (shell-command "sv up fh-vpn")))
+
+  (defun rex/fh-vpn-down ()
+    "Stop the FH OpenVPN connection."
+    (interactive)
+    (let ((default-directory "/sudo::"))
+      (shell-command "sv down fh-vpn")))
+
   (defun rex/docker-up ()
     "Start docker"
     (interactive)
@@ -127,5 +139,10 @@ the only window, use evil-window-move-* (e.g. `evil-window-move-far-left')."
     "Switch to a light theme."
     (interactive)
     (load-theme 'doom-opera-light-alt t))
+
+  (defun rex/load-fonts ()
+    "Load the font file."
+    (interactive)
+    (load "rex-font-adventures"))
 
   :hook (find-file . rex/large-file-read-only))

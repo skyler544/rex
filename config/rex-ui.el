@@ -18,7 +18,11 @@
          :inherit 'default
          :slant normal
          :weight semi-bold))))
-  :config (load-theme 'doom-nord-aurora t))
+  :config (load-theme 'doom-opera-light-alt t))
+  ;; :config (load-theme 'doom-nord-aurora t))
+
+;; TODO theme based on time of day
+;; https://stackoverflow.com/a/14760833
 
 ;; Flashy modeline
 (use-package moody
