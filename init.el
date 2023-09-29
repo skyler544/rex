@@ -63,9 +63,6 @@
   ;; Org mode, the swiss-army outline tool
   (load "rex-org")
 
-  ;; Hacky code
-  (load "rex-hacks")
-
   ;; mu4e
   (load "~/build/rex-email/rex-email"))
 
