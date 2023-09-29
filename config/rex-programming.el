@@ -93,16 +93,40 @@
    ((t ( :foreground unspecified
          :inherit font-lock-comment-face))))
   :general (rex-leader
-    "cf" 'eglot-format-buffer
-    "cd" 'eglot-find-declaration
-    "cD" 'eglot-find-implementation
-    "cr" 'eglot-rename
-    "ca" 'eglot-code-actions)
-  :config (add-to-list 'eglot-server-programs
-                       '(php-mode . ("phpactor" "language-server")))
-  :hook (eglot-managed-mode . (lambda ()
-                                (setq eldoc-documentation-function
-                                      'eldoc-documentation-compose-eagerly))))
+             "cf" 'eglot-format-buffer
+             "cd" 'eglot-find-declaration
+             "cD" 'eglot-find-implementation
+             "cr" 'eglot-rename
+             "ca" 'eglot-code-actions)
+  :config
+  (with-eval-after-load 'eglot (fset #'jsonrpc--log-event #'ignore))
+  ;; (load "./rex-eglot-hack.el")
+  (setq eglot-confirm-server-initiated-edits nil)
+  (setq eglot-sync-connect 0)
+  (setq eglot-autoshutdown t)
+  (setq eglot-events-buffer-size 0)
+  (setq rex/language-servers
+        (list '(rex/vue-mode "vls")
+              '(prisma-mode "prisma-language-server" "--stdio")
+              '(tsx-ts-mode "typescript-language-server" "--stdio")
+              '(rex/mdx-mode "mdx-language-server" "--stdio")
+              '(php-mode "phpactor" "language-server"))
+        )
+  (dolist (server rex/language-servers)
+    (add-to-list 'eglot-server-programs server))
+  :hook
+  (php-mode . eglot-ensure)
+  (prisma-mode . eglot-ensure)
+  (typescript-ts-mode . eglot-ensure)
+  (tsx-ts-mode . eglot-ensure)
+  (rex/mdx-mode . eglot-ensure)
+  (rex/vue-mode . eglot-ensure)
+  (eglot-managed-mode
+   . (lambda () (setq eldoc-documentation-function
+                      'eldoc-documentation-compose-eagerly))))
+
+(use-package breadcrumb
+  :elpaca (:host github :repo "joaotavora/breadcrumb"))
 
 (use-package eldoc-box
   :defer t
