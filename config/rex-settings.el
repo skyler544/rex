@@ -63,8 +63,9 @@
 (use-package emacs :elpaca nil
   :config
   (setq recentf-save-file (concat rex/cache-dir "recentf"))
-  (setq recentf-max-saved-items 200)
-  (setq recentf-max-menu-items 200)
+  (setq recentf-max-saved-items 500)
+  (setq recentf-max-menu-items 500)
+  (setq recentf-auto-cleanup 60)
   (setq ring-bell-function 'ignore)
   (defun emacs-session-save ())
   (recentf-mode 1)
