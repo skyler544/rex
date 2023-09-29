@@ -81,7 +81,7 @@
         ;; toggle a checkbox
         ((guard (org-element-property :checkbox (org-element-lineage context '(item) t)))
          (let ((match (and (org-at-item-checkbox-p) (match-string 1))))
-           (org-toggle-checkbox (if (equal match "[ ]") '(16))))))))
+           (ignore-errors (org-toggle-checkbox (if (equal match "[ ]") '(16)))))))))
 
 
   ;; Font settings
