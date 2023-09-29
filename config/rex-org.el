@@ -162,10 +162,12 @@
 ;; Extensions
 ;; ****************************************
 (use-package org-contrib
+  :after org
   :config
-  (setq org-eldoc-breadcrumb-separator "::"))
+  (setq org-eldoc-breadcrumb-separator " -> "))
 
 (use-package evil-org
+  :after org
   :diminish evil-org-mode
   :general
   (:states 'normal
@@ -179,10 +181,10 @@
             "R" 'evil-org-inner-subtree)
   :config (defun rex/start-evil-org-mode ()
             (evil-org-mode))
-  :after org
   :hook (org-mode . rex/start-evil-org-mode))
 
 (use-package org-superstar
+  :after org
   :hook (org-mode . (lambda () (org-superstar-mode 1)))
   :config
   (setq org-superstar-headline-bullets-list '("●")))
