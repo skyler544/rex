@@ -81,6 +81,7 @@
 
 ;; better pdf support
 (use-package pdf-tools
+  :elpaca (:host github :repo "vedang/pdf-tools")
   :diminish pdf-view-midnight-minor-mode
   :mode ("\\.pdf\\'" . pdf-view-mode)
   :config
