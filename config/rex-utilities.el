@@ -147,8 +147,8 @@
   (setq ibuffer-project-use-cache t)
   (defun rex/enable-ibuffer-project ()
     (setq ibuffer-filter-groups (ibuffer-project-generate-filter-groups))
-               (unless (eq ibuffer-sorting-mode 'project-file-relative)
-                 (ibuffer-do-sort-by-project-file-relative)))
+    (unless (eq ibuffer-sorting-mode 'project-file-relative)
+      (ibuffer-do-sort-by-project-file-relative)))
   :hook
   (ibuffer . rex/enable-ibuffer-project))
 
