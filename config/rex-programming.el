@@ -30,8 +30,10 @@
         '(" " flymake-mode-line-exception flymake-mode-line-counters))
   :general
   (rex-leader
+    "cn" 'flymake-goto-next-error
+    "cp" 'flymake-goto-prev-error
     "tf" 'flymake-mode
-    "pD" 'flymake-show-project-diagnostics))
+    "cD" 'flymake-show-project-diagnostics))
 
 (use-package emacs :elpaca nil
   :hook (after-save . executable-make-buffer-file-executable-if-script-p))
