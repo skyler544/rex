@@ -65,9 +65,6 @@
   (setq-default vc-handled-backends '(Git))
   (setq inhibit-startup-screen t)
 
-  ;; Theme directory
-  (setq custom-theme-directory *rex/theme-dir*)
-
   ;; Enable some useful commands and features.
   (put 'narrow-to-region 'disabled nil)
   (put 'downcase-region 'disabled nil)

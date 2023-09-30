@@ -42,6 +42,10 @@
 
 ;; Themes
 ;; ----------------------------------------------------
+(use-package emacs
+  :config
+  (setq custom-theme-directory *rex/theme-dir*))
+
 (use-package doom-themes
   :custom-face
   (line-number
