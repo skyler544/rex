@@ -28,10 +28,7 @@
     "f" '(:ignore t :which-key "file")
     "t" '(:ignore t :which-key "toggle")
     "w" '(:ignore t :which-key "windows")
-    "b" '(:ignore t :which-key "buffer"))
-
-  ;; must be enabled by general
-  (evil-mode))
+    "b" '(:ignore t :which-key "buffer")))
 
 (use-package emacs
   :general
@@ -100,6 +97,7 @@
   (setq evil-respect-visual-line-mode t)
   (setq evil-disable-insert-state-bindings t)
   :config
+  (evil-mode)
   (evil-define-text-object +evil:whole-buffer-txtobj (count &optional _beg _end type)
     "Text object to select the whole buffer."
     (evil-range (point-min) (point-max) type))
