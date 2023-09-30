@@ -56,3 +56,11 @@
 ;; Miscellaneous
 ;; ----------------------------------------------------
 (rex/load "rex-miscellaneous")
+
+
+;; Email
+;; ----------------------------------------------------
+(defun rex/mu4e ()
+  (interactive)
+  (load "~/build/rex-email/rex-email.el")
+  (mu4e))
