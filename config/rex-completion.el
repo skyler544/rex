@@ -24,10 +24,8 @@
   (corfu-cycle t)
   (corfu-max-width 80)
   (corfu-auto-prefix 2)
-  (corfu-auto-delay 0.0)
-  (corfu-echo-documentation 0.25)
+  (corfu-auto-delay 0.5)
   (corfu-preselect 'prompt)
-  (corfu-preselect-first nil)
 
   :config
   (defun corfu-enable-in-minibuffer ()
