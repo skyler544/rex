@@ -44,6 +44,7 @@
 ;; ----------------------------------------------------
 (use-package emacs
   :config
+  (setq inhibit-x-resources t)
   (setq custom-theme-directory *rex/theme-dir*))
 
 (use-package doom-themes
