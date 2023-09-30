@@ -33,6 +33,9 @@
                '("\\magit:"
                  (display-buffer-same-window)))
   (add-to-list 'display-buffer-alist
+               '("\\*Man"
+                 (display-buffer-same-window)))
+  (add-to-list 'display-buffer-alist
                '("\\*Help"
                  (display-buffer-same-window)))
   (add-to-list 'display-buffer-alist
