@@ -162,6 +162,10 @@
   (setq recentf-auto-cleanup 60)
   (recentf-mode)
   (add-to-list 'recentf-exclude '("\\/sudo:root@localhost.*"))
+  (add-to-list 'recentf-exclude
+               (recentf-expand-file-name no-littering-var-directory))
+  (add-to-list 'recentf-exclude
+               (recentf-expand-file-name no-littering-etc-directory))
   (run-at-time nil (* 5 60) 'recentf-save-list)
   ;; saveplace
   (save-place-mode t)
