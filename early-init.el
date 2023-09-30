@@ -11,6 +11,7 @@
 ;; If something goes wrong, try to fix it interactively.
 (setq debug-on-error t)
 
+
 ;; Package management
 ;; ----------------------------------------------------
 ;; Start up the built-in Emacs package manager.
@@ -33,6 +34,7 @@
 ;; Enable the :vc keyword for use-package
 (unless (package-installed-p 'vc-use-package)
   (package-vc-install "https://github.com/slotThe/vc-use-package"))
+
 
 ;; Garbage collection
 ;; ----------------------------------------------------
