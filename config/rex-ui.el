@@ -148,6 +148,7 @@
   (prog-mode . diff-hl-mode)
   (diff-hl-mode . rex/diff-hl-settings-apply))
 
+
 ;; Face overrides
 ;; ----------------------------------------------------
 (use-package emacs
@@ -171,8 +172,7 @@
    ((t ( :foreground unspecified
          :background unspecified
          :weight bold
-         :box unspecified
-         :inverse-video t))))
+         :box unspecified))))
   (info-menu-star
    ((t ( :foreground unspecified))))
   (Info-quoted
