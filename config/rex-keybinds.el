@@ -71,6 +71,7 @@
     "hF" 'describe-face
     "h'" 'describe-char
     ;; buffers
+    "bi" 'ibuffer
     "bz" 'bury-buffer
     "bR" 'rename-buffer
     "br" 'revert-buffer
