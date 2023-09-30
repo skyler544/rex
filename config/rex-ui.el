@@ -65,7 +65,7 @@
   :config
   (setq evil-mode-line-format '(before . moody-mode-line-buffer-identification))
   (setq x-underline-at-descent-line t)
-  (setq moody-mode-line-height 38)
+  (setq moody-mode-line-height 36)
   (moody-replace-mode-line-buffer-identification)
   (moody-replace-vc-mode)
   (moody-replace-eldoc-minibuffer-message-function))
