@@ -1,6 +1,123 @@
 ;;; -*- lexical-binding: t -*-
 ;;
+;; ----------------------------------------------------
 ;; Custom elisp functions, some original, some stolen.
+;; ----------------------------------------------------
+
+
+;; Buffers
+;; ----------------------------------------------------
+(use-package emacs
+  :config
+  (defun rex/ansi-color-apply-on-region (begin end)
+    (interactive "r")
+    (ansi-color-apply-on-region begin end t))
+
+  (defun rex/buffer-info ()
+    "Briefly describe the current buffer."
+    (interactive)
+    (message (concat "Name:\t" (buffer-name)
+                     "\nFile:\t"
+                     (if (buffer-file-name)
+                         (buffer-file-name)
+                       "no file")
+                     "\nSize:\t" (int-to-string (buffer-size)))))
+
+  (defun rex/kill-relative-path ()
+    "Kill the path to the current project relative to the project root."
+    (interactive)
+    (kill-new (file-relative-name buffer-file-name (project-root (project-current t)))))
+
+  (defun rex/large-file-read-only ()
+    "If a file is over a given size, make the buffer read only (and don't waste memory trying to use undo)"
+    (when (> (buffer-size) (* 1024 1024))
+      (setq buffer-read-only t)
+      (buffer-disable-undo)))
+  :hook (find-file . rex/large-file-read-only))
+
+
+;; Shell commands
+;; ----------------------------------------------------
+(use-package emacs
+  :config
+  (defun rex/async-shell-command-on-region-or-line ()
+    "Run the command at point or in the selected region in the shell."
+    (interactive)
+    (async-shell-command (if (use-region-p)
+                             (buffer-substring (region-beginning) (region-end))
+                           (thing-at-point 'line t))))
+
+  (defun rex/shell-command-on-region-or-line ()
+    "Run the command at point or in the selected region in the shell."
+    (interactive)
+    (shell-command (if (use-region-p)
+                       (buffer-substring (region-beginning) (region-end))
+                     (thing-at-point 'line t)))))
+
+
+;; System services
+;; ----------------------------------------------------
+(use-package emacs
+  :config
+  (defun rex/fh-vpn-up ()
+    "Start the FH OpenVPN connection."
+    (interactive)
+    (let ((default-directory "/sudo::"))
+      (shell-command "sv up fh-vpn")))
+
+  (defun rex/fh-vpn-down ()
+    "Stop the FH OpenVPN connection."
+    (interactive)
+    (let ((default-directory "/sudo::"))
+      (shell-command "sv down fh-vpn")))
+
+  (defun rex/docker-up ()
+    "Start docker"
+    (interactive)
+    (let ((default-directory "/sudo::"))
+      (shell-command "sv up docker")))
+
+  (defun rex/docker-down ()
+    "Stop docker"
+    (interactive)
+    (let ((default-directory "/sudo::"))
+      (shell-command "sv down docker")))
+
+  (defun rex/docker-compose-up ()
+    "Run docker-compose up -d in the docker-local directory of the current project."
+    (interactive)
+    (async-shell-command (concat "docker-compose -f "
+                                 (project-root (project-current t))
+                                 "docker-local/docker-compose.yml up -d")))
+
+  (defun rex/docker-compose-down ()
+    "Run docker-compose down in the docker-local directory of the current project."
+    (interactive)
+    (async-shell-command (concat "docker-compose -f "
+                                 (project-root (project-current t))
+                                 "docker-local/docker-compose.yml down"))))
+
+
+;; Theme stuff
+;; ----------------------------------------------------
+(use-package emacs
+  :config
+  (defun rex/clean-load-theme (theme)
+    (mapc #'disable-theme custom-enabled-themes)
+    (load-theme theme t))
+
+  (defun rex/dark-theme ()
+    "Switch to a dark theme."
+    (interactive)
+    (rex/clean-load-theme 'doom-spacegrey-alt))
+
+  (defun rex/light-theme ()
+    "Switch to a light theme."
+    (interactive)
+    (rex/clean-load-theme 'doom-tango)))
+
+
+;; Window manipulation
 ;; ----------------------------------------------------
 (use-package emacs
   :config
@@ -59,108 +176,4 @@ the only window, use evil-window-move-* (e.g. `evil-window-move-far-left')."
     "Split window right and place point in the new window."
     (interactive)
     (split-window-right)
-    (other-window 1))
-
-  ;; simple way to run pieces of a buffer as shell commands
-  (defun rex/async-shell-command-on-region-or-line ()
-    "Run the command at point or in the selected region in the shell."
-    (interactive)
-    (async-shell-command (if (use-region-p)
-                             (buffer-substring (region-beginning) (region-end))
-                           (thing-at-point 'line t))))
-
-  (defun rex/buffer-info ()
-    "Briefly describe the current buffer."
-    (interactive)
-    (message (concat "Name:\t" (buffer-name)
-                     "\nFile:\t"
-                     (if (buffer-file-name)
-                         (buffer-file-name)
-                       "no file")
-                     "\nSize:\t" (int-to-string (buffer-size)))))
-
-  (defun rex/kill-relative-path ()
-    "Kill the path to the current project relative to the project root."
-    (interactive)
-    (kill-new (file-relative-name buffer-file-name (project-root (project-current t)))))
-
-  (defun rex/shell-command-on-region-or-line ()
-    "Run the command at point or in the selected region in the shell."
-    (interactive)
-    (shell-command (if (use-region-p)
-                       (buffer-substring (region-beginning) (region-end))
-                     (thing-at-point 'line t))))
-
-  (defun rex/large-file-read-only ()
-    "If a file is over a given size, make the buffer read only (and don't waste memory trying to use undo)"
-    (when (> (buffer-size) (* 1024 1024))
-      (setq buffer-read-only t)
-      (buffer-disable-undo)))
-
-  (defun rex/kill-relative-path ()
-    "Kill the path to the currect file relative to the project root."
-    (interactive)
-    (kill-new (file-relative-name buffer-file-name (project-root (project-current t)))))
-
-  (defun rex/fh-vpn-up ()
-    "Start the FH OpenVPN connection."
-    (interactive)
-    (let ((default-directory "/sudo::"))
-      (shell-command "sv up fh-vpn")))
-
-  (defun rex/fh-vpn-down ()
-    "Stop the FH OpenVPN connection."
-    (interactive)
-    (let ((default-directory "/sudo::"))
-      (shell-command "sv down fh-vpn")))
-
-  (defun rex/docker-up ()
-    "Start docker"
-    (interactive)
-    (let ((default-directory "/sudo::"))
-      (shell-command "sv up docker")))
-
-  (defun rex/docker-down ()
-    "Stop docker"
-    (interactive)
-    (let ((default-directory "/sudo::"))
-      (shell-command "sv down docker")))
-
-  (defun rex/docker-compose-up ()
-    "Run docker-compose up -d in the docker-local directory of the current project."
-    (interactive)
-    (async-shell-command (concat "docker-compose -f "
-                                 (project-root (project-current t))
-                                 "docker-local/docker-compose.yml up -d")))
-
-  (defun rex/docker-compose-down ()
-    "Run docker-compose down in the docker-local directory of the current project."
-    (interactive)
-    (async-shell-command (concat "docker-compose -f "
-                                 (project-root (project-current t))
-                                 "docker-local/docker-compose.yml down")))
-
-  (defun rex/ansi-color-apply-on-region (begin end)
-    (interactive "r")
-    (ansi-color-apply-on-region begin end t))
-
-  (defun rex/clean-load-theme (theme)
-    (mapc #'disable-theme custom-enabled-themes)
-    (load-theme theme t))
-
-  (defun rex/dark-theme ()
-    "Switch to a dark theme."
-    (interactive)
-    (rex/clean-load-theme 'doom-spacegrey-alt))
-
-  (defun rex/light-theme ()
-    "Switch to a light theme."
-    (interactive)
-    (rex/clean-load-theme 'doom-tango))
-
-  (defun rex/load-fonts ()
-    "Load the font file."
-    (interactive)
-    (load "rex-font-adventures"))
-
-  :hook (find-file . rex/large-file-read-only))
+    (other-window 1)))
