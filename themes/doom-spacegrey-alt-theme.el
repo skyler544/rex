@@ -136,6 +136,7 @@ determine the exact padding."
    (mode-line-emphasis :foreground (if -modeline-bright base8 highlight))
 
    (magit-header-line :box nil :background base4 :foreground fg :weight 'bold)
+   (sly-mrepl-output-face :foreground red :weight 'bold)
 
    ;;;; css-mode <built-in> / scss-mode
    (css-proprietary-property :foreground orange)
