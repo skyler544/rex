@@ -1,10 +1,13 @@
 ;;; -*- lexical-binding: t -*-
 ;;
+;; ----------------------------------------------------
 ;; Outliner, agenda, project manager
 ;; ----------------------------------------------------
+
+
+;; General settings
+;; ----------------------------------------------------
 (use-package org
-  ;; General settings
-  ;; ----------------------------------------------------
   :hook
   (org-mode . electric-pair-mode)
   (org-mode . auto-fill-mode)
@@ -18,16 +21,20 @@
   (setq org-catch-invisible-edits 'show-and-error)
   (setq org-M-RET-may-split-line nil)
   (setq org-hide-emphasis-markers t)
+  (setq org-log-into-drawer t)
+  (setq org-log-done 'time)
   (setq org-ellipsis " ⯆")
   (setq org-list-demote-modify-bullet
         '(("+" . "-") ("-" . "+") ("*" . "+")))
+
   (add-to-list 'org-file-apps '("\\.png\\'" . "feh %s"))
-  (add-to-list 'org-export-backends 'md)
-  (add-to-list 'org-modules 'org-habit)
+  (add-to-list 'org-export-backends 'md))
 
 
-  ;; Agenda / workflow settings
-  ;; ----------------------------------------------------
+;; Agenda
+;; ----------------------------------------------------
+(use-package org
+  :config
   (defun rex/agenda ()
     "Open the agenda with all todos."
     (interactive)
@@ -39,16 +46,19 @@
     (org-revert-all-org-buffers)
     (org-agenda-redo))
 
-  (setq-default org-agenda-window-setup 'current-window)
+  (add-to-list 'org-modules 'org-habit)
   (setq org-habit-show-habits-only-for-today nil)
+  (setq-default org-agenda-window-setup 'current-window)
   (setq org-agenda-span 10)
   (setq org-agenda-start-on-weekday nil)
   (setq org-agenda-start-day "-3d")
-  (setq org-agenda-files '("~/mega/org/todo.org" "~/mega/org/fh.org"))
-  ;; (setq org-agenda-files '("~/mega/org/todo.org" "~/mega/org/fh.org" "~/mega/org/habits.org"))
-  (setq org-log-into-drawer t)
-  (setq org-log-done 'time)
+  (setq org-agenda-files '("~/mega/org/todo.org" "~/mega/org/fh.org")))
 
+
+;; TODOs / workflow settings
+;; ----------------------------------------------------
+(use-package org
+  :config
   (setq org-enforce-todo-dependencies t)
   (setq org-todo-keywords '((sequence "TODO" "PROJ" "IDEA" "|" "DONE" "KILL") (sequence "NOTE" "HOLD")))
   (setq org-todo-keyword-faces
@@ -82,11 +92,13 @@
         ;; toggle a checkbox
         ((guard (org-element-property :checkbox (org-element-lineage context '(item) t)))
          (let ((match (and (org-at-item-checkbox-p) (match-string 1))))
-           (ignore-errors (org-toggle-checkbox (if (equal match "[ ]") '(16)))))))))
+           (ignore-errors (org-toggle-checkbox (if (equal match "[ ]") '(16))))))))))
 
 
-  ;; Font settings
-  ;; ----------------------------------------------------
+;; Font settings
+;; ----------------------------------------------------
+(use-package org
+  :config
   (setq rex/org-levels
         '(org-level-1 org-level-2
           org-level-3 org-level-4
@@ -123,31 +135,32 @@
          :inverse-video t))))
   (org-document-info-keyword
    ((t ( :foreground unspecified
-         :inherit font-lock-comment-face))))
+         :inherit font-lock-comment-face)))))
 
 
-  ;; Keybindings
-  ;; ----------------------------------------------------
+;; Keybindings
+;; ----------------------------------------------------
+(use-package org
   :general
-  (:keymaps 'org-read-date-minibuffer-local-map
-            "C-h" '(lambda () (interactive) (org-eval-in-calendar '(calendar-backward-day 1)))
-            "C-j" '(lambda () (interactive) (org-eval-in-calendar '(calendar-forward-week 1)))
-            "C-k" '(lambda () (interactive) (org-eval-in-calendar '(calendar-backward-week 1)))
-            "C-l" '(lambda () (interactive) (org-eval-in-calendar '(calendar-forward-day 1))))
-  (:states 'normal
-           :keymaps 'org-agenda-mode-map
-           "R" 'rex/reload-agenda
-           "q" 'org-agenda-quit
-           "RET" 'org-agenda-goto
-           "K" 'org-habit-toggle-display-in-agenda)
-  (:keymaps 'org-src-mode-map
-            "C-c C-c" 'org-edit-src-exit)
-  (:states 'normal
-           :keymaps 'org-mode-map
-           "RET" 'rex/org-dwim-at-point)
-  (:states 'insert
-           :keymaps 'org-mode-map
-           "C-o" 'evil-org-open-below)
+  ( :keymaps 'org-read-date-minibuffer-local-map
+    "C-h" '(lambda () (interactive) (org-eval-in-calendar '(calendar-backward-day 1)))
+    "C-j" '(lambda () (interactive) (org-eval-in-calendar '(calendar-forward-week 1)))
+    "C-k" '(lambda () (interactive) (org-eval-in-calendar '(calendar-backward-week 1)))
+    "C-l" '(lambda () (interactive) (org-eval-in-calendar '(calendar-forward-day 1))))
+  ( :states 'normal
+    :keymaps 'org-agenda-mode-map
+    "R" 'rex/reload-agenda
+    "q" 'org-agenda-quit
+    "RET" 'org-agenda-goto
+    "K" 'org-habit-toggle-display-in-agenda)
+  ( :keymaps 'org-src-mode-map
+    "C-c C-c" 'org-edit-src-exit)
+  ( :states 'normal
+    :keymaps 'org-mode-map
+    "RET" 'rex/org-dwim-at-point)
+  ( :states 'insert
+    :keymaps 'org-mode-map
+    "C-o" 'evil-org-open-below)
   (rex-leader
     "ma" 'rex/agenda
     "ml" 'org-store-link)
