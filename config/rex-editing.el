@@ -99,3 +99,28 @@
   :hook (magit-diff-visit-file . (lambda ()
                                    (when smerge-mode
                                      (unpackaged/smerge-hydra/body)))))
+
+
+;; Lisp editing
+;; ----------------------------------------------------
+;; TODO: tame these packages to be less disruptive without
+;; completely hamstringing their usefulness
+(use-package lispy
+  :hook
+  (emacs-lisp-mode . lispy-mode)
+  (sly-mrepl-mode . lispy-mode)
+  (lisp-mode . lispy-mode))
+
+(use-package lispyville
+  :hook (lispy-mode . lispyville-mode)
+  :init
+  (setq lispyville-key-theme
+        '(operators
+          text-objects
+          commentary
+          additional))
+  :general
+  ( :states '(normal insert)
+    :keymaps 'lispyville-mode-map
+    "M-L" 'lispyville->
+    "M-H" 'lispyville-<))

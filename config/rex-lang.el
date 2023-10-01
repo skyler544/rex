@@ -16,28 +16,6 @@
   (:keymaps 'sly-mode-map
             "M-h" 'sly-describe-symbol))
 
-(use-package lispy
-  :diminish
-  :hook
-  (emacs-lisp-mode . lispy-mode)
-  (sly-mrepl-mode . lispy-mode)
-  (lisp-mode . lispy-mode))
-
-(use-package lispyville
-  :diminish
-  :hook (lispy-mode . lispyville-mode)
-  :init
-  (setq lispyville-key-theme
-        '(operators
-          text-objects
-          commentary
-          additional))
-  :general
-  ( :states '(normal insert)
-    :keymaps 'lispyville-mode-map
-    "M-L" 'lispyville->
-    "M-H" 'lispyville-<))
-
 
 ;; C/C++
 ;; ----------------------------------------------------
