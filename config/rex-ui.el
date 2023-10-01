@@ -2,8 +2,8 @@
 ;;
 ;; User Interface configuration
 ;; ----------------------------------------------------
-;;
-;;
+
+
 ;; Fonts
 ;; ----------------------------------------------------
 (use-package emacs
@@ -74,7 +74,6 @@
   (moody-replace-eldoc-minibuffer-message-function))
 
 
-
 ;; Icons
 ;; ----------------------------------------------------
 (use-package all-the-icons
@@ -89,7 +88,7 @@
          :inherit font-lock-type-face)))))
 
 
-;; Feedback
+;; Visual feedback
 ;; ----------------------------------------------------
 ;; Show the results of C-x C-e directly in the buffer
 (use-package eros

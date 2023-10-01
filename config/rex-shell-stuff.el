@@ -1,6 +1,11 @@
 ;;; -*- lexical-binding: t -*-
 ;;
+;; ----------------------------------------------------
 ;; Configuration of shell-related tools
+;; ----------------------------------------------------
+
+
+;; Improvements for built-in shell modes
 ;; ----------------------------------------------------
 (use-package emacs
   :custom-face
@@ -19,7 +24,9 @@
   :config
   (shell-command-x-mode 1))
 
-;; Terminal emulator for Emacs.
+
+;; Terminal emulation
+;; ----------------------------------------------------
 (use-package eat
   :general
   (rex-leader
@@ -33,7 +40,9 @@
   (setq eat-term-scrollback-size nil)
   (add-to-list 'evil-insert-state-modes 'eat-mode))
 
-;; Provide a way to run commands in a buffer/project via a menu.
+
+;; Command runner for project build systems
+;; ----------------------------------------------------
 (use-package run-command
   :general
   (rex-leader
