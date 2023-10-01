@@ -56,6 +56,13 @@
   (rex-leader
     "sl" 'imenu-list))
 
+;; Whenever there is no better config, use this to try to find definitions.
+(use-package dumb-jump
+  :init
+  (setq xref-show-definitions-function #'xref-show-definitions-completing-read)
+  :config
+  (add-hook 'xref-backend-functions  #'dumb-jump-xref-activate))
+
 (use-package breadcrumb
   :vc (:fetcher github :repo "joaotavora/breadcrumb"))
 
