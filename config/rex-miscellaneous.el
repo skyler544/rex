@@ -34,21 +34,6 @@
 (use-package hl-todo
   :hook (prog-mode . hl-todo-mode))
 
-;; Show previous versions of a file
-(use-package git-timemachine
-  :commands (git-timemachine))
-
-;; Display git blame for the current line
-(use-package why-this
-  :general
-  (rex-leader
-    "tb" 'why-this-mode)
-  :custom-face
-  (why-this-face
-   ((t ( :foreground unspecified
-         :inherit font-lock-comment-face
-         :slant normal)))))
-
 
 ;; Reading and prose
 ;; ----------------------------------------------------

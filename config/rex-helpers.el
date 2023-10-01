@@ -1,8 +1,20 @@
 ;;; -*- lexical-binding: t -*-
 ;;
+;; ----------------------------------------------------
 ;; Packages that help the user somehow.
 ;; ----------------------------------------------------
-;; Helpful adds some even better help commands.
+
+
+;; Emacs and readability help
+;; ----------------------------------------------------
+;; Disambiguate buffer names
+(use-package emacs
+  :config
+  (setq uniquify-buffer-name-style 'post-forward)
+  (setq uniquify-separator " | ")
+  (setq uniquify-after-kill-buffer-p t))
+
+;; Even better help buffers
 (use-package helpful
   :general
   ("C-c C-h" 'helpful-at-point)
@@ -15,9 +27,44 @@
 (use-package which-key
   :config (which-key-mode))
 
+;; Emacs can't handle very long lines
+(use-package so-long
+  :hook (after-init . global-so-long-mode))
+
 ;; Rainbow delimiters makes bracket levels easier to tell apart
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
+
+;; Use semantic indentation for wrapped lines
+(use-package adaptive-wrap
+  :hook (visual-line-mode . adaptive-wrap-prefix-mode)
+  :config
+  (setq-default adaptive-wrap-extra-indent 3))
+
+;; Group buffers by project in ibuffer
+(use-package ibuffer-project
+  :config
+  (setq ibuffer-project-use-cache t)
+  (defun rex/enable-ibuffer-project ()
+    (setq ibuffer-filter-groups (ibuffer-project-generate-filter-groups))
+    (unless (eq ibuffer-sorting-mode 'project-file-relative)
+      (ibuffer-do-sort-by-project-file-relative)))
+  :hook
+  (ibuffer . rex/enable-ibuffer-project))
+
+;; Remove unintentional whitespace edits
+(use-package ws-butler
+  :hook (prog-mode . ws-butler-mode))
+
+
+;; Movement
+;; ----------------------------------------------------
+;; Jump around, jump around
+(use-package avy
+  :config (setq avy-all-windows t)
+  :general
+  (:states 'normal
+           "f" 'avy-goto-char-timer))
 
 ;; Switch and swap windows more conveniently
 (use-package iwindow
@@ -29,6 +76,9 @@
   (rex-leader
     "wo"  'iwindow-select))
 
+
+;; Git
+;; ----------------------------------------------------
 ;; Magit makes using git easier in every possible sense
 (use-package magit
   :config
@@ -45,77 +95,17 @@
   (rex-leader
     "gg" 'magit-status))
 
-;; Jump around, jump around
-(use-package avy
-  :config (setq avy-all-windows t)
+;; Show previous versions of a file
+(use-package git-timemachine
+  :commands (git-timemachine))
+
+;; Display git blame for the current line
+(use-package why-this
   :general
-  (:states 'normal
-           "f" 'avy-goto-char-timer))
-
-;; Removes unintentional whitespace edits from lines that you've
-;; touched while editing a file.
-(use-package ws-butler
-  :hook (prog-mode . ws-butler-mode))
-
-;; Make identically named buffers from different folders easier to distinguish.
-(use-package emacs
-  :config
-  (setq uniquify-buffer-name-style 'post-forward)
-  (setq uniquify-separator " | ")
-  (setq uniquify-after-kill-buffer-p t))
-
-;; Use semantic indentation for wrapped lines
-(use-package adaptive-wrap
-  :hook (visual-line-mode . adaptive-wrap-prefix-mode)
-  :config
-  (setq-default adaptive-wrap-extra-indent 3))
-
-;; Show buffers grouped by project in ibuffer
-(use-package ibuffer-project
-  :config
-  (setq ibuffer-project-use-cache t)
-  (defun rex/enable-ibuffer-project ()
-    (setq ibuffer-filter-groups (ibuffer-project-generate-filter-groups))
-    (unless (eq ibuffer-sorting-mode 'project-file-relative)
-      (ibuffer-do-sort-by-project-file-relative)))
-  :hook
-  (ibuffer . rex/enable-ibuffer-project))
-
-;; Emacs can't handle very long lines; this helps with that.
-(use-package so-long
-  :hook (after-init . global-so-long-mode))
-
-;; Use the built-in hideshow mode to hide some stuff programmatically.
-(use-package hideshow
-  :ensure nil
-  :config
-  (defvar rex/hs-fold-imports-alist
-    '((php-mode . "^use ")
-      (tsx-ts-mode . "^import {*[\s*\n*[:alnum:]*,* ]*\n*}*")
-      (rex/mdx-mode . "^import {*[\s*\n*[:alnum:]*,* ]*\n*}*")
-      (typescript-ts-mode . "^import ")))
-
-  (defun rex/hs-fold-imports (pattern)
-    (save-excursion
-      (goto-char (point-min))
-      (ignore-errors (re-search-forward pattern))
-      (set-mark (point))
-      (while (ignore-errors (re-search-forward pattern)))
-      (ignore-errors (hs-hide-comment-region (region-beginning) (region-end)))
-      (deactivate-mark t)))
-
-  (defun rex/hs-fold-imports-lang ()
-    "Hide the initial block of import statements in a buffer of `major-mode'."
-    (interactive)
-    (rex/hs-fold-imports
-     (when (boundp 'rex/hs-fold-imports-alist)
-       (alist-get major-mode rex/hs-fold-imports-alist))))
-
-  :hook
-  (prog-mode . hs-minor-mode)
-  (php-mode . rex/hs-fold-imports-lang)
-  (tsx-ts-mode . rex/hs-fold-imports-lang)
-  (rex/mdx-mode . rex/hs-fold-imports-lang)
-  :general
-  (:keymaps 'prog-mode-map :states 'normal
-            "zC" 'rex/hs-fold-imports-lang))
+  (rex-leader
+    "tb" 'why-this-mode)
+  :custom-face
+  (why-this-face
+   ((t ( :foreground unspecified
+         :inherit font-lock-comment-face
+         :slant normal)))))
