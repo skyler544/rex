@@ -1,6 +1,11 @@
 ;;; -*- lexical-binding: t -*-
 ;;
-;; Settings directly related to editing
+;; ----------------------------------------------------
+;; Settings and packages directly related to editing
+;; ----------------------------------------------------
+
+
+;; Time-savers
 ;; ----------------------------------------------------
 (use-package emacs
   :hook
@@ -8,22 +13,6 @@
   (prog-mode . electric-pair-mode)
   ;; Make scripts executable on save.
   (after-save . executable-make-buffer-file-executable-if-script-p))
-
-;; Fast refactoring of text
-(use-package iedit
-  :general
-  (:states '(normal visual)
-           "?" 'iedit-mode)
-  (:keymaps 'isearch-mode-map
-            "C-;" 'iedit-mode-from-isearch))
-
-;; Some nice editing/auxiliary functions.
-(use-package crux
-  :general
-  (rex-leader
-    "fY" 'crux-kill-buffer-truename
-    "fu" 'crux-sudo-edit
-    "fD" 'crux-delete-file-and-buffer))
 
 ;; Does what it says on the tin.
 (use-package drag-stuff
@@ -41,22 +30,19 @@
   ( :states 'visual
     "C-c '" 'edit-indirect-region))
 
-;; Better syntax highlighting for Emacs lisp.
-(use-package highlight-defined
-  :hook (emacs-lisp-mode . highlight-defined-mode))
-(use-package highlight-quoted
-  :hook (emacs-lisp-mode . highlight-quoted-mode))
+
+;; Search and refactoring tools
+;; ----------------------------------------------------
+(use-package iedit
+  :general
+  (:states '(normal visual)
+           "?" 'iedit-mode)
+  (:keymaps 'isearch-mode-map
+            "C-;" 'iedit-mode-from-isearch))
 
 ;; Switch between camelCase and snake_case etc.
 (use-package string-inflection)
 
-;; Highlight hex color strings (and some other kinds) in the buffer
-(use-package rainbow-mode
-  :commands 'rainbow-mode)
-
-
-;; Search and refactoring tools
-;; ----------------------------------------------------
 (use-package wgrep
   :config
   (setq wgrep-auto-save-buffer t))
@@ -95,9 +81,10 @@
 ;; Editing merge conflicts
 ;; ----------------------------------------------------
 (use-package emacs
-  :hook (magit-diff-visit-file . (lambda ()
-                                   (when smerge-mode
-                                     (unpackaged/smerge-hydra/body)))))
+  :hook (magit-diff-visit-file
+         . (lambda ()
+             (when smerge-mode
+               (unpackaged/smerge-hydra/body)))))
 
 
 ;; Lisp editing

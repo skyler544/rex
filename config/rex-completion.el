@@ -1,12 +1,20 @@
 ;;; -*- lexical-binding: t -*-
 ;;
+;; ----------------------------------------------------
 ;; Completion settings
+;; ----------------------------------------------------
+
+
+;; Built-in
 ;; ----------------------------------------------------
 (use-package emacs
   :config
   ;; Add tab support for code completion.
   (setq tab-always-indent 'complete))
 
+
+;; Interactive popup
+;; ----------------------------------------------------
 ;; Corfu displays a popup with current candidates from the active
 ;; completion-at-point-function. This setup is intended to be used
 ;; only with `TAB' and `S-TAB'; that is, it pops up and starts
@@ -65,6 +73,9 @@
     "cd" 'cape-dabbrev
     "cf" 'cape-file))
 
+
+;; Snippets
+;; ----------------------------------------------------
 ;; Tempel provides a framework for defining / using snippets in plain elisp.
 (use-package tempel
   :general

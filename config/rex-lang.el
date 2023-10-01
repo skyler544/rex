@@ -16,6 +16,12 @@
   (:keymaps 'sly-mode-map
             "M-h" 'sly-describe-symbol))
 
+;; Better syntax highlighting for Emacs lisp.
+(use-package highlight-defined
+  :hook (emacs-lisp-mode . highlight-defined-mode))
+(use-package highlight-quoted
+  :hook (emacs-lisp-mode . highlight-quoted-mode))
+
 
 ;; C/C++
 ;; ----------------------------------------------------

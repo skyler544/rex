@@ -1,5 +1,10 @@
 ;;; -*- lexical-binding: t -*-
 ;;
+;; ----------------------------------------------------
+;; Basic editor setup
+;; ----------------------------------------------------
+
+
 ;; Organization
 ;; ----------------------------------------------------
 (use-package no-littering
@@ -13,7 +18,7 @@
 (use-package delight)
 
 
-;; Annoyances
+;; Annoyance mitigation
 ;; ----------------------------------------------------
 (use-package emacs
   :config

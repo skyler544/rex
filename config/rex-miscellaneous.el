@@ -2,6 +2,18 @@
 ;;
 ;; General-purpose packages
 ;; ----------------------------------------------------
+;; Some nice editing/auxiliary functions.
+(use-package crux
+  :general
+  (rex-leader
+    "fY" 'crux-kill-buffer-truename
+    "fu" 'crux-sudo-edit
+    "fD" 'crux-delete-file-and-buffer))
+
+;; Highlight hex color strings (and some other kinds) in the buffer
+(use-package rainbow-mode
+  :commands 'rainbow-mode)
+
 ;; Tree-style project drawer
 (use-package treemacs-all-the-icons)
 (use-package treemacs
@@ -18,6 +30,10 @@
   :commands 'treemacs)
 (use-package treemacs-evil)
 
+;; Highlight `TODO' items in buffers
+(use-package hl-todo
+  :hook (prog-mode . hl-todo-mode))
+
 ;; Show previous versions of a file
 (use-package git-timemachine
   :commands (git-timemachine))
@@ -32,10 +48,6 @@
    ((t ( :foreground unspecified
          :inherit font-lock-comment-face
          :slant normal)))))
-
-;; Highlight `TODO' items in buffers
-(use-package hl-todo
-  :hook (prog-mode . hl-todo-mode))
 
 
 ;; Reading and prose
