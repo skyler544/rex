@@ -44,10 +44,11 @@
   :mode ("\\.java$" . java-ts-mode)
   :hook
   (java-ts-mode . eglot-ensure)
-  (java-ts-mode . (lambda () (cl-defmethod eglot-execute-command
-                               (_server (_cmd (eql java.apply.workspaceEdit)) arguments)
-                               "Eclipse JDT breaks spec and replies with edits as arguments."
-                               (mapc #'eglot--apply-workspace-edit arguments)))))
+  (java-ts-mode
+   . (lambda () (cl-defmethod eglot-execute-command
+                  (_server (_cmd (eql java.apply.workspaceEdit)) arguments)
+                  "Eclipse JDT breaks spec and replies with edits as arguments."
+                  (mapc #'eglot--apply-workspace-edit arguments)))))
 
 
 ;; JavaScript/Typescript

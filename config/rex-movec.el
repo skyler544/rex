@@ -1,5 +1,10 @@
 ;;; -*- lexical-binding: t -*-
 ;;
+;; ----------------------------------------------------
+;; Package ecosystem for the minibuffer and completion
+;; ----------------------------------------------------
+
+
 ;; Vertico provides a vertical view of minibuffer candidates.
 ;; ----------------------------------------------------
 (use-package vertico
@@ -60,7 +65,7 @@
   (setq completion-category-overrides '((file) (styles partial-completion))))
 
 
-;; Marginal adds context to minibuffer matches.
+;; Marginalia adds context to minibuffer matches.
 ;; ----------------------------------------------------
 (use-package marginalia
   :init

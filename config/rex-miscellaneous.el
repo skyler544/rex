@@ -1,5 +1,10 @@
 ;;; -*- lexical-binding: t -*-
 ;;
+;; ----------------------------------------------------
+;; Miscellaneous packages
+;; ----------------------------------------------------
+
+
 ;; General-purpose packages
 ;; ----------------------------------------------------
 ;; Some nice editing/auxiliary functions.
