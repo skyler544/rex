@@ -135,6 +135,8 @@ determine the exact padding."
     :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg-inactive)))
    (mode-line-emphasis :foreground (if -modeline-bright base8 highlight))
 
+   (magit-header-line :box nil :background base4 :foreground fg :weight 'bold)
+
    ;;;; css-mode <built-in> / scss-mode
    (css-proprietary-property :foreground orange)
    (css-property             :foreground fg)
