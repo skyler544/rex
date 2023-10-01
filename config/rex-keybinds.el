@@ -128,14 +128,12 @@
 
 (use-package evil-collection
   :after evil
-  :diminish evil-collection-unimpaired-mode
   :config
   (evil-collection-init))
 
 ;; Show a brief flash in the buffer indicating where an evil
 ;; operation takes effect.
 (use-package evil-goggles
-  :diminish evil-goggles-mode
   :custom-face
   (evil-goggles-default-face
    ((t (:background nil :inherit lazy-highlight))))
@@ -188,7 +186,6 @@
   :config (evil-lion-mode))
 
 (use-package evil-commentary
-  :diminish
   :config
   (evil-commentary-mode))
 

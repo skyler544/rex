@@ -169,7 +169,6 @@
 
 (use-package evil-org
   :after org
-  :diminish evil-org-mode
   :general
   (:states 'normal
    :keymaps 'org-agenda-mode-map

@@ -39,7 +39,6 @@
 ;; Garbage collection
 ;; ----------------------------------------------------
 (use-package gcmh
-  :diminish
   :hook (emacs-startup . gcmh-mode)
   :init
   (setq gcmh-idle-delay 'auto

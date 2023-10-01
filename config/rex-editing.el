@@ -27,7 +27,6 @@
 
 ;; Does what it says on the tin.
 (use-package drag-stuff
-  :diminish
   :config
   (drag-stuff-define-keys)
   (drag-stuff-global-mode 1)

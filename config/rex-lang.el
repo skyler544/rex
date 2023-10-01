@@ -95,7 +95,6 @@
   (typescript-ts-mode . add-node-modules-path))
 
 (use-package prettier-js
-  :diminish prettier-js-mode
   :hook
   (tsx-ts-mode . prettier-js-mode)
   (typescript-ts-mode . prettier-js-mode))

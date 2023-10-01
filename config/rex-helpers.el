@@ -55,7 +55,6 @@
 ;; Removes unintentional whitespace edits from lines that you've
 ;; touched while editing a file.
 (use-package ws-butler
-  :diminish ws-butler-mode
   :hook (prog-mode . ws-butler-mode))
 
 ;; Make identically named buffers from different folders easier to distinguish.
