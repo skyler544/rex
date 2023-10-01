@@ -1,6 +1,12 @@
 ;;; -*- lexical-binding: t -*-
 ;;
-;; Makes creating 'keymap menus' simpler.
+;; ----------------------------------------------------
+;; Hydra definitions
+;; ----------------------------------------------------
+
+
+;; Manipulating window size
+;; ----------------------------------------------------
 (use-package hydra
   :init
   (require 'windmove)
@@ -48,7 +54,15 @@ Resize: _h_: left  _j_: down  _k_: up  _l_: right "
 
   (setq hydra--work-around-dedicated nil)
   (hydra-set-property '+hydra/window-nav :verbosity 0)
+  :general
+  (rex-leader
+    "ww" '+hydra/window-nav/body))
 
+
+;; Smerge -- taken from alphapapa/unpackaged
+;; ----------------------------------------------------
+(use-package hydra
+  :init
   (defhydra unpackaged/smerge-hydra
     (:color pink :hint nil :post (smerge-auto-leave))
     "
@@ -81,8 +95,4 @@ _p_rev       _u_pper              _=_: upper/lower       _r_esolve
             (save-buffer)
             (bury-buffer))
      "Save and bury buffer" :color blue)
-    ("q" nil "cancel" :color blue))
-
-  :general
-  (rex-leader
-    "ww" '+hydra/window-nav/body))
+    ("q" nil "cancel" :color blue)))
