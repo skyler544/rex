@@ -1,8 +1,12 @@
 ;;; -*- lexical-binding: t -*-
 ;;
+;; ----------------------------------------------------
 ;; Keybinding management
 ;; ----------------------------------------------------
-;; general makes defining keys simpler.
+
+
+;; Keymap tree with SPC as leader -- general.el
+;; ----------------------------------------------------
 (use-package general
   :config
   ;; base options
@@ -84,6 +88,7 @@
     "fs" 'save-buffer
     "fS" 'write-file
     "ff" 'find-file))
+
 
 ;; Modal editing
 ;; ----------------------------------------------------
