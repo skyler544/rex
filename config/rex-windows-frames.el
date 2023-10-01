@@ -27,8 +27,7 @@
                  (window-height . 10)))
   (add-to-list 'display-buffer-alist
                '("\\*shell:"
-                 (display-buffer-at-bottom)
-                 (window-height . 15)))
+                 (display-buffer-same-window)))
   (add-to-list 'display-buffer-alist
                '("\\magit:"
                  (display-buffer-same-window)))
