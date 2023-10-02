@@ -19,6 +19,10 @@
 (use-package rainbow-mode
   :commands 'rainbow-mode)
 
+;; Highlight `TODO' items in buffers
+(use-package hl-todo
+  :hook (prog-mode . hl-todo-mode))
+
 ;; Tree-style project drawer
 (use-package treemacs-all-the-icons)
 (use-package treemacs
@@ -34,10 +38,6 @@
   (setq treemacs-wide-toggle-width 50)
   :commands 'treemacs)
 (use-package treemacs-evil)
-
-;; Highlight `TODO' items in buffers
-(use-package hl-todo
-  :hook (prog-mode . hl-todo-mode))
 
 
 ;; Reading and prose
