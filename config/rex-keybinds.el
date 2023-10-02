@@ -136,9 +136,11 @@
   :hook (git-commit-mode . evil-insert-state))
 
 (use-package evil-collection
-  :after evil
   :config
-  (evil-collection-init))
+  (with-eval-after-load 'evil
+   (require 'evil-collection)
+   (setq evil-collection-mode-list (delq 'lispy evil-collection-mode-list))
+   (evil-collection-init)))
 
 ;; Show a brief flash in the buffer indicating where an evil
 ;; operation takes effect.
