@@ -22,12 +22,12 @@
 
   (add-to-list 'display-buffer-alist
                '("\\*sly-mrepl"
-                 (display-buffer-at-bottom)
-                 (dedicated . t)
+                 (display-buffer-below-selected)
                  (window-height . 10)))
   (add-to-list 'display-buffer-alist
                '("\\*shell:"
-                 (display-buffer-same-window)))
+                 (display-buffer-below-selected)
+                 (window-height . 0.3)))
   (add-to-list 'display-buffer-alist
                '("\\magit:"
                  (display-buffer-same-window)))
