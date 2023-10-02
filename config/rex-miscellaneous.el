@@ -23,6 +23,12 @@
 (use-package hl-todo
   :hook (prog-mode . hl-todo-mode))
 
+;; Hiding buffer content stylishly
+(use-package redacted)
+
+;; Hide the mode line temporarily
+(use-package hide-mode-line)
+
 ;; Tree-style project drawer
 (use-package treemacs-all-the-icons)
 (use-package treemacs
