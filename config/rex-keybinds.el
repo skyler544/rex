@@ -39,6 +39,10 @@
   ("C-=" 'text-scale-increase
    "C--" 'text-scale-decrease
    "C-0" 'text-scale-adjust)
+  ( :states 'normal
+    :keymaps 'Info-mode-map
+    "n" 'Info-forward-node
+    "p" 'Info-backward-node)
   (rex-leader
     "SPC" 'execute-extended-command
     "." 'find-file
