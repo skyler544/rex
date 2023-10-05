@@ -98,6 +98,7 @@
 ;; ----------------------------------------------------
 (use-package evil
   :after general
+  :demand
   :init
   (setq evil-kill-on-visual-paste nil)
   (setq evil-want-Y-yank-to-eol t)
@@ -137,6 +138,7 @@
   :hook (git-commit-mode . evil-insert-state))
 
 (use-package evil-collection
+  :demand
   :config
   (with-eval-after-load 'evil
    (require 'evil-collection)

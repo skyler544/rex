@@ -8,11 +8,11 @@
 ;; Organization
 ;; ----------------------------------------------------
 (use-package no-littering
-  :demand t
+  :demand
   :config
   (setq custom-file (no-littering-expand-etc-file-name "custom.el")))
 (use-package minions
-  :demand t
+  :demand
   :init
   (setq minions-mode-line-lighter "--")
   :config
