@@ -155,7 +155,7 @@
   (setq use-dialog-box nil)
   (setq completion-ignore-case t)
   ;; eldoc
-  (setq eldoc-idle-delay 0.25)
+  (setq eldoc-idle-delay 0.5)
   (setq eldoc-echo-area-use-multiline-p nil))
 
 
