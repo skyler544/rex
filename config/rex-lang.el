@@ -7,8 +7,12 @@
 ;; Lisp
 ;; ----------------------------------------------------
 (use-package sly
-  :config (setq inferior-lisp-program "sbcl")
-  :hook (lisp-mode . (lambda () (setq-local fill-column 72)))
+  :config
+  (setq inferior-lisp-program "sbcl")
+  (setq sly-command-switch-to-existing-lisp 'always)
+  :hook
+  (lisp-mode . (lambda () (setq-local corfu-auto-prefix 4)))
+  (lisp-mode . (lambda () (setq-local fill-column 72)))
   :general
   (rex-leader
     :keymaps 'sly-mode-map
