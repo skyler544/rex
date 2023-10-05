@@ -100,7 +100,6 @@
     "]" nil)
   :hook
   (emacs-lisp-mode . lispy-mode)
-  (sly-mrepl-mode . lispy-mode)
   (lisp-mode . lispy-mode))
 
 (use-package lispyville
