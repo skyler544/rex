@@ -113,6 +113,7 @@
     (evil-range (point-min) (point-max) type))
   :general
   (rex-leader
+    "bn" 'evil-buffer-new
     ;; windows
     "w" 'evil-window-map
     "wH" 'rex/window-move-left
@@ -147,7 +148,7 @@
 (use-package evil-goggles
   :custom-face
   (evil-goggles-default-face
-   ((t (:background nil :inherit lazy-highlight))))
+   ((t (:background unspecified :inherit lazy-highlight))))
   :config
   (evil-goggles-mode))
 
@@ -159,8 +160,6 @@
            "S" 'evil-Surround-region)
   (:states 'operator
            "s" 'evil-surround-edit)
-  (rex-leader
-    "bn" 'evil-buffer-new)
   :config
   (global-evil-surround-mode 1))
 
