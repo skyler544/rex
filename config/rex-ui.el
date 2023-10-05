@@ -4,7 +4,7 @@
 ;; ----------------------------------------------------
 
 
-;; Fonts
+;; Fonts and frame setup
 ;; ----------------------------------------------------
 (use-package emacs
   :config
@@ -19,24 +19,36 @@
                         :height size))
 
   (defun rex/frame-init-aux (fam size)
-    (when (rex/font-exists fam)
+    (when (and window-system (rex/font-exists fam))
       (let ((faces '(default fixed-pitch variable-pitch)))
         (dolist (face faces)
           (rex/frame-init face fam size)))))
 
   (defun rex/frame-init-iosevka ()
     (interactive)
+    "Set the font to Iosevka Custom."
     (rex/frame-init-aux "Iosevka Custom" *rex/face-size*))
   (defun rex/frame-init-commit ()
     (interactive)
+    "Set the font to Commit Mono."
     (rex/frame-init-aux "Commit Mono" *rex/face-size*))
+
+  (defun rex/cleanup-ui ()
+    (interactive)
+    "Disable menu, scroll, and tool bars."
+    (menu-bar-mode -1)
+    (when window-system
+      (scroll-bar-mode -1)
+      (tool-bar-mode -1)))
 
   (if (daemonp)
       (add-hook 'after-make-frame-functions
                 (lambda (frame)
                   (select-frame frame)
-                  (rex/frame-init-commit)))
-    (rex/frame-init-commit)))
+                  (rex/frame-init-commit)
+                  (rex/cleanup-ui)))
+    (rex/frame-init-commit))
+  :hook (after-init . rex/cleanup-ui))
 
 
 ;; Themes
