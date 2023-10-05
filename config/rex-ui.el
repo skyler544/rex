@@ -57,9 +57,7 @@
          :slant normal
          :weight semi-bold))))
   :config
-  ;; (rex/clean-load-theme 'doom-tango)
-  (rex/clean-load-theme 'doom-spacegrey-alt)
-  )
+  (rex/clean-load-theme 'doom-tomorrow-night-alt))
 
 
 ;; Mode Line
