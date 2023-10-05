@@ -60,7 +60,6 @@
 ;; Read RFCs
 (use-package page-break-lines)
 (use-package rfc-mode
-  :defer t
   :hook (rfc-mode . page-break-lines-mode))
 
 ;; Better pdf support

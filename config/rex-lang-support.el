@@ -67,7 +67,6 @@
   :vc (:fetcher github :repo "joaotavora/breadcrumb"))
 
 (use-package eldoc-box
-  :defer t
   :config
   (defun rex/eldoc-box-scroll-up ()
     "Scroll up in `eldoc-box--frame'"
