@@ -160,7 +160,8 @@
     "C-c C-c" 'org-edit-src-exit)
   ( :states 'normal
     :keymaps 'org-mode-map
-    "RET" 'rex/org-dwim-at-point)
+    "RET" 'rex/org-dwim-at-point
+    "d" 'evil-delete)
   ( :states 'insert
     :keymaps 'org-mode-map
     "C-o" 'evil-org-open-below)
