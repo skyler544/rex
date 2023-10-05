@@ -58,6 +58,7 @@
     (interactive "P")
     (unless (minibufferp)
       (user-error "Not in a minibuffer"))
+    (require 'embark)
     (let* ((target (embark--display-string ; remove invisible portions
                     (if full
                         (minibuffer-contents)
