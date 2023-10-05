@@ -12,7 +12,10 @@
   ;; you to undo/redo changes to that configuration.
   (winner-mode)
 
-  (setq switch-to-buffer-obey-display-actions t)
+  ;; Reconsider this; misbehaving packages might abuse `switch-to-buffer' but
+  ;; with this variable set to `t', invoking `switch-to-buffer' manually also
+  ;; follows the rules set via `display-buffer-alist.'
+  ;; (setq switch-to-buffer-obey-display-actions t)
 
   (defun rex/toggle-window-dedication ()
     "Toggles window dedication in the selected window."
