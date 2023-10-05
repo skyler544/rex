@@ -25,17 +25,17 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-;; Enable use-package; not necessary on Emacs 29+.
+;; Install use-package and the :vc extension
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
+(unless (package-installed-p 'vc-use-package)
+  (package-vc-install "https://github.com/slotThe/vc-use-package"))
+
 (use-package use-package
   :config
   (setq-default use-package-always-ensure t)
-  (setq-default use-package-always-defer t))
-
-;; Enable the :vc keyword for use-package
-(unless (package-installed-p 'vc-use-package)
-  (package-vc-install "https://github.com/slotThe/vc-use-package"))
+  (setq-default use-package-always-defer t)
+  (setq-default use-package-verbose t))
 
 
 ;; Garbage collection
@@ -43,6 +43,5 @@
 (use-package gcmh
   :hook (emacs-startup . gcmh-mode)
   :init
-  (setq gcmh-idle-delay 'auto
-        gcmh-auto-idle-delay-factor 10
-        gcmh-high-cons-threshold #x1000000)) ; 16MB
+  (setq gcmh-idle-delay 'auto)
+  (setq gcmh-high-cons-threshold #x1000000)) ; 16MB
