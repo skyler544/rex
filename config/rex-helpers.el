@@ -97,7 +97,7 @@
 
 ;; Show previous versions of a file
 (use-package git-timemachine
-  :commands (git-timemachine))
+  :commands 'git-timemachine)
 
 ;; Display git blame for the current line
 (use-package why-this
