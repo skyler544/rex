@@ -29,7 +29,9 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 (use-package use-package
-  :config (setq-default use-package-always-ensure t))
+  :config
+  (setq-default use-package-always-ensure t)
+  (setq-default use-package-always-defer t))
 
 ;; Enable the :vc keyword for use-package
 (unless (package-installed-p 'vc-use-package)

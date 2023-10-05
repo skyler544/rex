@@ -47,6 +47,7 @@
   (setq custom-theme-directory *rex/theme-dir*))
 
 (use-package doom-themes
+  :demand t
   :custom-face
   (line-number
    ((t ( :slant normal))))
@@ -64,6 +65,7 @@
 ;; Mode Line
 ;; ----------------------------------------------------
 (use-package moody
+  :demand t
   :config
   (setq evil-mode-line-format '(before . moody-mode-line-buffer-identification))
   (setq x-underline-at-descent-line t)
