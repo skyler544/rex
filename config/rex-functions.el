@@ -109,7 +109,8 @@
   (defun rex/dark-theme ()
     "Switch to a dark theme."
     (interactive)
-    (rex/clean-load-theme 'doom-spacegrey-alt))
+    ;; (rex/clean-load-theme 'doom-spacegrey-alt)
+    (rex/clean-load-theme 'doom-tomorrow-night-alt))
 
   (defun rex/light-theme ()
     "Switch to a light theme."
