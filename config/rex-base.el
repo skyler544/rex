@@ -48,7 +48,6 @@
   :config
   ;; Subjective editor defaults
   (setq-default sentence-end-double-space nil)
-  (setq-default auto-hscroll-mode 'current-line)
   (setq-default truncate-lines t)
   (setq-default fill-column 80)
   (setq-default tab-width 4)
@@ -71,13 +70,11 @@
   ;; Don't restrict frame to the size of columns/rows.
   (setq frame-resize-pixelwise t)
 
-  ;; Scrolling/Fontification
-  (jit-lock-mode 1)
-  (setq jit-lock-stealth-timer 0.5)
-  (setq redisplay-skip-fontification-on-input t)
-  (setq scroll-step 1)
+  ;; Scrolling
+  (setq-default auto-hscroll-mode 'current-line)
   (setq scroll-conservatively 101)
   (setq scroll-preserve-screen-position t)
+  (setq scroll-margin 1)
 
   ;; Make `man' pop up in a real window.
   (setq Man-notify-method 'aggressive)
