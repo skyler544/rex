@@ -8,7 +8,6 @@
 ;; ----------------------------------------------------
 (use-package emacs
   :config
-  (set-face-attribute 'variable-pitch t :family "monospace")
   (setq *rex/face-size* 120)
 
   (defun rex/font-exists (fam)
@@ -155,21 +154,19 @@
 ;; ----------------------------------------------------
 (use-package emacs
   :custom-face
-  (cursor
+  (variable-pitch
+   ((t ( :family "monospace"))))
+  (fringe
    ((t ( :background unspecified))))
+  (shadow
+   ((t ( :foreground unspecified
+         :inherit font-lock-comment-face))))
   (whitespace-newline
    ((t ( :foreground unspecified
          :inherit font-lock-warning-face))))
   (whitespace-space
    ((t ( :foreground unspecified
          :inherit font-lock-warning-face))))
-  (fringe
-   ((t ( :background unspecified))))
-  (variable-pitch
-   ((t ( :family "monospace"))))
-  (shadow
-   ((t ( :foreground unspecified
-         :inherit font-lock-comment-face))))
   (help-key-binding
    ((t ( :foreground unspecified
          :background unspecified
