@@ -10,6 +10,10 @@
 (defun rex/load (file)
   (load (expand-file-name file *rex/config-dir*)))
 
+(defun rex/idle-load (file seconds)
+  (run-with-idle-timer
+   seconds nil #'(lambda () (rex/load file))))
+
 
 ;; General settings
 ;; ----------------------------------------------------
@@ -50,7 +54,7 @@
 
 ;; Org
 ;; ----------------------------------------------------
-(rex/load "rex-org")
+(rex/idle-load "rex-org" 15)
 
 
 ;; Miscellaneous
