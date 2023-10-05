@@ -22,8 +22,11 @@
 
   (add-to-list 'display-buffer-alist
                '("\\*sly-mrepl"
-                 (display-buffer-below-selected)
-                 (window-height . 10)))
+                 (display-buffer-at-bottom)
+                 (window-height . 12)))
+  (add-to-list 'display-buffer-alist
+               '("\\*Calendar*"
+                 (display-buffer-at-bottom)))
   (add-to-list 'display-buffer-alist
                '("\\*shell:"
                  (display-buffer-below-selected)
