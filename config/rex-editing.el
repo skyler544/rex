@@ -100,6 +100,7 @@
     "]" nil)
   :hook
   (emacs-lisp-mode . lispy-mode)
+  (sly-mrepl-mode . lispy-mode)
   (lisp-mode . lispy-mode))
 
 (use-package lispyville
@@ -114,4 +115,11 @@
   ( :states '(normal insert)
     :keymaps 'lispyville-mode-map
     "M-L" 'lispyville->
-    "M-H" 'lispyville-<))
+    "M-H" 'lispyville-<)
+  ( :keymaps 'lispyville-mode-map
+    [remap evil-yank] nil)
+  ( :states '(normal visual)
+    :keymaps 'lispyville-mode-map
+    "y" 'lispyville-yank)
+  ( :keymaps 'sly-mrepl-mode-map
+   [remap lispyville-yank] 'evil-yank))
