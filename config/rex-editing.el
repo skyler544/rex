@@ -92,6 +92,12 @@
 ;; TODO: tame these packages to be less disruptive without
 ;; completely hamstringing their usefulness
 (use-package lispy
+  :general
+  ( :keymaps 'lispy-mode-map-special
+    "b" nil)
+  ( :keymaps 'lispy-mode-map-lispy
+    "[" nil
+    "]" nil)
   :hook
   (emacs-lisp-mode . lispy-mode)
   (sly-mrepl-mode . lispy-mode)
