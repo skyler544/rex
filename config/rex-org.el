@@ -105,7 +105,10 @@
           org-level-5 org-level-6
           org-level-7 org-level-8))
   (dolist (face rex/org-levels)
-    (set-face-attribute face nil :inherit nil :foreground nil :weight 'bold))
+    (set-face-attribute face nil
+     :inherit nil
+     :foreground 'unspecified
+     :weight 'bold))
 
   :custom-face
   (org-agenda-date
