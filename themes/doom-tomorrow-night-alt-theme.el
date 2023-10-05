@@ -108,6 +108,7 @@ determine the exact padding."
 
    ((hl-line &override) :background (doom-darken grey-blue 0.4))
    ((homoglyph &override) :foreground cyan)
+   (sly-mrepl-output-face :foreground red :weight 'bold)
 
    ;;;; rainbow-delimiters
    (rainbow-delimiters-depth-1-face :foreground violet)
