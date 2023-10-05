@@ -242,7 +242,6 @@
 ;; proced
 ;; ----------------------------------------------------
 (use-package proced
-  :defer t
   :custom-face
   (proced-executable
    ((t ( :foreground unspecified
