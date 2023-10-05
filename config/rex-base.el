@@ -25,16 +25,19 @@
 (use-package emacs
   :config
   ;; Disable menu, scroll, and tool bars on startup.
-  (menu-bar-mode -1)
-  (when window-system
-    (scroll-bar-mode -1)
-    (tool-bar-mode -1))
+  (defun rex/cleanup-ui ()
+    (interactive)
+    (menu-bar-mode -1)
+    (when (display-graphic-p)
+      (scroll-bar-mode -1)
+      (tool-bar-mode -1)))
   (defun rex/disable-scroll-and-tool-bars (frame)
     (modify-frame-parameters frame
                              '((vertical-scroll-bars . nil)
                                (horizontal-scroll-bars . nil)
                                (tool-bar-lines . 0))))
   (add-hook 'after-make-frame-functions 'rex/disable-scroll-and-tool-bars)
+  (add-hook 'after-init-hook 'rex/cleanup-ui)
 
   ;; Most of these warnings aren't relevant: "docstring wider than ..."
   (setq native-comp-async-report-warnings-errors nil)
