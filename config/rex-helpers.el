@@ -25,7 +25,12 @@
 
 ;; Which-key helps you explore keymaps
 (use-package which-key
-  :config (which-key-mode))
+  :config
+  (setq which-key-show-early-on-C-h t)
+  (setq which-key-idle-delay 2)
+  (setq which-key-idle-secondary-delay 0.05)
+  (setq which-key-add-column-padding 1)
+  (which-key-mode))
 
 ;; Emacs can't handle very long lines
 (use-package so-long
