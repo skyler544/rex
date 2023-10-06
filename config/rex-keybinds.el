@@ -39,10 +39,6 @@
   ("C-=" 'text-scale-increase
    "C--" 'text-scale-decrease
    "C-0" 'text-scale-adjust)
-  ( :states 'normal
-    :keymaps 'Info-mode-map
-    "n" 'Info-forward-node
-    "p" 'Info-backward-node)
   (rex-leader
     "SPC" 'execute-extended-command
     "." 'find-file
@@ -92,6 +88,21 @@
     "fs" 'save-buffer
     "fS" 'write-file
     "ff" 'find-file))
+
+(use-package info
+  :config
+  ;; HACK: This replaces a lambda hook with `evil-local-set-key'
+  (define-minor-mode rex/evil-info-mode
+    "Somehow lets you force general to bind keys that it otherwise refuses to bind.")
+  :hook (Info-mode . rex/evil-info-mode)
+  :general
+  ( :states 'normal
+    :definer 'minor-mode
+    :keymaps 'rex/evil-info-mode
+    "n" 'Info-forward-node
+    "p" 'Info-backward-node
+    "C-j" 'Info-scroll-up
+    "C-k" 'Info-scroll-down))
 
 
 ;; Modal editing
