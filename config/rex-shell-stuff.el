@@ -21,6 +21,7 @@
 
 ;; This package improves the use of the built-in shell mode.
 (use-package shell-command-x
+  :demand
   :config
   (shell-command-x-mode 1))
 
