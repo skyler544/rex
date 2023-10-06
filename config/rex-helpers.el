@@ -25,6 +25,7 @@
 
 ;; Which-key helps you explore keymaps
 (use-package which-key
+  :demand
   :config
   (setq which-key-show-early-on-C-h t)
   (setq which-key-idle-delay 2)
