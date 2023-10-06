@@ -128,7 +128,9 @@
   (:states 'normal
            "q" 'ignore)
   (:states '(normal visual)
-           "C-w" 'evil-scroll-line-up)
+           "C-w" 'evil-scroll-line-up
+           "C-j" 'evil-scroll-page-down
+           "C-k" 'evil-scroll-page-up)
   (:keymaps 'evil-inner-text-objects-map
             "g" '+evil:whole-buffer-txtobj)
   (:keymaps 'evil-outer-text-objects-map
