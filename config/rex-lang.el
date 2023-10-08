@@ -7,10 +7,13 @@
 ;; Lisp
 ;; ----------------------------------------------------
 (use-package sly
-  :config
+  :init
   (setq inferior-lisp-program "sbcl")
   (setq sly-command-switch-to-existing-lisp 'always)
+  (setq sly-description-autofocus t)
+  (setq sly-mrepl-prevent-duplicate-history 'move)
   :hook
+  (sly-mode . (lambda () (unless (sly-connected-p) (sly))))
   (lisp-mode . (lambda () (setq-local corfu-auto-prefix 4)))
   (lisp-mode . (lambda () (setq-local fill-column 72)))
   :general
