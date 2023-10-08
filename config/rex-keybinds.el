@@ -208,12 +208,13 @@
             "b" 'evil-textobj-anyblock-a-block))
 
 (use-package evil-lion
+  :demand
   :config (evil-lion-mode))
 
 (use-package evil-commentary
-  :config
-  (evil-commentary-mode))
+  :demand
+  :config (evil-commentary-mode))
 
 (use-package evil-mc
-  :config
-  (global-evil-mc-mode))
+  :demand
+  :config (global-evil-mc-mode))
