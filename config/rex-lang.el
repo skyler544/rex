@@ -143,7 +143,7 @@
   (TeX-mode . display-line-numbers-mode)
   (TeX-mode . visual-line-mode)
   :config
-  (setq tex-start-options "--shell-escape")
+  (setq TeX-parse-self t)
   (add-to-list 'TeX-expand-list
                '("%(-PDF)"
                  (lambda ()
@@ -152,11 +152,8 @@
                              ((eq TeX-engine 'xetex) "-pdfxe")
                              ((eq TeX-engine 'luatex) "-pdflua")) ""))))
   (add-to-list 'TeX-command-list
-               '("LaTeXmk" "latexmk %(-PDF) -%(PDF)%(latex)='%`%l%(mode)%'' %(output-dir) %t"
-                 TeX-run-format nil (latex-mode doctex-mode) :help "Run Latexmk"))
-  (with-eval-after-load 'latex
-    (setq LaTeX-clean-intermediate-suffixes
-          (append LaTeX-clean-intermediate-suffixes '("\\.fdb_latexmk" "\\.fls")))))
+               '("LaTeXmk" "latexmk -shell-escape %(-PDF) -%(PDF)%(latex)='%`%l%(mode)%'' %(output-dir) %t"
+                 TeX-run-format nil (latex-mode doctex-mode) :help "Run Latexmk")))
 
 
 ;; Miscellaneous
