@@ -15,7 +15,6 @@
 
 ;; Fall back to external package for languages that don't have a dedicated mode yet
 (use-package tree-sitter
-  :demand t
   :config
   (setq treesit-font-lock-level 4))
 
