@@ -5,8 +5,6 @@
 ;; ----------------------------------------------------
 (use-package emacs
   :config
-  ;; Pixel resize, not column/line resize.
-  (setq frame-resize-pixelwise t)
 
   ;; Winner Mode records changes to your window configuration and allows
   ;; you to undo/redo changes to that configuration.

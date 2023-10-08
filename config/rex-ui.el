@@ -8,6 +8,9 @@
 ;; ----------------------------------------------------
 (use-package emacs
   :config
+  ;; Pixel resize, not column/line resize.
+  (setq frame-resize-pixelwise t)
+
   (setq *rex/face-size* 120)
 
   (defun rex/font-exists (fam)
