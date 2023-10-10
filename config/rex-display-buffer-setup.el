@@ -49,5 +49,4 @@
 ;; increasing/decreasing/resetting font size for the
 ;; whole frame at once.
 (use-package default-text-scale
-  :demand
   :config (default-text-scale-mode))

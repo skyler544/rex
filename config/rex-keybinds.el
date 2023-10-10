@@ -109,7 +109,6 @@
 ;; ----------------------------------------------------
 (use-package evil
   :after general
-  :demand
   :init
   (setq evil-kill-on-visual-paste nil)
   (setq evil-want-Y-yank-to-eol t)
@@ -151,7 +150,6 @@
   :hook (git-commit-mode . evil-insert-state))
 
 (use-package evil-collection
-  :demand
   :config
   (with-eval-after-load 'evil
    (require 'evil-collection)
@@ -208,13 +206,10 @@
             "b" 'evil-textobj-anyblock-a-block))
 
 (use-package evil-lion
-  :demand
   :config (evil-lion-mode))
 
 (use-package evil-commentary
-  :demand
   :config (evil-commentary-mode))
 
 (use-package evil-mc
-  :demand
   :config (global-evil-mc-mode))

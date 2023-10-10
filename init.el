@@ -54,7 +54,7 @@
 
 ;; Org
 ;; ----------------------------------------------------
-(rex/idle-load "rex-org" 15)
+(rex/load "rex-org")
 
 
 ;; Miscellaneous

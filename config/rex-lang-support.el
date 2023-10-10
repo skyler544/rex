@@ -8,7 +8,6 @@
 ;; ----------------------------------------------------
 ;; Abstract Syntax Tree based font-locking.
 (use-package treesit-auto
-  :demand
   :config
   (add-to-list 'global-treesit-auto-modes '(not org-mode))
   (setq treesit-auto-install t)
@@ -16,7 +15,6 @@
 
 ;; Fall back to external package for languages that don't have a dedicated mode yet
 (use-package tree-sitter
-  :demand
   :config
   (setq treesit-font-lock-level 4))
 

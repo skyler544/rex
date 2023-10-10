@@ -62,7 +62,6 @@
   (setq custom-theme-directory *rex/theme-dir*))
 
 (use-package doom-themes
-  :demand
   :custom-face
   (line-number
    ((t ( :slant normal))))
@@ -78,7 +77,6 @@
 ;; Mode Line
 ;; ----------------------------------------------------
 (use-package moody
-  :demand
   :config
   (setq evil-mode-line-format '(before . moody-mode-line-buffer-identification))
   (setq x-underline-at-descent-line t)
@@ -116,7 +114,6 @@
 
 ;; Briefly flash current line after a long movement.
 (use-package pulsar
-  :demand
   :after evil
   :init
   (setq pulsar-face 'pulsar-generic)

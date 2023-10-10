@@ -34,7 +34,6 @@
 (use-package use-package
   :config
   (setq-default use-package-always-ensure t)
-  (setq-default use-package-always-defer t)
   (setq-default use-package-verbose t))
 
 
