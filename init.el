@@ -19,7 +19,7 @@
 ;; ----------------------------------------------------
 (rex/load "rex-base")
 (rex/load "rex-functions")
-(rex/load "rex-windows-frames")
+(rex/load "rex-display-buffer-setup")
 
 
 ;; Keybind system
