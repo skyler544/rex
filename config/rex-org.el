@@ -38,7 +38,8 @@
   (defun rex/agenda ()
     "Open the agenda with all todos."
     (interactive)
-    (org-agenda 1 "n"))
+    (org-agenda 1 "n")
+    (evil-normal-state))
 
   (defun rex/reload-agenda ()
     "Revert all org buffers and reload the agenda."
