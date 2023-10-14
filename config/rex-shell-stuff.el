@@ -103,5 +103,35 @@ Automatically detects package manager based on lockfile: npm, yarn, and pnpm."
           :display target
           :working-dir project-dir))
        targets)))
+
+  (defun run-command-recipe-docker ()
+    (when-let* ((project-dir
+                 (locate-dominating-file default-directory "docker-compose.yml")))
+      (list
+       (list :command-name "docker compose up"
+             :command-line "docker compose up"
+             :working-dir project-dir)
+       (list :command-name "docker compose down"
+             :command-line "docker compose down"
+             :working-dir project-dir))))
+
+  (defun run-command-recipe-mvn ()
+    (when-let* ((project-dir
+                 (locate-dominating-file default-directory "pom.xml")))
+      (list
+       (list :command-name "mvn install"
+             :command-line "mvn clean install"
+             :working-dir project-dir)
+       (list :command-name "mvn clean"
+             :command-line "mvn clean"
+             :working-dir project-dir)
+       (list :command-name "mvn test"
+             :command-line "mvn test"
+             :working-dir project-dir))))
+
   (setq run-command-default-runner 'run-command-runner-eat)
-  (setq run-command-recipes '(run-command-recipe-package-json run-command-recipe-make)))
+  (setq run-command-recipes
+        '(run-command-recipe-package-json
+          run-command-recipe-make
+          run-command-recipe-mvn
+          run-command-recipe-docker)))
