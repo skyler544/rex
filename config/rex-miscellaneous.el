@@ -64,7 +64,6 @@
 
 ;; Better pdf support
 (use-package pdf-tools
-  :vc (:fetcher github :repo "vedang/pdf-tools")
   :mode ("\\.pdf\\'" . pdf-view-mode)
   :config
   (setq-default pdf-view-display-size 'fit-width)
@@ -76,13 +75,9 @@
     (ignore-errors (apply (car r) (cdr r))))
 
   (advice-add 'pdf-view-goto-page :around #'rex/ignore-errors)
-
-  :general
-  (:keymaps 'pdf-view-mode-map
-            "M-m" 'pdf-view-themed-minor-mode)
   :hook
   (pdf-view-mode . (lambda () (auto-composition-mode -1)))
-  (pdf-view-mode . pdf-view-themed-minor-mode))
+  (pdf-view-mode . pdf-view-midnight-minor-mode))
 
 (use-package saveplace-pdf-view
   :after pdf-tools)
