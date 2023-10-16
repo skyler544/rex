@@ -44,9 +44,3 @@
   (add-to-list 'display-buffer-alist
                '("\\*helpful"
                  (display-buffer-same-window))))
-
-;; Provides `C-M-+', `C-M--', `C-M-0' keybindings for
-;; increasing/decreasing/resetting font size for the
-;; whole frame at once.
-(use-package default-text-scale
-  :config (default-text-scale-mode))

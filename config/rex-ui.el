@@ -53,6 +53,12 @@
     (rex/frame-init-commit))
   :hook (after-init . rex/cleanup-ui))
 
+;; Provides `C-M-+', `C-M--', `C-M-0' keybindings for
+;; increasing/decreasing/resetting font size for the
+;; whole frame at once.
+(use-package default-text-scale
+  :config (default-text-scale-mode))
+
 
 ;; Themes
 ;; ----------------------------------------------------
