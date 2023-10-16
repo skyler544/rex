@@ -1,6 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 ;;
-;; Window and frame management
+;; Window management
 ;; https://www.masteringemacs.org/article/demystifying-emacs-window-manager
 ;; ----------------------------------------------------
 (use-package emacs
@@ -31,7 +31,7 @@
   (add-to-list 'display-buffer-alist
                '("\\*shell:"
                  (display-buffer-below-selected)
-                 (window-height . 0.3)))
+                 (window-height . 12)))
   (add-to-list 'display-buffer-alist
                '("\\magit:"
                  (display-buffer-same-window)))

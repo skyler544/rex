@@ -32,16 +32,16 @@
   (rex-leader
     "ot" 'eat
     "pt" 'eat-project)
-  (:states 'normal
-           :keymaps 'eat-semi-char-mode-map
-           "RET" 'eat-self-input
-           "p" 'eat-yank)
+  ( :states 'normal
+    :keymaps 'eat-semi-char-mode-map
+    "RET" 'eat-self-input
+    "p" 'eat-yank)
   :config
   (setq eat-term-scrollback-size nil)
   (add-to-list 'evil-insert-state-modes 'eat-mode))
 
 
-;; Command runner for project build systems
+;; Command runner
 ;; ----------------------------------------------------
 (use-package run-command
   :general

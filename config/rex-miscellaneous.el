@@ -16,8 +16,7 @@
     "fD" 'crux-delete-file-and-buffer))
 
 ;; Highlight hex color strings (and some other kinds) in the buffer
-(use-package rainbow-mode
-  :commands 'rainbow-mode)
+(use-package rainbow-mode)
 
 ;; Highlight `TODO' items in buffers
 (use-package hl-todo
