@@ -14,22 +14,6 @@
   ;; Make scripts executable on save.
   (after-save . executable-make-buffer-file-executable-if-script-p))
 
-;; Does what it says on the tin.
-(use-package drag-stuff
-  :config
-  (drag-stuff-define-keys)
-  (drag-stuff-global-mode 1)
-  :general
-  (:states 'normal
-           "M-J" 'drag-stuff-down
-           "M-K" 'drag-stuff-up))
-
-;; Allows you to edit a region indirectly a-la org source blocks.
-(use-package edit-indirect
-  :general
-  ( :states 'visual
-    "C-c '" 'edit-indirect-region))
-
 
 ;; Search and refactoring tools
 ;; ----------------------------------------------------
