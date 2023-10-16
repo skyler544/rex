@@ -165,7 +165,9 @@
     "d" 'evil-delete)
   ( :states 'insert
     :keymaps 'org-mode-map
-    "C-o" 'evil-org-open-below)
+    "C-o" 'evil-org-open-below
+    "M-l" 'org-metaright
+    "M-h" 'org-metaleft)
   (rex-leader
     "ma" 'rex/agenda
     "ml" 'org-store-link)
