@@ -161,11 +161,6 @@
 (use-package lua-mode
   :mode ("\\.lua$" . lua-mode))
 
-(use-package yaml-mode
-  :mode
-  ("\\.yml.dist$" . yaml-mode)
-  ("\\.yml$" . yaml-mode))
-
 (use-package emacs
   :mode
   ("\\.env$" . conf-mode)
