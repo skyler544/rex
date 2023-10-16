@@ -51,8 +51,6 @@
   (setq-default tab-width 4)
   (setq-default word-wrap t)
   (setq-default indent-tabs-mode nil)
-  (setq-default vc-handled-backends '(Git))
-  (setq inhibit-startup-screen t)
 
   ;; Enable some useful commands and features.
   (put 'narrow-to-region 'disabled nil)
@@ -65,6 +63,9 @@
 ;; ----------------------------------------------------
 (use-package emacs
   :config
+  (setq-default vc-handled-backends '(Git))
+  (setq inhibit-startup-screen t)
+
   ;; Don't restrict frame to the size of columns/rows.
   (setq frame-resize-pixelwise t)
 
