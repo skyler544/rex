@@ -33,8 +33,8 @@
 
 (use-package use-package
   :config
-  (setq-default use-package-always-ensure t)
-  (setq-default use-package-verbose t))
+  (setq use-package-always-ensure t)
+  (setq use-package-verbose t))
 
 
 ;; Garbage collection
