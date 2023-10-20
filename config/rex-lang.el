@@ -33,7 +33,7 @@
 ;; C/C++
 ;; ----------------------------------------------------
 (use-package emacs
-  :init
+  :config
   (setq-default c-basic-offset 4)
   :mode
   ("\\.c$" . c-ts-mode)

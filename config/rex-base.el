@@ -11,9 +11,8 @@
   :config
   (setq custom-file (no-littering-expand-etc-file-name "custom.el")))
 (use-package minions
-  :init
-  (setq minions-mode-line-lighter "--")
   :config
+  (setq minions-mode-line-lighter "--")
   (minions-mode))
 (use-package delight)
 
