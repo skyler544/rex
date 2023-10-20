@@ -161,6 +161,8 @@
 (use-package lua-mode
   :mode ("\\.lua$" . lua-mode))
 
+(use-package dockerfile-mode)
+
 (use-package emacs
   :mode
   ("\\.env$" . conf-mode)
