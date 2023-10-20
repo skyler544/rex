@@ -134,6 +134,7 @@
     '((php-mode . "^use ")
       (tsx-ts-mode . "^import {*[\s*\n*[:alnum:]*,* ]*\n*}*")
       (rex/mdx-mode . "^import {*[\s*\n*[:alnum:]*,* ]*\n*}*")
+      (java-ts-mode . "^import ")
       (typescript-ts-mode . "^import ")))
 
   (defun rex/hs-fold-imports (pattern)
@@ -157,6 +158,7 @@
   (php-mode . rex/hs-fold-imports-lang)
   (tsx-ts-mode . rex/hs-fold-imports-lang)
   (rex/mdx-mode . rex/hs-fold-imports-lang)
+  (java-ts-mode . rex/hs-fold-imports-lang)
   :general
   (:keymaps 'prog-mode-map :states 'normal
             "zC" 'rex/hs-fold-imports-lang))
