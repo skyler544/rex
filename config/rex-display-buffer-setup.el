@@ -29,8 +29,12 @@
                '("\\*Calendar*"
                  (display-buffer-at-bottom)))
   (add-to-list 'display-buffer-alist
+               '("^\*.*\\[.*\\]\*"
+                 (display-buffer-at-bottom)
+                 (window-height . 12)))
+  (add-to-list 'display-buffer-alist
                '("\\*shell:"
-                 (display-buffer-below-selected)
+                 (display-buffer-at-bottom)
                  (window-height . 12)))
   (add-to-list 'display-buffer-alist
                '("\\magit:"
