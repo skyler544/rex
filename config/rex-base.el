@@ -255,12 +255,6 @@
 
 ;; Fixes
 ;; ----------------------------------------------------
-;; TODO: figure out why this is necessary
-(use-package emacs
-  :config
-  ;; Add the info files from the cloned emacs source.
-  (add-to-list 'Info-directory-list "~/build/emacs/info"))
-
 ;; Disable vc-mode when remotely editing
 (use-package emacs
   :config
