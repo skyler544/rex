@@ -10,6 +10,7 @@
 (use-package treesit-auto
   :config
   (add-to-list 'global-treesit-auto-modes '(not org-mode))
+  (add-to-list 'global-treesit-auto-modes '(not yaml-mode))
   (setq treesit-auto-install t)
   (global-treesit-auto-mode))
 

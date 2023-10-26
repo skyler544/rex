@@ -163,6 +163,14 @@
 
 (use-package dockerfile-mode)
 
+(use-package yaml-mode
+  :mode
+  ("\\.ya?ml$" . yaml-mode))
+
+(use-package yaml-pro
+  :hook
+  (yaml-mode . yaml-pro-ts-mode))
+
 (use-package emacs
   :mode
   ("\\.env$" . conf-mode)
