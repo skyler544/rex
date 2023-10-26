@@ -92,5 +92,4 @@
 ;; Some predefined snippets
 (use-package tempel-collection
   :vc (:fetcher github :repo "Crandel/tempel-collection")
-  :init (require 'tempel-collection)
   :after tempel)
