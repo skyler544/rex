@@ -36,6 +36,11 @@
 (rex/load "rex-completion")
 
 
+;; Builtin packages
+;; ----------------------------------------------------
+(rex/load "rex-builtins")
+
+
 ;; Editing
 ;; ----------------------------------------------------
 (rex/load "rex-editing")
