@@ -119,8 +119,14 @@ Automatically detects package manager based on lockfile: npm, yarn, and pnpm."
     (when-let* ((project-dir
                  (locate-dominating-file default-directory "pom.xml")))
       (list
+       (list :command-name "mvn exec"
+             :command-line "mvn clean compile exec:java"
+             :working-dir project-dir)
        (list :command-name "mvn install"
              :command-line "mvn clean install"
+             :working-dir project-dir)
+       (list :command-name "mvn package"
+             :command-line "mvn clean package"
              :working-dir project-dir)
        (list :command-name "mvn clean"
              :command-line "mvn clean"
