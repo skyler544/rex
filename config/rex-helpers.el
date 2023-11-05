@@ -10,8 +10,7 @@
 ;; Disambiguate buffer names
 (use-package emacs
   :config
-  (setq uniquify-buffer-name-style 'post-forward)
-  (setq uniquify-separator " | ")
+  (setq uniquify-buffer-name-style 'forward)
   (setq uniquify-after-kill-buffer-p t))
 
 ;; Even better help buffers
