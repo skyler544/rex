@@ -107,6 +107,7 @@
   (setq eglot-sync-connect 0)
   (setq eglot-autoshutdown t)
   (setq eglot-events-buffer-size 0)
+  (setq eglot-ignored-server-capabilities '(:inlayHintProvider))
   (with-eval-after-load 'eglot
     (setq rex/language-servers
           (list '(prisma-mode "prisma-language-server" "--stdio")
