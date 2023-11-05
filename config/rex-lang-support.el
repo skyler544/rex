@@ -81,10 +81,11 @@
       (with-selected-frame eldoc-box--frame
         (scroll-up 3))))
   :general
-  (:keymaps 'eglot-mode-map
-            "C-k" 'rex/eldoc-box-scroll-up
-            "C-j" 'rex/eldoc-box-scroll-down
-            "M-h" 'eldoc-box-help-at-point))
+  ( :states 'normal
+    :keymaps 'eglot-mode-map
+    "C-k" 'rex/eldoc-box-scroll-up
+    "C-j" 'rex/eldoc-box-scroll-down
+    "M-h" 'eldoc-box-help-at-point))
 
 
 ;; Language server protocol
