@@ -14,15 +14,22 @@
   ;; Make scripts executable on save.
   (after-save . executable-make-buffer-file-executable-if-script-p))
 
+;; (use-package multifiles
+;;   :general
+;;   ( :states '(normal visual)
+;;     "C-!" 'mf/mirror-region-in-multifile))
+
+(use-package zones)
+
 
 ;; Search and refactoring tools
 ;; ----------------------------------------------------
 (use-package iedit
   :general
-  (:states '(normal visual)
-           "?" 'iedit-mode)
-  (:keymaps 'isearch-mode-map
-            "C-;" 'iedit-mode-from-isearch))
+  ( :states '(normal visual)
+    "?" 'iedit-mode)
+  ( :keymaps 'isearch-mode-map
+    "C-;" 'iedit-mode-from-isearch))
 
 ;; Switch between camelCase and snake_case etc.
 (use-package string-inflection)
