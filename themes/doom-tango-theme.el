@@ -72,6 +72,7 @@ determine the exact padding."
    (base8      '("#485163" "#dfdfdf" "white"))
    (fg         '("#2e3436" "#2a2a2a" nil ))
    (fg-alt     '("#454545" "#757575" nil ))
+   (alum-2     '("#d3d7cf" "#d3d7cf" nil))
    (alum-5     '("#5f615c" "#5f615c" nil))
 
    (grey       base4)
@@ -127,7 +128,7 @@ determine the exact padding."
 
    (shadow base3)
 
-   (modeline-bg (doom-lighten (doom-blend base0 grey-blue 0.5) 0.2))
+   (modeline-bg alum-2)
    (modeline-bg-l
     (if -modeline-bright
         (doom-darken blue 0.475)
