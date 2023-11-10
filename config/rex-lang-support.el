@@ -44,6 +44,7 @@
   (with-eval-after-load 'compile
     (fancy-compilation-mode)))
 
+(use-package mvn)
 
 ;; Symbol mapping and documentation lookup
 ;; ----------------------------------------------------
