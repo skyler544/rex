@@ -156,6 +156,14 @@
      (when (boundp 'rex/hs-fold-imports-alist)
        (alist-get major-mode rex/hs-fold-imports-alist))))
 
+
+  (defun rex/hs-custom-overlay (ov)
+    (when (overlay-get ov 'hs)
+      (overlay-put ov 'display
+                   (propertize " [...]" 'face 'font-lock-comment-face))))
+
+  (setq hs-set-up-overlay #'rex/hs-custom-overlay)
+
   :hook
   (prog-mode . hs-minor-mode)
   (php-mode . rex/hs-fold-imports-lang)
