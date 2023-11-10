@@ -91,10 +91,6 @@
 ;; Language server protocol
 ;; ----------------------------------------------------
 (use-package emacs
-  :custom-face
-  (eglot-inlay-hint-face
-   ((t ( :foreground unspecified
-         :inherit font-lock-comment-face))))
   :general (rex-leader
              "cf" 'eglot-format-buffer
              "cd" 'eglot-find-declaration
