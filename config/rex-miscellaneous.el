@@ -92,3 +92,5 @@
 
 (use-package restclient
   :mode ("\\.http" . restclient-mode))
+
+(use-package grip-mode)
