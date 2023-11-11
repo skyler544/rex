@@ -157,7 +157,7 @@
   (defun rex/hs-custom-overlay (ov)
     (when (overlay-get ov 'hs)
       (overlay-put ov 'display
-                   (propertize " [...]" 'face 'font-lock-comment-face))))
+                   (propertize "[...]" 'face 'font-lock-comment-face))))
 
   (setq hs-set-up-overlay #'rex/hs-custom-overlay)
 
