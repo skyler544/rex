@@ -102,6 +102,7 @@
   (with-eval-after-load 'eglot (fset #'jsonrpc--log-event #'ignore))
   (setq eglot-confirm-server-initiated-edits nil)
   (setq eglot-sync-connect 0)
+  (setq eglot-report-progress nil)
   (setq eglot-autoshutdown t)
   (setq eglot-events-buffer-size 0)
   (setq eglot-ignored-server-capabilities '(:inlayHintProvider))
