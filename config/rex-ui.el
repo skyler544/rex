@@ -174,8 +174,6 @@
   :custom-face
   (variable-pitch
    ((t ( :family "monospace"))))
-  (fringe
-   ((t ( :background unspecified))))
   (shadow
    ((t ( :foreground unspecified
          :inherit font-lock-comment-face))))
