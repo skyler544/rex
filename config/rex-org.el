@@ -28,6 +28,7 @@
         '(("+" . "-") ("-" . "+") ("*" . "+")))
 
   (add-to-list 'org-file-apps '("\\.png\\'" . "feh %s"))
+  (add-to-list 'org-file-apps '("\\.pdf\\'" . "zathura %s"))
   (add-to-list 'org-export-backends 'md))
 
 
