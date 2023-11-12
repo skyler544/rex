@@ -14,11 +14,6 @@
   ;; Make scripts executable on save.
   (after-save . executable-make-buffer-file-executable-if-script-p))
 
-;; (use-package multifiles
-;;   :general
-;;   ( :states '(normal visual)
-;;     "C-!" 'mf/mirror-region-in-multifile))
-
 (use-package zones)
 
 
