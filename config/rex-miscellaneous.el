@@ -42,7 +42,9 @@
   (setq treemacs-wrap-around nil)
   (setq treemacs-wide-toggle-width 50)
   :commands 'treemacs)
-(use-package treemacs-evil)
+(use-package treemacs-evil
+  :config
+  (evil-set-initial-state 'treemacs-mode 'normal))
 
 
 ;; Reading and prose
