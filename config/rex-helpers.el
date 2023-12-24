@@ -78,7 +78,11 @@
   :general
   ("C-x o"  'iwindow-select)
   (rex-leader
-    "wo"  'iwindow-select))
+    "wo"  'iwindow-select)
+  :custom-face
+  (iwindow-highlight-default
+   ((t ( :background unspecified
+         :inherit hl-line)))))
 
 
 ;; Git
