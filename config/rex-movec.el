@@ -40,9 +40,10 @@
   (add-to-list 'vertico-multiform-categories
                '(project-file (+vertico-transform-functions . rex/vertico-highlight-file-base-name)))
 
-  (setq vertico-cycle t)
-  (setq vertico-count 12)
-  (setq vertico-resize nil))
+  :custom
+  (vertico-count 12)
+  (vertico-cycle t)
+  (vertico-resize nil))
 
 ;; This extends vertico with keybindings for navigating directories.
 (use-package vertico-directory
