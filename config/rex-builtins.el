@@ -25,17 +25,6 @@
   (dired-mode . rex/set-file-associations)
   (dired-mode . dired-hide-details-mode))
 
-;; Don't block when copying/renaming.
-(use-package dired-async
-  :vc (:fetcher github :repo "jwiegley/emacs-async")
-  :custom-face
-  (dired-async-message
-   ((t ( :foreground unspecified
-         :background unspecified
-         :weight bold))))
-  :config
-  (dired-async-mode 1))
-
 ;; Add some color to dired to improve readability
 (use-package diredfl
   :hook (dired-mode . diredfl-mode))
