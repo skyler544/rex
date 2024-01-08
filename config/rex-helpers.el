@@ -16,7 +16,6 @@
 ;; Even better help buffers
 (use-package helpful
   :general
-  ("C-c C-h" 'helpful-at-point)
   ("C-h s" 'helpful-symbol)
   ("C-h f" 'helpful-callable)
   ("C-h k" 'helpful-key)
