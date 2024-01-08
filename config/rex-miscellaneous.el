@@ -61,7 +61,9 @@
 ;; Read RFCs
 (use-package page-break-lines)
 (use-package rfc-mode
-  :hook (rfc-mode . page-break-lines-mode))
+  :hook
+  (help-mode . page-break-lines-mode)
+  (rfc-mode . page-break-lines-mode))
 
 ;; Better pdf support
 (use-package pdf-tools
