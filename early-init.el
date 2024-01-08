@@ -11,6 +11,9 @@
 ;; If something goes wrong, try to fix it interactively.
 (setq debug-on-error t)
 
+;; Just don't.
+(setq custom-file "/dev/null")
+
 
 ;; Package management
 ;; ----------------------------------------------------
