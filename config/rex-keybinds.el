@@ -140,7 +140,12 @@
   (:states '(normal visual)
            "C-w" 'evil-scroll-line-up
            "C-j" 'evil-scroll-page-down
-           "C-k" 'evil-scroll-page-up)
+           "C-k" 'evil-scroll-page-up
+           "C-d" 'delete-char
+           "C-p" 'previous-line
+           "C-n" 'next-line
+           "C-f" 'forward-char
+           "C-b" 'backward-char)
   (:keymaps 'evil-inner-text-objects-map
             "g" '+evil:whole-buffer-txtobj)
   (:keymaps 'evil-outer-text-objects-map
