@@ -59,17 +59,67 @@
 ;; ----------------------------------------------------
 (use-package emacs
   :config
+  (defun rex/service-command (state service)
+    (let ((default-directory "/sudo::"))
+      (shell-command (format "sv %s %s" state service))))
+  (defun rex/service-up (service)
+    (rex/service-command "up" service))
+  (defun rex/service-down (service)
+    (rex/service-command "down" service))
+
   (defun rex/fh-vpn-up ()
     "Start the FH OpenVPN connection."
     (interactive)
-    (let ((default-directory "/sudo::"))
-      (shell-command "sv up fh-vpn")))
+    (rex/service-up "fh-vpn"))
 
   (defun rex/fh-vpn-down ()
     "Stop the FH OpenVPN connection."
     (interactive)
-    (let ((default-directory "/sudo::"))
-      (shell-command "sv down fh-vpn")))
+    (rex/service-down "fh-vpn"))
+
+  (defun rex/touchegg-up ()
+    "Start touchegg."
+    (interactive)
+    (rex/service-up "touchegg"))
+
+  (defun rex/touchegg-down ()
+    "Stop touchegg."
+    (interactive)
+    (rex/service-down "touchegg"))
+
+  (defun rex/wpa_supplicant-up ()
+    "Start wpa_supplicant."
+    (interactive)
+    (rex/service-up "wpa_supplicant"))
+
+  (defun rex/wpa_supplicant-down ()
+    "Stop wpa_supplicant."
+    (interactive)
+    (rex/service-down "wpa_supplicant"))
+
+  (defun rex/NetworkManager-up ()
+    "Start NetworkManager."
+    (interactive)
+    (rex/service-up "NetworkManager"))
+
+  (defun rex/NetworkManager-down ()
+    "Stop NetworkManager."
+    (interactive)
+    (rex/service-down "NetworkManager"))
+
+  (defun rex/cinnamon ()
+    "Setup cinnamon services."
+    (interactive)
+    (rex/wpa_supplicant-down)
+    (rex/NetworkManager-up)
+    (rex/touchegg-up))
+
+  (defun rex/awesome ()
+    "Setup awesome services."
+    (interactive)
+    (rex/NetworkManager-down)
+    (rex/wpa_supplicant-up)
+    (rex/touchegg-down))
 
   (defun rex/docker-up ()
     "Start docker"
