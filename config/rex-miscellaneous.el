@@ -94,24 +94,7 @@
 (use-package htmlize)
 
 ;; Serve a buffer via http
-(use-package impatient-mode
-  :config
-  (defun rex/markdown-filter (buffer)
-    (princ
-     (with-temp-buffer
-       (let ((tmpname (buffer-name)))
-         (set-buffer buffer)
-         (set-buffer (markdown tmpname))
-         (buffer-string)))
-     (current-buffer)))
-
-  (defun rex/enable-markdown-preview ()
-    (let ((buf (current-buffer)))
-      (when (eq major-mode 'markdown-mode)
-        (imp-set-user-filter #'rex/markdown-filter))))
-
-  (add-hook 'impatient-mode-hook 'rex/enable-markdown-preview)
-  )
+(use-package impatient-mode)
 
 (use-package restclient
   :mode ("\\.http" . restclient-mode))
