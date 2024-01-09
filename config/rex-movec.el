@@ -167,7 +167,7 @@
 (use-package consult-dir
   :general
   (:keymaps 'vertico-map
-            "M-d" 'consult-dir))
+            "C-M-d" 'consult-dir))
 
 (use-package consult-eglot
   :after eglot
